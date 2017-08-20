@@ -6,8 +6,23 @@ public class DamageOnContact : MonoBehaviour {
 	public int damageToDeal = 10;
 	public bool dieOnContact = false;
 
+	public string[] tagsToHit;
+
 	public void OnTriggerEnter(Collider other){
-		Debug.Log ("Hit collider");
+		Debug.Log ("Hit collider " + other.gameObject.tag);
+
+		if (tagsToHit != null) {
+			bool correctTag = false;
+			foreach (string tag in tagsToHit) {
+				if (other.gameObject.CompareTag (tag)) {
+					correctTag = true;
+					break;
+				}
+			}
+			if (!correctTag)
+				return;
+		}
+
 		BaseHealth otherHealth = other.gameObject.GetComponentInParent<BaseHealth> ();
 		if (otherHealth != null) {
 			otherHealth.TakeDamage (damageToDeal);
