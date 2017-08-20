@@ -10,7 +10,7 @@ public class SeekerMovement : MonoBehaviour {
 	private Transform seekTarget;
 	public bool shouldSeekTarget;
 
-	private float seekStopRadius = 0.8f;
+	private float seekStopRadius = 0.2f;
 
 
 	// Use this for initialization
