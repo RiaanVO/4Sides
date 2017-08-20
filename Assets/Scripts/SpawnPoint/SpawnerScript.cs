@@ -5,16 +5,20 @@ using UnityEngine;
 public class SpawnerScript : MonoBehaviour {
 
 	public GameObject enemy;
+	public Material[] material;
+	public Renderer rend;
 	public float spawnTime;
+
+
 	private float timeSinceSpawn;
 
 
-
-
 	void start () {
+		rend = GetComponent<Renderer> ();
+		rend.enabled = true;
+		rend.sharedMaterial = material[0];
 		Time.timeScale = 0;
 		timeSinceSpawn = 0;
-		SpawnEnemy();
 
 	}
 
@@ -22,13 +26,17 @@ public class SpawnerScript : MonoBehaviour {
 		timeSinceSpawn += Time.deltaTime;
 
 		if (timeSinceSpawn >= spawnTime) {
-			SpawnEnemy ();
+			StartCoroutine(Spawn());
 			timeSinceSpawn = 0;
+
 		}
 	}
+		
 
-	void SpawnEnemy() 
-	{
+	IEnumerator Spawn() {
 		Instantiate (enemy, transform.position, Quaternion.identity);	
+		rend.sharedMaterial = material[1];
+		yield return new WaitForSeconds(1);
+		rend.sharedMaterial = material[0];
 	}
 }
