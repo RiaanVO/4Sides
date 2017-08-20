@@ -201,6 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 612640847}
   - component: {fileID: 612640848}
+  - component: {fileID: 612640849}
   m_Layer: 0
   m_Name: Seeker
   m_TagString: Untagged
@@ -236,6 +237,21 @@ MonoBehaviour:
   moveSpeed: 4
   rotationSpeed: 8
   shouldSeekTarget: 1
+--- !u!54 &612640849
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 612640846}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 36
+  m_CollisionDetection: 0
 --- !u!1 &758537530
 GameObject:
   m_ObjectHideFlags: 0
