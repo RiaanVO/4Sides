@@ -4,8 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - SpawnPoint
+<<<<<<< HEAD
   - Floor
+=======
+  - SpawnPoint
+>>>>>>> 70d79584ca320a64343cc3b93c4d0b137630d759
   layers:
   - Default
   - TransparentFX
