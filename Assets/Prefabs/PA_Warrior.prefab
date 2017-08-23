@@ -1017,7 +1017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ad396d6a0b104a4689f40e0363aaec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  Player: {fileID: 1179842615921402, guid: 28cb81517cc7598469e18bd15d586be7, type: 2}
 --- !u!136 &136455421622566402
 CapsuleCollider:
   m_ObjectHideFlags: 1
