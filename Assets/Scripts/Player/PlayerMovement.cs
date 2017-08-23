@@ -2,9 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     public float MovementSpeed = 4.0f;
+
+    private Rigidbody body;
+
+    void Start()
+    {
+        body = GetComponent<Rigidbody>();
+    }
 
     void FixedUpdate()
     {
@@ -22,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
                 * Mathf.Rad2Deg;
 
             // set the player rotation
-            transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+            body.MoveRotation(Quaternion.Euler(0.0f, rotation, 0.0f));
         }
 
         // move player based on current speed
@@ -30,6 +38,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 verticalDir = Vector3.Cross(Vector3.down, Camera.main.transform.right);
         Vector3 movement = (horizontalDir * Input.GetAxis("Horizontal"))
             + (verticalDir * Input.GetAxis("Vertical"));
-        transform.Translate(movement * MovementSpeed, Space.World);
+        body.AddForce(movement * MovementSpeed, ForceMode.Impulse);
     }
 }
