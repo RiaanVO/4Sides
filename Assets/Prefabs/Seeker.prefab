@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 114968193031931344}
   - component: {fileID: 136455421622566402}
   - component: {fileID: 114033789489590774}
-  - component: {fileID: 114473798723216954}
+  - component: {fileID: 114119931091056256}
   m_Layer: 0
   m_Name: Seeker
   m_TagString: Untagged
@@ -991,7 +991,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   currentHealth: 0
---- !u!114 &114473798723216954
+--- !u!114 &114119931091056256
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -999,12 +999,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1339550043203248}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73ad051b4107a43c0a3a32660a065a88, type: 3}
+  m_Script: {fileID: 11500000, guid: 746672e7ed6040748be73e7c3792100c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageToDeal: 10
-  dieOnContact: 1
-  tagsToHit:
+  DamageToDeal: 10
+  SelfDestructOnContact: 1
+  TagsToCollideWith:
   - Player
 --- !u!114 &114968193031931344
 MonoBehaviour:
