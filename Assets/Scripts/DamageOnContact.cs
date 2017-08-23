@@ -11,8 +11,6 @@ public class DamageOnContact : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hit collider " + other.gameObject.tag);
-
         if (tagsToHit != null)
         {
             bool correctTag = false;
