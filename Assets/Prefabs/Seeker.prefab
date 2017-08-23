@@ -218,10 +218,10 @@ GameObject:
   - component: {fileID: 95720157728225730}
   - component: {fileID: 54884466064533298}
   - component: {fileID: 195394326132599818}
-  - component: {fileID: 114968193031931344}
   - component: {fileID: 136455421622566402}
   - component: {fileID: 114033789489590774}
   - component: {fileID: 114119931091056256}
+  - component: {fileID: 114888672854776844}
   m_Layer: 0
   m_Name: Seeker
   m_TagString: Untagged
@@ -1006,7 +1006,7 @@ MonoBehaviour:
   SelfDestructOnContact: 1
   TagsToCollideWith:
   - Player
---- !u!114 &114968193031931344
+--- !u!114 &114888672854776844
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
