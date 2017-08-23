@@ -3,39 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class enemyMovement : MonoBehaviour {
+[RequireComponent(typeof(NavMeshAgent))]
+public class EnemyMovement : MonoBehaviour
+{
+    PlayerMovement player;
+    NavMeshAgent nav;
 
-	public GameObject player;
+    void Start()
+    {
+        nav = GetComponent<NavMeshAgent>();
+        player = Object.FindObjectOfType<PlayerMovement>();
+    }
 
-	NavMeshAgent nav;
-	Animator anim;
-
-
-	void Start () {
-		player = GameObject.FindGameObjectWithTag ("Player");
-		anim = GetComponent<Animator> ();
-		nav = GetComponent<NavMeshAgent> ();
-
-	}
-
-	void Update () {
-		if(player != null)
-			nav.SetDestination (player.transform.position);	
-	}
-
-
-	void OnTriggerEnter (Collider other) {
-		if (other.gameObject.CompareTag ("Player")) {
-			anim.SetBool ("Attacking", true);
-		}
-	}
-
-	void OnTriggerExit (Collider other) {
-		if (other.gameObject.CompareTag ("Player")) {
-			nav.SetDestination (player.transform.position);	
-			anim.SetBool ("Idling", false);
-			anim.SetBool ("Attacking", false);
-		}
-	}
-
+    void Update()
+    {
+        if (player != null)
+        {
+            nav.SetDestination(player.transform.position);
+        }
+    }
 }
