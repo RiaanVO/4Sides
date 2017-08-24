@@ -109,3 +109,4 @@ MonoBehaviour:
   IdleMaterial: {fileID: 2100000, guid: 5ccf2109d894b3f47a07de9afddfe687, type: 2}
   ActiveMaterial: {fileID: 2100000, guid: 6ceabc851175e624aae363cd4156ae56, type: 2}
   TelegraphDuration: 0.5
+  EnemySpawnOffset: {x: 0, y: 1, z: 0}
