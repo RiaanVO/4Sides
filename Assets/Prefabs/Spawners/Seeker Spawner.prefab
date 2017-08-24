@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 23089334722768936}
   - component: {fileID: 114865981713340926}
   m_Layer: 0
-  m_Name: Spawn Point
-  m_TagString: Untagged
+  m_Name: Seeker Spawner
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,5 +108,4 @@ MonoBehaviour:
   Enemy: {fileID: 1339550043203248, guid: b02ae3c0d91463248b484f4d5715dbef, type: 2}
   IdleMaterial: {fileID: 2100000, guid: 5ccf2109d894b3f47a07de9afddfe687, type: 2}
   ActiveMaterial: {fileID: 2100000, guid: 6ceabc851175e624aae363cd4156ae56, type: 2}
-  TimeBetweenSpawns: 3
-  TelegraphDuration: 1
+  TelegraphDuration: 0.5

@@ -6,69 +6,43 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject Enemy;
-	public Transform[] spawnPoint;
-	public Renderer[] spawnPointRenderer;
     public Material IdleMaterial;
     public Material ActiveMaterial;
-    public float TimeBetweenSpawns;
-    public float TelegraphDuration;
-	public float TimeBeforeSpawnDecrease;
-	public float spawnDecreaseRateSeconds;
+    public float TelegraphDuration = 1.0f;
 
     private Renderer render;
-    private float spawnTime;
-	private float gameTime;
-	private float randomChosenSpawnPoint;
+    private bool isSpawning;
+    private float telegraphStartTimestamp;
 
     void Start()
     {
-		gameTime = 0;
-		spawnPointRenderer = GetComponentsInChildren<Renderer> ();
-		foreach (Renderer render in spawnPointRenderer) {
-			render.enabled = true;
-			render.material = IdleMaterial;
-		}
-        spawnTime = Time.time;
+        render = GetComponent<Renderer>();
+        render.enabled = true;
+        render.material = IdleMaterial;
+
+        isSpawning = false;
+        telegraphStartTimestamp = Time.time;
     }
 
     void Update()
     {
-		gameTime += Time.deltaTime;
-		if (gameTime >= TimeBeforeSpawnDecrease) {
-			TimeBetweenSpawns += spawnDecreaseRateSeconds;
-			gameTime = 0;
-		}
-
-
-        if (Time.time - spawnTime > TimeBetweenSpawns - TelegraphDuration)
+        if (isSpawning && Time.time - telegraphStartTimestamp > TelegraphDuration)
         {
-            StartCoroutine(Spawn());
-            spawnTime = Time.time;
+            SpawnEnemy();
+            isSpawning = false;
+            render.material = IdleMaterial;
         }
     }
 
-    IEnumerator Spawn()
+    private void SpawnEnemy()
     {
-    
-		randomChosenSpawnPoint = Random.Range (0, spawnPoint.Length);
-		if (randomChosenSpawnPoint == 0) 
-		{
-			spawnPointRenderer [1].sharedMaterial = ActiveMaterial;
-			yield return new WaitForSeconds(TelegraphDuration);
-			Instantiate (Enemy, spawnPoint[0].transform.position, Quaternion.identity);
-			spawnPointRenderer [1].sharedMaterial = IdleMaterial;
+        Instantiate(Enemy, transform.position, Quaternion.identity);
+    }
 
-
-		} 
-
-		else if (randomChosenSpawnPoint == 1) 
-		{
-			spawnPointRenderer [2].sharedMaterial = ActiveMaterial;
-			yield return new WaitForSeconds(TelegraphDuration);
-			Instantiate (Enemy, spawnPoint[1].transform.position, Quaternion.identity);
-			spawnPointRenderer [2].sharedMaterial = IdleMaterial;
-
-		}
-
+    public void Spawn()
+    {
+        render.material = ActiveMaterial;
+        isSpawning = true;
+        telegraphStartTimestamp = Time.time;
     }
 }
