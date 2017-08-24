@@ -13,13 +13,19 @@ public abstract class Observable : MonoBehaviour, IDataObserver
 
     public void Bind<T>(string channel, T defaultValue, ChannelListener<T> listener)
     {
+        T initialValue = defaultValue;
         if (Provider != null)
         {
             Provider.SubscribeToChannels(this, channel);
+            var cachedValue = Provider.GetState(channel);
+            if (cachedValue != null && cachedValue is T)
+            {
+                initialValue = (T)cachedValue;
+            }
         }
 
         channelListeners[channel] = (object data) => listener((T)data);
-        listener(defaultValue);
+        listener(initialValue);
 
         Render();
     }

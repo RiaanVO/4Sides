@@ -19,6 +19,7 @@ public class PlayerScore : MonoBehaviour
         if (data != null)
         {
             data.UpdateChannel(CHANNEL_SCORE, score);
+            data.UpdateChannel(CHANNEL_DISPLAY_SCORE, score.ToString());
         }
     }
 

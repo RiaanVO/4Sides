@@ -9,6 +9,9 @@ public class DataProvider : MonoBehaviour
     private Dictionary<string, List<IDataObserver>> eventSubs =
         new Dictionary<string, List<IDataObserver>>();
 
+    private Dictionary<string, object> currentState =
+        new Dictionary<string, object>();
+
     public void SubscribeToChannels(IDataObserver observer, params string[] channels)
     {
         if (observer != null && channels.Length > 0)
@@ -55,6 +58,8 @@ public class DataProvider : MonoBehaviour
 
     public void UpdateChannel(string channel, object newValue)
     {
+        currentState[channel] = newValue;
+
         List<IDataObserver> observers = new List<IDataObserver>();
         if (channelSubs.TryGetValue(channel, out observers))
         {
@@ -69,5 +74,12 @@ public class DataProvider : MonoBehaviour
         {
             observers.ForEach(o => o.OnEventTriggered(eventName));
         }
+    }
+
+    public object GetState(string channel)
+    {
+        object value = null;
+        currentState.TryGetValue(channel, out value);
+        return value;
     }
 }
