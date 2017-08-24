@@ -8,34 +8,57 @@ public class EnemySpawner : MonoBehaviour
     public GameObject Enemy;
     public Material IdleMaterial;
     public Material ActiveMaterial;
-    public float TimeBetweenSpawns;
-    public float TelegraphDuration;
+    public float TelegraphDuration = 1.0f;
+    public Vector3 EnemySpawnOffset;
 
     private Renderer render;
-    private float spawnTime;
+    private bool isSpawning;
+    private float telegraphStartTimestamp;
 
     void Start()
     {
         render = GetComponent<Renderer>();
         render.enabled = true;
         render.material = IdleMaterial;
-        spawnTime = Time.time;
+
+        isSpawning = false;
+        telegraphStartTimestamp = Time.time;
     }
 
     void Update()
     {
-        if (Time.time - spawnTime > TimeBetweenSpawns - TelegraphDuration)
+        // are we telegraphing a spawn?
+        if (isSpawning)
         {
-            StartCoroutine(Spawn());
-            spawnTime = Time.time;
+            if (Time.time - telegraphStartTimestamp > TelegraphDuration)
+            {
+                // spawn the enemy
+                SpawnEnemy();
+                isSpawning = false;
+                render.material = IdleMaterial;
+            }
+            else
+            {
+                // blink to telegraph
+                render.material = Time.time % 0.3f > 0.15f ? IdleMaterial : ActiveMaterial;
+            }
         }
     }
 
-    IEnumerator Spawn()
+    private void SpawnEnemy()
     {
-        render.material = ActiveMaterial;
-        yield return new WaitForSeconds(TelegraphDuration);
-        Instantiate(Enemy, transform.position, Quaternion.identity);
-        render.material = IdleMaterial;
+        Instantiate(Enemy, transform.position + EnemySpawnOffset, Quaternion.identity);
+    }
+
+    public void Spawn()
+    {
+        // if we were mid-spawn, spawn the previous enemy early
+        if (isSpawning)
+        {
+            SpawnEnemy();
+        }
+
+        isSpawning = true;
+        telegraphStartTimestamp = Time.time;
     }
 }

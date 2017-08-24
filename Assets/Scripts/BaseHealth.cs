@@ -2,48 +2,57 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseHealth : MonoBehaviour {
+public class BaseHealth : MonoBehaviour
+{
+    public static readonly string CHANNEL_CURRENT_HEALTH = "BaseHealth.CurrentHealth";
+    public static readonly string CHANNEL_INITIAL_HEALTH = "BaseHealth.InitialHealth";
+    public static readonly string EVENT_DIED = "BaseHealth.Died";
 
-	[SerializeField]
-	private int maxHealth = 100;
-	[SerializeField]
-	private int currentHealth = 0;
+    public float InitialHealth = 100;
 
-	public int MaxHealth {
-		get { return maxHealth; }
-	}
+    private DataProvider data;
+    private float currentHealth;
 
-	public int CurrentHealth {
-		get { return currentHealth; }
-	}
+    public bool IsDead
+    {
+        get { return currentHealth <= 0; }
+    }
 
-	public bool IsDead {
-		get { return currentHealth == 0; }
-	}
+    public void Start()
+    {
+        currentHealth = InitialHealth;
 
-	public void Start() {
-		Initialise();
-	}
+        data = GetComponent<DataProvider>();
+        if (data != null)
+        {
+            data.UpdateChannel(CHANNEL_INITIAL_HEALTH, InitialHealth);
+            data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);
+        }
+    }
 
-	public void Initialise() {
-		SetFullHealth();
-	}
+    public void TakeDamage(int amount)
+    {
+        if (!IsDead)
+        {
+            currentHealth -= amount;
+            if (data != null)
+            {
+                data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);
+            }
 
-	public void TakeDamage(int amount) {
-		if (!IsDead) {
-			if ((currentHealth -= amount) <= 0) {
-				currentHealth = 0;
-				Die ();
-			}
-			Debug.Log(gameObject.name + " damaged");
-		}
-	}
+            if (IsDead)
+            {
+                Die();
+                if (data != null)
+                {
+                    data.NotifyEvent(EVENT_DIED);
+                }
+            }
+        }
+    }
 
-	public void Die() {
-		Destroy(gameObject);
-	}
-
-	public void SetFullHealth() {
-		currentHealth = maxHealth;
-	}
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
 }

@@ -20,12 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4108720416888376}
   - component: {fileID: 33219747146728558}
-  - component: {fileID: 65990414185040674}
   - component: {fileID: 23089334722768936}
   - component: {fileID: 114865981713340926}
   m_Layer: 0
-  m_Name: Spawn Point
-  m_TagString: Untagged
+  m_Name: Seeker Spawner
+  m_TagString: SpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,18 +81,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1882218738853380}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65990414185040674
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1882218738853380}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114865981713340926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,5 +95,5 @@ MonoBehaviour:
   Enemy: {fileID: 1339550043203248, guid: b02ae3c0d91463248b484f4d5715dbef, type: 2}
   IdleMaterial: {fileID: 2100000, guid: 5ccf2109d894b3f47a07de9afddfe687, type: 2}
   ActiveMaterial: {fileID: 2100000, guid: 6ceabc851175e624aae363cd4156ae56, type: 2}
-  TimeBetweenSpawns: 3
-  TelegraphDuration: 1
+  TelegraphDuration: 0.5
+  EnemySpawnOffset: {x: 0, y: 1, z: 0}
