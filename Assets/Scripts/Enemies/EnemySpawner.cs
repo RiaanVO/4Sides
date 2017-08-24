@@ -34,7 +34,6 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
 		gameTime += Time.deltaTime;
-		Debug.Log (gameTime);
 		if (gameTime >= TimeBeforeSpawnDecrease) {
 			TimeBetweenSpawns += spawnDecreaseRateSeconds;
 			gameTime = 0;
@@ -54,9 +53,9 @@ public class EnemySpawner : MonoBehaviour
 		randomChosenSpawnPoint = Random.Range (0, spawnPoint.Length);
 		if (randomChosenSpawnPoint == 0) 
 		{
-			Instantiate (Enemy, spawnPoint[0].transform.position, Quaternion.identity);
 			spawnPointRenderer [1].sharedMaterial = ActiveMaterial;
 			yield return new WaitForSeconds(TelegraphDuration);
+			Instantiate (Enemy, spawnPoint[0].transform.position, Quaternion.identity);
 			spawnPointRenderer [1].sharedMaterial = IdleMaterial;
 
 
@@ -64,9 +63,9 @@ public class EnemySpawner : MonoBehaviour
 
 		else if (randomChosenSpawnPoint == 1) 
 		{
-			Instantiate (Enemy, spawnPoint[1].transform.position, Quaternion.identity);
 			spawnPointRenderer [2].sharedMaterial = ActiveMaterial;
 			yield return new WaitForSeconds(TelegraphDuration);
+			Instantiate (Enemy, spawnPoint[1].transform.position, Quaternion.identity);
 			spawnPointRenderer [2].sharedMaterial = IdleMaterial;
 
 		}
