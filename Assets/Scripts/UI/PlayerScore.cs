@@ -5,34 +5,40 @@ using UnityEngine.UI;
 
 public class PlayerScore : MonoBehaviour
 {
+    public static readonly string CHANNEL_SCORE = "PlayerScore.Score";
+    public static readonly string CHANNEL_DISPLAY_SCORE = "PlayerScore.DisplayScore";
 
-    public Text scoreText;
-
-    private float Score;
+    private int score;
+    private DataProvider data;
 
     void Start()
     {
-        Score = 0;
-        UpdateScore();
-    }
+        score = 0;
 
-
-
-    void Update()
-    {
-        // add ENEMY IS KILLED here instead of Space bar
-        if (Input.GetKeyDown(KeyCode.Space))
+        data = GetComponent<DataProvider>();
+        if (data != null)
         {
-            Score = Score + 100;
-            UpdateScore();
+            data.UpdateChannel(CHANNEL_SCORE, score);
         }
     }
 
-    void UpdateScore()
+    void Update()
     {
-        scoreText.text = "SCORE: " + Score.ToString("0");
+        // TODO: Remove this once score is awarded from killing enemies
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            AwardPoints(100);
+        }
     }
 
-
+    public void AwardPoints(int points)
+    {
+        score += points;
+        if (data != null)
+        {
+            data.UpdateChannel(CHANNEL_SCORE, score);
+            data.UpdateChannel(CHANNEL_DISPLAY_SCORE, score.ToString());
+        }
+    }
 }
 
