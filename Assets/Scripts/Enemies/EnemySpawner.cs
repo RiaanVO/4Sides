@@ -52,6 +52,12 @@ public class EnemySpawner : MonoBehaviour
 
     public void Spawn()
     {
+        // if we were mid-spawn, spawn the previous enemy early
+        if (isSpawning)
+        {
+            SpawnEnemy();
+        }
+
         isSpawning = true;
         telegraphStartTimestamp = Time.time;
     }
