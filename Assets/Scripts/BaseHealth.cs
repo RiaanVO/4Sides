@@ -49,6 +49,7 @@ public class BaseHealth : MonoBehaviour
                 }
             }
         }
+
     }
 
     public void Die()
