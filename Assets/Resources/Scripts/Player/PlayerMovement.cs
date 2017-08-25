@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
                 * Mathf.Rad2Deg;
 
             // set the player rotation
-            body.MoveRotation(Quaternion.Euler(0.0f, rotation, 0.0f));
+            body.MoveRotation(Quaternion.Euler(0.0f, rotation + 90, 0.0f));
         }
 
         // move player based on current speed
