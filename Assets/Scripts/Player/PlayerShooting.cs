@@ -5,11 +5,16 @@ public class PlayerShooting : MonoBehaviour
     private float _timer;
     private int _bulletType;
     private Vector3 _bulletPos;
+    private GameObject bullet;
 
     public float fireRate;
 
-    public GameObject bullet;
-   
+    [Header ("Bullets")]
+    public GameObject bullet1;
+    public GameObject bullet2;
+    public GameObject bullet3;
+    public GameObject bullet4;
+
     void Awake()
     {
         fireRate = 0.5f;
@@ -30,10 +35,19 @@ public class PlayerShooting : MonoBehaviour
         switch (_bulletType)
         {
             case 1:
-                bullet = Resources.Load("Prefabs/Bullet") as GameObject;
+                bullet = bullet1;
+                break;
+            case 2:
+                bullet = bullet2;
+                break;
+            case 3:
+                bullet = bullet3;
+                break;
+            case 4:
+                bullet = bullet4;
                 break;
             default:
-                bullet = Resources.Load("Prefabs/Bullet") as GameObject;
+                bullet = bullet1;
                 break;
         }
 
