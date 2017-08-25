@@ -10,6 +10,7 @@ public abstract class Observable : MonoBehaviour, IDataObserver
 
     private Dictionary<string, Action<object>> channelListeners =
         new Dictionary<string, Action<object>>();
+    private Dictionary<string, Action> eventListeners = new Dictionary<string, Action>();
 
     public void Bind<T>(string channel, T defaultValue, ChannelListener<T> listener)
     {
@@ -30,6 +31,15 @@ public abstract class Observable : MonoBehaviour, IDataObserver
         Render();
     }
 
+    public void Subscribe(string eventName, Action listener)
+    {
+        if (Provider != null)
+        {
+            Provider.SubscribeToEvents(this, eventName);
+        }
+        eventListeners[eventName] = listener;
+    }
+
     public void OnChannelUpdated(string channel, object newValue)
     {
         Action<object> listener;
@@ -42,6 +52,11 @@ public abstract class Observable : MonoBehaviour, IDataObserver
 
     public void OnEventTriggered(string eventName)
     {
+        Action listener;
+        if (eventListeners.TryGetValue(eventName, out listener))
+        {
+            listener();
+        }
     }
 
     protected abstract void Render();
