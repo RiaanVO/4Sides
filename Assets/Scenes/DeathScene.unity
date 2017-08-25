@@ -718,6 +718,8 @@ GameObject:
   - component: {fileID: 1420688377}
   - component: {fileID: 1420688376}
   - component: {fileID: 1420688380}
+  - component: {fileID: 1420688382}
+  - component: {fileID: 1420688381}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -811,6 +813,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ad324a9d410fe148ad88a7987ef14ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1420688381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1420688375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643caacfeaca3864c9cb79b39ca8556b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1420688382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1420688375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f20c5fc58e46042983054bb508b326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1436336206
@@ -1215,6 +1239,7 @@ GameObject:
   - component: {fileID: 1867618489}
   - component: {fileID: 1867618491}
   - component: {fileID: 1867618490}
+  - component: {fileID: 1867618492}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -1272,13 +1297,27 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 123456
+  m_Text: 0
 --- !u!222 &1867618491
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1867618488}
+--- !u!114 &1867618492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1867618488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 416d842915bd2ba409129a21ae4fde22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Provider: {fileID: 1420688382}
+  TextChannel: GameSessionProvider.DisplayScore
+  DefaultText: 0
 --- !u!1 &1985913566
 GameObject:
   m_ObjectHideFlags: 0

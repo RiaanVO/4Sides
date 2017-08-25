@@ -3,24 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour, IDataObserver
+public class GameController : Observable
 {
-    public DataProvider Player;
-
     void Start()
     {
-        if (Player != null)
-        {
-            Player.SubscribeToEvents(this, BaseHealth.EVENT_DIED);
-        }
+        GameSession.StartNew();
+
+        Bind<string>(PlayerScore.CHANNEL_DISPLAY_SCORE, "0",
+            value => GameSession.DisplayScore = value);
+        Subscribe(BaseHealth.EVENT_DIED, GoToDeathScreen);
     }
 
-    public void OnChannelUpdated(string channel, object newValue)
-    {
-    }
-
-    public void OnEventTriggered(string eventName)
+    public void GoToDeathScreen()
     {
         SceneManager.LoadScene("DeathScene");
+    }
+
+    protected override void Render()
+    {
     }
 }
