@@ -13,6 +13,8 @@ public class BaseHealth : MonoBehaviour
     private DataProvider data;
     private float currentHealth;
 
+	public bool destroyOnDeath = true;
+
     public bool IsDead
     {
         get { return currentHealth <= 0; }
@@ -52,8 +54,10 @@ public class BaseHealth : MonoBehaviour
 
     }
 
-    public void Die()
+    public virtual void Die()
     {
-        Destroy(gameObject);
+		if (destroyOnDeath) {
+			Destroy (gameObject);
+		}
     }
 }

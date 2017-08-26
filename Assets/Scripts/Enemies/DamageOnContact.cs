@@ -10,8 +10,6 @@ public class DamageOnContact : MonoBehaviour
     public List<string> TagsToCollideWith;
 
     private BaseHealth myHealth;
-    private Bullet _bullet;
-    private int _damageTaken;
 
     public void Start()
     {
@@ -20,11 +18,6 @@ public class DamageOnContact : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Bullet")
-        {
-            _damageTaken = other.transform.parent.gameObject.GetComponent<Bullet>().damage;
-            myHealth.TakeDamage(_damageTaken);
-        }
         if (TagsToCollideWith == null || TagsToCollideWith.Count == 0 ||
             !TagsToCollideWith.Contains(other.gameObject.tag))
             return;
