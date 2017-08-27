@@ -22,7 +22,8 @@ public class PlayerShooting : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(Bullet, transform.position, transform.rotation);
+        var bullet = Bullet.GetPooledInstance<Bullet>();
+        bullet.Initialize(transform.position, transform.rotation);
         lastFiredTimestamp = Time.time;
     }
 }
