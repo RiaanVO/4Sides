@@ -1,23 +1,34 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(EnemyHealth))]
 public class EnemyController : PooledObject
 {
+    private NavMeshAgent nav;
     private EnemyHealth health;
+    private PlayerMovement player;
 
-    void Start()
+    void Update()
     {
-        health = GetComponent<EnemyHealth>();
+        if (player != null)
+        {
+            nav.SetDestination(player.transform.position);
+        }
     }
 
     public void Initialize(Vector3 position)
     {
+        nav = GetComponent<NavMeshAgent>();
+        health = GetComponent<EnemyHealth>();
+        player = Object.FindObjectOfType<PlayerMovement>();
+
+        nav.enabled = false;
         transform.position = position;
-        if (health != null)
-        {
-            health.ResetHealth();
-        }
+        nav.enabled = true;
+
+        health.ResetHealth();
     }
 }

@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b14ed1906ffbdf4599553e6c5dc4d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 114278744118148294, guid: b02ae3c0d91463248b484f4d5715dbef, type: 2}
+  Enemy: {fileID: 114743949432006036, guid: b02ae3c0d91463248b484f4d5715dbef, type: 2}
   IdleMaterial: {fileID: 2100000, guid: 5ccf2109d894b3f47a07de9afddfe687, type: 2}
   ActiveMaterial: {fileID: 2100000, guid: 6ceabc851175e624aae363cd4156ae56, type: 2}
   TelegraphDuration: 1
