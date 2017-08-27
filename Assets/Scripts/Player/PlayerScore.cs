@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PlayerScore : MonoBehaviour
 {
     public static readonly string CHANNEL_SCORE = "PlayerScore.Score";
-    public static readonly string CHANNEL_DISPLAY_SCORE = "PlayerScore.DisplayScore";
 
     private int score;
     private DataProvider data;
@@ -19,7 +18,6 @@ public class PlayerScore : MonoBehaviour
         if (data != null)
         {
             data.UpdateChannel(CHANNEL_SCORE, score);
-            data.UpdateChannel(CHANNEL_DISPLAY_SCORE, score.ToString());
         }
     }
 
@@ -29,7 +27,6 @@ public class PlayerScore : MonoBehaviour
         if (data != null)
         {
             data.UpdateChannel(CHANNEL_SCORE, score);
-            data.UpdateChannel(CHANNEL_DISPLAY_SCORE, score.ToString());
         }
     }
 }
