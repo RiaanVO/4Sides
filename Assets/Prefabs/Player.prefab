@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114776151432944330}
   - component: {fileID: 114338903398059990}
   - component: {fileID: 114384878381037846}
+  - component: {fileID: 114744362801933838}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -249,6 +250,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet: {fileID: 114594915448594332, guid: 16f1f8dc9c3a5aa4a867e6171b543c34, type: 2}
   FireRate: 0.1
+--- !u!114 &114744362801933838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1179842615921402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8d00284829e634299e36d401273373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114776151432944330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,7 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 100
-  destroyOnDeath: 1
+  DestroyOnDeath: 1
 --- !u!135 &135508269688933992
 SphereCollider:
   m_ObjectHideFlags: 1

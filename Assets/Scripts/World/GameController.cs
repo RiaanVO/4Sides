@@ -5,13 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class GameController : Observable
 {
+    public EventSource Player;
+
     void Start()
     {
         GameSession.StartNew();
 
+        if (Player != null)
+        {
+            Player.Subscribe(BaseHealth.EVENT_DIED, GoToDeathScreen);
+        }
+
         Bind<string>(PlayerScore.CHANNEL_DISPLAY_SCORE, "0",
             value => GameSession.DisplayScore = value);
-        Subscribe(BaseHealth.EVENT_DIED, GoToDeathScreen);
     }
 
     public void GoToDeathScreen()

@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class DataProvider : MonoBehaviour
 {
-    private Dictionary<string, List<IDataObserver>> channelSubs =
+    private Dictionary<string, List<IDataObserver>> subscriptions =
         new Dictionary<string, List<IDataObserver>>();
-    private Dictionary<string, List<IDataObserver>> eventSubs =
-        new Dictionary<string, List<IDataObserver>>();
-
     private Dictionary<string, object> currentState =
         new Dictionary<string, object>();
 
@@ -19,35 +16,13 @@ public class DataProvider : MonoBehaviour
             foreach (var channel in channels)
             {
                 List<IDataObserver> observers = new List<IDataObserver>();
-                if (channelSubs.TryGetValue(channel, out observers))
+                if (subscriptions.TryGetValue(channel, out observers))
                 {
                     observers.Add(observer);
                 }
                 else
                 {
-                    channelSubs[channel] = new List<IDataObserver>
-                    {
-                        observer
-                    };
-                }
-            }
-        }
-    }
-
-    public void SubscribeToEvents(IDataObserver observer, params string[] events)
-    {
-        if (observer != null && events.Length > 0)
-        {
-            foreach (var channel in events)
-            {
-                List<IDataObserver> observers = new List<IDataObserver>();
-                if (eventSubs.TryGetValue(channel, out observers))
-                {
-                    observers.Add(observer);
-                }
-                else
-                {
-                    eventSubs[channel] = new List<IDataObserver>
+                    subscriptions[channel] = new List<IDataObserver>
                     {
                         observer
                     };
@@ -61,18 +36,9 @@ public class DataProvider : MonoBehaviour
         currentState[channel] = newValue;
 
         List<IDataObserver> observers = new List<IDataObserver>();
-        if (channelSubs.TryGetValue(channel, out observers))
+        if (subscriptions.TryGetValue(channel, out observers))
         {
             observers.ForEach(o => o.OnChannelUpdated(channel, newValue));
-        }
-    }
-
-    public void NotifyEvent(string eventName)
-    {
-        List<IDataObserver> observers = new List<IDataObserver>();
-        if (eventSubs.TryGetValue(eventName, out observers))
-        {
-            observers.ForEach(o => o.OnEventTriggered(eventName));
         }
     }
 

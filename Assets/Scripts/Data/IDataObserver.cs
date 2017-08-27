@@ -5,5 +5,4 @@ using UnityEngine;
 public interface IDataObserver
 {
     void OnChannelUpdated(string channel, object newValue);
-    void OnEventTriggered(string eventName);
 }

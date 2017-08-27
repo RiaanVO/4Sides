@@ -12,6 +12,7 @@ public class BaseHealth : MonoBehaviour
     public bool DestroyOnDeath = true;
 
     private DataProvider data;
+    private EventSource events;
     private PooledObject poolable;
     private float currentHealth;
 
@@ -31,6 +32,7 @@ public class BaseHealth : MonoBehaviour
             data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);
         }
 
+        events = GetComponent<EventSource>();
         poolable = GetComponent<PooledObject>();
     }
 
@@ -57,9 +59,9 @@ public class BaseHealth : MonoBehaviour
             if (IsDead)
             {
                 Die();
-                if (data != null)
+                if (events != null)
                 {
-                    data.NotifyEvent(EVENT_DIED);
+                    events.Notify(EVENT_DIED);
                 }
             }
         }
