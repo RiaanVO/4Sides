@@ -247,8 +247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987247104325d5b4a97e50385236e79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0
-  bullet: {fileID: 0}
+  Bullet: {fileID: 114594915448594332, guid: 16f1f8dc9c3a5aa4a867e6171b543c34, type: 2}
+  FireRate: 0.1
 --- !u!114 &114776151432944330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 100
+  destroyOnDeath: 1
 --- !u!135 &135508269688933992
 SphereCollider:
   m_ObjectHideFlags: 1
