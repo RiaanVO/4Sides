@@ -151,24 +151,6 @@ Prefab:
       propertyPath: m_Name
       value: Seeker Spawner
       objectReference: {fileID: 0}
-    - target: {fileID: 4108720416888376, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4108720416888376, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114865981713340926, guid: 5383ac5f1380bab4c8b60691623d32e0,
-        type: 2}
-      propertyPath: EnemySpawnOffset.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114865981713340926, guid: 5383ac5f1380bab4c8b60691623d32e0,
-        type: 2}
-      propertyPath: TelegraphDuration
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
   m_IsPrefabParent: 0
@@ -214,24 +196,6 @@ Prefab:
     - target: {fileID: 1882218738853380, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
       propertyPath: m_Name
       value: Seeker Spawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 4108720416888376, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4108720416888376, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114865981713340926, guid: 5383ac5f1380bab4c8b60691623d32e0,
-        type: 2}
-      propertyPath: EnemySpawnOffset.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114865981713340926, guid: 5383ac5f1380bab4c8b60691623d32e0,
-        type: 2}
-      propertyPath: TelegraphDuration
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
@@ -604,24 +568,6 @@ Prefab:
     - target: {fileID: 1882218738853380, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
       propertyPath: m_Name
       value: Seeker Spawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 4108720416888376, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4108720416888376, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114865981713340926, guid: 5383ac5f1380bab4c8b60691623d32e0,
-        type: 2}
-      propertyPath: EnemySpawnOffset.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114865981713340926, guid: 5383ac5f1380bab4c8b60691623d32e0,
-        type: 2}
-      propertyPath: TelegraphDuration
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
@@ -1167,42 +1113,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114384878381037846, guid: 28cb81517cc7598469e18bd15d586be7,
-        type: 2}
-      propertyPath: bullet1
-      value: 
-      objectReference: {fileID: 1869211116967458, guid: 16f1f8dc9c3a5aa4a867e6171b543c34,
-        type: 2}
-    - target: {fileID: 114384878381037846, guid: 28cb81517cc7598469e18bd15d586be7,
-        type: 2}
-      propertyPath: fireRate
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 54798403717041620, guid: 28cb81517cc7598469e18bd15d586be7,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 36
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114338903398059990, guid: 28cb81517cc7598469e18bd15d586be7, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28cb81517cc7598469e18bd15d586be7, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &972696426 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1179842615921402, guid: 28cb81517cc7598469e18bd15d586be7,
-    type: 2}
-  m_PrefabInternal: {fileID: 939272580}
---- !u!114 &972696428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 972696426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b38504d6bdddf214ba71885185d7c45e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &977600703
 Prefab:
   m_ObjectHideFlags: 0
@@ -1245,24 +1158,6 @@ Prefab:
     - target: {fileID: 1882218738853380, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
       propertyPath: m_Name
       value: Seeker Spawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 4108720416888376, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4108720416888376, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114865981713340926, guid: 5383ac5f1380bab4c8b60691623d32e0,
-        type: 2}
-      propertyPath: EnemySpawnOffset.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114865981713340926, guid: 5383ac5f1380bab4c8b60691623d32e0,
-        type: 2}
-      propertyPath: TelegraphDuration
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
@@ -1524,7 +1419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1318028715}
   m_Layer: 0
-  m_Name: Boarder
+  m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1794,24 +1689,6 @@ Prefab:
     - target: {fileID: 1882218738853380, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
       propertyPath: m_Name
       value: Seeker Spawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 4108720416888376, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4108720416888376, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114865981713340926, guid: 5383ac5f1380bab4c8b60691623d32e0,
-        type: 2}
-      propertyPath: EnemySpawnOffset.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114865981713340926, guid: 5383ac5f1380bab4c8b60691623d32e0,
-        type: 2}
-      propertyPath: TelegraphDuration
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
@@ -2165,24 +2042,6 @@ Prefab:
     - target: {fileID: 1882218738853380, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
       propertyPath: m_Name
       value: Seeker Spawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 4108720416888376, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4108720416888376, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114865981713340926, guid: 5383ac5f1380bab4c8b60691623d32e0,
-        type: 2}
-      propertyPath: EnemySpawnOffset.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114865981713340926, guid: 5383ac5f1380bab4c8b60691623d32e0,
-        type: 2}
-      propertyPath: TelegraphDuration
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5383ac5f1380bab4c8b60691623d32e0, type: 2}

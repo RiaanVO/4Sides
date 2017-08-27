@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealth : BaseHealth {
+public class EnemyHealth : BaseHealth
+{
+    public int ScoreToAdd = 100;
 
-	public int scoreToAdd = 100;
+    public override void Die()
+    {
+        var playerScore = GameObject.FindObjectOfType<PlayerScore>();
+        if (playerScore != null)
+        {
+            playerScore.AwardPoints(ScoreToAdd);
+        }
 
-	public override void Die (){
-		PlayerScore playerScore = GameObject.FindObjectOfType<PlayerScore>();
-		if (playerScore != null) {
-			playerScore.AwardPoints (scoreToAdd);
-		}
-		Destroy (gameObject);
-	}
+        base.Die();
+    }
 }

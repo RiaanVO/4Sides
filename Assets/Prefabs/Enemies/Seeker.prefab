@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 195394326132599818}
   - component: {fileID: 136455421622566402}
   - component: {fileID: 114119931091056256}
+  - component: {fileID: 114278744118148294}
   - component: {fileID: 114888672854776844}
   - component: {fileID: 114888440555687978}
   m_Layer: 0
@@ -956,7 +957,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 36
@@ -993,6 +994,17 @@ MonoBehaviour:
   SelfDestructOnContact: 1
   TagsToCollideWith:
   - Player
+--- !u!114 &114278744118148294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1339550043203248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ee4714c22ded446adaf90cf466d46b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114888440555687978
 MonoBehaviour:
   m_ObjectHideFlags: 1
