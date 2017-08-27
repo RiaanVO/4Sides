@@ -220,10 +220,10 @@ GameObject:
   - component: {fileID: 195394326132599818}
   - component: {fileID: 136455421622566402}
   - component: {fileID: 114119931091056256}
-  - component: {fileID: 114888672854776844}
-  - component: {fileID: 114888440555687978}
+  - component: {fileID: 114333607814586132}
+  - component: {fileID: 114743949432006036}
   m_Layer: 0
-  m_Name: Seeker
+  m_Name: SeekerEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -547,7 +547,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1339550043203248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.51, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4126757591214194}
@@ -956,7 +956,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 36
@@ -993,7 +993,7 @@ MonoBehaviour:
   SelfDestructOnContact: 1
   TagsToCollideWith:
   - Player
---- !u!114 &114888440555687978
+--- !u!114 &114333607814586132
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1005,9 +1005,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 50
-  destroyOnDeath: 1
-  scoreToAdd: 100
---- !u!114 &114888672854776844
+  DestroyOnDeath: 1
+  ScoreToAdd: 100
+--- !u!114 &114743949432006036
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1339550043203248}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ad396d6a0b104a4689f40e0363aaec7, type: 3}
+  m_Script: {fileID: 11500000, guid: a0ee4714c22ded446adaf90cf466d46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &136455421622566402

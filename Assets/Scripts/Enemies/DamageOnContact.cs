@@ -10,10 +10,12 @@ public class DamageOnContact : MonoBehaviour
     public List<string> TagsToCollideWith;
 
     private BaseHealth myHealth;
+    private PooledObject poolable;
 
     public void Start()
     {
         myHealth = GetComponent<BaseHealth>();
+        poolable = GetComponent<PooledObject>();
     }
 
     public void OnTriggerEnter(Collider other)
@@ -26,10 +28,29 @@ public class DamageOnContact : MonoBehaviour
         if (otherHealth != null)
         {
             otherHealth.TakeDamage(DamageToDeal);
-            if (SelfDestructOnContact && myHealth != null)
+            if (SelfDestructOnContact)
             {
-                myHealth.Die();
+                SelfDestruct();
             }
+        }
+    }
+
+    private void SelfDestruct()
+    {
+        if (myHealth == null)
+        {
+            if (poolable == null)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                poolable.ReturnToPool();
+            }
+        }
+        else
+        {
+            myHealth.Die();
         }
     }
 }

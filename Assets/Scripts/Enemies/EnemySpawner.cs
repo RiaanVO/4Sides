@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Renderer))]
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject Enemy;
+    public EnemyController Enemy;
     public Material IdleMaterial;
     public Material ActiveMaterial;
     public float TelegraphDuration = 1.0f;
@@ -47,7 +47,8 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        Instantiate(Enemy, transform.position + EnemySpawnOffset, Quaternion.identity);
+        var enemy = Enemy.GetPooledInstance<EnemyController>();
+        enemy.Initialize(transform.position + EnemySpawnOffset);
     }
 
     public void Spawn()

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public static class GameSession
 {
-    public static string DisplayScore { get; set; }
+    public static int Score { get; set; }
+    public static string DisplayScore
+    {
+        get { return Score.ToString(); }
+    }
 
     public static void StartNew()
     {
-        DisplayScore = "0";
+        Score = 0;
     }
 }

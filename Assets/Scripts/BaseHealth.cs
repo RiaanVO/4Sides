@@ -9,11 +9,12 @@ public class BaseHealth : MonoBehaviour
     public static readonly string EVENT_DIED = "BaseHealth.Died";
 
     public float InitialHealth = 100;
+    public bool DestroyOnDeath = true;
 
     private DataProvider data;
+    private EventSource events;
+    private PooledObject poolable;
     private float currentHealth;
-
-	public bool destroyOnDeath = true;
 
     public bool IsDead
     {
@@ -25,6 +26,19 @@ public class BaseHealth : MonoBehaviour
         currentHealth = InitialHealth;
 
         data = GetComponent<DataProvider>();
+        if (data != null)
+        {
+            data.UpdateChannel(CHANNEL_INITIAL_HEALTH, InitialHealth);
+            data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);
+        }
+
+        events = GetComponent<EventSource>();
+        poolable = GetComponent<PooledObject>();
+    }
+
+    public void ResetHealth()
+    {
+        currentHealth = InitialHealth;
         if (data != null)
         {
             data.UpdateChannel(CHANNEL_INITIAL_HEALTH, InitialHealth);
@@ -45,9 +59,9 @@ public class BaseHealth : MonoBehaviour
             if (IsDead)
             {
                 Die();
-                if (data != null)
+                if (events != null)
                 {
-                    data.NotifyEvent(EVENT_DIED);
+                    events.Notify(EVENT_DIED);
                 }
             }
         }
@@ -56,8 +70,16 @@ public class BaseHealth : MonoBehaviour
 
     public virtual void Die()
     {
-		if (destroyOnDeath) {
-			Destroy (gameObject);
-		}
+        if (DestroyOnDeath)
+        {
+            if (poolable == null)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                poolable.ReturnToPool();
+            }
+        }
     }
 }
