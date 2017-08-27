@@ -23,16 +23,6 @@ public class PlayerScore : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        // TODO: Remove this once score is awarded from killing enemies
-        /*
-		if (Input.GetKeyDown(KeyCode.Space))
-        {
-            AwardPoints(100);
-        }*/
-    }
-
     public void AwardPoints(int points)
     {
         score += points;

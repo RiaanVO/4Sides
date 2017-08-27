@@ -34,7 +34,7 @@ public class Bullet : PooledObject
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag != "Bullet" && collider.tag != "Player")
+        if (collider.tag == "Solid")
         {
             ReturnToPool();
         }
