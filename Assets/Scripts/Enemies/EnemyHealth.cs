@@ -8,10 +8,10 @@ public class EnemyHealth : BaseHealth
 
     public override void Die()
     {
-        var playerScore = GameObject.FindObjectOfType<PlayerScore>();
-        if (playerScore != null)
+        var controller = GameObject.FindObjectOfType<GameController>();
+        if (controller != null)
         {
-            playerScore.AwardPoints(ScoreToAdd);
+            controller.AwardPoints(ScoreToAdd);
         }
 
         base.Die();

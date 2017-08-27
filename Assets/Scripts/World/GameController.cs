@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(DataProvider))]
-public class GameController : Observable
+public class GameController : MonoBehaviour
 {
+    public static readonly string CHANNEL_SCORE = "GameController.Score";
     public static readonly string CHANNEL_DISPLAY_SCORE = "GameController.DisplayScore";
 
     public EventSource Player;
@@ -16,28 +17,25 @@ public class GameController : Observable
     {
         GameSession.StartNew();
 
+        data = GetComponent<DataProvider>();
+        data.UpdateChannel(CHANNEL_SCORE, GameSession.Score);
+        data.UpdateChannel(CHANNEL_DISPLAY_SCORE, GameSession.DisplayScore);
+
         if (Player != null)
         {
             Player.Subscribe(BaseHealth.EVENT_DIED, GoToDeathScreen);
         }
-
-        data = GetComponent<DataProvider>();
-        data.UpdateChannel(CHANNEL_DISPLAY_SCORE, GameSession.DisplayScore);
-
-        Bind<int>(PlayerScore.CHANNEL_SCORE, 0,
-            value =>
-            {
-                GameSession.DisplayScore = value.ToString();
-                data.UpdateChannel(CHANNEL_DISPLAY_SCORE, GameSession.DisplayScore);
-            });
     }
 
-    public void GoToDeathScreen()
+    public void AwardPoints(int points)
+    {
+        GameSession.Score += points;
+        data.UpdateChannel(CHANNEL_SCORE, GameSession.Score);
+        data.UpdateChannel(CHANNEL_DISPLAY_SCORE, GameSession.DisplayScore);
+    }
+
+    private void GoToDeathScreen()
     {
         SceneManager.LoadScene("DeathScene");
-    }
-
-    protected override void Render()
-    {
     }
 }
