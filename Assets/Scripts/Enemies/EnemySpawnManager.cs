@@ -8,16 +8,23 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawnManager : MonoBehaviour
 {
+    public static readonly string CHANNEL_WAVE = "EnemySpawnManager.Wave";
+    public static readonly string CHANNEL_DISPLAY_WAVE = "EnemySpawnManager.DisplayWave";
+
     public DropPodController DropPod;
     public int DropPodsPerWave = 5;
 
+    private DataProvider data;
     private List<Vector3> spawnPoints;
     private int dropPodsRemaining = 0;
     private int enemiesActive = 0;
     private bool allEnemiesSpawned = false;
+    private int wave = 0;
 
     void Start()
     {
+        data = GetComponent<DataProvider>();
+
         spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint")
             .Select(o => o.transform.position).ToList();
 
@@ -54,6 +61,14 @@ public class EnemySpawnManager : MonoBehaviour
 
         enemiesActive = 0;
         allEnemiesSpawned = false;
+
+        // increment wave
+        wave++;
+        if (data != null)
+        {
+            data.UpdateChannel(CHANNEL_WAVE, wave);
+            data.UpdateChannel(CHANNEL_DISPLAY_WAVE, wave.ToString());
+        }
     }
 
     private void OnDropPodDepleted()
