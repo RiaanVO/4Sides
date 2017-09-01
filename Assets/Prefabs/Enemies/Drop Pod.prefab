@@ -168,7 +168,6 @@ GameObject:
   - component: {fileID: 95282123119695920}
   - component: {fileID: 114139007518389444}
   - component: {fileID: 54447207695823682}
-  - component: {fileID: 114424874788552672}
   m_Layer: 0
   m_Name: Drop Pod
   m_TagString: Untagged
@@ -752,21 +751,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinDropHeight: 25
-  MaxDropHeight: 200
---- !u!114 &114424874788552672
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1695107515686012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b14ed1906ffbdf4599553e6c5dc4d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  MaxDropHeight: 250
   Enemy: {fileID: 114743949432006036, guid: b02ae3c0d91463248b484f4d5715dbef, type: 2}
-  EnemySpawnOffset: {x: 0, y: 0, z: 0}
-  TimeBetweenSpawns: 0.5
+  TimeBetweenSpawns: 0.3
   EnemiesToSpawn: 5
 --- !u!136 &136269489144323954
 CapsuleCollider:

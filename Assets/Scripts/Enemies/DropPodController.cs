@@ -4,22 +4,26 @@ using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(EnemySpawner))]
 public class DropPodController : PooledObject
 {
     public float MinDropHeight = 15.0f;
     public float MaxDropHeight = 35.0f;
+    public EnemyController Enemy;
+    public float TimeBetweenSpawns = 1.0f;
+    public int EnemiesToSpawn = 5;
 
-    private bool hasLanded;
     private Animator animator;
     private Rigidbody body;
-    private EnemySpawner spawner;
+
+    private bool hasLanded;
+    private bool canSpawn;
+    private float lastSpawnedTimestamp;
+    private int enemiesRemaining;
 
     public void Initialize(Vector3 position)
     {
         animator = GetComponent<Animator>();
         body = GetComponent<Rigidbody>();
-        spawner = GetComponent<EnemySpawner>();
 
         float dropHeight = Random.Range(MinDropHeight, MaxDropHeight);
         transform.position = position + (Vector3.up * dropHeight);
@@ -27,8 +31,20 @@ public class DropPodController : PooledObject
         hasLanded = false;
         body.isKinematic = false;
         animator.SetBool("HasLanded", false);
-        spawner.Initialize();
-        spawner.enabled = false;
+
+        canSpawn = false;
+        lastSpawnedTimestamp = Time.time;
+        enemiesRemaining = EnemiesToSpawn;
+    }
+
+    void Update()
+    {
+        if (canSpawn && Time.time - lastSpawnedTimestamp > TimeBetweenSpawns)
+        {
+            // spawn enemy
+            SpawnEnemy();
+            lastSpawnedTimestamp = Time.time;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -45,6 +61,19 @@ public class DropPodController : PooledObject
 
     public void StartSpawning()
     {
-        spawner.enabled = true;
+        canSpawn = true;
+    }
+
+    private void SpawnEnemy()
+    {
+        var enemy = Enemy.GetPooledInstance<EnemyController>();
+        enemy.Initialize(transform.position);
+        enemiesRemaining--;
+
+        if (enemiesRemaining <= 0)
+        {
+            canSpawn = false;
+            animator.SetTrigger("OnAllEnemiesSpawned");
+        }
     }
 }
