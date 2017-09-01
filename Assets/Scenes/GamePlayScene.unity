@@ -246,12 +246,6 @@ Transform:
   m_Father: {fileID: 720385621}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &192580366 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114206929549562128, guid: 28cb81517cc7598469e18bd15d586be7,
-    type: 2}
-  m_PrefabInternal: {fileID: 939272580}
-  m_Script: {fileID: 11500000, guid: c2f20c5fc58e46042983054bb508b326, type: 3}
 --- !u!1 &231617555
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,7 +930,7 @@ MonoBehaviour:
   MinimumTimeBetweenSpawns: 0.5
   TimeBetweenSpawnRateIncreases: 15
   SpawnIntervalDecrease: 0.3
-  DropPod: {fileID: 1695107515686012, guid: dddcbddaccdd10345b93bdaf56cd4123, type: 2}
+  DropPod: {fileID: 114139007518389444, guid: dddcbddaccdd10345b93bdaf56cd4123, type: 2}
 --- !u!1 &758537530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,12 +1367,6 @@ Prefab:
     - {fileID: 114338903398059990, guid: 28cb81517cc7598469e18bd15d586be7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 28cb81517cc7598469e18bd15d586be7, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &939272581 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114744362801933838, guid: 28cb81517cc7598469e18bd15d586be7,
-    type: 2}
-  m_PrefabInternal: {fileID: 939272580}
-  m_Script: {fileID: 11500000, guid: 0f8d00284829e634299e36d401273373, type: 3}
 --- !u!1 &985629795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2141,7 +2129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f476be2f5fed24eb64aa4d60d105bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 939272581}
+  Player: {fileID: 0}
 --- !u!114 &1389336046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2578,7 +2566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b8f132943776d44a61cad810d6a0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Provider: {fileID: 192580366}
+  Provider: {fileID: 0}
   ValueChannel: BaseHealth.CurrentHealth
   MaxValueChannel: BaseHealth.InitialHealth
   DefaultValue: 1
@@ -2980,7 +2968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416d842915bd2ba409129a21ae4fde22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Provider: {fileID: 1389336046}
+  Provider: {fileID: 0}
   TextChannel: GameController.DisplayScore
   DefaultText: 0
 --- !u!1 &1978758869
@@ -3113,6 +3101,11 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 898901037}
+    - target: {fileID: 20186321306085390, guid: 336ae105ff4947c4497afacb411f8f61,
+        type: 2}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 336ae105ff4947c4497afacb411f8f61, type: 2}
   m_IsPrefabParent: 0

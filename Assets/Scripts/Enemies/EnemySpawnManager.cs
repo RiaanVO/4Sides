@@ -9,7 +9,7 @@ public class EnemySpawnManager : MonoBehaviour
     public float MinimumTimeBetweenSpawns = 0.1f;
     public float TimeBetweenSpawnRateIncreases = 10.0f;
     public float SpawnIntervalDecrease = 0.5f;
-    public GameObject DropPod;
+    public DropPodController DropPod;
 
     private List<Vector3> spawnPoints;
     private float currentTimeBetweenSpawns;
@@ -19,7 +19,8 @@ public class EnemySpawnManager : MonoBehaviour
 
     void Start()
     {
-        spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint").Select(o => o.transform.position).ToList();
+        spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint")
+            .Select(o => o.transform.position).ToList();
         currentTimeBetweenSpawns = InitialTimeBetweenSpawns;
 
         lastSpawnedTimestamp = Time.time;
@@ -69,7 +70,11 @@ public class EnemySpawnManager : MonoBehaviour
         }
 
         // create drop pods
-        spawnLocations.ForEach(pos => Instantiate(DropPod, pos, Quaternion.identity));
+        foreach (var position in spawnLocations)
+        {
+            var dropPod = DropPod.GetPooledInstance<DropPodController>();
+            dropPod.Initialize(position);
+        }
     }
 
     private void Spawn()
