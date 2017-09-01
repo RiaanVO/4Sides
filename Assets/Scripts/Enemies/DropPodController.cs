@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator)), RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(EnemySpawner))]
 public class DropPodController : PooledObject
 {
     public float MinDropHeight = 15.0f;
@@ -17,7 +19,7 @@ public class DropPodController : PooledObject
     {
         animator = GetComponent<Animator>();
         body = GetComponent<Rigidbody>();
-        spawner = GetComponentInChildren<EnemySpawner>();
+        spawner = GetComponent<EnemySpawner>();
 
         float dropHeight = Random.Range(MinDropHeight, MaxDropHeight);
         transform.position = position + (Vector3.up * dropHeight);

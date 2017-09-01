@@ -52,7 +52,6 @@ GameObject:
   - component: {fileID: 33577478058828754}
   - component: {fileID: 136269489144323954}
   - component: {fileID: 23540221638005726}
-  - component: {fileID: 114303145974893108}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged
@@ -169,6 +168,7 @@ GameObject:
   - component: {fileID: 95282123119695920}
   - component: {fileID: 114139007518389444}
   - component: {fileID: 54447207695823682}
+  - component: {fileID: 114424874788552672}
   m_Layer: 0
   m_Name: Drop Pod
   m_TagString: Untagged
@@ -752,24 +752,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinDropHeight: 25
-  MaxDropHeight: 100
---- !u!114 &114303145974893108
+  MaxDropHeight: 200
+--- !u!114 &114424874788552672
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1066355389678798}
+  m_GameObject: {fileID: 1695107515686012}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b14ed1906ffbdf4599553e6c5dc4d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 114743949432006036, guid: b02ae3c0d91463248b484f4d5715dbef, type: 2}
-  IdleMaterial: {fileID: 2100000, guid: 6ceabc851175e624aae363cd4156ae56, type: 2}
-  ActiveMaterial: {fileID: 2100000, guid: 9b2e8a77ae9d7584898009394676e161, type: 2}
-  TelegraphDuration: 0.5
   EnemySpawnOffset: {x: 0, y: 0, z: 0}
-  TimeBetweenSpawns: 3
+  TimeBetweenSpawns: 0.5
+  EnemiesToSpawn: 5
 --- !u!136 &136269489144323954
 CapsuleCollider:
   m_ObjectHideFlags: 1
