@@ -74,7 +74,7 @@ public class DropPodController : PooledObject
 
         this.onAllEnemiesSpawnedCallback = onAllEnemiesSpawnedCallback;
 
-        spawnedSound.pitch = Random.Range(0.95f, 1.05f);
+        spawnedSound.pitch = Random.Range(0.97f, 1.03f);
         spawnedSound.PlayDelayed(dropHeight * 0.02f);
     }
 
@@ -124,10 +124,6 @@ public class DropPodController : PooledObject
         var enemy = Enemy.GetPooledInstance<EnemyController>();
         enemy.Initialize(transform.position);
         enemiesRemaining--;
-
-        // play spawn sound
-        // enemySpawnedSound.pitch = Random.Range(0.95f, 1.05f);
-        // enemySpawnedSound.PlayOneShot(EnemySpawnedSound, 1.0f);
 
         if (enemiesRemaining <= 0)
         {
