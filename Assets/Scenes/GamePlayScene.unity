@@ -974,7 +974,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DropPod: {fileID: 114139007518389444, guid: dddcbddaccdd10345b93bdaf56cd4123, type: 2}
-  DropPodsPerWave: 5
+  Waves:
+  - DropPodCount: 5
+  - DropPodCount: 7
+  - DropPodCount: 10
+  - DropPodCount: 15
+  - DropPodCount: 15
 --- !u!1 &758537530
 GameObject:
   m_ObjectHideFlags: 0

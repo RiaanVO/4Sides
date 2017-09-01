@@ -11,8 +11,14 @@ public class EnemySpawnManager : MonoBehaviour
     public static readonly string CHANNEL_WAVE = "EnemySpawnManager.Wave";
     public static readonly string CHANNEL_DISPLAY_WAVE = "EnemySpawnManager.DisplayWave";
 
+    [Serializable]
+    public class Wave
+    {
+        public int DropPodCount = 5;
+    }
+
     public DropPodController DropPod;
-    public int DropPodsPerWave = 5;
+    public List<Wave> Waves;
 
     private DataProvider data;
     private List<Vector3> spawnPoints;
@@ -24,7 +30,6 @@ public class EnemySpawnManager : MonoBehaviour
     void Start()
     {
         data = GetComponent<DataProvider>();
-
         spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint")
             .Select(o => o.transform.position).ToList();
 
@@ -32,14 +37,24 @@ public class EnemySpawnManager : MonoBehaviour
         {
             Debug.LogError("No drop pod specified!");
         }
+        if (Waves == null || Waves.Count < 1)
+        {
+            Debug.LogError("No waves defined!");
+        }
 
         StartNewWave();
     }
 
     private void StartNewWave()
     {
+        if (wave >= Waves.Count)
+        {
+            return;
+        }
+
         // determine how many drop pods to spawn
-        int dropPodCount = Mathf.Min(DropPodsPerWave, spawnPoints.Count);
+        var currentWave = Waves[wave];
+        int dropPodCount = Mathf.Min(currentWave.DropPodCount, spawnPoints.Count);
 
         List<int> possibleSpawnIndices = Enumerable.Range(0, spawnPoints.Count).ToList();
         List<Vector3> spawnLocations = new List<Vector3>();
