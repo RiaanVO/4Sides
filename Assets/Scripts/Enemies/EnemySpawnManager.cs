@@ -6,10 +6,12 @@ using UnityEngine;
 
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(DataProvider)), RequireComponent(typeof(EventSource))]
 public class EnemySpawnManager : MonoBehaviour
 {
     public static readonly string CHANNEL_WAVE = "EnemySpawnManager.Wave";
     public static readonly string CHANNEL_DISPLAY_WAVE = "EnemySpawnManager.DisplayWave";
+    public static readonly string EVENT_ALL_WAVES_CLEARED = "EnemySpawnManager.AllWavesCleared";
 
     [Serializable]
     public class Wave
@@ -22,6 +24,8 @@ public class EnemySpawnManager : MonoBehaviour
     public List<Wave> Waves;
 
     private DataProvider data;
+    private EventSource events;
+
     private List<Vector3> spawnPoints;
     private int dropPodsRemaining = 0;
     private int enemiesActive = 0;
@@ -31,6 +35,8 @@ public class EnemySpawnManager : MonoBehaviour
     void Start()
     {
         data = GetComponent<DataProvider>();
+        events = GetComponent<EventSource>();
+
         spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint")
             .Select(o => o.transform.position).ToList();
 
@@ -50,6 +56,7 @@ public class EnemySpawnManager : MonoBehaviour
     {
         if (wave >= Waves.Count)
         {
+            events.Notify(EVENT_ALL_WAVES_CLEARED);
             return;
         }
 
@@ -80,11 +87,8 @@ public class EnemySpawnManager : MonoBehaviour
 
         // increment wave
         wave++;
-        if (data != null)
-        {
-            data.UpdateChannel(CHANNEL_WAVE, wave);
-            data.UpdateChannel(CHANNEL_DISPLAY_WAVE, wave.ToString());
-        }
+        data.UpdateChannel(CHANNEL_WAVE, wave);
+        data.UpdateChannel(CHANNEL_DISPLAY_WAVE, wave.ToString());
     }
 
     private void OnDropPodDepleted()

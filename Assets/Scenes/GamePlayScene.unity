@@ -891,6 +891,7 @@ GameObject:
   - component: {fileID: 720385621}
   - component: {fileID: 720385624}
   - component: {fileID: 720385622}
+  - component: {fileID: 720385623}
   m_Layer: 0
   m_Name: Spawn Manager
   m_TagString: Untagged
@@ -960,6 +961,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2f20c5fc58e46042983054bb508b326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &720385623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 720385620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8d00284829e634299e36d401273373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &720385624
@@ -1418,7 +1430,7 @@ Prefab:
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 114338903398059990, guid: 28cb81517cc7598469e18bd15d586be7, type: 2}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 28cb81517cc7598469e18bd15d586be7, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &985629795
@@ -2270,6 +2282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1162740252}
+  SpawnManager: {fileID: 720385623}
 --- !u!114 &1389336046
 MonoBehaviour:
   m_ObjectHideFlags: 0
