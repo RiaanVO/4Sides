@@ -25,6 +25,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     private DataProvider data;
     private EventSource events;
+    private AudioSource waveCleared;
 
     private List<Vector3> spawnPoints;
     private int dropPodsRemaining = 0;
@@ -36,6 +37,7 @@ public class EnemySpawnManager : MonoBehaviour
     {
         data = GetComponent<DataProvider>();
         events = GetComponent<EventSource>();
+        waveCleared = GetComponent<AudioSource>();
 
         spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint")
             .Select(o => o.transform.position).ToList();
@@ -115,6 +117,10 @@ public class EnemySpawnManager : MonoBehaviour
         enemiesActive--;
         if (allEnemiesSpawned && enemiesActive <= 0)
         {
+            if (waveCleared != null)
+            {
+                waveCleared.Play();
+            }
             StartNewWave();
         }
     }
