@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 114119931091056256}
   - component: {fileID: 114333607814586132}
   - component: {fileID: 114743949432006036}
+  - component: {fileID: 114803694750143852}
   m_Layer: 0
   m_Name: SeekerEnemy
   m_TagString: Enemy
@@ -989,7 +990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746672e7ed6040748be73e7c3792100c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageToDeal: 10
+  DamageToDeal: 20
   SelfDestructOnContact: 1
   TagsToCollideWith:
   - Player
@@ -1004,7 +1005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37aba5fcbb5a4fdd8f998b70a11f509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 50
+  InitialHealth: 30
   DestroyOnDeath: 1
   ScoreToAdd: 100
 --- !u!114 &114743949432006036
@@ -1016,6 +1017,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0ee4714c22ded446adaf90cf466d46b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114803694750143852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1339550043203248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8d00284829e634299e36d401273373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &136455421622566402
@@ -1113,7 +1125,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 3.5
+  m_Speed: 4.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 1000

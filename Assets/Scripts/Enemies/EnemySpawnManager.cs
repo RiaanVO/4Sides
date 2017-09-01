@@ -1,53 +1,127 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
+using Random = UnityEngine.Random;
+
+[RequireComponent(typeof(DataProvider)), RequireComponent(typeof(EventSource))]
 public class EnemySpawnManager : MonoBehaviour
 {
-    public float InitialTimeBetweenSpawns = 5.0f;
-    public float MinimumTimeBetweenSpawns = 0.1f;
-    public float TimeBetweenSpawnRateIncreases = 10.0f;
-    public float SpawnIntervalDecrease = 0.5f;
+    public static readonly string CHANNEL_WAVE = "EnemySpawnManager.Wave";
+    public static readonly string CHANNEL_DISPLAY_WAVE = "EnemySpawnManager.DisplayWave";
+    public static readonly string EVENT_ALL_WAVES_CLEARED = "EnemySpawnManager.AllWavesCleared";
 
-    private EnemySpawner[] spawners;
-    private float currentTimeBetweenSpawns;
+    [Serializable]
+    public class Wave
+    {
+        public int DropPodCount = 5;
+        public int EnemiesPerDropPod = 3;
+    }
 
-    private float lastSpawnedTimestamp;
-    private float rateLastIncreasedTimestamp;
+    public DropPodController DropPod;
+    public List<Wave> Waves;
+
+    private DataProvider data;
+    private EventSource events;
+    private AudioSource waveCleared;
+
+    private List<Vector3> spawnPoints;
+    private int dropPodsRemaining = 0;
+    private int enemiesActive = 0;
+    private bool allEnemiesSpawned = false;
+    private int wave = 0;
 
     void Start()
     {
-        spawners = Object.FindObjectsOfType<EnemySpawner>();
-        currentTimeBetweenSpawns = InitialTimeBetweenSpawns;
+        data = GetComponent<DataProvider>();
+        events = GetComponent<EventSource>();
+        waveCleared = GetComponent<AudioSource>();
 
-        lastSpawnedTimestamp = Time.time;
-        rateLastIncreasedTimestamp = Time.time;
-    }
+        spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint")
+            .Select(o => o.transform.position).ToList();
 
-    void Update()
-    {
-        if (Time.time - lastSpawnedTimestamp > currentTimeBetweenSpawns)
+        if (DropPod == null)
         {
-            // spawn an enemy
-            Spawn();
-            lastSpawnedTimestamp = Time.time;
+            Debug.LogError("No drop pod specified!");
+        }
+        if (Waves == null || Waves.Count < 1)
+        {
+            Debug.LogError("No waves defined!");
         }
 
-        if (Time.time - rateLastIncreasedTimestamp > TimeBetweenSpawnRateIncreases)
+        StartNewWave();
+    }
+
+    private void StartNewWave()
+    {
+        if (wave >= Waves.Count)
         {
-            // increase spawn rate
-            currentTimeBetweenSpawns = Mathf.Max(currentTimeBetweenSpawns - SpawnIntervalDecrease,
-                MinimumTimeBetweenSpawns);
-            rateLastIncreasedTimestamp = Time.time;
+            events.Notify(EVENT_ALL_WAVES_CLEARED);
+            return;
+        }
+
+        // determine how many drop pods to spawn
+        var currentWave = Waves[wave];
+        int dropPodCount = Mathf.Min(currentWave.DropPodCount, spawnPoints.Count);
+
+        List<int> possibleSpawnIndices = Enumerable.Range(0, spawnPoints.Count).ToList();
+        List<Vector3> spawnLocations = new List<Vector3>();
+        for (int i = 0; i < dropPodCount; i++)
+        {
+            // pick a random spawn point
+            int index = Random.Range(0, possibleSpawnIndices.Count);
+            spawnLocations.Add(spawnPoints[possibleSpawnIndices[index]]);
+            possibleSpawnIndices.RemoveAt(index);
+        }
+
+        // create drop pods
+        dropPodsRemaining = dropPodCount;
+        foreach (var position in spawnLocations)
+        {
+            var dropPod = DropPod.GetPooledInstance<DropPodController>();
+            dropPod.Initialize(position, currentWave.EnemiesPerDropPod, OnDropPodDepleted);
+        }
+
+        enemiesActive = 0;
+        allEnemiesSpawned = false;
+
+        // increment wave
+        wave++;
+        data.UpdateChannel(CHANNEL_WAVE, wave);
+        data.UpdateChannel(CHANNEL_DISPLAY_WAVE, wave.ToString());
+    }
+
+    private void OnDropPodDepleted()
+    {
+        dropPodsRemaining--;
+        if (dropPodsRemaining <= 0)
+        {
+            allEnemiesSpawned = true;
         }
     }
 
-    private void Spawn()
+    public void RegisterEnemy(EnemyController enemy)
     {
-        if (spawners.Length == 0) return;
+        enemiesActive++;
 
-        // pick a random spawner and tell it to spawn an enemy
-        var spawner = spawners[Random.Range(0, spawners.Length)];
-        spawner.Spawn();
+        var eventSource = enemy.GetComponent<EventSource>();
+        eventSource.Subscribe("BaseHealth.Died", OnEnemyKilled);
+    }
+
+    private void OnEnemyKilled(EventSource source, string eventName)
+    {
+        source.Unsubscribe(eventName, OnEnemyKilled);
+
+        enemiesActive--;
+        if (allEnemiesSpawned && enemiesActive <= 0)
+        {
+            if (waveCleared != null)
+            {
+                waveCleared.Play();
+            }
+            StartNewWave();
+        }
     }
 }

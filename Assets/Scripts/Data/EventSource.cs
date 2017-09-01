@@ -5,30 +5,42 @@ using UnityEngine;
 
 public class EventSource : MonoBehaviour
 {
-    private Dictionary<string, List<Action>> subscriptions = new Dictionary<string, List<Action>>();
+    public delegate void Subscription(EventSource source, string eventName);
+
+    private Dictionary<string, List<Subscription>> subscriptions =
+        new Dictionary<string, List<Subscription>>();
 
     public void Notify(string eventName)
     {
-        var handlers = new List<Action>();
+        var handlers = new List<Subscription>();
         if (subscriptions.TryGetValue(eventName, out handlers))
         {
-            handlers.ForEach(h => h.Invoke());
+            handlers.ForEach(h => h.Invoke(this, eventName));
         }
     }
 
-    public void Subscribe(string eventName, Action eventHandler)
+    public void Subscribe(string eventName, Subscription handler)
     {
-        var handlers = new List<Action>();
+        var handlers = new List<Subscription>();
         if (subscriptions.TryGetValue(eventName, out handlers))
         {
-            handlers.Add(eventHandler);
+            handlers.Add(handler);
         }
         else
         {
-            subscriptions[eventName] = new List<Action>
+            subscriptions[eventName] = new List<Subscription>
             {
-                eventHandler
+                handler
             };
+        }
+    }
+
+    public void Unsubscribe(string eventName, Subscription handler)
+    {
+        var handlers = new List<Subscription>();
+        if (subscriptions.TryGetValue(eventName, out handlers))
+        {
+            handlers.Remove(handler);
         }
     }
 }
