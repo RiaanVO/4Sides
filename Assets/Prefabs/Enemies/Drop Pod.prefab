@@ -754,7 +754,7 @@ MonoBehaviour:
   MaxDropHeight: 250
   Enemy: {fileID: 114743949432006036, guid: b02ae3c0d91463248b484f4d5715dbef, type: 2}
   TimeBetweenSpawns: 0.3
-  EnemiesToSpawn: 3
+  LandedSound: {fileID: 8300000, guid: 7607b415657f95841817470238eb5496, type: 3}
 --- !u!136 &136269489144323954
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -995,7 +995,7 @@ MonoBehaviour:
     EnemiesPerDropPod: 2
   - DropPodCount: 10
     EnemiesPerDropPod: 3
-  - DropPodCount: 15
+  - DropPodCount: 13
     EnemiesPerDropPod: 3
 --- !u!1 &758537530
 GameObject:
@@ -1429,8 +1429,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28cb81517cc7598469e18bd15d586be7, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &985629795
@@ -3349,7 +3348,8 @@ Prefab:
       propertyPath: orthographic
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 81447994000204368, guid: 336ae105ff4947c4497afacb411f8f61, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 336ae105ff4947c4497afacb411f8f61, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2021925213

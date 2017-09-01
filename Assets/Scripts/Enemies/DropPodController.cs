@@ -13,15 +13,32 @@ public class DropPodController : PooledObject
     public float MaxDropHeight = 35.0f;
     public EnemyController Enemy;
     public float TimeBetweenSpawns = 1.0f;
+    public AudioClip LandedSound;
 
     private Animator animator;
     private Rigidbody body;
+    private AudioSource landedSound;
 
     private bool hasLanded;
     private bool canSpawn;
     private float lastSpawnedTimestamp;
     private int enemiesRemaining;
     private Action onAllEnemiesSpawnedCallback;
+
+    void Awake()
+    {
+        landedSound = AddAudioSource(LandedSound, 1.0f);
+    }
+
+    private AudioSource AddAudioSource(AudioClip clip, float volume)
+    {
+        var source = gameObject.AddComponent<AudioSource>();
+        source.clip = clip;
+        source.volume = volume;
+        source.playOnAwake = false;
+        source.spatialBlend = 0.75f;
+        return source;
+    }
 
     public void Initialize(Vector3 position, int enemiesToSpawn, Action onAllEnemiesSpawnedCallback)
     {
@@ -62,6 +79,9 @@ public class DropPodController : PooledObject
         hasLanded = true;
         body.isKinematic = true;
         animator.SetBool("HasLanded", true);
+
+        landedSound.pitch = Random.Range(0.85f, 1.15f);
+        landedSound.Play();
     }
 
     public void StartSpawning()
