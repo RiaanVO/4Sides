@@ -14,10 +14,15 @@ public class DropPodController : PooledObject
     public EnemyController Enemy;
     public float TimeBetweenSpawns = 1.0f;
     public AudioClip LandedSound;
+    public float MaxCameraShake = 20.0f;
+    public float MinCameraShake = 3.0f;
+    public float ShakeRange = 5.0f;
 
     private Animator animator;
     private Rigidbody body;
     private AudioSource landedSound;
+    private PlayerMovement player;
+    private CameraShake shaker;
 
     private bool hasLanded;
     private bool canSpawn;
@@ -28,6 +33,9 @@ public class DropPodController : PooledObject
     void Awake()
     {
         landedSound = AddAudioSource(LandedSound, 1.0f);
+
+        player = GameObject.FindObjectOfType<PlayerMovement>();
+        shaker = Camera.main.GetComponent<CameraShake>();
     }
 
     private AudioSource AddAudioSource(AudioClip clip, float volume)
@@ -80,8 +88,17 @@ public class DropPodController : PooledObject
         body.isKinematic = true;
         animator.SetBool("HasLanded", true);
 
+        // play landed sound
         landedSound.pitch = Random.Range(0.85f, 1.15f);
         landedSound.Play();
+
+        // shake camera
+        if (shaker != null && player != null)
+        {
+            float distance = Vector2.Distance(player.transform.position, transform.position);
+            float amount = (ShakeRange - distance) * MaxCameraShake;
+            shaker.RandomShake(Mathf.Clamp(amount, MinCameraShake, MaxCameraShake));
+        }
     }
 
     public void StartSpawning()
