@@ -722,7 +722,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 122
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!95 &95282123119695920
 Animator:
   serializedVersion: 3
@@ -751,6 +751,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01de8a64490df944faae9d4950ae6291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinDropHeight: 25
+  MaxDropHeight: 100
 --- !u!114 &114303145974893108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -765,8 +767,9 @@ MonoBehaviour:
   Enemy: {fileID: 114743949432006036, guid: b02ae3c0d91463248b484f4d5715dbef, type: 2}
   IdleMaterial: {fileID: 2100000, guid: 6ceabc851175e624aae363cd4156ae56, type: 2}
   ActiveMaterial: {fileID: 2100000, guid: 9b2e8a77ae9d7584898009394676e161, type: 2}
-  TelegraphDuration: 1
+  TelegraphDuration: 0.5
   EnemySpawnOffset: {x: 0, y: 0, z: 0}
+  TimeBetweenSpawns: 3
 --- !u!136 &136269489144323954
 CapsuleCollider:
   m_ObjectHideFlags: 1

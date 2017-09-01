@@ -10,12 +10,14 @@ public class EnemySpawner : MonoBehaviour
     public Material ActiveMaterial;
     public float TelegraphDuration = 1.0f;
     public Vector3 EnemySpawnOffset;
+    public float TimeBetweenSpawns = 1.0f;
 
     private Renderer render;
     private bool isSpawning;
     private float telegraphStartTimestamp;
+    private float lastSpawnedTimestamp;
 
-    void Start()
+    public void Initialize()
     {
         render = GetComponent<Renderer>();
         render.enabled = true;
@@ -23,6 +25,7 @@ public class EnemySpawner : MonoBehaviour
 
         isSpawning = false;
         telegraphStartTimestamp = Time.time;
+        lastSpawnedTimestamp = Time.time;
     }
 
     void Update()
@@ -43,15 +46,18 @@ public class EnemySpawner : MonoBehaviour
                 render.material = Time.time % 0.3f > 0.15f ? IdleMaterial : ActiveMaterial;
             }
         }
+        else
+        {
+            if (Time.time - lastSpawnedTimestamp > TimeBetweenSpawns)
+            {
+                // start telegraphing
+                StartSpawning();
+                lastSpawnedTimestamp = Time.time;
+            }
+        }
     }
 
-    private void SpawnEnemy()
-    {
-        var enemy = Enemy.GetPooledInstance<EnemyController>();
-        enemy.Initialize(transform.position + EnemySpawnOffset);
-    }
-
-    public void Spawn()
+    private void StartSpawning()
     {
         // if we were mid-spawn, spawn the previous enemy early
         if (isSpawning)
@@ -61,5 +67,11 @@ public class EnemySpawner : MonoBehaviour
 
         isSpawning = true;
         telegraphStartTimestamp = Time.time;
+    }
+
+    private void SpawnEnemy()
+    {
+        var enemy = Enemy.GetPooledInstance<EnemyController>();
+        enemy.Initialize(transform.position + EnemySpawnOffset);
     }
 }

@@ -926,11 +926,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f6a9e9848ced842afb5ee905dc65e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialTimeBetweenSpawns: 3
-  MinimumTimeBetweenSpawns: 0.5
-  TimeBetweenSpawnRateIncreases: 15
-  SpawnIntervalDecrease: 0.3
   DropPod: {fileID: 114139007518389444, guid: dddcbddaccdd10345b93bdaf56cd4123, type: 2}
+  DropPodsPerWave: 5
 --- !u!1 &758537530
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,6 +1591,18 @@ Transform:
   m_Father: {fileID: 720385621}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1162740252 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114744362801933838, guid: 28cb81517cc7598469e18bd15d586be7,
+    type: 2}
+  m_PrefabInternal: {fileID: 939272580}
+  m_Script: {fileID: 11500000, guid: 0f8d00284829e634299e36d401273373, type: 3}
+--- !u!114 &1162740255 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114206929549562128, guid: 28cb81517cc7598469e18bd15d586be7,
+    type: 2}
+  m_PrefabInternal: {fileID: 939272580}
+  m_Script: {fileID: 11500000, guid: c2f20c5fc58e46042983054bb508b326, type: 3}
 --- !u!1 &1178320170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2129,7 +2138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f476be2f5fed24eb64aa4d60d105bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 1162740252}
 --- !u!114 &1389336046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2566,7 +2575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b8f132943776d44a61cad810d6a0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Provider: {fileID: 0}
+  Provider: {fileID: 1162740255}
   ValueChannel: BaseHealth.CurrentHealth
   MaxValueChannel: BaseHealth.InitialHealth
   DefaultValue: 1
@@ -2968,7 +2977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416d842915bd2ba409129a21ae4fde22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Provider: {fileID: 0}
+  Provider: {fileID: 1389336046}
   TextChannel: GameController.DisplayScore
   DefaultText: 0
 --- !u!1 &1978758869
