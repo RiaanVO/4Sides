@@ -15,6 +15,7 @@ public class EnemySpawnManager : MonoBehaviour
     public class Wave
     {
         public int DropPodCount = 5;
+        public int EnemiesPerDropPod = 3;
     }
 
     public DropPodController DropPod;
@@ -71,7 +72,7 @@ public class EnemySpawnManager : MonoBehaviour
         foreach (var position in spawnLocations)
         {
             var dropPod = DropPod.GetPooledInstance<DropPodController>();
-            dropPod.Initialize(position, OnDropPodDepleted);
+            dropPod.Initialize(position, currentWave.EnemiesPerDropPod, OnDropPodDepleted);
         }
 
         enemiesActive = 0;

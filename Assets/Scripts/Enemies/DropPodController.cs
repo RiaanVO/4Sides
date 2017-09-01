@@ -13,7 +13,6 @@ public class DropPodController : PooledObject
     public float MaxDropHeight = 35.0f;
     public EnemyController Enemy;
     public float TimeBetweenSpawns = 1.0f;
-    public int EnemiesToSpawn = 5;
 
     private Animator animator;
     private Rigidbody body;
@@ -24,7 +23,7 @@ public class DropPodController : PooledObject
     private int enemiesRemaining;
     private Action onAllEnemiesSpawnedCallback;
 
-    public void Initialize(Vector3 position, Action onAllEnemiesSpawnedCallback)
+    public void Initialize(Vector3 position, int enemiesToSpawn, Action onAllEnemiesSpawnedCallback)
     {
         animator = GetComponent<Animator>();
         body = GetComponent<Rigidbody>();
@@ -38,7 +37,7 @@ public class DropPodController : PooledObject
 
         canSpawn = false;
         lastSpawnedTimestamp = Time.time;
-        enemiesRemaining = EnemiesToSpawn;
+        enemiesRemaining = enemiesToSpawn;
 
         this.onAllEnemiesSpawnedCallback = onAllEnemiesSpawnedCallback;
     }

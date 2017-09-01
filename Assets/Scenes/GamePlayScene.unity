@@ -975,11 +975,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DropPod: {fileID: 114139007518389444, guid: dddcbddaccdd10345b93bdaf56cd4123, type: 2}
   Waves:
-  - DropPodCount: 5
   - DropPodCount: 7
+    EnemiesPerDropPod: 1
+  - DropPodCount: 7
+    EnemiesPerDropPod: 2
   - DropPodCount: 10
+    EnemiesPerDropPod: 2
+  - DropPodCount: 10
+    EnemiesPerDropPod: 3
   - DropPodCount: 15
-  - DropPodCount: 15
+    EnemiesPerDropPod: 3
 --- !u!1 &758537530
 GameObject:
   m_ObjectHideFlags: 0
