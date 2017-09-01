@@ -13,14 +13,20 @@ public class DropPodController : PooledObject
     public float MaxDropHeight = 35.0f;
     public EnemyController Enemy;
     public float TimeBetweenSpawns = 1.0f;
+
+    public AudioClip SpawnedSound;
     public AudioClip LandedSound;
+    public AudioClip OpeningSound;
+
     public float MaxCameraShake = 20.0f;
     public float MinCameraShake = 3.0f;
     public float ShakeRange = 5.0f;
 
     private Animator animator;
     private Rigidbody body;
+    private AudioSource spawnedSound;
     private AudioSource landedSound;
+    private AudioSource openingSound;
     private PlayerMovement player;
     private CameraShake shaker;
 
@@ -32,7 +38,9 @@ public class DropPodController : PooledObject
 
     void Awake()
     {
+        spawnedSound = AddAudioSource(SpawnedSound, 0.75f);
         landedSound = AddAudioSource(LandedSound, 1.0f);
+        openingSound = AddAudioSource(OpeningSound, 0.75f);
 
         player = GameObject.FindObjectOfType<PlayerMovement>();
         shaker = Camera.main.GetComponent<CameraShake>();
@@ -65,6 +73,9 @@ public class DropPodController : PooledObject
         enemiesRemaining = enemiesToSpawn;
 
         this.onAllEnemiesSpawnedCallback = onAllEnemiesSpawnedCallback;
+
+        spawnedSound.pitch = Random.Range(0.95f, 1.05f);
+        spawnedSound.PlayDelayed(dropHeight * 0.02f);
     }
 
     void Update()
@@ -88,9 +99,11 @@ public class DropPodController : PooledObject
         body.isKinematic = true;
         animator.SetBool("HasLanded", true);
 
-        // play landed sound
+        // play landed and opening sound
         landedSound.pitch = Random.Range(0.85f, 1.15f);
         landedSound.Play();
+        openingSound.pitch = Random.Range(0.85f, 1.15f);
+        openingSound.PlayDelayed(0.25f);
 
         // shake camera
         if (shaker != null && player != null)
@@ -111,6 +124,10 @@ public class DropPodController : PooledObject
         var enemy = Enemy.GetPooledInstance<EnemyController>();
         enemy.Initialize(transform.position);
         enemiesRemaining--;
+
+        // play spawn sound
+        // enemySpawnedSound.pitch = Random.Range(0.95f, 1.05f);
+        // enemySpawnedSound.PlayOneShot(EnemySpawnedSound, 1.0f);
 
         if (enemiesRemaining <= 0)
         {
