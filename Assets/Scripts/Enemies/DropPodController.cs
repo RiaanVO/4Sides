@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody))]
@@ -19,8 +22,9 @@ public class DropPodController : PooledObject
     private bool canSpawn;
     private float lastSpawnedTimestamp;
     private int enemiesRemaining;
+    private Action onAllEnemiesSpawnedCallback;
 
-    public void Initialize(Vector3 position)
+    public void Initialize(Vector3 position, Action onAllEnemiesSpawnedCallback)
     {
         animator = GetComponent<Animator>();
         body = GetComponent<Rigidbody>();
@@ -35,6 +39,8 @@ public class DropPodController : PooledObject
         canSpawn = false;
         lastSpawnedTimestamp = Time.time;
         enemiesRemaining = EnemiesToSpawn;
+
+        this.onAllEnemiesSpawnedCallback = onAllEnemiesSpawnedCallback;
     }
 
     void Update()
@@ -74,6 +80,7 @@ public class DropPodController : PooledObject
         {
             canSpawn = false;
             animator.SetTrigger("OnAllEnemiesSpawned");
+            onAllEnemiesSpawnedCallback();
         }
     }
 }

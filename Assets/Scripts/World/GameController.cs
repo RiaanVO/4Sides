@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -34,7 +35,7 @@ public class GameController : MonoBehaviour
         data.UpdateChannel(CHANNEL_DISPLAY_SCORE, GameSession.DisplayScore);
     }
 
-    private void GoToDeathScreen()
+    private void GoToDeathScreen(EventSource source, string eventName)
     {
         SceneManager.LoadScene("DeathScene");
     }

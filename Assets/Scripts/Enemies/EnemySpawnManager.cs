@@ -1,7 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+
+using Random = UnityEngine.Random;
 
 public class EnemySpawnManager : MonoBehaviour
 {
@@ -9,6 +12,9 @@ public class EnemySpawnManager : MonoBehaviour
     public int DropPodsPerWave = 5;
 
     private List<Vector3> spawnPoints;
+    private int dropPodsRemaining = 0;
+    private int enemiesActive = 0;
+    private bool allEnemiesSpawned = false;
 
     void Start()
     {
@@ -39,10 +45,42 @@ public class EnemySpawnManager : MonoBehaviour
         }
 
         // create drop pods
+        dropPodsRemaining = dropPodCount;
         foreach (var position in spawnLocations)
         {
             var dropPod = DropPod.GetPooledInstance<DropPodController>();
-            dropPod.Initialize(position);
+            dropPod.Initialize(position, OnDropPodDepleted);
+        }
+
+        enemiesActive = 0;
+        allEnemiesSpawned = false;
+    }
+
+    private void OnDropPodDepleted()
+    {
+        dropPodsRemaining--;
+        if (dropPodsRemaining <= 0)
+        {
+            allEnemiesSpawned = true;
+        }
+    }
+
+    public void RegisterEnemy(EnemyController enemy)
+    {
+        enemiesActive++;
+
+        var eventSource = enemy.GetComponent<EventSource>();
+        eventSource.Subscribe("BaseHealth.Died", OnEnemyKilled);
+    }
+
+    private void OnEnemyKilled(EventSource source, string eventName)
+    {
+        source.Unsubscribe(eventName, OnEnemyKilled);
+
+        enemiesActive--;
+        if (allEnemiesSpawned && enemiesActive <= 0)
+        {
+            StartNewWave();
         }
     }
 }
