@@ -8,11 +8,13 @@ public class Bullet : PooledObject
     public float Speed = 4.0f;
 
     private Rigidbody body;
+    private MeshRenderer mesh;
     private float createdAtTimestamp;
 
     void Start()
     {
         body = GetComponent<Rigidbody>();
+        mesh = GetComponentInChildren<MeshRenderer>();
     }
 
     public void Initialize(Vector3 position, Quaternion rotation)
@@ -30,6 +32,9 @@ public class Bullet : PooledObject
         {
             ReturnToPool();
         }
+
+        mesh.material.SetTextureOffset("_MainTex",
+            new Vector2(Time.time % 1, (Time.time * 4) % 1));
     }
 
     private void OnTriggerEnter(Collider collider)
