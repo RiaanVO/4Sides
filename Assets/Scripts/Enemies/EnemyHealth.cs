@@ -5,10 +5,18 @@ using UnityEngine;
 public class EnemyHealth : BaseHealth
 {
     public int ScoreToAdd = 100;
-	public AudioSource audioSource;
-	public AudioClip deathSound;
 
+	[Header("Death Settings")]
+	public AudioClip deathSound;
 	public float deathDelayTime = 0f;
+
+	private AudioSource audioSource;
+
+	public override void Initialise ()
+	{
+		audioSource = GetComponent<AudioSource> ();
+		base.Initialise ();
+	}
 
 	public override void KillSelf ()
 	{

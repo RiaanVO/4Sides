@@ -13,6 +13,10 @@ public class GameController : MonoBehaviour
     public EventSource Player;
     public EventSource SpawnManager;
 
+	[Header("Score Settings")]
+	public AudioClip scoreAddSFX;
+	private AudioSource audioSource;
+
     private DataProvider data;
 
     void Start()
@@ -31,6 +35,8 @@ public class GameController : MonoBehaviour
         {
             SpawnManager.Subscribe(EnemySpawnManager.EVENT_ALL_WAVES_CLEARED, GoToTitleScreen);
         }
+
+		audioSource = GetComponent<AudioSource> ();
     }
 
     public void AwardPoints(int points)
@@ -38,6 +44,10 @@ public class GameController : MonoBehaviour
         GameSession.Score += points;
         data.UpdateChannel(CHANNEL_SCORE, GameSession.Score);
         data.UpdateChannel(CHANNEL_DISPLAY_SCORE, GameSession.DisplayScore);
+
+		if (audioSource != null && scoreAddSFX != null) {
+			audioSource.PlayOneShot (scoreAddSFX);
+		}
     }
 
     private void GoToDeathScreen(EventSource source, string eventName)

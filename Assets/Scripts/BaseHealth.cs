@@ -34,7 +34,12 @@ public class BaseHealth : MonoBehaviour
 
         events = GetComponent<EventSource>();
         poolable = GetComponent<PooledObject>();
+
+		Initialise ();
     }
+
+	public virtual void Initialise(){
+	}
 
     public void ResetHealth()
     {
