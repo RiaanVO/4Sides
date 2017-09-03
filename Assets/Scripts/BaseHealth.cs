@@ -59,13 +59,8 @@ public class BaseHealth : MonoBehaviour
             if (IsDead)
             {
                 Die();
-                if (events != null)
-                {
-                    events.Notify(EVENT_DIED);
-                }
             }
         }
-
     }
 
 	public virtual void KillSelf(){
@@ -78,6 +73,10 @@ public class BaseHealth : MonoBehaviour
     }
 
 	public void KillGameobject(){
+		if (events != null)
+		{
+			events.Notify(EVENT_DIED);
+		}
 		if (DestroyOnDeath)
 		{
 			if (poolable == null)
