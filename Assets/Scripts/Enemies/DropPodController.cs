@@ -116,7 +116,15 @@ public class DropPodController : PooledObject
 
     public void StartSpawning()
     {
-        canSpawn = true;
+        if (enemiesRemaining > 0)
+        {
+            canSpawn = true;
+        }
+        else
+        {
+            animator.SetTrigger("OnAllEnemiesSpawned");
+            onAllEnemiesSpawnedCallback();
+        }
     }
 
     private void SpawnEnemy()

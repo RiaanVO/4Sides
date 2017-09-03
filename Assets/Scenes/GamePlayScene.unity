@@ -988,15 +988,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DropPod: {fileID: 114139007518389444, guid: dddcbddaccdd10345b93bdaf56cd4123, type: 2}
   Waves:
-  - DropPodCount: 7
+  - DropPodCount: 8
     EnemiesPerDropPod: 1
-  - DropPodCount: 7
+  - DropPodCount: 8
     EnemiesPerDropPod: 2
   - DropPodCount: 10
     EnemiesPerDropPod: 2
   - DropPodCount: 10
     EnemiesPerDropPod: 3
-  - DropPodCount: 13
+  - DropPodCount: 12
     EnemiesPerDropPod: 3
 --- !u!82 &720385625
 AudioSource:
@@ -3345,6 +3345,21 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 898901037}
+    - target: {fileID: 20186321306085390, guid: 336ae105ff4947c4497afacb411f8f61,
+        type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0.208045
+      objectReference: {fileID: 0}
+    - target: {fileID: 20186321306085390, guid: 336ae105ff4947c4497afacb411f8f61,
+        type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0.23293927
+      objectReference: {fileID: 0}
+    - target: {fileID: 20186321306085390, guid: 336ae105ff4947c4497afacb411f8f61,
+        type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: 0.27205884
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 336ae105ff4947c4497afacb411f8f61, type: 2}
   m_IsPrefabParent: 0
