@@ -13,26 +13,29 @@ public class HealthPickup : MonoBehaviour {
 	private AudioSource audioSource;
 	public GameObject model;
 	public GameObject pickupLight;
-	private bool wasCollected = false;
+	private bool isCollected = true;
 
 	public void Start(){
 		audioSource = GetComponent<AudioSource> ();
+		SetVisability (false);
 	}
 
 	public void SpawnHealthPickup(Vector3 position){
 		transform.position = position;
-		audioSource.PlayOneShot (healthSpawnSFX);
+		if (audioSource != null && healthSpawnSFX != null) {
+			audioSource.PlayOneShot (healthSpawnSFX);
+		}
 		SetVisability(true);
-		wasCollected = false;
+		isCollected = false;
 	}
 
 	public void OnTriggerEnter(Collider other){
-		if (other.gameObject.CompareTag (PLAYER_TAG) && !wasCollected) {
+		if (other.gameObject.CompareTag (PLAYER_TAG) && !isCollected) {
 			BaseHealth playerHealth = other.gameObject.GetComponentInParent<BaseHealth> ();
 
 			if (playerHealth != null) {
 				playerHealth.Heal (healthAmount);
-				wasCollected = true;
+				isCollected = true;
 
 				if (audioSource != null && healthCollectedSFX != null) {
 					audioSource.PlayOneShot (healthCollectedSFX);
@@ -46,5 +49,9 @@ public class HealthPickup : MonoBehaviour {
 	private void SetVisability(bool active){
 		model.SetActive (active);
 		pickupLight.SetActive (active);
+	}
+
+	public bool IsCollected(){
+		return isCollected;
 	}
 }
