@@ -50,7 +50,7 @@ public class DamageOnContact : MonoBehaviour
         }
         else
         {
-            myHealth.Die();
+            myHealth.KillSelf();
         }
     }
 }

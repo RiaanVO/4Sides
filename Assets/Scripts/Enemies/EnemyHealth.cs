@@ -5,15 +5,40 @@ using UnityEngine;
 public class EnemyHealth : BaseHealth
 {
     public int ScoreToAdd = 100;
+	public AudioSource audioSource;
+	public AudioClip deathSound;
+
+	public float deathDelayTime = 0f;
+
+	public override void KillSelf ()
+	{
+		playDeathSound ();
+		StartCoroutine (deathDelay());
+	}
 
     public override void Die()
     {
+		playDeathSound ();
+
         var controller = GameObject.FindObjectOfType<GameController>();
         if (controller != null)
         {
             controller.AwardPoints(ScoreToAdd);
         }
 
-        base.Die();
+		StartCoroutine (deathDelay());
     }
+
+	private IEnumerator deathDelay(){
+		yield return new WaitForSeconds(deathDelayTime);
+		KillGameobject ();
+	}
+
+	private void playDeathSound(){
+		if (audioSource != null && deathSound != null) {
+			audioSource.PlayOneShot (deathSound);
+		}
+	}
+
+
 }

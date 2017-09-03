@@ -68,18 +68,26 @@ public class BaseHealth : MonoBehaviour
 
     }
 
+	public virtual void KillSelf(){
+		KillGameobject ();
+	}
+
     public virtual void Die()
     {
-        if (DestroyOnDeath)
-        {
-            if (poolable == null)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                poolable.ReturnToPool();
-            }
-        }
+		KillGameobject ();
     }
+
+	public void KillGameobject(){
+		if (DestroyOnDeath)
+		{
+			if (poolable == null)
+			{
+				Destroy(gameObject);
+			}
+			else
+			{
+				poolable.ReturnToPool();
+			}
+		}
+	}
 }
