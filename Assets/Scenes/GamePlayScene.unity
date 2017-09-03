@@ -3418,29 +3418,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1247868730432272, guid: 336ae105ff4947c4497afacb411f8f61, type: 2}
-      propertyPath: m_Name
-      value: Main Camera
-      objectReference: {fileID: 0}
     - target: {fileID: 114572277090538486, guid: 336ae105ff4947c4497afacb411f8f61,
         type: 2}
       propertyPath: target
       value: 
       objectReference: {fileID: 898901037}
-    - target: {fileID: 20186321306085390, guid: 336ae105ff4947c4497afacb411f8f61,
-        type: 2}
-      propertyPath: m_BackGroundColor.r
-      value: 0.208045
-      objectReference: {fileID: 0}
-    - target: {fileID: 20186321306085390, guid: 336ae105ff4947c4497afacb411f8f61,
-        type: 2}
-      propertyPath: m_BackGroundColor.g
-      value: 0.23293927
-      objectReference: {fileID: 0}
-    - target: {fileID: 20186321306085390, guid: 336ae105ff4947c4497afacb411f8f61,
-        type: 2}
-      propertyPath: m_BackGroundColor.b
-      value: 0.27205884
+    - target: {fileID: 1247868730432272, guid: 336ae105ff4947c4497afacb411f8f61, type: 2}
+      propertyPath: m_Name
+      value: Main Camera
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 336ae105ff4947c4497afacb411f8f61, type: 2}
