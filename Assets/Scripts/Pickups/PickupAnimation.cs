@@ -20,8 +20,12 @@ public class PickupAnimation: MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		bottomPoint = new Vector3 (transform.position.x, transform.position.y - heightShift, transform.position.z);
-		topPoint = new Vector3 (transform.position.x, transform.position.y + heightShift, transform.position.z);
+		SetBouncePositions (transform.position);
+	}
+
+	public void SetBouncePositions(Vector3 newPosition){
+		bottomPoint = new Vector3 (newPosition.x, newPosition.y - heightShift, newPosition.z);
+		topPoint = new Vector3 (newPosition.x, newPosition.y + heightShift, newPosition.z);
 	}
 	
 	// Update is called once per frame

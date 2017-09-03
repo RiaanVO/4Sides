@@ -10,7 +10,7 @@ public class HealthPickupSpawnManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		healthSpawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint")
+		healthSpawnPoints = GameObject.FindGameObjectsWithTag("HealthSpawnPoint")
 			.Select(o => o.transform.position).ToList();
 
 		healthPickup = GetComponentInChildren<HealthPickup> ();

@@ -15,13 +15,19 @@ public class HealthPickup : MonoBehaviour {
 	public GameObject pickupLight;
 	private bool isCollected = true;
 
+	private PickupAnimation pickupAnimation;
+
 	public void Start(){
 		audioSource = GetComponent<AudioSource> ();
+		pickupAnimation = GetComponent<PickupAnimation> ();
 		SetVisability (false);
 	}
 
-	public void SpawnHealthPickup(Vector3 position){
-		transform.position = position;
+	public void SpawnHealthPickup(Vector3 newPosition){
+
+		pickupAnimation.SetBouncePositions (newPosition);
+		transform.position = new Vector3(newPosition.x, newPosition.y, newPosition.z);
+
 		if (audioSource != null && healthSpawnSFX != null) {
 			audioSource.PlayOneShot (healthSpawnSFX);
 		}
