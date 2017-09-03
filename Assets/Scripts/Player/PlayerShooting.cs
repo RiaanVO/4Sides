@@ -4,6 +4,7 @@ public class PlayerShooting : MonoBehaviour
 {
     public Bullet Bullet;
     public float FireRate = 1.0f;
+    public Light MuzzleFlash;
 
     private float lastFiredTimestamp;
 
@@ -17,6 +18,17 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetButton("Fire") && Time.time - lastFiredTimestamp >= FireRate)
         {
             Shoot();
+            if (MuzzleFlash != null)
+            {
+                MuzzleFlash.enabled = true;
+            }
+        }
+        else
+        {
+            if (MuzzleFlash != null)
+            {
+                MuzzleFlash.enabled = false;
+            }
         }
     }
 

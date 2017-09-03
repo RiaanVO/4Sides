@@ -30,5 +30,8 @@ public class EnemyController : PooledObject
         nav.enabled = true;
 
         health.ResetHealth();
+
+        var manager = GameObject.FindObjectOfType<EnemySpawnManager>();
+        manager.RegisterEnemy(this);
     }
 }

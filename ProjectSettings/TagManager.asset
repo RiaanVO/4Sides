@@ -9,6 +9,8 @@ TagManager:
   - Bullet
   - Enemy
   - Solid
+  - Pickup
+  - HealthSpawnPoint
   layers:
   - Default
   - TransparentFX

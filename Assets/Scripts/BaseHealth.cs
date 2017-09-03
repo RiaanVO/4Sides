@@ -34,7 +34,12 @@ public class BaseHealth : MonoBehaviour
 
         events = GetComponent<EventSource>();
         poolable = GetComponent<PooledObject>();
+
+		Initialise ();
     }
+
+	public virtual void Initialise(){
+	}
 
     public void ResetHealth()
     {
@@ -59,27 +64,49 @@ public class BaseHealth : MonoBehaviour
             if (IsDead)
             {
                 Die();
-                if (events != null)
-                {
-                    events.Notify(EVENT_DIED);
-                }
             }
         }
-
     }
+
+	public void Heal(int amount){
+		if (!IsDead)
+		{
+			currentHealth += amount;
+			if (currentHealth > InitialHealth) {
+				currentHealth = InitialHealth;
+			}
+
+			if (data != null)
+			{
+				data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);
+			}
+		}
+	}
+
+	public virtual void KillSelf(){
+		KillGameobject ();
+	}
 
     public virtual void Die()
     {
-        if (DestroyOnDeath)
-        {
-            if (poolable == null)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                poolable.ReturnToPool();
-            }
-        }
+		KillGameobject ();
     }
+
+	public void KillGameobject(){
+		if (events != null)
+		{
+			events.Notify(EVENT_DIED);
+		}
+		if (DestroyOnDeath)
+		{
+			if (poolable == null)
+			{
+				Destroy(gameObject);
+			}
+			else
+			{
+				poolable.ReturnToPool();
+			}
+		}
+	}
 }
