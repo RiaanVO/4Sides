@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 222346552493138206}
   - component: {fileID: 114850948455033872}
   - component: {fileID: 95350662189709620}
+  - component: {fileID: 114540110863897862}
   m_Layer: 5
   m_Name: LevelNode
   m_TagString: Untagged
@@ -147,6 +148,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: new!
+--- !u!114 &114540110863897862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1385961290050498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c84ef9edd7e614290e28b01b4eb7d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 1-A
+  NodeText: {fileID: 114721086015475698}
 --- !u!114 &114704076198327920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,7 +220,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1-B
+  m_Text: 1-A
 --- !u!114 &114737123959375984
 MonoBehaviour:
   m_ObjectHideFlags: 1
