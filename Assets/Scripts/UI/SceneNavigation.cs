@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneNavigation : MonoBehaviour
 {
-    public void GoToSceneIndex(int sceneIndex)
+    public void GoToCurrentSector()
     {
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadScene(GameSession.GetCurrentSectorScene());
+    }
+
+    public void GoToTitleScreen()
+    {
+        SceneManager.LoadScene("TitleScene");
     }
 
     public void QuitGame()
