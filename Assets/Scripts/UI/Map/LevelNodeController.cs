@@ -19,7 +19,7 @@ public class LevelNodeController : MonoBehaviour
 
     private Animator animator;
 
-    void Start()
+    void Awake()
     {
         if (NodeText != null)
         {
