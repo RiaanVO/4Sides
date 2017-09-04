@@ -68,6 +68,21 @@ public class BaseHealth : MonoBehaviour
         }
     }
 
+	public void Heal(int amount){
+		if (!IsDead)
+		{
+			currentHealth += amount;
+			if (currentHealth > InitialHealth) {
+				currentHealth = InitialHealth;
+			}
+
+			if (data != null)
+			{
+				data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);
+			}
+		}
+	}
+
 	public virtual void KillSelf(){
 		KillGameobject ();
 	}

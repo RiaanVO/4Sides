@@ -23,6 +23,9 @@ public class EnemySpawnManager : MonoBehaviour
     public DropPodController DropPod;
     public List<Wave> Waves;
 
+	[Header("Death Settings")]
+	public HealthPickupSpawnManager healthPickupSpawner;
+
     private DataProvider data;
     private EventSource events;
     private AudioSource waveCleared;
@@ -91,6 +94,9 @@ public class EnemySpawnManager : MonoBehaviour
         wave++;
         data.UpdateChannel(CHANNEL_WAVE, wave);
         data.UpdateChannel(CHANNEL_DISPLAY_WAVE, wave.ToString());
+
+		//Spawn the health pickup for this wave
+		healthPickupSpawner.SpawnHealthPickup ();
     }
 
     private void OnDropPodDepleted()
