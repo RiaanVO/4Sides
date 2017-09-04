@@ -1400,15 +1400,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DropPod: {fileID: 114139007518389444, guid: dddcbddaccdd10345b93bdaf56cd4123, type: 2}
   Waves:
-  - DropPodCount: 8
+  - DropPodCount: 6
     EnemiesPerDropPod: 1
+  - DropPodCount: 6
+    EnemiesPerDropPod: 2
+  - DropPodCount: 7
+    EnemiesPerDropPod: 2
   - DropPodCount: 8
-    EnemiesPerDropPod: 2
-  - DropPodCount: 10
-    EnemiesPerDropPod: 2
-  - DropPodCount: 10
     EnemiesPerDropPod: 3
-  - DropPodCount: 12
+  - DropPodCount: 9
     EnemiesPerDropPod: 3
   healthPickupSpawner: {fileID: 218274698}
 --- !u!82 &720385625
