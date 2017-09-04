@@ -103,7 +103,7 @@ public class DropPodController : PooledObject
         landedSound.pitch = Random.Range(0.85f, 1.15f);
         landedSound.Play();
         openingSound.pitch = Random.Range(0.85f, 1.15f);
-        openingSound.PlayDelayed(0.25f);
+        openingSound.PlayDelayed(0.5f);
 
         // shake camera
         if (shaker != null && player != null)

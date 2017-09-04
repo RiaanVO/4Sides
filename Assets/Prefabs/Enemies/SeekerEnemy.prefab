@@ -1151,7 +1151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746672e7ed6040748be73e7c3792100c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageToDeal: 20
+  DamageToDeal: 15
   SelfDestructOnContact: 1
   TagsToCollideWith:
   - Player

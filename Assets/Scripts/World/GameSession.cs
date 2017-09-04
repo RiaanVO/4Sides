@@ -10,8 +10,25 @@ public static class GameSession
         get { return Score.ToString(); }
     }
 
-    public static void StartNew()
+    private static List<string> completedSectors = new List<string>();
+    public static List<string> CompletedSectors
+    {
+        get { return completedSectors; }
+    }
+
+    public static string LastCompletedSector { get; private set; }
+
+    public static void StartNewLevel()
     {
         Score = 0;
+    }
+
+    public static void NotifySectorCompleted(string id)
+    {
+        if (!string.IsNullOrEmpty(LastCompletedSector))
+        {
+            CompletedSectors.Add(LastCompletedSector);
+        }
+        LastCompletedSector = id;
     }
 }
