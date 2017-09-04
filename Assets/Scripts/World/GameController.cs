@@ -25,7 +25,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        GameSession.StartNewLevel();
+        GameSession.StartSector(Sector);
 
         data = GetComponent<DataProvider>();
         data.UpdateChannel(CHANNEL_SCORE, GameSession.Score);
