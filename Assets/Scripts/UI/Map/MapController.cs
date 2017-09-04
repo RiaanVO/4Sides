@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
-    private LevelNodeController[] nodes;
+    private LevelNode[] nodes;
 
     void Start()
     {
-        nodes = GetComponentsInChildren<LevelNodeController>();
-        nodes[0].CompleteLevel();
-        nodes[1].Unlock();
+        nodes = GetComponentsInChildren<LevelNode>();
+        nodes[0].Complete(true);
     }
 }
