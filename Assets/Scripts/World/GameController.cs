@@ -42,6 +42,16 @@ public class GameController : MonoBehaviour
         }
 
         audioSource = GetComponent<AudioSource>();
+
+        var background = GetComponent<DynamicBackground>();
+        if (background != null)
+        {
+            var musicPlayer = GameObject.FindObjectOfType<MusicIntensity>();
+            if (musicPlayer != null)
+            {
+                background.Bind(musicPlayer.GetComponent<DataProvider>());
+            }
+        }
     }
 
     public void AwardPoints(int points)

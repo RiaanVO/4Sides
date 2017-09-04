@@ -2920,9 +2920,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7733a33f240cd0a48b7a2d48edacda76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Provider: {fileID: 0}
   TargetRenderer: {fileID: 2048710477}
-  LowIntensityColor: {r: 1, g: 1, b: 1, a: 1}
-  HighIntensityColor: {r: 0.19274436, g: 0.21411385, b: 0.22794116, a: 1}
+  LowIntensityColor: {r: 0.46666667, g: 0.5686275, b: 0.59607846, a: 1}
+  HighIntensityColor: {r: 0, g: 0, b: 0, a: 1}
+  IntensityChannel: MusicIntensity.Intensity
 --- !u!1 &1394550865
 GameObject:
   m_ObjectHideFlags: 0

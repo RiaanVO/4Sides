@@ -2,20 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DynamicBackground : MonoBehaviour
+public class DynamicBackground : Observable
 {
     public Renderer TargetRenderer;
     public Color LowIntensityColor;
     public Color HighIntensityColor;
+    public string IntensityChannel;
 
-    void Start()
+    private Material material;
+    private float intensity;
+
+    void Awake()
     {
+        material = TargetRenderer.material;
     }
 
-    void Update()
+    public void Bind(DataProvider provider)
     {
-        float intensity = Mathf.Sin(Time.time);
+        Provider = provider;
+        Bind<float>(IntensityChannel, 0.0f, newValue => intensity = newValue);
+    }
+
+    protected override void Render()
+    {
         Color color = Color.Lerp(LowIntensityColor, HighIntensityColor, intensity);
-        TargetRenderer.material.SetColor("_EmissionColor", color);
+        material.SetColor("_EmissionColor", color);
     }
 }
