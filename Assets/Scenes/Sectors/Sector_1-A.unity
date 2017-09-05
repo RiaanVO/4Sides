@@ -1862,7 +1862,7 @@ Prefab:
     - target: {fileID: 114776151432944330, guid: 28cb81517cc7598469e18bd15d586be7,
         type: 2}
       propertyPath: showDamageText
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114776151432944330, guid: 28cb81517cc7598469e18bd15d586be7,
         type: 2}
@@ -1879,6 +1879,12 @@ Prefab:
       propertyPath: flashesPerDuration
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114776151432944330, guid: 28cb81517cc7598469e18bd15d586be7,
+        type: 2}
+      propertyPath: DamageText
+      value: 
+      objectReference: {fileID: 114331899502091260, guid: d5cfa63e3672447499cf5fbc98657a9a,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28cb81517cc7598469e18bd15d586be7, type: 2}
   m_IsPrefabParent: 0

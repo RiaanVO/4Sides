@@ -28,8 +28,8 @@ public class BaseHealth : MonoBehaviour
 	private Material baseMaterial;
 	public Renderer modelRenderer;
 
-	//public bool showDamageText = true;
-	//public Color damageTextColour = new Color(1,0.5f,0.5f);
+	public bool showDamageText = true;
+	public DamageTextController DamageText;
 
     public bool IsDead
     {
@@ -95,6 +95,11 @@ public class BaseHealth : MonoBehaviour
 	private void ShowDamageEffects (int damageAmount){
 		flashActive = true;
 		flashTimer = 0f;
+
+		if (showDamageText) {
+			DamageTextController.CreateDamageText (damageAmount, gameObject.transform, DamageText);
+		}
+
 	}
 
     public void ResetHealth()
