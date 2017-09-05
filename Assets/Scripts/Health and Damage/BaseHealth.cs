@@ -55,6 +55,7 @@ public class BaseHealth : MonoBehaviour
 		if(modelRenderer != null){
 			baseMaterial = modelRenderer.material;
 		}
+		flashTimer = damageFlashDuration;
 
 		Initialise ();
     }

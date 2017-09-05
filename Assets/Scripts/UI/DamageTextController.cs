@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class DamageTextController : PooledObject {
 
+	//https://www.youtube.com/watch?v=fbUOG7f3jq8
+
 	private static GameObject canvas;
 
 	private Animator animator;
