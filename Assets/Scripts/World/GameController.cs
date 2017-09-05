@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour
 
     private void GoToDeathScreen(EventSource source, string eventName)
     {
-        SceneManager.LoadScene("DeathScene");
+        GoToScene("DeathScene");
     }
 
     private void GoToMapScreen(EventSource source, string eventName)
@@ -68,6 +68,19 @@ public class GameController : MonoBehaviour
         {
             GameSession.NotifySectorCompleted(Sector);
         }
-        SceneManager.LoadScene("MapScene");
+        GoToScene("MapScene");
+    }
+
+    private void GoToScene(string name)
+    {
+        var transitions = GameObject.FindObjectOfType<TransitionManager>();
+        if (transitions == null)
+        {
+            SceneManager.LoadScene(name);
+        }
+        else
+        {
+            transitions.Navigate(name);
+        }
     }
 }

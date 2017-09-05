@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialHealth: 100
-  DestroyOnDeath: 1
+  DestroyOnDeath: 0
 --- !u!135 &135508269688933992
 SphereCollider:
   m_ObjectHideFlags: 1

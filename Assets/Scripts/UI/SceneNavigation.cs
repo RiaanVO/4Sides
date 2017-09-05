@@ -7,16 +7,29 @@ public class SceneNavigation : MonoBehaviour
 {
     public void GoToCurrentSector()
     {
-        SceneManager.LoadScene(GameSession.GetCurrentSectorScene());
+        GoToScene(GameSession.GetCurrentSectorScene());
     }
 
     public void GoToTitleScreen()
     {
-        SceneManager.LoadScene("TitleScene");
+        GoToScene("TitleScene");
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    private void GoToScene(string name)
+    {
+        var transitions = GameObject.FindObjectOfType<TransitionManager>();
+        if (transitions == null)
+        {
+            SceneManager.LoadScene(name);
+        }
+        else
+        {
+            transitions.Navigate(name);
+        }
     }
 }
