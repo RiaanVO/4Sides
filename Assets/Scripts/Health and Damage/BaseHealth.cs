@@ -111,6 +111,10 @@ public class BaseHealth : MonoBehaviour
             data.UpdateChannel(CHANNEL_INITIAL_HEALTH, InitialHealth);
             data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);
         }
+
+		flashActive = false;
+		flashTimer = damageFlashDuration;
+		SetRenderMaterial (baseMaterial);
     }
 
     public void TakeDamage(int amount)
