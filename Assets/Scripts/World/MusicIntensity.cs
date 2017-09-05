@@ -11,6 +11,7 @@ public class MusicIntensity : MonoBehaviour
 
     [Range(0, 255)]
     public int Frequency = 0;
+    public FFTWindow Window = FFTWindow.BlackmanHarris;
 
     private DataProvider data;
     private AudioSource source;
@@ -22,9 +23,9 @@ public class MusicIntensity : MonoBehaviour
         source = GetComponent<AudioSource>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        source.GetSpectrumData(spectrum, 0, FFTWindow.BlackmanHarris);
+        source.GetSpectrumData(spectrum, 0, Window);
         data.UpdateChannel(CHANNEL_INTENSITY, spectrum[Frequency]);
     }
 }

@@ -165,3 +165,6 @@ MonoBehaviour:
   LowIntensityColor: {r: 0, g: 0, b: 0, a: 1}
   HighIntensityColor: {r: 0.46666667, g: 0.5686275, b: 0.59607846, a: 1}
   IntensityChannel: MusicIntensity.Intensity
+  MinThreshold: 0.03
+  IntensityMultiplier: 20
+  IntensityDecay: 0.1
