@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : BaseHealth
 {
+	[Header("Score Settings")]
     public int ScoreToAdd = 100;
 
 	[Header("Death Settings")]

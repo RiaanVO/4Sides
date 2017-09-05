@@ -8,13 +8,28 @@ public class BaseHealth : MonoBehaviour
     public static readonly string CHANNEL_INITIAL_HEALTH = "BaseHealth.InitialHealth";
     public static readonly string EVENT_DIED = "BaseHealth.Died";
 
+	private DataProvider data;
+	private EventSource events;
+	private PooledObject poolable;
+	private float currentHealth;
+
+	[Header("Base Health Settings")]
     public float InitialHealth = 100;
     public bool DestroyOnDeath = true;
 
-    private DataProvider data;
-    private EventSource events;
-    private PooledObject poolable;
-    private float currentHealth;
+	[Header("On Damage Settings")]
+	public bool showDamageFlashEffects = true;
+	public float damageFlashDuration = 0.2f;
+	public int flashesPerDuration = 4;
+	private float flashTimer = 0f;
+	private bool flashActive = false;
+
+	public Material flashMaterial;
+	private Material baseMaterial;
+	public Renderer modelRenderer;
+
+	//public bool showDamageText = true;
+	//public Color damageTextColour = new Color(1,0.5f,0.5f);
 
     public bool IsDead
     {
@@ -35,10 +50,51 @@ public class BaseHealth : MonoBehaviour
         events = GetComponent<EventSource>();
         poolable = GetComponent<PooledObject>();
 
+
+		//Get the materials for the flashing
+		if(modelRenderer != null){
+			baseMaterial = modelRenderer.material;
+		}
+
 		Initialise ();
     }
 
-	public virtual void Initialise(){
+	public virtual void Initialise(){}
+
+	public void Update(){
+		if (showDamageFlashEffects) {
+			if (flashActive) {
+				bool showBaseMaterial = false;
+
+				float t = Mathf.Sin (360 * (flashTimer / damageFlashDuration) * (float)flashesPerDuration);
+				showBaseMaterial = t > 0;
+
+				if (showBaseMaterial) {
+					SetRenderMaterial (baseMaterial);
+				} else {
+					SetRenderMaterial (flashMaterial);
+				}
+
+				flashTimer += Time.deltaTime;
+				if (flashTimer > damageFlashDuration) {
+					flashActive = false;
+
+					SetRenderMaterial (baseMaterial);
+				}
+			}
+		}
+		
+	}
+
+	private void SetRenderMaterial(Material material){
+		if(modelRenderer != null && material != null){
+			modelRenderer.material = material;
+		}
+	}
+
+	private void ShowDamageEffects (int damageAmount){
+		flashActive = true;
+		flashTimer = 0f;
 	}
 
     public void ResetHealth()
@@ -56,6 +112,9 @@ public class BaseHealth : MonoBehaviour
         if (!IsDead)
         {
             currentHealth -= amount;
+
+			ShowDamageEffects (amount);
+
             if (data != null)
             {
                 data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);

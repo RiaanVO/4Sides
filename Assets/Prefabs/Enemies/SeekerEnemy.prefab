@@ -1168,6 +1168,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialHealth: 30
   DestroyOnDeath: 1
+  showDamageFlashEffects: 1
+  damageFlashDuration: 0.3
+  flashesPerDuration: 4
+  flashMaterial: {fileID: 2100000, guid: c06adb3b8e3324c448f314975dc43e52, type: 2}
+  modelRenderer: {fileID: 137536707957369044}
   ScoreToAdd: 100
   deathSound: {fileID: 8300000, guid: c8e1e76464fa44ae4a217e16d74a59c1, type: 3}
   deathDelayTime: 0
