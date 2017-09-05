@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singleton : MonoBehaviour
+public class MusicPlayer : MonoBehaviour
 {
-    private static Singleton instance = null;
-    public static Singleton Instance
+    private static MusicPlayer instance = null;
+    public static MusicPlayer Instance
     {
         get { return instance; }
     }
