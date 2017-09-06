@@ -18,6 +18,8 @@ public class DamageTextController : PooledObject {
 
 
 	public static void CreateDamageText(int damage, Transform location, DamageTextController DamageText){
+		if (DamageText == null)
+			return;
 		var damageTextInstance = DamageText.GetPooledInstance <DamageTextController> ();
 		damageTextInstance.Initilize (damage, location);
 	}
