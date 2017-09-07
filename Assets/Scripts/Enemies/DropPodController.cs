@@ -36,6 +36,9 @@ public class DropPodController : PooledObject
     private int enemiesRemaining;
     private Action onAllEnemiesSpawnedCallback;
 
+	//Floor landing test
+	private Vector3 spawnPosition;
+
     void Awake()
     {
         spawnedSound = AddAudioSource(SpawnedSound, 0.75f);
@@ -63,6 +66,7 @@ public class DropPodController : PooledObject
 
         float dropHeight = Random.Range(MinDropHeight, MaxDropHeight);
         transform.position = position + (Vector3.up * dropHeight);
+		spawnPosition = position;
 
         hasLanded = false;
         body.isKinematic = false;
@@ -80,6 +84,14 @@ public class DropPodController : PooledObject
 
     void Update()
     {
+		if (!hasLanded)
+		{
+			if (transform.position.y < spawnPosition.y) {
+				transform.position = spawnPosition;
+				OnLanding ();
+			}
+		}
+
         if (canSpawn && Time.time - lastSpawnedTimestamp > TimeBetweenSpawns)
         {
             // spawn enemy
@@ -95,24 +107,28 @@ public class DropPodController : PooledObject
             return;
         }
 
-        hasLanded = true;
-        body.isKinematic = true;
-        animator.SetBool("HasLanded", true);
-
-        // play landed and opening sound
-        landedSound.pitch = Random.Range(0.85f, 1.15f);
-        landedSound.Play();
-        openingSound.pitch = Random.Range(0.85f, 1.15f);
-        openingSound.PlayDelayed(0.5f);
-
-        // shake camera
-        if (shaker != null && player != null)
-        {
-            float distance = Vector2.Distance(player.transform.position, transform.position);
-            float amount = (ShakeRange - distance) * MaxCameraShake;
-            shaker.RandomShake(Mathf.Clamp(amount, MinCameraShake, MaxCameraShake));
-        }
+		//OnLanding ();
     }
+
+	private void OnLanding(){
+		hasLanded = true;
+		body.isKinematic = true;
+		animator.SetBool("HasLanded", true);
+
+		// play landed and opening sound
+		landedSound.pitch = Random.Range(0.85f, 1.15f);
+		landedSound.Play();
+		openingSound.pitch = Random.Range(0.85f, 1.15f);
+		openingSound.PlayDelayed(0.5f);
+
+		// shake camera
+		if (shaker != null && player != null)
+		{
+			float distance = Vector2.Distance(player.transform.position, transform.position);
+			float amount = (ShakeRange - distance) * MaxCameraShake;
+			shaker.RandomShake(Mathf.Clamp(amount, MinCameraShake, MaxCameraShake));
+		}
+	}
 
     public void StartSpawning()
     {
