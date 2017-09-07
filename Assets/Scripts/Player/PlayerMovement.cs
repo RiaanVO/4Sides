@@ -5,14 +5,21 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float MovementSpeed = 4.0f;
+
+    public float MovementSpeed = 1.5f;
 
     private Rigidbody body;
+
 
     void Start()
     {
         body = GetComponent<Rigidbody>();
     }
+
+
+	protected void setSpeed(float shootingAndNotShootingMoveSpeed) {
+		MovementSpeed = shootingAndNotShootingMoveSpeed;
+	}
 
     void FixedUpdate()
     {
