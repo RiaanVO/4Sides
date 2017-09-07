@@ -115,6 +115,8 @@ public class EnemySpawnManager : MonoBehaviour
         var eventSource = enemy.GetComponent<EventSource>();
         eventSource.Subscribe("BaseHealth.Died", OnEnemyKilled);
     }
+		
+
 
     private void OnEnemyKilled(EventSource source, string eventName)
     {
