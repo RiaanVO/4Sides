@@ -19,11 +19,13 @@ public class HealthPickup : MonoBehaviour {
 
 	public void Start(){
 		audioSource = GetComponent<AudioSource> ();
-		pickupAnimation = GetComponent<PickupAnimation> ();
 		SetVisability (false);
 	}
 
 	public void SpawnHealthPickup(Vector3 newPosition){
+		if (pickupAnimation == null) {
+			pickupAnimation = GetComponent<PickupAnimation> ();
+		}
 
 		pickupAnimation.SetBouncePositions (newPosition);
 		transform.position = new Vector3(newPosition.x, newPosition.y, newPosition.z);
