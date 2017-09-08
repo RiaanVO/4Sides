@@ -20,7 +20,7 @@ public class PlayerShooting : MonoBehaviour
     void Update()
     {
 		isShooting = Input.GetButton ("Fire");
-        if (Input.GetButton("Fire") && Time.time - lastFiredTimestamp >= FireRate)
+        if (isShooting && Time.time - lastFiredTimestamp >= FireRate)
         {
             Shoot();
             if (MuzzleFlash != null)
