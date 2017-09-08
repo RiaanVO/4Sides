@@ -583,7 +583,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 17.97
+  m_Intensity: 5
   m_Range: 1
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -695,9 +695,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a943dedfb3bf724090bec40830b322f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentRigidBody: {fileID: 0}
+  parentRigidBody: {fileID: 54219598405831648}
   TeleportDistance: 5
-  TeleportCooldown: 5
+  TeleportCooldown: 3
 --- !u!136 &136633064977780166
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -804,7 +804,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1760586878
+  randomSeed: -625690465
   InitialModule:
     serializedVersion: 3
     enabled: 1
