@@ -11821,6 +11821,7 @@ GameObject:
   m_Component:
   - component: {fileID: 990631666}
   - component: {fileID: 990631667}
+  - component: {fileID: 990631668}
   m_Layer: 0
   m_Name: Floor 2
   m_TagString: Untagged
@@ -11851,12 +11852,25 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 990631665}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0da21d12d6c6541469ac7058488420de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   heightOffset: -1
+--- !u!114 &990631668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 990631665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7d006bc11b654cc0b6dcd27cd5dea2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heightOffset: -1
+  currentActiveState: 0
 --- !u!1 &992608774
 GameObject:
   m_ObjectHideFlags: 0

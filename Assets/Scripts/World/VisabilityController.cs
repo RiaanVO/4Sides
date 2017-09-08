@@ -41,11 +41,14 @@ public class VisabilityController : MonoBehaviour
 		foreach (Transform child in children) {
 			Renderer renderer = child.gameObject.GetComponent<Renderer> ();
 			if (renderer != null) {
+				SetMaterialVisable (renderer, active);
+				/*
 				if (active) {
 					SetMaterialOpaque (renderer);
 				} else {
 					SetMaterialTransparent (renderer);
 				}
+				*/
 			}
 			/*
 			if (renderer != null) {
@@ -65,9 +68,24 @@ public class VisabilityController : MonoBehaviour
 		}
 	}
 
+	private void SetMaterialVisable(Renderer renderer, bool isVisable){
+		//Debug.Log (renderer.gameObject.name + " num materials: " + renderer.materials.Length);
+		foreach (Material m in renderer.materials) {
+			Color tempColour = renderer.material.color;
+			if (isVisable) {
+				tempColour.a = 1f;
+			} else {
+				tempColour.a = 0.05f;
+			}
+			renderer.material.color = tempColour;
+		}
+	}
+
+
 
 	//Not working right now!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	//https://www.youtube.com/watch?v=nNjNWDZSkAI
+
 
 
 	private void SetMaterialTransparent (Renderer renderer){
