@@ -12,7 +12,7 @@ public class FloorController : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		children = gameObject.GetComponentsInChildren<Transform> ();
-		Debug.Log (gameObject.name + " number of children: " + children.Length);
+		//Debug.Log (gameObject.name + " number of children: " + children.Length);
 		player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 	}
 	
@@ -34,8 +34,9 @@ public class FloorController : MonoBehaviour {
 	private void setChildrenVisable(bool active){
 		foreach (Transform child in children) {
 			Renderer renderer = child.gameObject.GetComponent<Renderer> ();
-			if (renderer != null)
+			if (renderer != null) {
 				renderer.enabled = active;
+			}
 			//child.gameObject (active);
 		}
 	}

@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 114743949432006036}
   - component: {fileID: 114803694750143852}
   - component: {fileID: 82969467586545366}
+  - component: {fileID: 114867252027805952}
   m_Layer: 0
   m_Name: SeekerEnemy
   m_TagString: Enemy
@@ -1201,6 +1202,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8d00284829e634299e36d401273373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114867252027805952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1339550043203248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da21d12d6c6541469ac7058488420de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heightOffset: -1
 --- !u!136 &136455421622566402
 CapsuleCollider:
   m_ObjectHideFlags: 1
