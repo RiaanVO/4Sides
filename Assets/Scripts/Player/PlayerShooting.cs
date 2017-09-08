@@ -7,14 +7,12 @@ public class PlayerShooting : MonoBehaviour
     public Light MuzzleFlash;
 
     private float lastFiredTimestamp;
-	//private PlayerMovement playerMovement;
 	private AudioSource laserSounds;
 
 	private bool isShooting = false;
 
     void Start()
 	{
-		//playerMovement = GetComponent<PlayerMovement> ();
 		laserSounds = GetComponent<AudioSource> ();
         lastFiredTimestamp = Time.time;
     }
@@ -28,7 +26,6 @@ public class PlayerShooting : MonoBehaviour
             if (MuzzleFlash != null)
             {
 				laserSounds.Play ();
-				//playerMovement.MovementSpeed = 0.3f;
                 MuzzleFlash.enabled = true;
             }
         }
@@ -38,7 +35,6 @@ public class PlayerShooting : MonoBehaviour
 
             if (MuzzleFlash != null)
             {
-				//playerMovement.MovementSpeed = 2.2f;
                 MuzzleFlash.enabled = false;
             }
         }

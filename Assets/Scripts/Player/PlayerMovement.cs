@@ -6,9 +6,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float movementSpeed = 1.5f;
+    public float normalMovementSpeed = 1.5f;
 	public float slowMovementSpeed = 1f;
-	public float fastMovementSpeed = 1.7f;
 
 	private PlayerShooting playerShooting;
 
@@ -21,11 +20,6 @@ public class PlayerMovement : MonoBehaviour
 		playerShooting = GetComponent<PlayerShooting> ();
         body = GetComponent<Rigidbody>();
     }
-
-
-	protected void setSpeed(float shootingAndNotShootingMoveSpeed) {
-		movementSpeed = shootingAndNotShootingMoveSpeed;
-	}
 
     void FixedUpdate()
     {
@@ -53,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             + (verticalDir * Input.GetAxis("Vertical"));
 		movement.Normalize ();
 
-		float movementSpeed = fastMovementSpeed;
+		float movementSpeed = normalMovementSpeed;
 		if (playerShooting != null) {
 			if (playerShooting.IsShooting ()) {
 				movementSpeed = slowMovementSpeed;
