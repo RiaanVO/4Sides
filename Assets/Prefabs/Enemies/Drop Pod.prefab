@@ -832,7 +832,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinDropHeight: 25
   MaxDropHeight: 250
-  Enemy: {fileID: 114743949432006036, guid: b02ae3c0d91463248b484f4d5715dbef, type: 2}
+  Enemy: {fileID: 114642405138772768, guid: 1b6a6b440d28bc94e8456c94a7401cf9, type: 2}
   TimeBetweenSpawns: 0.3
   SpawnedSound: {fileID: 8300000, guid: fc4495cb03902c74ba116c65a5276902, type: 3}
   LandedSound: {fileID: 8300000, guid: 7607b415657f95841817470238eb5496, type: 3}
