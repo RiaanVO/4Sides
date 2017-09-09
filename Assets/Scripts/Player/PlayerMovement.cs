@@ -5,19 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-
     public float normalMovementSpeed = 1.5f;
-	public float slowMovementSpeed = 1f;
+    public float slowMovementSpeed = 1f;
 
-	private PlayerShooting playerShooting;
-
-
+    private PlayerShooting weapons;
     private Rigidbody body;
-
 
     void Start()
     {
-		playerShooting = GetComponent<PlayerShooting> ();
+        weapons = GetComponent<PlayerShooting>();
         body = GetComponent<Rigidbody>();
     }
 
@@ -25,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // calculate world position of mouse cursor
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		var plane = new Plane(Vector3.up, new Vector3(0, transform.position.y, 0));
+        var plane = new Plane(Vector3.up, new Vector3(0, transform.position.y, 0));
         float distance = 0.0f;
         if (plane.Raycast(ray, out distance))
         {
@@ -45,15 +41,14 @@ public class PlayerMovement : MonoBehaviour
         Vector3 verticalDir = Vector3.Cross(Vector3.down, Camera.main.transform.right);
         Vector3 movement = (horizontalDir * Input.GetAxis("Horizontal"))
             + (verticalDir * Input.GetAxis("Vertical"));
-		movement.Normalize ();
+        movement.Normalize();
 
-		float movementSpeed = normalMovementSpeed;
-		if (playerShooting != null) {
-			if (playerShooting.IsShooting ()) {
-				movementSpeed = slowMovementSpeed;
-			}
-		}
+        float movementSpeed = normalMovementSpeed;
+        if (weapons != null && weapons.IsShooting)
+        {
+            movementSpeed = slowMovementSpeed;
+        }
 
-        body.AddForce(movement * movementSpeed, ForceMode.Impulse);
+        body.AddForce(movement * movementSpeed, ForceMode.VelocityChange);
     }
 }
