@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float normalMovementSpeed = 1.5f;
     public float slowMovementSpeed = 1f;
+    public Light MoveLight;
 
     private PlayerShooting weapons;
     private Rigidbody body;
@@ -47,6 +48,10 @@ public class PlayerMovement : MonoBehaviour
         if (weapons != null && weapons.IsShooting)
         {
             movementSpeed = slowMovementSpeed;
+        }
+        if (MoveLight != null)
+        {
+            MoveLight.intensity = movement.magnitude * (Mathf.Sin(Time.time * 20) + 1);
         }
 
         body.AddForce(movement * movementSpeed, ForceMode.VelocityChange);
