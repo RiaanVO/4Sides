@@ -124,6 +124,8 @@ public class BaseHealth : MonoBehaviour
             currentHealth -= amount;
 
 			ShowDamageEffects (amount);
+			DamageSound();
+
 
             if (data != null)
             {
@@ -150,6 +152,10 @@ public class BaseHealth : MonoBehaviour
 				data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);
 			}
 		}
+	}
+
+	public virtual void DamageSound(){
+		Debug.Log("not an enemy");
 	}
 
 	public virtual void KillSelf(){
