@@ -8,6 +8,7 @@ public class EnemyHealth : BaseHealth
     public int ScoreToAdd = 100;
 
 	[Header("Death Settings")]
+	public GameObject explosion;
 	public AudioClip deathSound;
 	public float deathDelayTime = 0f;
 
