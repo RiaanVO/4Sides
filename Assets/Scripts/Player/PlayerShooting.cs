@@ -7,36 +7,32 @@ public class PlayerShooting : MonoBehaviour
     public Light MuzzleFlash;
 
     private float lastFiredTimestamp;
-	private AudioSource laserSounds;
+    private AudioSource fireSound;
 
-	private bool isShooting = false;
+    public bool IsShooting { get; private set; }
 
     void Start()
-	{
-		laserSounds = GetComponent<AudioSource> ();
+    {
+        fireSound = GetComponent<AudioSource>();
         lastFiredTimestamp = Time.time;
     }
 
     void Update()
     {
-		isShooting = Input.GetButton ("Fire");
-        if (isShooting && Time.time - lastFiredTimestamp >= FireRate)
+        IsShooting = Input.GetButton("Fire");
+        if (IsShooting && Time.time - lastFiredTimestamp >= FireRate)
         {
             Shoot();
             if (MuzzleFlash != null)
             {
-				laserSounds.Play ();
+                fireSound.pitch = Random.Range(0.9f, 1.1f);
+                fireSound.Play();
                 MuzzleFlash.enabled = true;
             }
         }
-        else
+        else if (MuzzleFlash != null)
         {
-			
-
-            if (MuzzleFlash != null)
-            {
-                MuzzleFlash.enabled = false;
-            }
+            MuzzleFlash.enabled = false;
         }
     }
 
@@ -46,9 +42,4 @@ public class PlayerShooting : MonoBehaviour
         bullet.Initialize(transform.position, transform.rotation);
         lastFiredTimestamp = Time.time;
     }
-
-	public bool IsShooting(){
-		return isShooting;
-	}
-
 }

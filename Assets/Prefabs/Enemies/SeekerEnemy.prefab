@@ -566,7 +566,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1339550043203248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6260993, y: -0.5, z: 0.43437108}
+  m_LocalPosition: {x: -0.55264646, y: -0.5, z: 2.6962137}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4126757591214194}
@@ -1174,11 +1174,13 @@ MonoBehaviour:
   flashesPerDuration: 4
   flashMaterial: {fileID: 2100000, guid: c06adb3b8e3324c448f314975dc43e52, type: 2}
   modelRenderer: {fileID: 137536707957369044}
-  showDamageText: 1
+  showDamageText: 0
   DamageText: {fileID: 114331899502091260, guid: d5cfa63e3672447499cf5fbc98657a9a,
     type: 2}
   ScoreToAdd: 100
+  explosion: {fileID: 1224586835255650, guid: 1639ceec317d5a041b2cd7a8df687f38, type: 2}
   deathSound: {fileID: 8300000, guid: c8e1e76464fa44ae4a217e16d74a59c1, type: 3}
+  damageSound: {fileID: 8300000, guid: c8e1e76464fa44ae4a217e16d74a59c1, type: 3}
   deathDelayTime: 0
 --- !u!114 &114743949432006036
 MonoBehaviour:
