@@ -11,7 +11,9 @@ public class GameController : MonoBehaviour
 {
     public static readonly string CHANNEL_SCORE = "GameController.Score";
     public static readonly string CHANNEL_DISPLAY_SCORE = "GameController.DisplayScore";
+    public static readonly string CHANNEL_SECTOR = "GameController.Sector";
 
+    public string Sector = "N-X";
     public EventSource Player;
     public EventSource SpawnManager;
 
@@ -23,11 +25,12 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        GameSession.StartNew();
+        GameSession.StartSector(Sector);
 
         data = GetComponent<DataProvider>();
         data.UpdateChannel(CHANNEL_SCORE, GameSession.Score);
         data.UpdateChannel(CHANNEL_DISPLAY_SCORE, GameSession.DisplayScore);
+        data.UpdateChannel(CHANNEL_SECTOR, Sector);
 
         if (Player != null)
         {
@@ -35,7 +38,7 @@ public class GameController : MonoBehaviour
         }
         if (SpawnManager != null)
         {
-            SpawnManager.Subscribe(EnemySpawnManager.EVENT_ALL_WAVES_CLEARED, GoToTitleScreen);
+            SpawnManager.Subscribe(EnemySpawnManager.EVENT_ALL_WAVES_CLEARED, GoToMapScreen);
         }
 
         audioSource = GetComponent<AudioSource>();
@@ -56,11 +59,28 @@ public class GameController : MonoBehaviour
 
     private void GoToDeathScreen(EventSource source, string eventName)
     {
-        SceneManager.LoadScene("DeathScene");
+        GoToScene("DeathScene");
     }
 
-    private void GoToTitleScreen(EventSource source, string eventName)
+    private void GoToMapScreen(EventSource source, string eventName)
     {
-        SceneManager.LoadScene("TitleScene");
+        if (!string.IsNullOrEmpty(Sector))
+        {
+            GameSession.NotifySectorCompleted(Sector);
+        }
+        GoToScene("MapScene");
+    }
+
+    private void GoToScene(string name)
+    {
+        var transitions = GameObject.FindObjectOfType<TransitionManager>();
+        if (transitions == null)
+        {
+            SceneManager.LoadScene(name);
+        }
+        else
+        {
+            transitions.Navigate(name);
+        }
     }
 }

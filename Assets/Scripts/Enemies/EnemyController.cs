@@ -11,11 +11,20 @@ public class EnemyController : PooledObject
     private EnemyHealth health;
     private PlayerMovement player;
 
+	public float checkDistance = 5f;
+	public float positionCheckDelay = 0.5f;
+	private float checkTimer = 0f;
+
+
     void Update()
     {
         if (player != null)
         {
-            nav.SetDestination(player.transform.position);
+			checkTimer += Time.deltaTime;
+			if(checkTimer > positionCheckDelay || checkDistance > Vector3.Distance(transform.position, player.transform.position)){
+				checkTimer = 0f;
+            	nav.SetDestination(player.transform.position);
+			}
         }
     }
 

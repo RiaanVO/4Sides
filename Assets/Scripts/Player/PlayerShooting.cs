@@ -7,35 +7,41 @@ public class PlayerShooting : MonoBehaviour
     public Light MuzzleFlash;
 
     private float lastFiredTimestamp;
+    private AudioSource fireSound;
+
+	public Transform shootingPoint;
+
+    public bool IsShooting { get; private set; }
 
     void Start()
     {
+        fireSound = GetComponent<AudioSource>();
         lastFiredTimestamp = Time.time;
     }
 
     void Update()
     {
-        if (Input.GetButton("Fire") && Time.time - lastFiredTimestamp >= FireRate)
+        IsShooting = Input.GetButton("Fire");
+        if (IsShooting && Time.time - lastFiredTimestamp >= FireRate)
         {
             Shoot();
             if (MuzzleFlash != null)
             {
+                fireSound.pitch = Random.Range(0.9f, 1.1f);
+                fireSound.Play();
                 MuzzleFlash.enabled = true;
             }
         }
-        else
+        else if (MuzzleFlash != null)
         {
-            if (MuzzleFlash != null)
-            {
-                MuzzleFlash.enabled = false;
-            }
+            MuzzleFlash.enabled = false;
         }
     }
 
     void Shoot()
     {
         var bullet = Bullet.GetPooledInstance<Bullet>();
-        bullet.Initialize(transform.position, transform.rotation);
+        bullet.Initialize(shootingPoint.position, transform.rotation);
         lastFiredTimestamp = Time.time;
     }
 }

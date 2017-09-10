@@ -5,13 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class SceneNavigation : MonoBehaviour
 {
-    public void GoToSceneIndex(int sceneIndex)
+    public void GoToCurrentSector()
     {
-        SceneManager.LoadScene(sceneIndex);
+        GoToScene(GameSession.GetCurrentSectorScene());
+    }
+
+    public void GoToTitleScreen()
+    {
+        GoToScene("TitleScene");
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    private void GoToScene(string name)
+    {
+        var transitions = GameObject.FindObjectOfType<TransitionManager>();
+        if (transitions == null)
+        {
+            SceneManager.LoadScene(name);
+        }
+        else
+        {
+            transitions.Navigate(name);
+        }
     }
 }

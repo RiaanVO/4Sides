@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 114743949432006036}
   - component: {fileID: 114803694750143852}
   - component: {fileID: 82969467586545366}
+  - component: {fileID: 114867252027805952}
   m_Layer: 0
   m_Name: SeekerEnemy
   m_TagString: Enemy
@@ -565,7 +566,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1339550043203248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6260993, y: -0.5, z: 0.43437108}
+  m_LocalPosition: {x: -0.55264646, y: -0.5, z: 2.6962137}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4126757591214194}
@@ -1151,7 +1152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746672e7ed6040748be73e7c3792100c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageToDeal: 20
+  DamageToDeal: 15
   SelfDestructOnContact: 1
   TagsToCollideWith:
   - Player
@@ -1168,8 +1169,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialHealth: 30
   DestroyOnDeath: 1
+  showDamageFlashEffects: 1
+  damageFlashDuration: 0.3
+  flashesPerDuration: 4
+  flashMaterial: {fileID: 2100000, guid: c06adb3b8e3324c448f314975dc43e52, type: 2}
+  modelRenderer: {fileID: 137536707957369044}
+  showDamageText: 1
+  DamageText: {fileID: 114331899502091260, guid: d5cfa63e3672447499cf5fbc98657a9a,
+    type: 2}
   ScoreToAdd: 100
+  explosion: {fileID: 1224586835255650, guid: 1639ceec317d5a041b2cd7a8df687f38, type: 2}
   deathSound: {fileID: 8300000, guid: c8e1e76464fa44ae4a217e16d74a59c1, type: 3}
+  damageSound: {fileID: 8300000, guid: c8e1e76464fa44ae4a217e16d74a59c1, type: 3}
   deathDelayTime: 0
 --- !u!114 &114743949432006036
 MonoBehaviour:
@@ -1182,6 +1193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ee4714c22ded446adaf90cf466d46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkDistance: 5
+  positionCheckDelay: 0.5
 --- !u!114 &114803694750143852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1193,6 +1206,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8d00284829e634299e36d401273373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114867252027805952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1339550043203248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da21d12d6c6541469ac7058488420de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heightOffset: -1
 --- !u!136 &136455421622566402
 CapsuleCollider:
   m_ObjectHideFlags: 1
