@@ -5800,7 +5800,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 278495690}
-  - component: {fileID: 278495691}
   m_Layer: 0
   m_Name: Floor 2
   m_TagString: Untagged
@@ -5826,18 +5825,6 @@ Transform:
   m_Father: {fileID: 1038038964}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &278495691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 278495689}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da21d12d6c6541469ac7058488420de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  heightOffset: -1
 --- !u!1 &279624316
 GameObject:
   m_ObjectHideFlags: 0
@@ -8005,7 +7992,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 398784154}
-  - component: {fileID: 398784155}
   m_Layer: 0
   m_Name: Floor 1
   m_TagString: Untagged
@@ -8031,18 +8017,6 @@ Transform:
   m_Father: {fileID: 1038038964}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &398784155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 398784153}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da21d12d6c6541469ac7058488420de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  heightOffset: -1
 --- !u!1 &399683495
 GameObject:
   m_ObjectHideFlags: 0
@@ -15680,7 +15654,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114697294072006934, guid: b92a33ea6ed8143f4b20494c3eabb27b, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b92a33ea6ed8143f4b20494c3eabb27b, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &698543796 stripped
@@ -19957,7 +19932,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 931119546}
-  - component: {fileID: 931119547}
   m_Layer: 0
   m_Name: Floor 3
   m_TagString: Untagged
@@ -19983,18 +19957,6 @@ Transform:
   m_Father: {fileID: 1038038964}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &931119547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 931119545}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da21d12d6c6541469ac7058488420de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  heightOffset: -1
 --- !u!1001 &934327466
 Prefab:
   m_ObjectHideFlags: 0

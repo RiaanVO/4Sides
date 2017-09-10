@@ -8,28 +8,28 @@ public class BaseHealth : MonoBehaviour
     public static readonly string CHANNEL_INITIAL_HEALTH = "BaseHealth.InitialHealth";
     public static readonly string EVENT_DIED = "BaseHealth.Died";
 
-	private DataProvider data;
-	private EventSource events;
-	private PooledObject poolable;
-	private float currentHealth;
+    private DataProvider data;
+    private EventSource events;
+    private PooledObject poolable;
+    private float currentHealth;
 
-	[Header("Base Health Settings")]
+    [Header("Base Health Settings")]
     public float InitialHealth = 100;
     public bool DestroyOnDeath = true;
 
-	[Header("On Damage Settings")]
-	public bool showDamageFlashEffects = true;
-	public float damageFlashDuration = 0.2f;
-	public int flashesPerDuration = 4;
-	private float flashTimer = 0f;
-	private bool flashActive = false;
+    [Header("On Damage Settings")]
+    public bool showDamageFlashEffects = true;
+    public float damageFlashDuration = 0.2f;
+    public int flashesPerDuration = 4;
+    private float flashTimer = 0f;
+    private bool flashActive = false;
 
-	public Material flashMaterial;
-	private Material baseMaterial;
-	public Renderer modelRenderer;
+    public Material flashMaterial;
+    private Material baseMaterial;
+    public Renderer modelRenderer;
 
-	public bool showDamageText = true;
-	public DamageTextController DamageText;
+    public bool showDamageText = true;
+    public DamageTextController DamageText;
 
     public bool IsDead
     {
@@ -51,57 +51,69 @@ public class BaseHealth : MonoBehaviour
         poolable = GetComponent<PooledObject>();
 
 
-		//Get the materials for the flashing
-		if(modelRenderer != null){
-			baseMaterial = modelRenderer.material;
-		}
-		flashTimer = damageFlashDuration;
+        //Get the materials for the flashing
+        if (modelRenderer != null)
+        {
+            baseMaterial = modelRenderer.material;
+        }
+        flashTimer = damageFlashDuration;
 
-		Initialise ();
+        Initialise();
     }
 
-	public virtual void Initialise(){}
+    public virtual void Initialise() { }
 
-	public void Update(){
-		if (showDamageFlashEffects) {
-			if (flashActive) {
-				bool showBaseMaterial = false;
+    public void Update()
+    {
+        if (showDamageFlashEffects)
+        {
+            if (flashActive)
+            {
+                bool showBaseMaterial = false;
 
-				float t = Mathf.Sin (360 * (flashTimer / damageFlashDuration) * (float)flashesPerDuration);
-				showBaseMaterial = t > 0;
+                float t = Mathf.Sin(360 * (flashTimer / damageFlashDuration) * (float)flashesPerDuration);
+                showBaseMaterial = t > 0;
 
-				if (showBaseMaterial) {
-					SetRenderMaterial (baseMaterial);
-				} else {
-					SetRenderMaterial (flashMaterial);
-				}
+                if (showBaseMaterial)
+                {
+                    SetRenderMaterial(baseMaterial);
+                }
+                else
+                {
+                    SetRenderMaterial(flashMaterial);
+                }
 
-				flashTimer += Time.deltaTime;
-				if (flashTimer > damageFlashDuration) {
-					flashActive = false;
+                flashTimer += Time.deltaTime;
+                if (flashTimer > damageFlashDuration)
+                {
+                    flashActive = false;
 
-					SetRenderMaterial (baseMaterial);
-				}
-			}
-		}
-		
-	}
+                    SetRenderMaterial(baseMaterial);
+                }
+            }
+        }
 
-	private void SetRenderMaterial(Material material){
-		if(modelRenderer != null && material != null){
-			modelRenderer.material = material;
-		}
-	}
+    }
 
-	private void ShowDamageEffects (int damageAmount){
-		flashActive = true;
-		flashTimer = 0f;
+    private void SetRenderMaterial(Material material)
+    {
+        if (modelRenderer != null && material != null)
+        {
+            modelRenderer.material = material;
+        }
+    }
 
-		if (showDamageText) {
-			DamageTextController.CreateDamageText (damageAmount, gameObject.transform, DamageText);
-		}
+    private void ShowDamageEffects(int damageAmount)
+    {
+        flashActive = true;
+        flashTimer = 0f;
 
-	}
+        if (showDamageText)
+        {
+            DamageTextController.CreateDamageText(damageAmount, gameObject.transform, DamageText);
+        }
+
+    }
 
     public void ResetHealth()
     {
@@ -112,9 +124,9 @@ public class BaseHealth : MonoBehaviour
             data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);
         }
 
-		flashActive = false;
-		flashTimer = damageFlashDuration;
-		SetRenderMaterial (baseMaterial);
+        flashActive = false;
+        flashTimer = damageFlashDuration;
+        SetRenderMaterial(baseMaterial);
     }
 
     public void TakeDamage(int amount)
@@ -123,8 +135,8 @@ public class BaseHealth : MonoBehaviour
         {
             currentHealth -= amount;
 
-			ShowDamageEffects (amount);
-			DamageSound();
+            ShowDamageEffects(amount);
+            DamageSound();
 
 
             if (data != null)
@@ -139,49 +151,53 @@ public class BaseHealth : MonoBehaviour
         }
     }
 
-	public void Heal(int amount){
-		if (!IsDead)
-		{
-			currentHealth += amount;
-			if (currentHealth > InitialHealth) {
-				currentHealth = InitialHealth;
-			}
+    public void Heal(int amount)
+    {
+        if (!IsDead)
+        {
+            currentHealth += amount;
+            if (currentHealth > InitialHealth)
+            {
+                currentHealth = InitialHealth;
+            }
 
-			if (data != null)
-			{
-				data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);
-			}
-		}
-	}
+            if (data != null)
+            {
+                data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);
+            }
+        }
+    }
 
-	public virtual void DamageSound(){
-		Debug.Log("not an enemy");
-	}
+    public virtual void DamageSound()
+    {
+    }
 
-	public virtual void KillSelf(){
-		KillGameobject ();
-	}
+    public virtual void KillSelf()
+    {
+        KillGameobject();
+    }
 
     public virtual void Die()
     {
-		KillGameobject ();
+        KillGameobject();
     }
 
-	public void KillGameobject(){
-		if (events != null)
-		{
-			events.Notify(EVENT_DIED);
-		}
-		if (DestroyOnDeath)
-		{
-			if (poolable == null)
-			{
-				Destroy(gameObject);
-			}
-			else
-			{
-				poolable.ReturnToPool();
-			}
-		}
-	}
+    public void KillGameobject()
+    {
+        if (events != null)
+        {
+            events.Notify(EVENT_DIED);
+        }
+        if (DestroyOnDeath)
+        {
+            if (poolable == null)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                poolable.ReturnToPool();
+            }
+        }
+    }
 }

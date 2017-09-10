@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloorController : MonoBehaviour {
+public class FloorController : MonoBehaviour
+{
+    /*
 	Transform[] children;
 	Transform player;
 
@@ -40,4 +42,5 @@ public class FloorController : MonoBehaviour {
 			//child.gameObject (active);
 		}
 	}
+	*/
 }
