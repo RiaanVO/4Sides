@@ -27,7 +27,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 9
   m_IsActive: 1
 --- !u!1 &1978798541902954
 GameObject:
@@ -44,7 +44,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 9
   m_IsActive: 1
 --- !u!4 &4397966201196146
 Transform:
@@ -52,9 +52,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1672955794051372}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.47, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 17.5, y: 0, z: 4}
+  m_LocalScale: {x: 2.000001, y: 1, z: 2.000001}
   m_Children:
   - {fileID: 4865844505921806}
   m_Father: {fileID: 0}
@@ -87,6 +87,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 078687099e6584fabb3ba8586b8cd948, type: 2}
+  - {fileID: 2100000, guid: 52ecda9aa34ab4aec9203a88f835a3b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -217,6 +218,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagsToDamage:
   - Player
-  damageToDeal: 5
+  damageToDeal: 1
   damageTickRate: 0.5
   damageSFX: {fileID: 8300000, guid: eabace70bdf644c55810195fc37d0666, type: 3}
