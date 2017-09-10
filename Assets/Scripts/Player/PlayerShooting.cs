@@ -9,6 +9,8 @@ public class PlayerShooting : MonoBehaviour
     private float lastFiredTimestamp;
     private AudioSource fireSound;
 
+	public Transform shootingPoint;
+
     public bool IsShooting { get; private set; }
 
     void Start()
@@ -39,7 +41,7 @@ public class PlayerShooting : MonoBehaviour
     void Shoot()
     {
         var bullet = Bullet.GetPooledInstance<Bullet>();
-        bullet.Initialize(transform.position, transform.rotation);
+        bullet.Initialize(shootingPoint.position, transform.rotation);
         lastFiredTimestamp = Time.time;
     }
 }
