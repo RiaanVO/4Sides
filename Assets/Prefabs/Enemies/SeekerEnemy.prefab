@@ -1174,7 +1174,7 @@ MonoBehaviour:
   flashesPerDuration: 4
   flashMaterial: {fileID: 2100000, guid: c06adb3b8e3324c448f314975dc43e52, type: 2}
   modelRenderer: {fileID: 137536707957369044}
-  showDamageText: 0
+  showDamageText: 1
   DamageText: {fileID: 114331899502091260, guid: d5cfa63e3672447499cf5fbc98657a9a,
     type: 2}
   ScoreToAdd: 100
@@ -1193,6 +1193,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ee4714c22ded446adaf90cf466d46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkDistance: 5
+  positionCheckDelay: 0.5
 --- !u!114 &114803694750143852
 MonoBehaviour:
   m_ObjectHideFlags: 1

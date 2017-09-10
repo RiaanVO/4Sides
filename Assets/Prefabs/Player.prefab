@@ -542,6 +542,6 @@ MonoBehaviour:
   flashesPerDuration: 4
   flashMaterial: {fileID: 2100000, guid: c06adb3b8e3324c448f314975dc43e52, type: 2}
   modelRenderer: {fileID: 23441900189738718}
-  showDamageText: 0
+  showDamageText: 1
   DamageText: {fileID: 114331899502091260, guid: d5cfa63e3672447499cf5fbc98657a9a,
     type: 2}
