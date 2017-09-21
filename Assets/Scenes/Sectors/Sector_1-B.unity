@@ -6576,16 +6576,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DropPod: {fileID: 114139007518389444, guid: dddcbddaccdd10345b93bdaf56cd4123, type: 2}
   Waves:
-  - DropPodCount: 6
+  - DropPodCount: 5
     EnemiesPerDropPod: 1
-  - DropPodCount: 6
-    EnemiesPerDropPod: 2
   - DropPodCount: 7
-    EnemiesPerDropPod: 2
-  - DropPodCount: 8
-    EnemiesPerDropPod: 3
+    EnemiesPerDropPod: 1
   - DropPodCount: 9
-    EnemiesPerDropPod: 3
+    EnemiesPerDropPod: 1
+  - DropPodCount: 12
+    EnemiesPerDropPod: 1
+  - DropPodCount: 15
+    EnemiesPerDropPod: 1
   healthPickupSpawner: {fileID: 218274698}
 --- !u!82 &720385625
 AudioSource:
@@ -14718,7 +14718,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da21d12d6c6541469ac7058488420de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heightOffset: -1
 --- !u!1 &1392743810
 GameObject:
   m_ObjectHideFlags: 0
@@ -15295,7 +15294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da21d12d6c6541469ac7058488420de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heightOffset: -1
 --- !u!1 &1427958753
 GameObject:
   m_ObjectHideFlags: 0
