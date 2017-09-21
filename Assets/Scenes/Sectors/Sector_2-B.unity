@@ -1946,6 +1946,7 @@ GameObject:
   m_Component:
   - component: {fileID: 218274699}
   - component: {fileID: 218274698}
+  - component: {fileID: 218274700}
   m_Layer: 0
   m_Name: Pickup Manager
   m_TagString: Untagged
@@ -1959,7 +1960,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 218274697}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80866380885e24db9b2a5bc0cd345a5a, type: 3}
   m_Name: 
@@ -1975,9 +1976,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 698543796}
+  - {fileID: 829934236}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &218274700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 218274697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40e11725bb7b4d49baaf62b10696aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &222344989
 GameObject:
   m_ObjectHideFlags: 0
@@ -2714,6 +2727,52 @@ Transform:
   m_Father: {fileID: 1391707684}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &288228384
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 218274699}
+    m_Modifications:
+    - target: {fileID: 4725732363219876, guid: 1b1ea9ab5d8be844da0e89d2189c0c22, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -15.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725732363219876, guid: 1b1ea9ab5d8be844da0e89d2189c0c22, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725732363219876, guid: 1b1ea9ab5d8be844da0e89d2189c0c22, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -6.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725732363219876, guid: 1b1ea9ab5d8be844da0e89d2189c0c22, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725732363219876, guid: 1b1ea9ab5d8be844da0e89d2189c0c22, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725732363219876, guid: 1b1ea9ab5d8be844da0e89d2189c0c22, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725732363219876, guid: 1b1ea9ab5d8be844da0e89d2189c0c22, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725732363219876, guid: 1b1ea9ab5d8be844da0e89d2189c0c22, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1629624955506414, guid: 1b1ea9ab5d8be844da0e89d2189c0c22, type: 2}
+      propertyPath: m_Name
+      value: Rapid Fire
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 1b1ea9ab5d8be844da0e89d2189c0c22, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &307257792
 GameObject:
   m_ObjectHideFlags: 0
@@ -6586,7 +6645,7 @@ MonoBehaviour:
     EnemiesPerDropPod: 1
   - DropPodCount: 15
     EnemiesPerDropPod: 1
-  healthPickupSpawner: {fileID: 218274698}
+  pickupSpawner: {fileID: 218274700}
 --- !u!82 &720385625
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8455,6 +8514,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 829079949}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &829934236 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4725732363219876, guid: 1b1ea9ab5d8be844da0e89d2189c0c22,
+    type: 2}
+  m_PrefabInternal: {fileID: 288228384}
 --- !u!1 &850373596
 GameObject:
   m_ObjectHideFlags: 0

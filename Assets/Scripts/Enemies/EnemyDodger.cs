@@ -84,6 +84,8 @@ public class EnemyDodger : MonoBehaviour {
 			parentRigidBody.transform.position = Vector3.Lerp (transform.position, TeleportToPosition, lerpTime);
 		}
 
+
+
 		yield return new WaitForSeconds (InvisibleTime);
 		foreach (Renderer rend in AllDroneRenderer) {
 			rend.enabled = true;

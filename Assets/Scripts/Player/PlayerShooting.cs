@@ -3,7 +3,7 @@
 public class PlayerShooting : MonoBehaviour
 {
     public Bullet Bullet;
-    public float FireRate = 1.0f;
+    public float FireRate = 0.001f;
     public Light MuzzleFlash;
 
     private float lastFiredTimestamp;

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthPickup : MonoBehaviour {
+public class RapidFirePickupScript : MonoBehaviour {
 
 	private const string PLAYER_TAG = "Player";
-	public int healthAmount = 50;
+	public float RapidFireRate = 0.001f;
+	public int RapidFireRateDuration = 10;
 
-	public AudioClip healthSpawnSFX;
-	public AudioClip healthCollectedSFX;
+	public AudioClip RapidFireSpawnSFX;
+	public AudioClip RapidFireCollectedSFX;
 
 	private AudioSource audioSource;
 	public GameObject model;
@@ -24,7 +25,8 @@ public class HealthPickup : MonoBehaviour {
 
 
 
-	public void SpawnHealthPickup(Vector3 newPosition){
+
+	public void SpawnRapidFirePickup(Vector3 newPosition){
 		if (pickupAnimation == null) {
 			pickupAnimation = GetComponent<PickupAnimation> ();
 		}
@@ -32,8 +34,8 @@ public class HealthPickup : MonoBehaviour {
 		pickupAnimation.SetBouncePositions (newPosition);
 		transform.position = new Vector3(newPosition.x, newPosition.y, newPosition.z);
 
-		if (audioSource != null && healthSpawnSFX != null) {
-			audioSource.PlayOneShot (healthSpawnSFX);
+		if (audioSource != null && RapidFireSpawnSFX != null) {
+			audioSource.PlayOneShot (RapidFireSpawnSFX);
 		}
 		SetVisability(true);
 		isCollected = false;
@@ -41,17 +43,18 @@ public class HealthPickup : MonoBehaviour {
 
 	public void OnTriggerEnter(Collider other){
 		if (other.gameObject.CompareTag (PLAYER_TAG) && !isCollected) {
-			BaseHealth playerHealth = other.gameObject.GetComponentInParent<BaseHealth> ();
-
-			if (playerHealth != null) {
-				playerHealth.Heal (healthAmount);
+			PlayerShooting playerShooting = other.gameObject.GetComponentInParent<PlayerShooting>();
+			if (playerShooting != null) {
+				playerShooting.FireRate = RapidFireRate;
 				isCollected = true;
 
-				if (audioSource != null && healthCollectedSFX != null) {
-					audioSource.PlayOneShot (healthCollectedSFX);
+				if (audioSource != null && RapidFireCollectedSFX != null) {
+					audioSource.PlayOneShot (RapidFireCollectedSFX);
 				}
 
 				SetVisability (false);
+
+				StartCoroutine (RapidFireDurationDelay());
 			}
 		}
 	}
@@ -64,4 +67,13 @@ public class HealthPickup : MonoBehaviour {
 	public bool IsCollected(){
 		return isCollected;
 	}
+
+
+	public IEnumerator RapidFireDurationDelay() {
+		PlayerShooting playerShooting = GameObject.FindGameObjectWithTag (PLAYER_TAG).GetComponentInParent<PlayerShooting> ();
+
+	yield return new WaitForSeconds (RapidFireRateDuration);
+		playerShooting.FireRate = 0.07f;
+	}
+
 }
