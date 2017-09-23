@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
-    public MapMarker Marker;
-
     void Start()
     {
         var nodes = (from node in GetComponentsInChildren<LevelNode>()
@@ -31,7 +29,6 @@ public class MapController : MonoBehaviour
             if (nodes.TryGetValue(GameSession.LastCompletedSector, out node))
             {
                 node.Complete(true);
-                Marker.SetNode(node);
             }
         }
     }
