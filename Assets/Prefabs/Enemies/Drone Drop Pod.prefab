@@ -182,10 +182,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4006139077147902}
   - component: {fileID: 95282123119695920}
-  - component: {fileID: 114139007518389444}
   - component: {fileID: 54447207695823682}
+  - component: {fileID: 114395598037238430}
   m_Layer: 0
-  m_Name: Drop Pod
+  m_Name: Drone Drop Pod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,7 +262,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1695107515686012}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 15.4, y: 0, z: -2.3}
   m_LocalScale: {x: 1.1, y: 1, z: 1.1}
   m_Children:
   - {fileID: 4903004528907542}
@@ -605,7 +605,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 6ceabc851175e624aae363cd4156ae56, type: 2}
+  - {fileID: 2100000, guid: c2f3c693b15e51e48b8af53a787ad805, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -778,7 +778,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.87348616, g: 0.33823526, b: 1, a: 1}
   m_Intensity: 3
   m_Range: 4
   m_SpotAngle: 30
@@ -819,7 +819,7 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114139007518389444
+--- !u!114 &114395598037238430
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -827,12 +827,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1695107515686012}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01de8a64490df944faae9d4950ae6291, type: 3}
+  m_Script: {fileID: 11500000, guid: 96572dd1407ce9949bf0c7a5a51350e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MinDropHeight: 25
   MaxDropHeight: 250
-  Enemy: {fileID: 114743949432006036, guid: b02ae3c0d91463248b484f4d5715dbef, type: 2}
+  Enemy: {fileID: 114308998648990500, guid: 8771c4f06136a5442bfe3c1f7b072bf6, type: 2}
   TimeBetweenSpawns: 0.3
   SpawnedSound: {fileID: 8300000, guid: fc4495cb03902c74ba116c65a5276902, type: 3}
   LandedSound: {fileID: 8300000, guid: 7607b415657f95841817470238eb5496, type: 3}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyDodger : MonoBehaviour {
 
-
+	private AudioSource TeleportSounds;
 	public float TeleportDistance = 5f;
 	public float TeleportCooldown = 3f;
 	public float InvisibleTime = 0.8f;
@@ -27,6 +27,7 @@ public class EnemyDodger : MonoBehaviour {
 		parentCollider = transform.parent.GetComponent<Collider> ();
 		barrierCollider = transform.GetComponent<Collider> ();
 		AllDroneRenderer = transform.parent.GetComponentsInChildren<MeshRenderer> ();
+		TeleportSounds = GetComponent<AudioSource> ();
 
 		foreach (Renderer rend in AllDroneRenderer) {
 			rend.enabled = true;
@@ -47,6 +48,7 @@ public class EnemyDodger : MonoBehaviour {
 	{
 
 		if (other.gameObject.CompareTag ("Bullet") && (TimeSinceLastHit <= 0)) {
+			TeleportSounds.Play ();
 			StartCoroutine (PlayTeleportEffect ());
 			TimeSinceLastHit = TeleportCooldown;
 
@@ -90,6 +92,7 @@ public class EnemyDodger : MonoBehaviour {
 		foreach (Renderer rend in AllDroneRenderer) {
 			rend.enabled = true;
 		}
+		TeleportSounds.Stop ();
 		yield return new WaitForSeconds (MaterializationTIme);
 		parentCollider.enabled = true;
 		barrierCollider.enabled = true;

@@ -8,9 +8,11 @@ public class RapidFirePickupScript : MonoBehaviour {
 	public float RapidFireRate = 0.001f;
 	public int RapidFireRateDuration = 10;
 
+
 	public AudioClip RapidFireSpawnSFX;
 	public AudioClip RapidFireCollectedSFX;
 
+	private Renderer bulletMaterial;
 	private AudioSource audioSource;
 	public GameObject model;
 	public GameObject pickupLight;
@@ -46,6 +48,7 @@ public class RapidFirePickupScript : MonoBehaviour {
 			PlayerShooting playerShooting = other.gameObject.GetComponentInParent<PlayerShooting>();
 			if (playerShooting != null) {
 				playerShooting.FireRate = RapidFireRate;
+
 				isCollected = true;
 
 				if (audioSource != null && RapidFireCollectedSFX != null) {

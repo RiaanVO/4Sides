@@ -384,6 +384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bfb5e5164f3e14f9529f7e6fd75355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1869211116967458, guid: 16f1f8dc9c3a5aa4a867e6171b543c34,
+    type: 2}
   RapidFireRate: 0.001
   RapidFireRateDuration: 10
   RapidFireSpawnSFX: {fileID: 8300000, guid: cd650184825209347a0f5563f5d89af5, type: 3}

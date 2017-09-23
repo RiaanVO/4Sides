@@ -7,7 +7,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(DataProvider)), RequireComponent(typeof(EventSource))]
-public class EnemySpawnManager : MonoBehaviour
+public class DroneSpawnManager : MonoBehaviour
 {
     public static readonly string CHANNEL_WAVE = "EnemySpawnManager.Wave";
     public static readonly string CHANNEL_DISPLAY_WAVE = "EnemySpawnManager.DisplayWave";
@@ -20,12 +20,12 @@ public class EnemySpawnManager : MonoBehaviour
         public int EnemiesPerDropPod = 3;
     }
 
-    public DropPodController DropPod;
+    public DroneDropPodController DropPod;
     public List<Wave> Waves;
 
 	[Header("Death Settings")]
-	public HealthPickupSpawnManager healthPickupSpawner;
-	//public PickupSpawnManager pickupSpawner;
+	//public HealthPickupSpawnManager healthPickupSpawner;
+	public PickupSpawnManager pickupSpawner;
     private DataProvider data;
     private EventSource events;
     private AudioSource waveCleared;
@@ -83,7 +83,7 @@ public class EnemySpawnManager : MonoBehaviour
         dropPodsRemaining = dropPodCount;
         foreach (var position in spawnLocations)
         {
-            var dropPod = DropPod.GetPooledInstance<DropPodController>();
+            var dropPod = DropPod.GetPooledInstance<DroneDropPodController>();
             dropPod.Initialize(position, currentWave.EnemiesPerDropPod, OnDropPodDepleted);
         }
 
@@ -96,8 +96,8 @@ public class EnemySpawnManager : MonoBehaviour
         data.UpdateChannel(CHANNEL_DISPLAY_WAVE, wave.ToString());
 
 		//Spawn the health pickup for this wave
-		healthPickupSpawner.SpawnHealthPickup ();
-		//pickupSpawner.SpawnPickup ();
+		//healthPickupSpawner.SpawnHealthPickup ();
+		pickupSpawner.SpawnPickup ();
     }
 
     private void OnDropPodDepleted()
@@ -109,7 +109,7 @@ public class EnemySpawnManager : MonoBehaviour
         }
     }
 
-    public void RegisterEnemy(EnemyController enemy)
+    public void RegisterEnemy(DroneEnemyController enemy)
     {
         enemiesActive++;
 
