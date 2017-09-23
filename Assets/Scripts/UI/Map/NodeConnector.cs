@@ -16,6 +16,7 @@ public class NodeConnector : MonoBehaviour
 
     private Animator animator;
     private ConnectorState state = ConnectorState.Locked;
+    private string sourceLevel;
 
     void Awake()
     {
@@ -23,9 +24,22 @@ public class NodeConnector : MonoBehaviour
         animator.SetInteger("State", (int)state);
     }
 
-    public void Unlock(bool justUnlocked)
+    public void Unlock(bool justUnlocked, string sourceLevel)
     {
-        state = justUnlocked ? ConnectorState.JustUnlocked : ConnectorState.PreviouslyUnlocked;
+        this.sourceLevel = sourceLevel;
+
+        if (justUnlocked)
+        {
+            state = ConnectorState.JustUnlocked;
+        }
+        else
+        {
+            state = ConnectorState.PreviouslyUnlocked;
+            if (DestinationNode != null)
+            {
+                DestinationNode.Unlock(sourceLevel);
+            }
+        }
         animator.SetInteger("State", (int)state);
     }
 
@@ -33,7 +47,7 @@ public class NodeConnector : MonoBehaviour
     {
         if (DestinationNode != null)
         {
-            DestinationNode.Unlock();
+            DestinationNode.Unlock(sourceLevel);
         }
     }
 }

@@ -8892,7 +8892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f476be2f5fed24eb64aa4d60d105bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sector: 1-A
+  Sector: 3-BC
   Player: {fileID: 1162740252}
   SpawnManager: {fileID: 720385623}
   scoreAddSFX: {fileID: 8300000, guid: d8b6dcd9da85e4293ad24602bc01590d, type: 3}

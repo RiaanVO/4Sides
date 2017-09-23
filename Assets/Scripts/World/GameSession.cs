@@ -5,11 +5,22 @@ using UnityEngine;
 
 public static class GameSession
 {
-    private static readonly Dictionary<string, string[]> SECTOR_SEQUENCE =
+    public static readonly Dictionary<string, string[]> SECTOR_DEPENDENCIES =
         new Dictionary<string, string[]>
     {
-        {"1-A", new [] { "1-B" } },
-        {"1-B", new [] { "1-C" } }
+        {"1", new string[0] },
+
+        {"2-A", new [] { "1" } },
+        {"2-B", new [] { "1" } },
+        {"2-C", new [] { "1" } },
+        {"2-D", new [] { "1" } },
+
+        {"3-AB", new [] { "2-A", "2-B" } },
+        {"3-BC", new [] { "2-B", "2-C" } },
+        {"3-CD", new [] { "2-C", "2-D" } },
+        {"3-AD", new [] { "2-A", "2-D" } },
+
+        {"4", new [] { "3-AB", "3-BC", "3-CD", "3-AD" } }
     };
 
     public static int Score { get; set; }
@@ -41,11 +52,22 @@ public static class GameSession
         }
         LastCompletedSector = id;
 
-        string[] nextSectors;
-        if (SECTOR_SEQUENCE.TryGetValue(id, out nextSectors) &&
-            nextSectors.Length > 0)
+        List<string> unlockedSectors = new List<string>();
+        foreach (var sector in SECTOR_DEPENDENCIES)
         {
-            currentSector = nextSectors[0];
+            if (sector.Key == id) continue;
+            if (CompletedSectors.Contains(sector.Key)) continue;
+
+            if (sector.Value.All(dependency => id == dependency ||
+                CompletedSectors.Contains(dependency)))
+            {
+                unlockedSectors.Add(sector.Key);
+            }
+        }
+
+        if (unlockedSectors.Count > 0)
+        {
+            currentSector = unlockedSectors[0];
         }
     }
 
@@ -53,7 +75,7 @@ public static class GameSession
     {
         if (string.IsNullOrEmpty(currentSector))
         {
-            currentSector = SECTOR_SEQUENCE.ElementAt(0).Key;
+            currentSector = SECTOR_DEPENDENCIES.ElementAt(0).Key;
         }
         return "Sector_" + currentSector;
     }

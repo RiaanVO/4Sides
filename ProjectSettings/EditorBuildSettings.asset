@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MapScene.unity
     guid: 2358f32150e62f644acc0bdfc6393b76
   - enabled: 1
-    path: Assets/Scenes/Sectors/Sector_1-A.unity
+    path: Assets/Scenes/Sectors/Sector_1.unity
     guid: 85411757a791c4c7f9ab9561f858944d
   - enabled: 1
     path: Assets/Scenes/Sectors/Sector_1-B.unity
@@ -23,3 +23,30 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sectors/Sector_1-C.unity
     guid: 4725f9a85d8fbdc4d80524197c7d9e3c
+  - enabled: 1
+    path: Assets/Scenes/Sectors/Sector_2-A.unity
+    guid: 107321908320d024ab794add3121fecd
+  - enabled: 1
+    path: Assets/Scenes/Sectors/Sector_2-B.unity
+    guid: cbee5bd0d450e694c95a2260e4f494b5
+  - enabled: 1
+    path: Assets/Scenes/Sectors/Sector_2-C.unity
+    guid: 848d048cae4a8644aa40da2dcbe6bdd7
+  - enabled: 1
+    path: Assets/Scenes/Sectors/Sector_2-D.unity
+    guid: 781a704eadd0acf42a834066bc91dbe9
+  - enabled: 1
+    path: Assets/Scenes/Sectors/Sector_3-AB.unity
+    guid: f1a0bdbb424b27f48aad6ac0cdbb51ae
+  - enabled: 1
+    path: Assets/Scenes/Sectors/Sector_3-AD.unity
+    guid: 7a5fb9240bde5d74c803a0bc87fdb695
+  - enabled: 1
+    path: Assets/Scenes/Sectors/Sector_3-BC.unity
+    guid: f91fc21643f5bab4085cf0a5e048d97f
+  - enabled: 1
+    path: Assets/Scenes/Sectors/Sector_3-CD.unity
+    guid: 617cbcd3743063244a7094b5f8ee3245
+  - enabled: 1
+    path: Assets/Scenes/Sectors/Sector_4.unity
+    guid: 73726c20f7c6cfb48ab6ef46c97e8c68

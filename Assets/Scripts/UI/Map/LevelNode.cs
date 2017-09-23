@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +21,15 @@ public class LevelNode : MonoBehaviour
 
     private Animator animator;
     private LevelState state = LevelState.Locked;
+    private List<string> remainingDependencies;
+
+    void OnValidate()
+    {
+        if (NodeText != null)
+        {
+            NodeText.text = Name;
+        }
+    }
 
     void Awake()
     {
@@ -30,6 +40,16 @@ public class LevelNode : MonoBehaviour
 
         animator = GetComponent<Animator>();
         animator.SetInteger("State", (int)state);
+
+        string[] dependencies;
+        if (GameSession.SECTOR_DEPENDENCIES.TryGetValue(Name, out dependencies))
+        {
+            remainingDependencies = dependencies.ToList();
+        }
+        else
+        {
+            remainingDependencies.Clear();
+        }
     }
 
     public void Complete(bool justCompleted)
@@ -43,7 +63,7 @@ public class LevelNode : MonoBehaviour
             state = LevelState.PreviouslyCompleted;
             foreach (var connector in OutgoingConnectors)
             {
-                connector.Unlock(false);
+                connector.Unlock(false, Name);
             }
         }
         animator.SetInteger("State", (int)state);
@@ -53,12 +73,15 @@ public class LevelNode : MonoBehaviour
     {
         foreach (var connector in OutgoingConnectors)
         {
-            connector.Unlock(true);
+            connector.Unlock(true, Name);
         }
     }
 
-    public void Unlock()
+    public void Unlock(string sourceLevel)
     {
+        remainingDependencies.Remove(sourceLevel);
+        if (remainingDependencies.Count > 0) return;
+
         state = LevelState.Unlocked;
         animator.SetInteger("State", (int)state);
     }

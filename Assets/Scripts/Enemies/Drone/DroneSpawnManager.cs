@@ -23,9 +23,9 @@ public class DroneSpawnManager : MonoBehaviour
     public DroneDropPodController DropPod;
     public List<Wave> Waves;
 
-	[Header("Death Settings")]
-	//public HealthPickupSpawnManager healthPickupSpawner;
-	public PickupSpawnManager pickupSpawner;
+    [Header("Death Settings")]
+    //public HealthPickupSpawnManager healthPickupSpawner;
+    public PickupSpawnManager pickupSpawner;
     private DataProvider data;
     private EventSource events;
     private AudioSource waveCleared;
@@ -95,9 +95,9 @@ public class DroneSpawnManager : MonoBehaviour
         data.UpdateChannel(CHANNEL_WAVE, wave);
         data.UpdateChannel(CHANNEL_DISPLAY_WAVE, wave.ToString());
 
-		//Spawn the health pickup for this wave
-		//healthPickupSpawner.SpawnHealthPickup ();
-		pickupSpawner.SpawnPickup ();
+        //Spawn the health pickup for this wave
+        //healthPickupSpawner.SpawnHealthPickup ();
+        pickupSpawner.SpawnPickup();
     }
 
     private void OnDropPodDepleted()
