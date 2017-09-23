@@ -21,6 +21,14 @@ public class LevelNode : MonoBehaviour
     private Animator animator;
     private LevelState state = LevelState.Locked;
 
+    void OnValidate()
+    {
+        if (NodeText != null)
+        {
+            NodeText.text = Name;
+        }
+    }
+
     void Awake()
     {
         if (NodeText != null)
