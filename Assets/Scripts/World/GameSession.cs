@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class GameSession
 {
-    private static readonly Dictionary<string, string[]> SECTOR_DEPENDENCIES =
+    public static readonly Dictionary<string, string[]> SECTOR_DEPENDENCIES =
         new Dictionary<string, string[]>
     {
         {"1", new string[0] },
