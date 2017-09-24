@@ -44,6 +44,23 @@ public class GameController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown("escape"))
+        {
+            if (Time.timeScale != 0)
+            {
+                PauseGame();
+            }
+        }
+    }
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0;
+        SceneManager.LoadScene("PauseScene", LoadSceneMode.Additive);
+    }
+
     public void AwardPoints(int points)
     {
         GameSession.Score += points;
