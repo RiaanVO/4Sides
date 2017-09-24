@@ -569,8 +569,9 @@ MonoBehaviour:
   InitialHealth: 100
   DestroyOnDeath: 0
   showDamageFlashEffects: 1
-  damageFlashDuration: 0.3
-  flashesPerDuration: 4
+  damageFlashDuration: 1
+  flashesPerDuration: 10
+  invincibleTime: 1
   flashMaterial: {fileID: 2100000, guid: c06adb3b8e3324c448f314975dc43e52, type: 2}
   modelRenderer: {fileID: 23441900189738718}
   showDamageText: 1
