@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour {
 
     private MusicPlayer _musicPlayer;
-    private SceneNavigation _sceneNavigation;
+    private GameController _gameController; 
 
     private GameObject _resumeButton,
                        _exitButton;
@@ -19,7 +19,7 @@ public class PauseMenu : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         _musicPlayer = MusicPlayer.Instance;
-        _sceneNavigation = gameObject.AddComponent<SceneNavigation>();
+        _gameController = FindObjectOfType<GameController>();
         _resumeButton = gameObject.transform.Find("ResumeButton").gameObject;
         _exitButton = gameObject.transform.Find("ExitButton").gameObject;
     }
@@ -31,13 +31,12 @@ public class PauseMenu : MonoBehaviour {
 
     public void ResumeGame()
     {
-        SceneManager.UnloadSceneAsync("PauseScene");
-        Time.timeScale = 1;
+        _gameController.ResumeGame();
     }
 
     public void ExitGame()
     {
-        _sceneNavigation.GoToTitleScreen();
+        _gameController.ExitGame();
     }
 
     public void PlayMouseOverSound()

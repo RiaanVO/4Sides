@@ -23,6 +23,8 @@ public class GameController : MonoBehaviour
 
     private DataProvider data;
 
+    private bool _paused;
+
     void Start()
     {
         GameSession.StartSector(Sector);
@@ -42,23 +44,40 @@ public class GameController : MonoBehaviour
         }
 
         audioSource = GetComponent<AudioSource>();
+
+        _paused = false;
     }
 
     void Update()
     {
         if (Input.GetKeyDown("escape"))
         {
-            if (Time.timeScale != 0)
+            if (!_paused)
             {
                 PauseGame();
             }
         }
     }
 
-    private void PauseGame()
+    public void PauseGame()
     {
         Time.timeScale = 0;
+        _paused = true;
         SceneManager.LoadScene("PauseScene", LoadSceneMode.Additive);
+    }
+
+    public void ResumeGame()
+    {
+        StartCoroutine(ClosePauseMenu());
+        Time.timeScale = 1;
+        _paused = false;
+    }
+
+    public void ExitGame()
+    {
+        StartCoroutine(ClosePauseMenu());
+        GoToScene("TitleScene");
+        Time.timeScale = 1;
     }
 
     public void AwardPoints(int points)
@@ -99,5 +118,11 @@ public class GameController : MonoBehaviour
         {
             transitions.Navigate(name);
         }
+    }
+
+    IEnumerator ClosePauseMenu()
+    {
+        SceneManager.UnloadSceneAsync("PauseScene");
+        yield return null;
     }
 }
