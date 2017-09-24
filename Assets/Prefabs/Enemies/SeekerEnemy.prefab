@@ -1167,11 +1167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37aba5fcbb5a4fdd8f998b70a11f509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 30
+  InitialHealth: 28
   DestroyOnDeath: 1
   showDamageFlashEffects: 1
   damageFlashDuration: 0.3
   flashesPerDuration: 4
+  invincibleTime: 0.5
   flashMaterial: {fileID: 2100000, guid: c06adb3b8e3324c448f314975dc43e52, type: 2}
   modelRenderer: {fileID: 137536707957369044}
   showDamageText: 1
@@ -1195,6 +1196,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkDistance: 5
   positionCheckDelay: 0.5
+  playerDetectionRadius: 12
+  playerDetectedSFX: {fileID: 8300000, guid: 4ab1bea0626854e288b0750d60606e5e, type: 3}
 --- !u!114 &114803694750143852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1217,7 +1220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da21d12d6c6541469ac7058488420de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heightOffset: -1
 --- !u!136 &136455421622566402
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1230,7 +1232,7 @@ CapsuleCollider:
   m_Radius: 0.4
   m_Height: 1
   m_Direction: 2
-  m_Center: {x: 0, y: 0.2, z: -0.2}
+  m_Center: {x: 0, y: 0.3, z: -0.2}
 --- !u!137 &137536707957369044
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
