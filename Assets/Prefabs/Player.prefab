@@ -566,6 +566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce8a49038bb2441e81a548ab353ac74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InvincibleWhenDamaged: 1
   InitialHealth: 100
   DestroyOnDeath: 0
   showDamageFlashEffects: 1

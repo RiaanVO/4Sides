@@ -13,6 +13,7 @@ public class BaseHealth : MonoBehaviour
     private PooledObject poolable;
     private float currentHealth;
     private float __invincibleTimer;
+	public bool InvincibleWhenDamaged = false;
 
     [Header("Base Health Settings")]
     public float InitialHealth = 100;
@@ -148,7 +149,9 @@ public class BaseHealth : MonoBehaviour
         {
             if (!_isInvincible)
             {
-                _isInvincible = true;
+				if (InvincibleWhenDamaged) {
+					_isInvincible = true;
+				}
                 currentHealth -= amount;
 
                 ShowDamageEffects(amount);
