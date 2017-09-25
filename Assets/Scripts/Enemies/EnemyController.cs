@@ -19,6 +19,8 @@ public class EnemyController : PooledObject
 	private bool playerFound = false;
 	public float playerDetectionRadius = 5f;
 	public float notifyRange = 3.5f;
+	private float proximityCheckTimer = 0f;
+	private float proximityCheckDelay = 0.5f;
 
 	public AudioClip playerDetectedSFX;
 	private AudioSource detectedSoundPlayer;
@@ -76,8 +78,12 @@ public class EnemyController : PooledObject
 
 	private void checkIfPlayerFound ()
 	{
-		if (playerDetectionRadius > Vector3.Distance (transform.position, player.transform.position)) {
-			notifyPlayerFound ();
+		proximityCheckTimer += Time.deltaTime;
+		if (proximityCheckTimer > proximityCheckDelay) {
+			proximityCheckTimer = 0f;
+			if (playerDetectionRadius > Vector3.Distance (transform.position, player.transform.position)) {
+				notifyPlayerFound ();
+			}
 		}
 	}
 
