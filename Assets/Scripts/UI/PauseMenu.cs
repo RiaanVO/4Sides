@@ -11,17 +11,12 @@ public class PauseMenu : MonoBehaviour {
     private MusicPlayer _musicPlayer;
     private GameController _gameController; 
 
-    private GameObject _resumeButton,
-                       _exitButton;
-
     public AudioClip _mouseOverSound;
 
 	// Use this for initialization
 	void Start () {
         _musicPlayer = MusicPlayer.Instance;
         _gameController = FindObjectOfType<GameController>();
-        _resumeButton = gameObject.transform.Find("ResumeButton").gameObject;
-        _exitButton = gameObject.transform.Find("ExitButton").gameObject;
     }
 	
 	// Update is called once per frame

@@ -53,3 +53,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PauseScene.unity
     guid: 1aaf67388f9bc5448bf966bb37fcdc55
+  - enabled: 1
+    path: Assets/Scenes/HelpScene.unity
+    guid: f1baf6102d6e2fc49a9c95e21bf39d20
