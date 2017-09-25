@@ -1167,7 +1167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37aba5fcbb5a4fdd8f998b70a11f509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialHealth: 28
+  InitialHealth: 22
   DestroyOnDeath: 1
   showDamageFlashEffects: 1
   damageFlashDuration: 0.3
@@ -1196,8 +1196,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkDistance: 5
   positionCheckDelay: 0.5
+  waitForProximity: 1
   playerDetectionRadius: 12
+  notifyRange: 9
   playerDetectedSFX: {fileID: 8300000, guid: 4ab1bea0626854e288b0750d60606e5e, type: 3}
+  randomiseStartPos: 1
+  randomisePosScale: 2
 --- !u!114 &114803694750143852
 MonoBehaviour:
   m_ObjectHideFlags: 1

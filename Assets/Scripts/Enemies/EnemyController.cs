@@ -3,53 +3,65 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
-[RequireComponent(typeof(EnemyHealth))]
+[RequireComponent (typeof(NavMeshAgent))]
+[RequireComponent (typeof(EnemyHealth))]
 public class EnemyController : PooledObject
 {
-    private NavMeshAgent nav;
-    private EnemyHealth health;
-    private PlayerMovement player;
+	private NavMeshAgent nav;
+	private EnemyHealth health;
+	private PlayerMovement player;
 
 	public float checkDistance = 5f;
 	public float positionCheckDelay = 0.5f;
 	private float checkTimer = 0f;
 
+	public bool waitForProximity = true;
 	private bool playerFound = false;
-	public float playerDetectionRadius = 6f;
+	public float playerDetectionRadius = 5f;
+	public float notifyRange = 3.5f;
 
 	public AudioClip playerDetectedSFX;
 	private AudioSource detectedSoundPlayer;
 
-	void Awake(){
-		detectedSoundPlayer = AddAudioSource(playerDetectedSFX, 1.0f);
+	public bool randomiseStartPos = true;
+	public float randomisePosScale = 2;
+
+	void Awake ()
+	{
+		detectedSoundPlayer = AddAudioSource (playerDetectedSFX, 1.0f);
 	}
 
-	public void Initialize(Vector3 position)
+	public void Initialize (Vector3 position)
 	{
-		nav = GetComponent<NavMeshAgent>();
-		health = GetComponent<EnemyHealth>();
-		player = Object.FindObjectOfType<PlayerMovement>();
+		nav = GetComponent<NavMeshAgent> ();
+		health = GetComponent<EnemyHealth> ();
+		player = Object.FindObjectOfType<PlayerMovement> ();
 
 		nav.enabled = false;
 		transform.position = position;
 		nav.enabled = true;
 
-		health.ResetHealth();
+		health.ResetHealth ();
 
-		var manager = GameObject.FindObjectOfType<EnemySpawnManager>();
-		manager.RegisterEnemy(this);
+		var manager = GameObject.FindObjectOfType<EnemySpawnManager> ();
+		manager.RegisterEnemy (this);
 
 
 		//Player detection settings
-		playerFound = false;
+		playerFound = !waitForProximity;
 		checkTimer = positionCheckDelay;
+
+		if (randomiseStartPos) {
+			Vector2 positionOffset = Random.insideUnitCircle;
+			positionOffset *= randomisePosScale;
+			Vector3 newPosition = new Vector3 (transform.position.x + positionOffset.x, transform.position.y, transform.position.z + positionOffset.y);
+			nav.SetDestination (newPosition);
+		}
 	}
 
-    void Update()
-    {
-        if (player != null)
-        {
+	void Update ()
+	{
+		if (player != null) {
 			if (playerFound == false) {
 				checkIfPlayerFound ();
 			} else {
@@ -59,25 +71,52 @@ public class EnemyController : PooledObject
 					nav.SetDestination (player.transform.position);
 				}
 			}
-        }
-    }
+		}
+	}
 
-	private void checkIfPlayerFound(){
+	private void checkIfPlayerFound ()
+	{
 		if (playerDetectionRadius > Vector3.Distance (transform.position, player.transform.position)) {
 			notifyPlayerFound ();
 		}
 	}
 
-	private void notifyPlayerFound(){
+	public void notifyPlayerFound ()
+	{
 		if (playerFound == false) {
 			detectedSoundPlayer.Play ();
 			playerFound = true;
+			notifyEnemiesInRange ();
 		}
 	}
 
-	private AudioSource AddAudioSource(AudioClip clip, float volume)
+	public bool hasBeenNotified ()
 	{
-		var source = gameObject.AddComponent<AudioSource>();
+		return playerFound;
+	}
+
+	private void notifyEnemiesInRange ()
+	{
+		Transform parent = transform.parent;
+		foreach (EnemyController enCont in parent.GetComponentsInChildren<EnemyController> ()) {
+			if (enCont.gameObject.activeSelf && !enCont.hasBeenNotified ()) {
+				Transform otherTrans = enCont.GetComponent<Transform> ();
+				if (notifyRange > Vector3.Distance (transform.position, otherTrans.position)) {
+					StartCoroutine (notifyOther (enCont, Random.value));
+				}
+			}
+		}
+	}
+
+	private IEnumerator notifyOther(EnemyController otherCon, float notifyDelay){
+		yield return new WaitForSeconds(notifyDelay);
+		otherCon.notifyPlayerFound ();
+		Debug.Log ("Other enemie notified");
+	}
+
+	private AudioSource AddAudioSource (AudioClip clip, float volume)
+	{
+		var source = gameObject.AddComponent<AudioSource> ();
 		source.clip = clip;
 		source.volume = volume;
 		source.playOnAwake = false;
