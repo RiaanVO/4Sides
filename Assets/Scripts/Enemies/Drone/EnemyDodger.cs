@@ -67,7 +67,7 @@ public class EnemyDodger : MonoBehaviour {
 		barrierCollider.enabled = false;
 	
 		foreach (Renderer rend in AllDroneRenderer) {
-			dodgerNavMeshAgent.enabled = false;
+			dodgerNavMeshAgent.speed = 0f;
 			rend.enabled = false;
 		}
 
@@ -92,12 +92,14 @@ public class EnemyDodger : MonoBehaviour {
 
 
 		yield return new WaitForSeconds (InvisibleTime);
+
 		foreach (Renderer rend in AllDroneRenderer) {
 			rend.enabled = true;
 		}
 		TeleportSounds.Stop ();
 		yield return new WaitForSeconds (MaterializationTIme);
-		dodgerNavMeshAgent.enabled = true;
+		dodgerNavMeshAgent.speed = 2f;
+
 
 		parentCollider.enabled = true;
 		barrierCollider.enabled = true;
