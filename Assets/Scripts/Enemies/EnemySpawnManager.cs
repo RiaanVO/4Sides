@@ -6,129 +6,155 @@ using UnityEngine;
 
 using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(DataProvider)), RequireComponent(typeof(EventSource))]
+[RequireComponent (typeof(DataProvider)), RequireComponent (typeof(EventSource))]
 public class EnemySpawnManager : MonoBehaviour
 {
-    public static readonly string CHANNEL_WAVE = "EnemySpawnManager.Wave";
-    public static readonly string CHANNEL_DISPLAY_WAVE = "EnemySpawnManager.DisplayWave";
-    public static readonly string EVENT_ALL_WAVES_CLEARED = "EnemySpawnManager.AllWavesCleared";
+	public static readonly string CHANNEL_WAVE = "EnemySpawnManager.Wave";
+	public static readonly string CHANNEL_DISPLAY_WAVE = "EnemySpawnManager.DisplayWave";
+	public static readonly string EVENT_ALL_WAVES_CLEARED = "EnemySpawnManager.AllWavesCleared";
+	public static readonly string CHANNEL_WAVE_START_DELAY = "EnemySpawnManager.WaveStartDelay";
 
-    [Serializable]
-    public class Wave
-    {
-        public int DropPodCount = 5;
-        public int EnemiesPerDropPod = 3;
-    }
+	[Serializable]
+	public class Wave
+	{
+		public int DropPodCount = 5;
+		public int EnemiesPerDropPod = 3;
+	}
 
-    public DropPodController DropPod;
-    public List<Wave> Waves;
+	public DropPodController DropPod;
+	public List<Wave> Waves;
 
-    [Header("Death Settings")]
-    public HealthPickupSpawnManager healthPickupSpawner;
-    //public PickupSpawnManager pickupSpawner;
-    private DataProvider data;
-    private EventSource events;
-    private AudioSource waveCleared;
+	[Header ("Death Settings")]
+	public HealthPickupSpawnManager healthPickupSpawner;
+	//public PickupSpawnManager pickupSpawner;
+	private DataProvider data;
+	private EventSource events;
+	private AudioSource waveCleared;
 
-    private List<Vector3> spawnPoints;
-    private int dropPodsRemaining = 0;
-    private int enemiesActive = 0;
-    private bool allEnemiesSpawned = false;
-    private int wave = 0;
+	private List<Vector3> spawnPoints;
+	private int dropPodsRemaining = 0;
+	private int enemiesActive = 0;
+	private bool allEnemiesSpawned = false;
+	private int wave = 0;
 
-    void Start()
-    {
-        data = GetComponent<DataProvider>();
-        events = GetComponent<EventSource>();
-        waveCleared = GetComponent<AudioSource>();
+	[Header ("Wave Delay Settings")]
+	private float waveDelayTimer = 0;
+	public float waveStartDelay = 3f;
+	public GameObject waveStartDelayText;
+	private bool waveDelayInEffect = false;
 
-        spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint")
-            .Select(o => o.transform.position).ToList();
 
-        if (DropPod == null)
-        {
-            Debug.LogError("No drop pod specified!");
-        }
-        if (Waves == null || Waves.Count < 1)
-        {
-            Debug.LogError("No waves defined!");
-        }
+	void Start ()
+	{
+		data = GetComponent<DataProvider> ();
+		events = GetComponent<EventSource> ();
+		waveCleared = GetComponent<AudioSource> ();
 
-        StartNewWave();
-    }
+		spawnPoints = GameObject.FindGameObjectsWithTag ("SpawnPoint")
+            .Select (o => o.transform.position).ToList ();
 
-    private void StartNewWave()
-    {
-        if (wave >= Waves.Count)
-        {
-            events.Notify(EVENT_ALL_WAVES_CLEARED);
-            return;
-        }
+		if (DropPod == null) {
+			Debug.LogError ("No drop pod specified!");
+		}
+		if (Waves == null || Waves.Count < 1) {
+			Debug.LogError ("No waves defined!");
+		}
 
-        // determine how many drop pods to spawn
-        var currentWave = Waves[wave];
-        int dropPodCount = Mathf.Min(currentWave.DropPodCount, spawnPoints.Count);
+		StartNewWave ();
+	}
 
-        List<int> possibleSpawnIndices = Enumerable.Range(0, spawnPoints.Count).ToList();
-        List<Vector3> spawnLocations = new List<Vector3>();
-        for (int i = 0; i < dropPodCount; i++)
-        {
-            // pick a random spawn point
-            int index = Random.Range(0, possibleSpawnIndices.Count);
-            spawnLocations.Add(spawnPoints[possibleSpawnIndices[index]]);
-            possibleSpawnIndices.RemoveAt(index);
-        }
+	void Update ()
+	{
+		if (waveDelayInEffect) {
+			waveDelayTimer -= Time.deltaTime;
+			updateWaveText ();
+			if (waveDelayTimer < 0) {
+				waveDelayInEffect = false;
+				waveStartDelayText.SetActive (false);
+				StartNewWave ();
+			}
+		}
+	}
 
-        // create drop pods
-        dropPodsRemaining = dropPodCount;
-        foreach (var position in spawnLocations)
-        {
-            var dropPod = DropPod.GetPooledInstance<DropPodController>();
-            dropPod.Initialize(position, currentWave.EnemiesPerDropPod, OnDropPodDepleted);
-        }
+	private void updateWaveText ()
+	{
+		
+	}
 
-        enemiesActive = 0;
-        allEnemiesSpawned = false;
+	private void startWaveDelay ()
+	{
+		waveDelayInEffect = true;
+		waveDelayTimer = waveStartDelay;
+		waveStartDelayText.SetActive (true);
+	}
 
-        // increment wave
-        wave++;
-        data.UpdateChannel(CHANNEL_WAVE, wave);
-        data.UpdateChannel(CHANNEL_DISPLAY_WAVE, wave.ToString());
+	private void StartNewWave ()
+	{
+		if (wave >= Waves.Count) {
+			events.Notify (EVENT_ALL_WAVES_CLEARED);
+			return;
+		}
 
-        //Spawn the health pickup for this wave
-        healthPickupSpawner.SpawnHealthPickup();
-        //pickupSpawner.SpawnPickup ();
-    }
+		// determine how many drop pods to spawn
+		var currentWave = Waves [wave];
+		int dropPodCount = Mathf.Min (currentWave.DropPodCount, spawnPoints.Count);
 
-    private void OnDropPodDepleted()
-    {
-        dropPodsRemaining--;
-        if (dropPodsRemaining <= 0)
-        {
-            allEnemiesSpawned = true;
-        }
-    }
+		List<int> possibleSpawnIndices = Enumerable.Range (0, spawnPoints.Count).ToList ();
+		List<Vector3> spawnLocations = new List<Vector3> ();
+		for (int i = 0; i < dropPodCount; i++) {
+			// pick a random spawn point
+			int index = Random.Range (0, possibleSpawnIndices.Count);
+			spawnLocations.Add (spawnPoints [possibleSpawnIndices [index]]);
+			possibleSpawnIndices.RemoveAt (index);
+		}
 
-    public void RegisterEnemy(EnemyController enemy)
-    {
-        enemiesActive++;
+		// create drop pods
+		dropPodsRemaining = dropPodCount;
+		foreach (var position in spawnLocations) {
+			var dropPod = DropPod.GetPooledInstance<DropPodController> ();
+			dropPod.Initialize (position, currentWave.EnemiesPerDropPod, OnDropPodDepleted);
+		}
 
-        var eventSource = enemy.GetComponent<EventSource>();
-        eventSource.Subscribe("BaseHealth.Died", OnEnemyKilled);
-    }
+		enemiesActive = 0;
+		allEnemiesSpawned = false;
 
-    private void OnEnemyKilled(EventSource source, string eventName)
-    {
-        source.Unsubscribe(eventName, OnEnemyKilled);
+		// increment wave
+		wave++;
+		data.UpdateChannel (CHANNEL_WAVE, wave);
+		data.UpdateChannel (CHANNEL_DISPLAY_WAVE, wave.ToString ());
 
-        enemiesActive--;
-        if (allEnemiesSpawned && enemiesActive <= 0)
-        {
-            if (waveCleared != null)
-            {
-                waveCleared.Play();
-            }
-            StartNewWave();
-        }
-    }
+		//Spawn the health pickup for this wave
+		healthPickupSpawner.SpawnHealthPickup ();
+		//pickupSpawner.SpawnPickup ();
+	}
+
+	private void OnDropPodDepleted ()
+	{
+		dropPodsRemaining--;
+		if (dropPodsRemaining <= 0) {
+			allEnemiesSpawned = true;
+		}
+	}
+
+	public void RegisterEnemy (EnemyController enemy)
+	{
+		enemiesActive++;
+
+		var eventSource = enemy.GetComponent<EventSource> ();
+		eventSource.Subscribe ("BaseHealth.Died", OnEnemyKilled);
+	}
+
+	private void OnEnemyKilled (EventSource source, string eventName)
+	{
+		source.Unsubscribe (eventName, OnEnemyKilled);
+
+		enemiesActive--;
+		if (allEnemiesSpawned && enemiesActive <= 0) {
+			if (waveCleared != null) {
+				waveCleared.Play ();
+			}
+
+			StartNewWave ();
+		}
+	}
 }

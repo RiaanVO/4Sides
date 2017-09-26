@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class PlayerShooting : MonoBehaviour
     private float lastFiredTimestamp;
     private AudioSource fireSound;
 
-    private float fireRateTimeRemaining;
+    //private float fireRateTimeRemaining;
     private float currentFireRate;
 
     public bool IsShooting { get; private set; }
@@ -24,6 +25,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
+		/*
         if (fireRateTimeRemaining > 0)
         {
             fireRateTimeRemaining -= Time.deltaTime;
@@ -32,6 +34,7 @@ public class PlayerShooting : MonoBehaviour
                 currentFireRate = FireRate;
             }
         }
+        */
 
         IsShooting = Input.GetButton("Fire");
         if (IsShooting && Time.time - lastFiredTimestamp >= currentFireRate)
@@ -57,9 +60,18 @@ public class PlayerShooting : MonoBehaviour
         lastFiredTimestamp = Time.time;
     }
 
+
     public void IncreaseFireRate(float duration, float targetFireRate)
     {
-        fireRateTimeRemaining = duration;
-        currentFireRate = targetFireRate;
+		StartCoroutine (increaseFireRate (duration, targetFireRate));
+        //fireRateTimeRemaining = duration;
+        //currentFireRate = targetFireRate;
     }
+    
+
+	private IEnumerator increaseFireRate(float duration, float targetFireRate){
+		currentFireRate = targetFireRate;
+		yield return new WaitForSeconds(duration);
+		currentFireRate = FireRate; 
+	}
 }
