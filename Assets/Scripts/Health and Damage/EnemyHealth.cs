@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : BaseHealth
 {
-	[Header("Score Settings")]
+	[Header("EnemyLeft Settings")]
     public int ScoreToAdd = 100;
 
 	[Header("Death Settings")]
@@ -13,22 +13,21 @@ public class EnemyHealth : BaseHealth
 	public AudioClip damageSound;
 	public float deathDelayTime = 0f;
 
-
-	private AudioSource audioSource;
+    private AudioSource audioSource;
 
 	public override void Initialise ()
 	{
-		//explosion = GetComponentInChildren<ParticleSystem>();
-		audioSource = GetComponent<AudioSource> ();
+        //explosion = GetComponentInChildren<ParticleSystem>();
+        audioSource = GetComponent<AudioSource> ();
 		base.Initialise ();
-	}
+    }
 
 	public override void KillSelf ()
 	{
 		playDeathSound ();
 		//explosion.Play();
 		Instantiate(explosion, transform.position, transform.rotation);
-		StartCoroutine (deathDelay());
+        StartCoroutine (deathDelay());
 	}
 
     public override void Die()
@@ -36,13 +35,6 @@ public class EnemyHealth : BaseHealth
 		playDeathSound ();
 		//explosion.Play();
 		Instantiate(explosion, transform.position, transform.rotation);
-
-        var controller = GameObject.FindObjectOfType<GameController>();
-        if (controller != null)
-        {
-            controller.AwardPoints(ScoreToAdd);
-        }
-
 		StartCoroutine (deathDelay());
     }
 
@@ -62,6 +54,4 @@ public class EnemyHealth : BaseHealth
 			audioSource.PlayOneShot (deathSound);
 		}
 	}
-
-
 }
