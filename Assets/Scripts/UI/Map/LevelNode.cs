@@ -88,9 +88,26 @@ public class LevelNode : MonoBehaviour
         animator.SetInteger("State", (int)state);
     }
 
-    public void OnSelected()
+    public void ToggleSelectionState()
     {
         isSelected = !isSelected;
+        animator.SetBool("IsSelected", isSelected);
+
+        if (isSelected)
+        {
+            foreach (var node in Object.FindObjectsOfType<LevelNode>())
+            {
+                if (node != this)
+                {
+                    node.Deselect();
+                }
+            }
+        }
+    }
+
+    public void Deselect()
+    {
+        isSelected = false;
         animator.SetBool("IsSelected", isSelected);
     }
 }
