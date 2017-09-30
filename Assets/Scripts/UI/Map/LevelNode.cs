@@ -18,10 +18,18 @@ public class LevelNode : MonoBehaviour
     public Text NodeText;
     public string Name = "1-A";
     public List<NodeConnector> OutgoingConnectors;
+    public int DifficultyRating = 1;
 
     private Animator animator;
+    private MapController map;
     private LevelState state = LevelState.Locked;
     private List<string> remainingDependencies;
+    private bool isSelected;
+
+    public bool IsUnlocked
+    {
+        get { return state != LevelState.Locked; }
+    }
 
     void OnValidate()
     {
@@ -40,6 +48,7 @@ public class LevelNode : MonoBehaviour
 
         animator = GetComponent<Animator>();
         animator.SetInteger("State", (int)state);
+        isSelected = false;
 
         string[] dependencies;
         if (GameSession.SECTOR_DEPENDENCIES.TryGetValue(Name, out dependencies))
@@ -50,6 +59,11 @@ public class LevelNode : MonoBehaviour
         {
             remainingDependencies.Clear();
         }
+    }
+
+    void Start()
+    {
+        map = GameObject.FindObjectOfType<MapController>();
     }
 
     public void Complete(bool justCompleted)
@@ -82,7 +96,31 @@ public class LevelNode : MonoBehaviour
         remainingDependencies.Remove(sourceLevel);
         if (remainingDependencies.Count > 0) return;
 
-        state = LevelState.Unlocked;
-        animator.SetInteger("State", (int)state);
+        if (state == LevelState.Locked)
+        {
+            state = LevelState.Unlocked;
+            animator.SetInteger("State", (int)state);
+        }
+    }
+
+    public void ToggleSelectionState()
+    {
+        isSelected = !isSelected;
+        animator.SetBool("IsSelected", isSelected);
+
+        if (isSelected)
+        {
+            map.OnNodeSelected(this);
+        }
+        else
+        {
+            map.OnNodeDeselected();
+        }
+    }
+
+    public void Deselect()
+    {
+        isSelected = false;
+        animator.SetBool("IsSelected", isSelected);
     }
 }

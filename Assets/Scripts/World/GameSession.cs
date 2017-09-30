@@ -77,6 +77,11 @@ public static class GameSession
         {
             currentSector = SECTOR_DEPENDENCIES.ElementAt(0).Key;
         }
-        return "Sector_" + currentSector;
+        return GetSectorScene(currentSector);
+    }
+
+    public static string GetSectorScene(string name)
+    {
+        return "Sector_" + name;
     }
 }
