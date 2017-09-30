@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyDodger : MonoBehaviour {
 
@@ -19,11 +20,13 @@ public class EnemyDodger : MonoBehaviour {
 	private Collider barrierCollider;
 	private MeshRenderer[] AllDroneRenderer;
 	private float TimeSinceLastHit;
+	private NavMeshAgent dodgerNavMeshAgent;
 	private bool isTeleporting;
 
 
 
 	void Start () {
+		dodgerNavMeshAgent = transform.parent.GetComponent<NavMeshAgent> ();
 		parentCollider = transform.parent.GetComponent<Collider> ();
 		barrierCollider = transform.GetComponent<Collider> ();
 		AllDroneRenderer = transform.parent.GetComponentsInChildren<MeshRenderer> ();
@@ -64,9 +67,9 @@ public class EnemyDodger : MonoBehaviour {
 		barrierCollider.enabled = false;
 	
 		foreach (Renderer rend in AllDroneRenderer) {
+			dodgerNavMeshAgent.speed = 0f;
 			rend.enabled = false;
 		}
-
 
 		RandomDirection = Random.Range (1, 5);
 		if (RandomDirection == 1 || RandomDirection == 5 ) {
@@ -89,11 +92,15 @@ public class EnemyDodger : MonoBehaviour {
 
 
 		yield return new WaitForSeconds (InvisibleTime);
+
 		foreach (Renderer rend in AllDroneRenderer) {
 			rend.enabled = true;
 		}
 		TeleportSounds.Stop ();
 		yield return new WaitForSeconds (MaterializationTIme);
+		dodgerNavMeshAgent.speed = 2f;
+
+
 		parentCollider.enabled = true;
 		barrierCollider.enabled = true;
 

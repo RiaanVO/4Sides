@@ -3544,48 +3544,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 536127417}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &541168896
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4032326521464512, guid: 25a63393611614f4eb5cb7bdd6c569d3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4032326521464512, guid: 25a63393611614f4eb5cb7bdd6c569d3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4032326521464512, guid: 25a63393611614f4eb5cb7bdd6c569d3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 9.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4032326521464512, guid: 25a63393611614f4eb5cb7bdd6c569d3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4032326521464512, guid: 25a63393611614f4eb5cb7bdd6c569d3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4032326521464512, guid: 25a63393611614f4eb5cb7bdd6c569d3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4032326521464512, guid: 25a63393611614f4eb5cb7bdd6c569d3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4032326521464512, guid: 25a63393611614f4eb5cb7bdd6c569d3, type: 2}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 25a63393611614f4eb5cb7bdd6c569d3, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &547709185
 GameObject:
   m_ObjectHideFlags: 0
@@ -6268,10 +6226,6 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 1179842615921402, guid: 28cb81517cc7598469e18bd15d586be7, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28cb81517cc7598469e18bd15d586be7, type: 2}
   m_IsPrefabParent: 0
@@ -8938,7 +8892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f476be2f5fed24eb64aa4d60d105bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sector: 2-A
+  Sector: 3-BC
   Player: {fileID: 1162740252}
   SpawnManager: {fileID: 720385623}
   scoreAddSFX: {fileID: 8300000, guid: d8b6dcd9da85e4293ad24602bc01590d, type: 3}
