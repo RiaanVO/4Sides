@@ -13,7 +13,6 @@ public class LaserHazzardController : MonoBehaviour {
 
 	public float chargeTime = 3f;
 	public float fireTime = 2f;
-	private bool laserActive = false;
 
 	// Use this for initialization
 	void Start () {
@@ -23,14 +22,14 @@ public class LaserHazzardController : MonoBehaviour {
 		laserLine.startWidth = laserLineWidth;
 		laserLine.endWidth = laserLineWidth;
 
+		setLaserPositions ();
+		laserLine.enabled = false;
+
 		StartCharging ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (laserActive) {
-			setLaserPositions ();
-		}
 		
 	}
 
@@ -55,11 +54,12 @@ public class LaserHazzardController : MonoBehaviour {
 	}
 
 	private IEnumerator fireLaser(float currentFireTime){
-		laserActive = true;
+		laserLine.enabled = true;
 		//Debug.Log ("Firing laser");
 		yield return new WaitForSeconds(currentFireTime);
 		//Debug.Log ("Closing laser");
-		laserActive = false;
+		laserLine.enabled = false;
+
 		laserAnimator.SetTrigger ("Close");
 	}
 }
