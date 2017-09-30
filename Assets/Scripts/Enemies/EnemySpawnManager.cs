@@ -53,7 +53,6 @@ public class EnemySpawnManager : MonoBehaviour
         {
             Debug.LogError("No waves defined!");
         }
-        Waves = Waves.Take(1).ToList();
 
         StartNewWave();
     }

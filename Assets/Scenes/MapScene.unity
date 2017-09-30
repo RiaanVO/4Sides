@@ -6052,8 +6052,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1136360047}
-        m_MethodName: GoToCurrentSector
+      - m_Target: {fileID: 1136360046}
+        m_MethodName: GoToSelectedLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

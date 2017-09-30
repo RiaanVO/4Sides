@@ -30,6 +30,11 @@ public class SceneNavigation : MonoBehaviour
         Application.Quit();
     }
 
+    public void GoToSector(string sectorName)
+    {
+        GoToScene(GameSession.GetSectorScene(sectorName));
+    }
+
     private void GoToScene(string name)
     {
         var transitions = GameObject.FindObjectOfType<TransitionManager>();

@@ -96,8 +96,11 @@ public class LevelNode : MonoBehaviour
         remainingDependencies.Remove(sourceLevel);
         if (remainingDependencies.Count > 0) return;
 
-        state = LevelState.Unlocked;
-        animator.SetInteger("State", (int)state);
+        if (state == LevelState.Locked)
+        {
+            state = LevelState.Unlocked;
+            animator.SetInteger("State", (int)state);
+        }
     }
 
     public void ToggleSelectionState()

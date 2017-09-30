@@ -16,10 +16,14 @@ public class MapController : MonoBehaviour
     public Color DifficultyNodeInactiveColor;
     public SectorDependencyItemController DependencyItem;
 
+    private SceneNavigation nav;
     private LevelNode[] allNodes;
+    private LevelNode selectedLevel = null;
 
     void Start()
     {
+        nav = GetComponent<SceneNavigation>();
+
         allNodes = GetComponentsInChildren<LevelNode>();
         var nodes = (from node in allNodes
                      group node by node.Name into grp
@@ -37,7 +41,16 @@ public class MapController : MonoBehaviour
                 node.Complete(false);
             }
         }
-        if (!string.IsNullOrEmpty(GameSession.LastCompletedSector))
+        if (string.IsNullOrEmpty(GameSession.LastCompletedSector))
+        {
+            var firstSector = GameSession.SECTOR_DEPENDENCIES.ElementAt(0).Key;
+            LevelNode node = null;
+            if (nodes.TryGetValue(firstSector, out node))
+            {
+                node.Unlock(null);
+            }
+        }
+        else
         {
             LevelNode node = null;
             if (nodes.TryGetValue(GameSession.LastCompletedSector, out node))
@@ -49,6 +62,8 @@ public class MapController : MonoBehaviour
 
     public void OnNodeSelected(LevelNode selected)
     {
+        selectedLevel = selected;
+
         // deselect all other nodes
         foreach (var node in allNodes)
         {
@@ -116,10 +131,20 @@ public class MapController : MonoBehaviour
 
     public void OnNodeDeselected()
     {
+        selectedLevel = null;
+
         // update details pane
         if (DetailsPane != null)
         {
             DetailsPane.SetBool("IsLevelSelected", false);
+        }
+    }
+
+    public void GoToSelectedLevel()
+    {
+        if (selectedLevel != null)
+        {
+            nav.GoToSector(selectedLevel.Name);
         }
     }
 }
