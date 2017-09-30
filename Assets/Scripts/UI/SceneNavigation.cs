@@ -15,21 +15,19 @@ public class SceneNavigation : MonoBehaviour
         GoToScene("TitleScene");
     }
 
-    public void QuitGame()
+    public void GoToMapScreen()
     {
-        Application.Quit();
-    }
-
-    public void CloseHelpMenu()
-    {
-        SceneManager.UnloadSceneAsync("HelpScene");
-        Time.timeScale = 1;
+        GoToScene("MapScene");
     }
 
     public void GoToHelpMenu()
     {
-        Time.timeScale = 0;
-        SceneManager.LoadScene("HelpScene", LoadSceneMode.Additive);
+        GoToScene("HelpScene");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     private void GoToScene(string name)
