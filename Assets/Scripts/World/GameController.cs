@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(DataProvider))]
 public class GameController : MonoBehaviour
 {
-    public static readonly string CHANNEL_SCORE = "GameController.Score";
+    public static readonly string CHANNEL_SCORE = "GameController.EnemyLeft";
     public static readonly string CHANNEL_DISPLAY_SCORE = "GameController.DisplayScore";
     public static readonly string CHANNEL_SECTOR = "GameController.Sector";
 
@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     public EventSource Player;
     public EventSource SpawnManager;
 
-    [Header("Score Settings")]
+    [Header("EnemyLeft Settings")]
     public AudioClip scoreAddSFX;
     private AudioSource audioSource;
 
@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
         GameSession.StartSector(Sector);
 
         data = GetComponent<DataProvider>();
-        data.UpdateChannel(CHANNEL_SCORE, GameSession.Score);
+        data.UpdateChannel(CHANNEL_SCORE, GameSession.EnemyLeft);
         data.UpdateChannel(CHANNEL_DISPLAY_SCORE, GameSession.DisplayScore);
         data.UpdateChannel(CHANNEL_SECTOR, Sector);
 
@@ -80,17 +80,17 @@ public class GameController : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void AwardPoints(int points)
+    public void UpdateEnemyNumber(int number)
     {
-        GameSession.Score += points;
-        data.UpdateChannel(CHANNEL_SCORE, GameSession.Score);
+        GameSession.EnemyLeft = number;
+        data.UpdateChannel(CHANNEL_SCORE, GameSession.EnemyLeft);
         data.UpdateChannel(CHANNEL_DISPLAY_SCORE, GameSession.DisplayScore);
 
-        if (audioSource != null && scoreAddSFX != null)
-        {
-            audioSource.pitch = Random.Range(0.97f, 1.03f);
-            audioSource.PlayOneShot(scoreAddSFX);
-        }
+        //if (audioSource != null && scoreAddSFX != null)
+        //{
+        //    audioSource.pitch = Random.Range(0.97f, 1.03f);
+        //    audioSource.PlayOneShot(scoreAddSFX);
+        //}
     }
 
     private void GoToDeathScreen(EventSource source, string eventName)
