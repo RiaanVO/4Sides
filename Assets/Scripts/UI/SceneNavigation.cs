@@ -20,6 +20,18 @@ public class SceneNavigation : MonoBehaviour
         Application.Quit();
     }
 
+    public void CloseHelpMenu()
+    {
+        SceneManager.UnloadSceneAsync("HelpScene");
+        Time.timeScale = 1;
+    }
+
+    public void GoToHelpMenu()
+    {
+        Time.timeScale = 0;
+        SceneManager.LoadScene("HelpScene", LoadSceneMode.Additive);
+    }
+
     private void GoToScene(string name)
     {
         var transitions = GameObject.FindObjectOfType<TransitionManager>();

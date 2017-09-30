@@ -16,6 +16,9 @@ public class DroneEnemyController : PooledObject
 	private float checkTimer = 0f;
 
 
+
+
+
     void Update()
     {
         if (player != null)
@@ -23,7 +26,12 @@ public class DroneEnemyController : PooledObject
 			checkTimer += Time.deltaTime;
 			if(checkTimer > positionCheckDelay || checkDistance > Vector3.Distance(transform.position, player.transform.position)){
 				checkTimer = 0f;
-            	nav.SetDestination(player.transform.position);
+				if (nav.enabled == true) {
+					nav.SetDestination (player.transform.position);
+				} else 
+				{
+					
+				}
 			}
         }
     }
