@@ -9,6 +9,10 @@ public class MapController : MonoBehaviour
 {
     public Animator DetailsPane;
     public Text SectorNameText;
+    public List<Image> DifficultyNodes;
+
+    public Color DifficultyNodeActiveColor;
+    public Color DifficultyNodeInactiveColor;
 
     private LevelNode[] allNodes;
 
@@ -61,6 +65,16 @@ public class MapController : MonoBehaviour
         if (SectorNameText != null)
         {
             SectorNameText.text = selected.Name;
+        }
+        if (DifficultyNodes != null)
+        {
+            int nodeCount = Math.Min(DifficultyNodes.Count, selected.DifficultyRating);
+            for (int i = 0; i < DifficultyNodes.Count; i++)
+            {
+                var node = DifficultyNodes[i];
+                node.color = i < nodeCount ? DifficultyNodeActiveColor :
+                    DifficultyNodeInactiveColor;
+            }
         }
     }
 

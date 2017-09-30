@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 11563107}
   - component: {fileID: 11563106}
   m_Layer: 5
-  m_Name: DifficultyNode
+  m_Name: DifficultyNode4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -533,6 +533,11 @@ Prefab:
       propertyPath: OutgoingConnectors.Array.data[1]
       value: 
       objectReference: {fileID: 193938110}
+    - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
+        type: 2}
+      propertyPath: DifficultyRating
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83e762bf87839b244abeb4f03cd231d4, type: 2}
   m_IsPrefabParent: 0
@@ -946,7 +951,7 @@ GameObject:
   - component: {fileID: 228309269}
   - component: {fileID: 228309268}
   m_Layer: 5
-  m_Name: DifficultyNode
+  m_Name: DifficultyNode1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -982,7 +987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.92941177, g: 0.28627452, b: 0.28627452, a: 1}
+  m_Color: {r: 0.14509805, g: 0.13725491, b: 0.21960784, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1480,6 +1485,11 @@ Prefab:
       propertyPath: OutgoingConnectors.Array.data[2]
       value: 
       objectReference: {fileID: 804315146}
+    - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
+        type: 2}
+      propertyPath: DifficultyRating
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83e762bf87839b244abeb4f03cd231d4, type: 2}
   m_IsPrefabParent: 0
@@ -3134,6 +3144,11 @@ Prefab:
       propertyPath: OutgoingConnectors.Array.data[1]
       value: 
       objectReference: {fileID: 1966406050}
+    - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
+        type: 2}
+      propertyPath: DifficultyRating
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83e762bf87839b244abeb4f03cd231d4, type: 2}
   m_IsPrefabParent: 0
@@ -3487,7 +3502,7 @@ GameObject:
   - component: {fileID: 821909165}
   - component: {fileID: 821909164}
   m_Layer: 5
-  m_Name: DifficultyNode
+  m_Name: DifficultyNode3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3924,7 +3939,7 @@ GameObject:
   - component: {fileID: 1130620011}
   - component: {fileID: 1130620010}
   m_Layer: 5
-  m_Name: DifficultyNode
+  m_Name: DifficultyNode2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4126,6 +4141,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DetailsPane: {fileID: 1722316521}
   SectorNameText: {fileID: 1985286133}
+  DifficultyNodes:
+  - {fileID: 228309268}
+  - {fileID: 1130620010}
+  - {fileID: 821909164}
+  - {fileID: 11563106}
+  DifficultyNodeActiveColor: {r: 0.92941177, g: 0.28627452, b: 0.28627452, a: 1}
+  DifficultyNodeInactiveColor: {r: 0.14509805, g: 0.13725491, b: 0.21960784, a: 1}
 --- !u!114 &1136360047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4336,6 +4358,11 @@ Prefab:
     - target: {fileID: 114721086015475698, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
       propertyPath: m_Text
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
+        type: 2}
+      propertyPath: DifficultyRating
       value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4784,6 +4811,11 @@ Prefab:
       propertyPath: OutgoingConnectors.Array.data[1]
       value: 
       objectReference: {fileID: 1832328094}
+    - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
+        type: 2}
+      propertyPath: DifficultyRating
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83e762bf87839b244abeb4f03cd231d4, type: 2}
   m_IsPrefabParent: 0
@@ -4999,6 +5031,11 @@ Prefab:
       propertyPath: OutgoingConnectors.Array.data[1]
       value: 
       objectReference: {fileID: 442741045}
+    - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
+        type: 2}
+      propertyPath: DifficultyRating
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83e762bf87839b244abeb4f03cd231d4, type: 2}
   m_IsPrefabParent: 0
@@ -5990,6 +6027,11 @@ Prefab:
       propertyPath: OutgoingConnectors.Array.data[2]
       value: 
       objectReference: {fileID: 137358255}
+    - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
+        type: 2}
+      propertyPath: DifficultyRating
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83e762bf87839b244abeb4f03cd231d4, type: 2}
   m_IsPrefabParent: 0
@@ -6452,6 +6494,11 @@ Prefab:
       propertyPath: OutgoingConnectors.Array.data[1]
       value: 
       objectReference: {fileID: 475602290}
+    - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
+        type: 2}
+      propertyPath: DifficultyRating
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83e762bf87839b244abeb4f03cd231d4, type: 2}
   m_IsPrefabParent: 0
@@ -6775,6 +6822,11 @@ Prefab:
       propertyPath: OutgoingConnectors.Array.data[1]
       value: 
       objectReference: {fileID: 1270316777}
+    - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
+        type: 2}
+      propertyPath: DifficultyRating
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83e762bf87839b244abeb4f03cd231d4, type: 2}
   m_IsPrefabParent: 0

@@ -18,6 +18,7 @@ public class LevelNode : MonoBehaviour
     public Text NodeText;
     public string Name = "1-A";
     public List<NodeConnector> OutgoingConnectors;
+    public int DifficultyRating = 1;
 
     private Animator animator;
     private MapController map;
