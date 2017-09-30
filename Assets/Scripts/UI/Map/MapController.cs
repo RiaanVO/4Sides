@@ -10,9 +10,11 @@ public class MapController : MonoBehaviour
     public Animator DetailsPane;
     public Text SectorNameText;
     public List<Image> DifficultyNodes;
+    public Transform DependenciesContainer;
 
     public Color DifficultyNodeActiveColor;
     public Color DifficultyNodeInactiveColor;
+    public SectorDependencyItemController DependencyItem;
 
     private LevelNode[] allNodes;
 
@@ -74,6 +76,40 @@ public class MapController : MonoBehaviour
                 var node = DifficultyNodes[i];
                 node.color = i < nodeCount ? DifficultyNodeActiveColor :
                     DifficultyNodeInactiveColor;
+            }
+        }
+        if (DependenciesContainer != null)
+        {
+            // clear existing dependencies
+            for (int i = 0; i < DependenciesContainer.childCount; i++)
+            {
+                var child = DependenciesContainer.GetChild(i);
+                Destroy(child.gameObject);
+            }
+
+            if (!selected.IsUnlocked && DependencyItem != null)
+            {
+                // populate new dependencies
+                string[] dependencies;
+                if (GameSession.SECTOR_DEPENDENCIES.TryGetValue(selected.Name, out dependencies))
+                {
+                    for (int i = 0; i < dependencies.Length; i++)
+                    {
+                        // create dependency item
+                        var dependency = dependencies[i];
+                        var child = Instantiate(DependencyItem);
+                        bool isCompleted = GameSession.LastCompletedSector == dependency ||
+                            GameSession.CompletedSectors.Contains(dependency);
+                        child.SetContent(dependency, isCompleted);
+
+                        // position item
+                        var rect = child.GetComponent<RectTransform>();
+                        child.transform.SetParent(DependenciesContainer);
+                        rect.pivot = new Vector2(0, 1);
+                        rect.anchoredPosition = new Vector2(0, i * -32);
+                        rect.anchorMax = Vector2.one;
+                    }
+                }
             }
         }
     }
