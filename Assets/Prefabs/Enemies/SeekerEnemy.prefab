@@ -1167,12 +1167,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37aba5fcbb5a4fdd8f998b70a11f509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InvincibleWhenDamaged: 0
   InitialHealth: 22
   DestroyOnDeath: 1
   showDamageFlashEffects: 1
   damageFlashDuration: 0.3
   flashesPerDuration: 4
-  invincibleTime: 0.5
+  invincibleTime: 0
   flashMaterial: {fileID: 2100000, guid: c06adb3b8e3324c448f314975dc43e52, type: 2}
   modelRenderer: {fileID: 137536707957369044}
   showDamageText: 1
