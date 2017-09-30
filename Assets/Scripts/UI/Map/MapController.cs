@@ -1,13 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
+    public Animator DetailsPane;
+
+    private LevelNode[] allNodes;
+
     void Start()
     {
-        var nodes = (from node in GetComponentsInChildren<LevelNode>()
+        allNodes = GetComponentsInChildren<LevelNode>();
+        var nodes = (from node in allNodes
                      group node by node.Name into grp
                      select new
                      {
@@ -30,6 +36,34 @@ public class MapController : MonoBehaviour
             {
                 node.Complete(true);
             }
+        }
+    }
+
+    public void OnNodeSelected(LevelNode selected)
+    {
+        // deselect all other nodes
+        foreach (var node in allNodes)
+        {
+            if (node != selected)
+            {
+                node.Deselect();
+            }
+        }
+
+        // update details pane
+        if (DetailsPane != null)
+        {
+            DetailsPane.SetBool("IsLevelSelected", true);
+            DetailsPane.SetBool("IsLevelUnlocked", selected.IsUnlocked);
+        }
+    }
+
+    public void OnNodeDeselected()
+    {
+        // update details pane
+        if (DetailsPane != null)
+        {
+            DetailsPane.SetBool("IsLevelSelected", false);
         }
     }
 }

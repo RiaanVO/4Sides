@@ -20,9 +20,15 @@ public class LevelNode : MonoBehaviour
     public List<NodeConnector> OutgoingConnectors;
 
     private Animator animator;
+    private MapController map;
     private LevelState state = LevelState.Locked;
     private List<string> remainingDependencies;
     private bool isSelected;
+
+    public bool IsUnlocked
+    {
+        get { return state != LevelState.Locked; }
+    }
 
     void OnValidate()
     {
@@ -52,6 +58,11 @@ public class LevelNode : MonoBehaviour
         {
             remainingDependencies.Clear();
         }
+    }
+
+    void Start()
+    {
+        map = GameObject.FindObjectOfType<MapController>();
     }
 
     public void Complete(bool justCompleted)
@@ -95,13 +106,11 @@ public class LevelNode : MonoBehaviour
 
         if (isSelected)
         {
-            foreach (var node in Object.FindObjectsOfType<LevelNode>())
-            {
-                if (node != this)
-                {
-                    node.Deselect();
-                }
-            }
+            map.OnNodeSelected(this);
+        }
+        else
+        {
+            map.OnNodeDeselected();
         }
     }
 
