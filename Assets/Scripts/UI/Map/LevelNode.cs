@@ -22,6 +22,7 @@ public class LevelNode : MonoBehaviour
     private Animator animator;
     private LevelState state = LevelState.Locked;
     private List<string> remainingDependencies;
+    private bool isSelected;
 
     void OnValidate()
     {
@@ -40,6 +41,7 @@ public class LevelNode : MonoBehaviour
 
         animator = GetComponent<Animator>();
         animator.SetInteger("State", (int)state);
+        isSelected = false;
 
         string[] dependencies;
         if (GameSession.SECTOR_DEPENDENCIES.TryGetValue(Name, out dependencies))
@@ -84,5 +86,11 @@ public class LevelNode : MonoBehaviour
 
         state = LevelState.Unlocked;
         animator.SetInteger("State", (int)state);
+    }
+
+    public void OnSelected()
+    {
+        isSelected = !isSelected;
+        animator.SetBool("IsSelected", isSelected);
     }
 }

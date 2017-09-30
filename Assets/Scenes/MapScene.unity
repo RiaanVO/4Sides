@@ -384,7 +384,7 @@ Prefab:
     - target: {fileID: 114721086015475698, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
       propertyPath: m_Text
-      value: 3-AB
+      value: 3-AD
       objectReference: {fileID: 0}
     - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
@@ -1098,7 +1098,7 @@ Prefab:
     - target: {fileID: 114721086015475698, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
       propertyPath: m_Text
-      value: 3-BC
+      value: 3-CD
       objectReference: {fileID: 0}
     - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
@@ -2622,7 +2622,7 @@ Prefab:
     - target: {fileID: 114721086015475698, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
       propertyPath: m_Text
-      value: 2-A
+      value: 2-D
       objectReference: {fileID: 0}
     - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
@@ -2656,11 +2656,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 819451647}
     m_Modifications:
-    - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
-        type: 2}
-      propertyPath: OutgoingConnectors.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 224067634894431502, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -2751,25 +2746,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1385961290050498, guid: 83e762bf87839b244abeb4f03cd231d4, type: 2}
-      propertyPath: m_Name
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
-        type: 2}
-      propertyPath: Name
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
       propertyPath: OutgoingConnectors.Array.data[0]
       value: 
       objectReference: {fileID: 25399307}
-    - target: {fileID: 114721086015475698, guid: 83e762bf87839b244abeb4f03cd231d4,
-        type: 2}
-      propertyPath: m_Text
-      value: 1-A
-      objectReference: {fileID: 0}
     - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
       propertyPath: OutgoingConnectors.Array.data[1]
@@ -2785,6 +2766,10 @@ Prefab:
       propertyPath: OutgoingConnectors.Array.data[3]
       value: 
       objectReference: {fileID: 1615694019}
+    - target: {fileID: 1385961290050498, guid: 83e762bf87839b244abeb4f03cd231d4, type: 2}
+      propertyPath: m_Name
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83e762bf87839b244abeb4f03cd231d4, type: 2}
   m_IsPrefabParent: 0
@@ -3469,7 +3454,7 @@ Prefab:
     - target: {fileID: 114721086015475698, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
       propertyPath: m_Text
-      value: 2-A
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83e762bf87839b244abeb4f03cd231d4, type: 2}
@@ -3744,7 +3729,7 @@ Prefab:
     - target: {fileID: 114721086015475698, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
       propertyPath: m_Text
-      value: 2-A
+      value: 3-AB
       objectReference: {fileID: 0}
     - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
@@ -3885,7 +3870,7 @@ Prefab:
     - target: {fileID: 114721086015475698, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
       propertyPath: m_Text
-      value: 1
+      value: 2-A
       objectReference: {fileID: 0}
     - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
@@ -4851,7 +4836,7 @@ Prefab:
     - target: {fileID: 114721086015475698, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
       propertyPath: m_Text
-      value: 3-AB
+      value: 3-BC
       objectReference: {fileID: 0}
     - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
@@ -5154,7 +5139,7 @@ Prefab:
     - target: {fileID: 114721086015475698, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
       propertyPath: m_Text
-      value: 2-A
+      value: 2-C
       objectReference: {fileID: 0}
     - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
@@ -5403,7 +5388,7 @@ Prefab:
     - target: {fileID: 114721086015475698, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
       propertyPath: m_Text
-      value: 2-D
+      value: 2-B
       objectReference: {fileID: 0}
     - target: {fileID: 114540110863897862, guid: 83e762bf87839b244abeb4f03cd231d4,
         type: 2}
