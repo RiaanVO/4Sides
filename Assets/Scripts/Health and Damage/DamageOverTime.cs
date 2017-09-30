@@ -80,4 +80,8 @@ public class DamageOverTime : MonoBehaviour {
 			}
 		}
 	}
+
+	public void clearAllHealths(){
+		removeHealths.AddRange (currentHealths);
+	}
 }
