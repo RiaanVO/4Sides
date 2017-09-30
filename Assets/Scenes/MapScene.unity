@@ -4125,6 +4125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DetailsPane: {fileID: 1722316521}
+  SectorNameText: {fileID: 1985286133}
 --- !u!114 &1136360047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6518,7 +6519,7 @@ GameObject:
   - component: {fileID: 1985286134}
   - component: {fileID: 1985286133}
   m_Layer: 5
-  m_Name: SectorValue
+  m_Name: SectorName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6574,7 +6575,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3-AB
+  m_Text: N-X
 --- !u!222 &1985286134
 CanvasRenderer:
   m_ObjectHideFlags: 0

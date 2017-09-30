@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapController : MonoBehaviour
 {
     public Animator DetailsPane;
+    public Text SectorNameText;
 
     private LevelNode[] allNodes;
 
@@ -55,6 +57,10 @@ public class MapController : MonoBehaviour
         {
             DetailsPane.SetBool("IsLevelSelected", true);
             DetailsPane.SetBool("IsLevelUnlocked", selected.IsUnlocked);
+        }
+        if (SectorNameText != null)
+        {
+            SectorNameText.text = selected.Name;
         }
     }
 
