@@ -904,7 +904,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Return to Title Screen
+  m_Text: Return to Map
 --- !u!222 &1436336209
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -923,7 +923,7 @@ GameObject:
   - component: {fileID: 1634724660}
   - component: {fileID: 1634724659}
   m_Layer: 5
-  m_Name: ReturnToTitleScreenButton
+  m_Name: ReturnToMapButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -988,7 +988,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1420688380}
-        m_MethodName: GoToTitleScreen
+        m_MethodName: GoToMapScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

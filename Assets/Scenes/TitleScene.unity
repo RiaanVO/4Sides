@@ -987,7 +987,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1420688380}
-        m_MethodName: GoToCurrentSector
+        m_MethodName: GoToMapScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

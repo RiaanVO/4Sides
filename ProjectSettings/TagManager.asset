@@ -12,6 +12,7 @@ TagManager:
   - Pickup
   - HealthSpawnPoint
   - LavaTrap
+  - Turret
   layers:
   - Default
   - TransparentFX

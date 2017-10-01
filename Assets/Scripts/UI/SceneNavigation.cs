@@ -15,21 +15,24 @@ public class SceneNavigation : MonoBehaviour
         GoToScene("TitleScene");
     }
 
+    public void GoToMapScreen()
+    {
+        GoToScene("MapScene");
+    }
+
+    public void GoToHelpMenu()
+    {
+        GoToScene("HelpScene");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
     }
 
-    public void CloseHelpMenu()
+    public void GoToSector(string sectorName)
     {
-        SceneManager.UnloadSceneAsync("HelpScene");
-        Time.timeScale = 1;
-    }
-
-    public void GoToHelpMenu()
-    {
-        Time.timeScale = 0;
-        SceneManager.LoadScene("HelpScene", LoadSceneMode.Additive);
+        GoToScene(GameSession.GetSectorScene(sectorName));
     }
 
     private void GoToScene(string name)

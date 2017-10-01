@@ -156,6 +156,7 @@ MonoBehaviour:
   SelfDestructOnContact: 1
   TagsToCollideWith:
   - Enemy
+  - Turret
 --- !u!135 &135000216857208400
 SphereCollider:
   m_ObjectHideFlags: 1

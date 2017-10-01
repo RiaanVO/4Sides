@@ -11,7 +11,7 @@ public class PauseMenu : MonoBehaviour {
     private MusicPlayer _musicPlayer;
     private GameController _gameController; 
 
-    public AudioClip _mouseOverSound;
+    public AudioClip buttonClickSfx;
 
 	// Use this for initialization
 	void Start () {
@@ -27,24 +27,12 @@ public class PauseMenu : MonoBehaviour {
     public void ResumeGame()
     {
         _gameController.ResumeGame();
+        _musicPlayer.PlaySfx(buttonClickSfx);
     }
 
     public void ExitGame()
     {
         _gameController.ExitGame();
-    }
-
-    public void PlayMouseOverSound()
-    {
-        if (_musicPlayer != null)
-        {
-            _musicPlayer.PlaySfx(_mouseOverSound);
-        }
-    }
-
-    public void MouseOver()
-    {
-        transform.localScale = new Vector2(1.2f, 1.2f);
-        PlayMouseOverSound();
+        _musicPlayer.PlaySfx(buttonClickSfx);
     }
 }

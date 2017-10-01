@@ -22,10 +22,13 @@ public class EnemyDodger : MonoBehaviour {
 	private float TimeSinceLastHit;
 	private NavMeshAgent dodgerNavMeshAgent;
 	private bool isTeleporting;
+	private bool isSpawning;
+
 
 
 
 	void Start () {
+		isSpawning = true;
 		dodgerNavMeshAgent = transform.parent.GetComponent<NavMeshAgent> ();
 		parentCollider = transform.parent.GetComponent<Collider> ();
 		barrierCollider = transform.GetComponent<Collider> ();
@@ -39,6 +42,7 @@ public class EnemyDodger : MonoBehaviour {
 		parentRigidBody = transform.parent.GetComponent<Rigidbody> ();
 		TeleportEffect = transform.parent.GetComponent<ParticleSystem> ();
 		TimeSinceLastHit = 0;
+		StartCoroutine (DuringSpawnBarrierDelay());
 	}
 		
 
@@ -50,11 +54,10 @@ public class EnemyDodger : MonoBehaviour {
 	void OnTriggerEnter (Collider other) 
 	{
 
-		if (other.gameObject.CompareTag ("Bullet") && (TimeSinceLastHit <= 0)) {
+		if (other.gameObject.CompareTag ("Bullet") && (TimeSinceLastHit <= 0) && isSpawning == false) {
 			TeleportSounds.Play ();
 			StartCoroutine (PlayTeleportEffect ());
 			TimeSinceLastHit = TeleportCooldown;
-
 		}
 
 	}
@@ -67,10 +70,10 @@ public class EnemyDodger : MonoBehaviour {
 		barrierCollider.enabled = false;
 	
 		foreach (Renderer rend in AllDroneRenderer) {
-			dodgerNavMeshAgent.speed = 0f;
 			rend.enabled = false;
 		}
 
+		dodgerNavMeshAgent.speed = 0f;
 		RandomDirection = Random.Range (1, 5);
 		if (RandomDirection == 1 || RandomDirection == 5 ) {
 			TeleportToPosition = transform.position + Vector3.forward * TeleportDistance;
@@ -88,9 +91,7 @@ public class EnemyDodger : MonoBehaviour {
 			TeleportToPosition = transform.position + Vector3.right * TeleportDistance;
 			parentRigidBody.transform.position = Vector3.Lerp (transform.position, TeleportToPosition, lerpTime);
 		}
-
-
-
+			
 		yield return new WaitForSeconds (InvisibleTime);
 
 		foreach (Renderer rend in AllDroneRenderer) {
@@ -105,6 +106,12 @@ public class EnemyDodger : MonoBehaviour {
 		barrierCollider.enabled = true;
 
 		TeleportEffect.Stop ();
-
 	}
+
+
+	private IEnumerator DuringSpawnBarrierDelay() {
+		yield return new WaitForSeconds (2);
+		isSpawning = false;
+	}
+
 }

@@ -23,10 +23,10 @@ public static class GameSession
         {"4", new [] { "3-AB", "3-BC", "3-CD", "3-AD" } }
     };
 
-    public static int Score { get; set; }
+    public static int EnemyLeft { get; set; }
     public static string DisplayScore
     {
-        get { return Score.ToString(); }
+        get { return EnemyLeft.ToString(); }
     }
 
     private static List<string> completedSectors = new List<string>();
@@ -40,7 +40,7 @@ public static class GameSession
 
     public static void StartSector(string id)
     {
-        Score = 0;
+        EnemyLeft = 0;
         currentSector = id;
     }
 
@@ -77,6 +77,11 @@ public static class GameSession
         {
             currentSector = SECTOR_DEPENDENCIES.ElementAt(0).Key;
         }
-        return "Sector_" + currentSector;
+        return GetSectorScene(currentSector);
+    }
+
+    public static string GetSectorScene(string name)
+    {
+        return "Sector_" + name;
     }
 }
