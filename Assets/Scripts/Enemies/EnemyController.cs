@@ -111,8 +111,8 @@ public class EnemyController : PooledObject
 
     private void notifyEnemiesInRange()
     {
-        Transform parent = transform.parent;
-        foreach (EnemyController enCont in parent.GetComponentsInChildren<EnemyController>())
+        //Transform parent = transform.parent;
+        foreach (EnemyController enCont in GameObject.FindObjectsOfType<EnemyController>())
         {
             if (enCont.gameObject.activeSelf && !enCont.hasBeenNotified())
             {
