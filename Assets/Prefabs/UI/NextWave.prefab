@@ -75,7 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Provider: {fileID: 0}
   TextChannel: EnemySpawnManager.DisplayStartWaveIn
-  DefaultText: 'WAVE START: 0.00'
+  DefaultText: 0
 --- !u!114 &114580807196982380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,7 +108,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'WAVE START:'
+  m_Text: NEXT WAVE IN
 --- !u!114 &114826224223227576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,7 +141,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0.00
+  m_Text: 0
 --- !u!114 &114886004775504626
 MonoBehaviour:
   m_ObjectHideFlags: 1
