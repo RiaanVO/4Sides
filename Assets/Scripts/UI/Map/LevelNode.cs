@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,9 +18,26 @@ public class LevelNode : MonoBehaviour
     public Text NodeText;
     public string Name = "1-A";
     public List<NodeConnector> OutgoingConnectors;
+    public int DifficultyRating = 1;
 
     private Animator animator;
+    private MapController map;
     private LevelState state = LevelState.Locked;
+    private List<string> remainingDependencies;
+    private bool isSelected;
+
+    public bool IsUnlocked
+    {
+        get { return state != LevelState.Locked; }
+    }
+
+    void OnValidate()
+    {
+        if (NodeText != null)
+        {
+            NodeText.text = Name;
+        }
+    }
 
     void Awake()
     {
@@ -30,6 +48,22 @@ public class LevelNode : MonoBehaviour
 
         animator = GetComponent<Animator>();
         animator.SetInteger("State", (int)state);
+        isSelected = false;
+
+        string[] dependencies;
+        if (GameSession.SECTOR_DEPENDENCIES.TryGetValue(Name, out dependencies))
+        {
+            remainingDependencies = dependencies.ToList();
+        }
+        else
+        {
+            remainingDependencies.Clear();
+        }
+    }
+
+    void Start()
+    {
+        map = GameObject.FindObjectOfType<MapController>();
     }
 
     public void Complete(bool justCompleted)
@@ -43,7 +77,7 @@ public class LevelNode : MonoBehaviour
             state = LevelState.PreviouslyCompleted;
             foreach (var connector in OutgoingConnectors)
             {
-                connector.Unlock(false);
+                connector.Unlock(false, Name);
             }
         }
         animator.SetInteger("State", (int)state);
@@ -53,13 +87,40 @@ public class LevelNode : MonoBehaviour
     {
         foreach (var connector in OutgoingConnectors)
         {
-            connector.Unlock(true);
+            connector.Unlock(true, Name);
         }
     }
 
-    public void Unlock()
+    public void Unlock(string sourceLevel)
     {
-        state = LevelState.Unlocked;
-        animator.SetInteger("State", (int)state);
+        remainingDependencies.Remove(sourceLevel);
+        if (remainingDependencies.Count > 0) return;
+
+        if (state == LevelState.Locked)
+        {
+            state = LevelState.Unlocked;
+            animator.SetInteger("State", (int)state);
+        }
+    }
+
+    public void ToggleSelectionState()
+    {
+        isSelected = !isSelected;
+        animator.SetBool("IsSelected", isSelected);
+
+        if (isSelected)
+        {
+            map.OnNodeSelected(this);
+        }
+        else
+        {
+            map.OnNodeDeselected();
+        }
+    }
+
+    public void Deselect()
+    {
+        isSelected = false;
+        animator.SetBool("IsSelected", isSelected);
     }
 }

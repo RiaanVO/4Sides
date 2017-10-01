@@ -5,8 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float normalMovementSpeed = 1.5f;
-    public float slowMovementSpeed = 1f;
+    public float MovementSpeed = 1.75f;
+    public float MovementSpeedWhileShooting = 1f;
     public Light MoveLight;
 
     private PlayerShooting weapons;
@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // calculate world position of mouse cursor
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        var plane = new Plane(Vector3.up, new Vector3(0, transform.position.y, 0));
+        var plane = new Plane(Vector3.up, Vector3.zero);
         float distance = 0.0f;
         if (plane.Raycast(ray, out distance))
         {
@@ -42,18 +42,18 @@ public class PlayerMovement : MonoBehaviour
         Vector3 verticalDir = Vector3.Cross(Vector3.down, Camera.main.transform.right);
         Vector3 movement = (horizontalDir * Input.GetAxis("Horizontal"))
             + (verticalDir * Input.GetAxis("Vertical"));
-        movement.Normalize();
 
-        float movementSpeed = normalMovementSpeed;
+        // slow player's movement if they are shooting
+        float movementSpeed = MovementSpeed;
         if (weapons != null && weapons.IsShooting)
         {
-            movementSpeed = slowMovementSpeed;
+            movementSpeed = MovementSpeedWhileShooting;
         }
         if (MoveLight != null)
         {
             MoveLight.intensity = movement.magnitude * (Mathf.Sin(Time.time * 20) + 1);
         }
 
-        body.AddForce(movement * movementSpeed, ForceMode.VelocityChange);
+        body.AddForce(movement * movementSpeed, ForceMode.Impulse);
     }
 }

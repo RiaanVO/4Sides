@@ -15,9 +15,24 @@ public class SceneNavigation : MonoBehaviour
         GoToScene("TitleScene");
     }
 
+    public void GoToMapScreen()
+    {
+        GoToScene("MapScene");
+    }
+
+    public void GoToHelpMenu()
+    {
+        GoToScene("HelpScene");
+    }
+
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void GoToSector(string sectorName)
+    {
+        GoToScene(GameSession.GetSectorScene(sectorName));
     }
 
     private void GoToScene(string name)

@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerShooting : MonoBehaviour
 {
     public Bullet Bullet;
-    public float FireRate = 1.0f;
+    public float FireRate = 0.001f;
     public Light MuzzleFlash;
+    public Transform shootingPoint;
 
     private float lastFiredTimestamp;
     private AudioSource fireSound;
 
-	public Transform shootingPoint;
+    //private float fireRateTimeRemaining;
+    private float currentFireRate;
 
     public bool IsShooting { get; private set; }
 
@@ -17,12 +20,24 @@ public class PlayerShooting : MonoBehaviour
     {
         fireSound = GetComponent<AudioSource>();
         lastFiredTimestamp = Time.time;
+        currentFireRate = FireRate;
     }
 
     void Update()
     {
+		/*
+        if (fireRateTimeRemaining > 0)
+        {
+            fireRateTimeRemaining -= Time.deltaTime;
+            if (fireRateTimeRemaining < 0)
+            {
+                currentFireRate = FireRate;
+            }
+        }
+        */
+
         IsShooting = Input.GetButton("Fire");
-        if (IsShooting && Time.time - lastFiredTimestamp >= FireRate)
+        if (IsShooting && Time.time - lastFiredTimestamp >= currentFireRate)
         {
             Shoot();
             if (MuzzleFlash != null)
@@ -44,4 +59,19 @@ public class PlayerShooting : MonoBehaviour
         bullet.Initialize(shootingPoint.position, transform.rotation);
         lastFiredTimestamp = Time.time;
     }
+
+
+    public void IncreaseFireRate(float duration, float targetFireRate)
+    {
+		StartCoroutine (increaseFireRate (duration, targetFireRate));
+        //fireRateTimeRemaining = duration;
+        //currentFireRate = targetFireRate;
+    }
+    
+
+	private IEnumerator increaseFireRate(float duration, float targetFireRate){
+		currentFireRate = targetFireRate;
+		yield return new WaitForSeconds(duration);
+		currentFireRate = FireRate; 
+	}
 }

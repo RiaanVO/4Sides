@@ -9,26 +9,30 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(DataProvider))]
 public class GameController : MonoBehaviour
 {
-    public static readonly string CHANNEL_SCORE = "GameController.Score";
+    public static readonly string CHANNEL_SCORE = "GameController.EnemyLeft";
     public static readonly string CHANNEL_DISPLAY_SCORE = "GameController.DisplayScore";
     public static readonly string CHANNEL_SECTOR = "GameController.Sector";
 
     public string Sector = "N-X";
     public EventSource Player;
     public EventSource SpawnManager;
+    public SectorClearedController SectorCleared;
 
-    [Header("Score Settings")]
+    [Header("EnemyLeft Settings")]
     public AudioClip scoreAddSFX;
     private AudioSource audioSource;
 
     private DataProvider data;
+
+    private bool _paused;
+    private bool wavesCleared;
 
     void Start()
     {
         GameSession.StartSector(Sector);
 
         data = GetComponent<DataProvider>();
-        data.UpdateChannel(CHANNEL_SCORE, GameSession.Score);
+        data.UpdateChannel(CHANNEL_SCORE, GameSession.EnemyLeft);
         data.UpdateChannel(CHANNEL_DISPLAY_SCORE, GameSession.DisplayScore);
         data.UpdateChannel(CHANNEL_SECTOR, Sector);
 
@@ -38,23 +42,58 @@ public class GameController : MonoBehaviour
         }
         if (SpawnManager != null)
         {
-            SpawnManager.Subscribe(EnemySpawnManager.EVENT_ALL_WAVES_CLEARED, GoToMapScreen);
+            SpawnManager.Subscribe(EnemySpawnManager.EVENT_ALL_WAVES_CLEARED, OnAllWavesCleared);
         }
 
         audioSource = GetComponent<AudioSource>();
+
+        _paused = false;
+        wavesCleared = false;
     }
 
-    public void AwardPoints(int points)
+    void Update()
     {
-        GameSession.Score += points;
-        data.UpdateChannel(CHANNEL_SCORE, GameSession.Score);
+        if (Input.GetKeyDown("escape"))
+        {
+            if (!_paused)
+            {
+                PauseGame();
+            }
+        }
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        _paused = true;
+        SceneManager.LoadScene("PauseScene", LoadSceneMode.Additive);
+    }
+
+    public void ResumeGame()
+    {
+        StartCoroutine(ClosePauseMenu());
+        Time.timeScale = 1;
+        _paused = false;
+    }
+
+    public void ExitGame()
+    {
+        StartCoroutine(ClosePauseMenu());
+        GoToScene("TitleScene");
+        Time.timeScale = 1;
+    }
+
+    public void UpdateEnemyNumber(int number)
+    {
+        GameSession.EnemyLeft = number;
+        data.UpdateChannel(CHANNEL_SCORE, GameSession.EnemyLeft);
         data.UpdateChannel(CHANNEL_DISPLAY_SCORE, GameSession.DisplayScore);
 
-        if (audioSource != null && scoreAddSFX != null)
-        {
-            audioSource.pitch = Random.Range(0.97f, 1.03f);
-            audioSource.PlayOneShot(scoreAddSFX);
-        }
+        //if (audioSource != null && scoreAddSFX != null)
+        //{
+        //    audioSource.pitch = Random.Range(0.97f, 1.03f);
+        //    audioSource.PlayOneShot(scoreAddSFX);
+        //}
     }
 
     private void GoToDeathScreen(EventSource source, string eventName)
@@ -62,7 +101,22 @@ public class GameController : MonoBehaviour
         GoToScene("DeathScene");
     }
 
-    private void GoToMapScreen(EventSource source, string eventName)
+    private void OnAllWavesCleared(EventSource source, string eventName)
+    {
+        if (wavesCleared) return;
+        wavesCleared = true;
+
+        if (SectorCleared == null)
+        {
+            GoToMapScreen();
+        }
+        else
+        {
+            Instantiate(SectorCleared);
+        }
+    }
+
+    public void GoToMapScreen()
     {
         if (!string.IsNullOrEmpty(Sector))
         {
@@ -82,5 +136,11 @@ public class GameController : MonoBehaviour
         {
             transitions.Navigate(name);
         }
+    }
+
+    IEnumerator ClosePauseMenu()
+    {
+        SceneManager.UnloadSceneAsync("PauseScene");
+        yield return null;
     }
 }

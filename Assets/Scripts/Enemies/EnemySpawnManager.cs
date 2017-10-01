@@ -13,6 +13,10 @@ public class EnemySpawnManager : MonoBehaviour
     public static readonly string CHANNEL_DISPLAY_WAVE = "EnemySpawnManager.DisplayWave";
     public static readonly string EVENT_ALL_WAVES_CLEARED = "EnemySpawnManager.AllWavesCleared";
 
+    public static readonly string CHANNEL_START_WAVE_IN = "EnemySpawnManager.StartWaveIn";
+    public static readonly string CHANNEL_DISPLAY_START_WAVE_IN = "EnemySpawnManager.DisplayStartWaveIn";
+
+
     [Serializable]
     public class Wave
     {
@@ -20,15 +24,16 @@ public class EnemySpawnManager : MonoBehaviour
         public int EnemiesPerDropPod = 3;
     }
 
-    public DropPodController DropPod;
+    public DropPodController[] DropPods;
     public List<Wave> Waves;
 
-	[Header("Death Settings")]
-	public HealthPickupSpawnManager healthPickupSpawner;
-
+    [Header("Death Settings")]
+    public HealthPickupSpawnManager healthPickupSpawner;
+    //public PickupSpawnManager pickupSpawner;
     private DataProvider data;
     private EventSource events;
     private AudioSource waveCleared;
+    private GameController gameContriller;
 
     private List<Vector3> spawnPoints;
     private int dropPodsRemaining = 0;
@@ -36,16 +41,22 @@ public class EnemySpawnManager : MonoBehaviour
     private bool allEnemiesSpawned = false;
     private int wave = 0;
 
+    [Header("Wave start Settings")]
+    public float waveStartDelayTime = 3;
+    private float startWaveIn;
+    private bool waveStarted;
+
     void Start()
     {
         data = GetComponent<DataProvider>();
         events = GetComponent<EventSource>();
         waveCleared = GetComponent<AudioSource>();
+        gameContriller = FindObjectOfType<GameController>();
 
         spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint")
             .Select(o => o.transform.position).ToList();
 
-        if (DropPod == null)
+        if (DropPods == null)
         {
             Debug.LogError("No drop pod specified!");
         }
@@ -54,7 +65,28 @@ public class EnemySpawnManager : MonoBehaviour
             Debug.LogError("No waves defined!");
         }
 
-        StartNewWave();
+        SetUpWaveDelay();
+    }
+
+    void SetUpWaveDelay()
+    {
+        startWaveIn = waveStartDelayTime;
+        waveStarted = false;
+    }
+
+    void Update()
+    {
+        if (gameContriller != null)
+            gameContriller.UpdateEnemyNumber(enemiesActive);
+
+        startWaveIn -= Time.deltaTime;
+        data.UpdateChannel(CHANNEL_START_WAVE_IN, startWaveIn);
+        data.UpdateChannel(CHANNEL_DISPLAY_START_WAVE_IN, Math.Ceiling(startWaveIn).ToString());
+        if (startWaveIn < 0 && !waveStarted)
+        {
+            waveStarted = true;
+            StartNewWave();
+        }
     }
 
     private void StartNewWave()
@@ -83,7 +115,8 @@ public class EnemySpawnManager : MonoBehaviour
         dropPodsRemaining = dropPodCount;
         foreach (var position in spawnLocations)
         {
-            var dropPod = DropPod.GetPooledInstance<DropPodController>();
+            int dropPodType = Random.Range(0, DropPods.Length);
+            var dropPod = DropPods[dropPodType].GetPooledInstance<DropPodController>();
             dropPod.Initialize(position, currentWave.EnemiesPerDropPod, OnDropPodDepleted);
         }
 
@@ -95,8 +128,9 @@ public class EnemySpawnManager : MonoBehaviour
         data.UpdateChannel(CHANNEL_WAVE, wave);
         data.UpdateChannel(CHANNEL_DISPLAY_WAVE, wave.ToString());
 
-		//Spawn the health pickup for this wave
-		healthPickupSpawner.SpawnHealthPickup ();
+        //Spawn the health pickup for this wave
+        healthPickupSpawner.SpawnHealthPickup();
+        //pickupSpawner.SpawnPickup ();
     }
 
     private void OnDropPodDepleted()
@@ -127,7 +161,14 @@ public class EnemySpawnManager : MonoBehaviour
             {
                 waveCleared.Play();
             }
-            StartNewWave();
+            if (wave < Waves.Count)
+            {
+                SetUpWaveDelay();
+            }
+            else
+            {
+                StartNewWave();
+            }
         }
     }
 }

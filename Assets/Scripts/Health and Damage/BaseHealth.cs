@@ -12,6 +12,8 @@ public class BaseHealth : MonoBehaviour
     private EventSource events;
     private PooledObject poolable;
     private float currentHealth;
+    private float __invincibleTimer;
+	public bool InvincibleWhenDamaged = false;
 
     [Header("Base Health Settings")]
     public float InitialHealth = 100;
@@ -21,8 +23,10 @@ public class BaseHealth : MonoBehaviour
     public bool showDamageFlashEffects = true;
     public float damageFlashDuration = 0.2f;
     public int flashesPerDuration = 4;
+    public float invincibleTime = 0.5f;
     private float flashTimer = 0f;
     private bool flashActive = false;
+    private bool _isInvincible = false;
 
     public Material flashMaterial;
     private Material baseMaterial;
@@ -65,6 +69,16 @@ public class BaseHealth : MonoBehaviour
 
     public void Update()
     {
+        if (_isInvincible)
+        {
+            __invincibleTimer += Time.deltaTime;
+            if (__invincibleTimer >= invincibleTime)
+            {
+                _isInvincible = false;
+                __invincibleTimer = 0;
+            }
+        }
+
         if (showDamageFlashEffects)
         {
             if (flashActive)
@@ -133,20 +147,26 @@ public class BaseHealth : MonoBehaviour
     {
         if (!IsDead)
         {
-            currentHealth -= amount;
-
-            ShowDamageEffects(amount);
-            DamageSound();
-
-
-            if (data != null)
+            if (!_isInvincible)
             {
-                data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);
-            }
+				if (InvincibleWhenDamaged) {
+					_isInvincible = true;
+				}
+                currentHealth -= amount;
 
-            if (IsDead)
-            {
-                Die();
+                ShowDamageEffects(amount);
+                DamageSound();
+
+
+                if (data != null)
+                {
+                    data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);
+                }
+
+                if (IsDead)
+                {
+                    Die();
+                }
             }
         }
     }

@@ -2,25 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicPlayer : MonoBehaviour
+namespace MusicService
 {
-    private static MusicPlayer instance = null;
-    public static MusicPlayer Instance
-    {
-        get { return instance; }
-    }
 
-    void Awake()
+    public class MusicPlayer : MonoBehaviour
     {
-        if (instance != null && instance != this)
+        private static MusicPlayer instance = null;
+        public static MusicPlayer Instance
         {
-            Destroy(this.gameObject);
-            return;
+            get { return instance; }
         }
-        else
+
+        void Awake()
         {
-            instance = this;
+            if (instance != null && instance != this)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+            else
+            {
+                instance = this;
+            }
+            DontDestroyOnLoad(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+
+        private AudioSource audioSource;
+
+        void Start()
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        public void PlaySfx(AudioClip audio)
+        {
+            audioSource.PlayOneShot(audio);
+        }
     }
 }

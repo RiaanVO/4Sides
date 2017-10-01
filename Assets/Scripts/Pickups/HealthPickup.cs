@@ -22,6 +22,8 @@ public class HealthPickup : MonoBehaviour {
 		SetVisability (false);
 	}
 
+
+
 	public void SpawnHealthPickup(Vector3 newPosition){
 		if (pickupAnimation == null) {
 			pickupAnimation = GetComponent<PickupAnimation> ();

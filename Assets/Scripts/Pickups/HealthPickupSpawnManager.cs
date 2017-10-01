@@ -21,6 +21,7 @@ public class HealthPickupSpawnManager : MonoBehaviour {
 			return;
 		if (healthPickup.IsCollected ()) {
 			int index = Random.Range(0, healthSpawnPoints.Count);
+
 			healthPickup.SpawnHealthPickup (healthSpawnPoints.ElementAt (index));
 		}
 	}
