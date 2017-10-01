@@ -48,7 +48,6 @@ public class EnemyController : PooledObject
         var manager = GameObject.FindObjectOfType<EnemySpawnManager>();
         manager.RegisterEnemy(this);
 
-
         //Player detection settings
         playerFound = !waitForProximity;
         checkTimer = positionCheckDelay;

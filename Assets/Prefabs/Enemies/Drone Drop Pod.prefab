@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 4006139077147902}
   - component: {fileID: 95282123119695920}
   - component: {fileID: 54447207695823682}
-  - component: {fileID: 114395598037238430}
+  - component: {fileID: 114983989542929384}
   m_Layer: 0
   m_Name: Drone Drop Pod
   m_TagString: Untagged
@@ -819,7 +819,7 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114395598037238430
+--- !u!114 &114983989542929384
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -827,13 +827,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1695107515686012}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96572dd1407ce9949bf0c7a5a51350e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 01de8a64490df944faae9d4950ae6291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MinDropHeight: 25
   MaxDropHeight: 250
-  Enemy: {fileID: 114308998648990500, guid: 8771c4f06136a5442bfe3c1f7b072bf6, type: 2}
-  TimeBetweenSpawns: 0.3
+  Enemy: {fileID: 114954353526192084, guid: 8771c4f06136a5442bfe3c1f7b072bf6, type: 2}
+  TimeBetweenSpawns: 1
   SpawnedSound: {fileID: 8300000, guid: fc4495cb03902c74ba116c65a5276902, type: 3}
   LandedSound: {fileID: 8300000, guid: 7607b415657f95841817470238eb5496, type: 3}
   OpeningSound: {fileID: 8300000, guid: 24d0bb5d5c6a60145964c65a8fccfe70, type: 3}

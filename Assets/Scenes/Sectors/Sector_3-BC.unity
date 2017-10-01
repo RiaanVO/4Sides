@@ -12936,22 +12936,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 720385620}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 108359a3bd125954c8a40e3dff9fec2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 43f6a9e9848ced842afb5ee905dc65e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DropPod: {fileID: 114395598037238430, guid: ba528b05505343d4e973a17541f8f428, type: 2}
+  DropPods:
+  - {fileID: 114983989542929384, guid: ba528b05505343d4e973a17541f8f428, type: 2}
   Waves:
+  - DropPodCount: 5
+    EnemiesPerDropPod: 2
+  - DropPodCount: 6
+    EnemiesPerDropPod: 2
+  - DropPodCount: 7
+    EnemiesPerDropPod: 2
   - DropPodCount: 8
-    EnemiesPerDropPod: 1
-  - DropPodCount: 12
-    EnemiesPerDropPod: 1
-  - DropPodCount: 16
-    EnemiesPerDropPod: 1
-  - DropPodCount: 20
-    EnemiesPerDropPod: 1
-  - DropPodCount: 25
-    EnemiesPerDropPod: 1
-  pickupSpawner: {fileID: 218274700}
+    EnemiesPerDropPod: 2
+  - DropPodCount: 9
+    EnemiesPerDropPod: 2
+  healthPickupSpawner: {fileID: 218274698}
+  waveStartDelayTime: 3
 --- !u!82 &720385625
 AudioSource:
   m_ObjectHideFlags: 0

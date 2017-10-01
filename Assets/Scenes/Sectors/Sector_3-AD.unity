@@ -4833,7 +4833,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43f6a9e9848ced842afb5ee905dc65e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DropPod: {fileID: 114139007518389444, guid: dddcbddaccdd10345b93bdaf56cd4123, type: 2}
+  DropPods:
+  - {fileID: 114139007518389444, guid: dddcbddaccdd10345b93bdaf56cd4123, type: 2}
   Waves:
   - DropPodCount: 4
     EnemiesPerDropPod: 1

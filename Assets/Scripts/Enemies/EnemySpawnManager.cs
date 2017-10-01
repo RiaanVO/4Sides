@@ -24,7 +24,7 @@ public class EnemySpawnManager : MonoBehaviour
         public int EnemiesPerDropPod = 3;
     }
 
-    public DropPodController DropPod;
+    public DropPodController[] DropPods;
     public List<Wave> Waves;
 
     [Header("Death Settings")]
@@ -56,7 +56,7 @@ public class EnemySpawnManager : MonoBehaviour
         spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint")
             .Select(o => o.transform.position).ToList();
 
-        if (DropPod == null)
+        if (DropPods == null)
         {
             Debug.LogError("No drop pod specified!");
         }
@@ -114,7 +114,8 @@ public class EnemySpawnManager : MonoBehaviour
         dropPodsRemaining = dropPodCount;
         foreach (var position in spawnLocations)
         {
-            var dropPod = DropPod.GetPooledInstance<DropPodController>();
+			int dropPodType = Random.Range (0, DropPods.Length);
+            var dropPod = DropPods[dropPodType].GetPooledInstance<DropPodController>();
             dropPod.Initialize(position, currentWave.EnemiesPerDropPod, OnDropPodDepleted);
         }
 

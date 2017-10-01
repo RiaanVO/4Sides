@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 82893757901941022}
   - component: {fileID: 199634818123032278}
   - component: {fileID: 198844787168736560}
-  - component: {fileID: 114308998648990500}
+  - component: {fileID: 114954353526192084}
   m_Layer: 0
   m_Name: DroneEnemy
   m_TagString: Enemy
@@ -704,19 +704,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114308998648990500
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1012135304617032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 742d5a3adf6fa5b4e8608b878d406835, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  checkDistance: 5
-  positionCheckDelay: 0.5
 --- !u!114 &114405871325869992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -786,6 +773,25 @@ MonoBehaviour:
   TeleportCooldown: 3
   InvisibleTime: 0.8
   MaterializationTIme: 0.3
+--- !u!114 &114954353526192084
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1012135304617032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ee4714c22ded446adaf90cf466d46b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkDistance: 5
+  positionCheckDelay: 0.5
+  waitForProximity: 0
+  playerDetectionRadius: 12
+  notifyRange: 9
+  playerDetectedSFX: {fileID: 0}
+  randomiseStartPos: 1
+  randomisePosScale: 2
 --- !u!136 &136633064977780166
 CapsuleCollider:
   m_ObjectHideFlags: 1

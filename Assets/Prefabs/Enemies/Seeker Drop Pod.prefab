@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 114139007518389444}
   - component: {fileID: 54447207695823682}
   m_Layer: 0
-  m_Name: Drop Pod
+  m_Name: Seeker Drop Pod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
