@@ -21,6 +21,7 @@ public class LaserHazzardController : MonoBehaviour {
 	DamageOverTime damgOverTime;
 
 	[Header("Audio Settings")]
+	public float volume = 0.1f;
 	public AudioClip laserIdle;
 	public AudioClip laserTurnOn;
 	public AudioClip laserOn;
@@ -57,21 +58,22 @@ public class LaserHazzardController : MonoBehaviour {
 
 		damgOverTime = GetComponent<DamageOverTime> ();
 
+
 		idleSource = gameObject.AddComponent<AudioSource> ();
-		idleSource.volume = 0.3f;
+		idleSource.volume = volume;
 		idleSource.clip = laserIdle;
 		idleSource.loop = true;
 		idleSource.Play ();
 
 		onOffSource = gameObject.AddComponent<AudioSource> ();
 		onOffSource.loop = false;
-		onOffSource.volume = 0.3f;
+		onOffSource.volume = volume;
 
 		onSource = gameObject.AddComponent<AudioSource> ();
 		onSource.loop = true;
 		onSource.clip = laserOn;
 		onSource.Stop ();
-		onSource.volume = 0.3f;
+		onSource.volume = volume;
 
 		Invoke ("StartCharging", startDelay);
 	}

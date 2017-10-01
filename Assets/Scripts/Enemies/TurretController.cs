@@ -84,7 +84,7 @@ public class TurretController : MonoBehaviour {
     private void Aiming()
     {
         Vector3 position = _player.transform.position;
-        position.y = 0;
+        //position.y = 0;
         transform.LookAt(position);
     }
 
