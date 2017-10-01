@@ -35,14 +35,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sectors/Sector_2-D.unity
     guid: 781a704eadd0acf42a834066bc91dbe9
-  - enabled: 1
-    path: Assets/Scenes/Sectors/Sector_3-AB.unity
+  - enabled: 0
+    path: 
     guid: f1a0bdbb424b27f48aad6ac0cdbb51ae
   - enabled: 1
     path: Assets/Scenes/Sectors/Sector_3-AD.unity
     guid: 7a5fb9240bde5d74c803a0bc87fdb695
-  - enabled: 1
-    path: Assets/Scenes/Sectors/Sector_3-BC.unity
+  - enabled: 0
+    path: 
     guid: f91fc21643f5bab4085cf0a5e048d97f
   - enabled: 1
     path: Assets/Scenes/Sectors/Sector_3-CD.unity

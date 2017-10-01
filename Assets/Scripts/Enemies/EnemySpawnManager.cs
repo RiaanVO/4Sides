@@ -81,7 +81,7 @@ public class EnemySpawnManager : MonoBehaviour
 
 		startWaveIn -= Time.deltaTime;
 		data.UpdateChannel (CHANNEL_START_WAVE_IN, startWaveIn);
-		data.UpdateChannel(CHANNEL_DISPLAY_START_WAVE_IN, "WAVE START: " + String.Format("{0:0.0}", startWaveIn));
+		data.UpdateChannel(CHANNEL_DISPLAY_START_WAVE_IN, String.Format("{0:0.0}", startWaveIn));
 		if (startWaveIn < 0 && !waveStarted) {
 			waveStarted = true;
 			StartNewWave ();
@@ -159,8 +159,11 @@ public class EnemySpawnManager : MonoBehaviour
             {
                 waveCleared.Play();
             }
-			setUpWaveDelay ();
-            //StartNewWave();
+			if (wave < Waves.Count) {
+				setUpWaveDelay ();
+			} else {
+            	StartNewWave();
+			}
         }
     }
 }

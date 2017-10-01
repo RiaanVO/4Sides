@@ -6,6 +6,8 @@ public class WaveDelayController : Observable {
 
 	public string FloatChannel;
 	public GameObject WaveStartDelayText;
+	public GameObject WaveStartDelayLable;
+
 
 	public float DefaultFloat = -1;
 	private float value;
@@ -24,11 +26,15 @@ public class WaveDelayController : Observable {
 			if (value > 0) {
 				textHidden = false;
 				WaveStartDelayText.SetActive (true);
+				WaveStartDelayLable.SetActive (true);
+
 			}
 		} else {
 			if (value < 0) {
 				textHidden = true;
 				WaveStartDelayText.SetActive (false);
+				WaveStartDelayLable.SetActive (false);
+
 			}
 		}
 	}
