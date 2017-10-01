@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     public string Sector = "N-X";
     public EventSource Player;
     public EventSource SpawnManager;
+    public SectorClearedController SectorCleared;
 
     [Header("EnemyLeft Settings")]
     public AudioClip scoreAddSFX;
@@ -24,6 +25,7 @@ public class GameController : MonoBehaviour
     private DataProvider data;
 
     private bool _paused;
+    private bool wavesCleared;
 
     void Start()
     {
@@ -40,12 +42,13 @@ public class GameController : MonoBehaviour
         }
         if (SpawnManager != null)
         {
-            SpawnManager.Subscribe(EnemySpawnManager.EVENT_ALL_WAVES_CLEARED, GoToMapScreen);
+            SpawnManager.Subscribe(EnemySpawnManager.EVENT_ALL_WAVES_CLEARED, OnAllWavesCleared);
         }
 
         audioSource = GetComponent<AudioSource>();
 
         _paused = false;
+        wavesCleared = false;
     }
 
     void Update()
@@ -98,7 +101,22 @@ public class GameController : MonoBehaviour
         GoToScene("DeathScene");
     }
 
-    private void GoToMapScreen(EventSource source, string eventName)
+    private void OnAllWavesCleared(EventSource source, string eventName)
+    {
+        if (wavesCleared) return;
+        wavesCleared = true;
+
+        if (SectorCleared == null)
+        {
+            GoToMapScreen();
+        }
+        else
+        {
+            Instantiate(SectorCleared);
+        }
+    }
+
+    public void GoToMapScreen()
     {
         if (!string.IsNullOrEmpty(Sector))
         {

@@ -13,8 +13,8 @@ public class EnemySpawnManager : MonoBehaviour
     public static readonly string CHANNEL_DISPLAY_WAVE = "EnemySpawnManager.DisplayWave";
     public static readonly string EVENT_ALL_WAVES_CLEARED = "EnemySpawnManager.AllWavesCleared";
 
-	public static readonly string CHANNEL_START_WAVE_IN = "EnemySpawnManager.StartWaveIn";
-	public static readonly string CHANNEL_DISPLAY_START_WAVE_IN = "EnemySpawnManager.DisplayStartWaveIn";
+    public static readonly string CHANNEL_START_WAVE_IN = "EnemySpawnManager.StartWaveIn";
+    public static readonly string CHANNEL_DISPLAY_START_WAVE_IN = "EnemySpawnManager.DisplayStartWaveIn";
 
 
     [Serializable]
@@ -41,10 +41,10 @@ public class EnemySpawnManager : MonoBehaviour
     private bool allEnemiesSpawned = false;
     private int wave = 0;
 
-	[Header("Wave start Settings")]
-	public float waveStartDelayTime = 3;
-	private float startWaveIn;
-	private bool waveStarted;
+    [Header("Wave start Settings")]
+    public float waveStartDelayTime = 3;
+    private float startWaveIn;
+    private bool waveStarted;
 
     void Start()
     {
@@ -65,27 +65,28 @@ public class EnemySpawnManager : MonoBehaviour
             Debug.LogError("No waves defined!");
         }
 
-		setUpWaveDelay ();
-        //StartNewWave();
+        SetUpWaveDelay();
     }
 
-	void setUpWaveDelay(){
-		startWaveIn = waveStartDelayTime;
-		waveStarted = false;
-	}
+    void SetUpWaveDelay()
+    {
+        startWaveIn = waveStartDelayTime;
+        waveStarted = false;
+    }
 
     void Update()
     {
         if (gameContriller != null)
             gameContriller.UpdateEnemyNumber(enemiesActive);
 
-		startWaveIn -= Time.deltaTime;
-		data.UpdateChannel (CHANNEL_START_WAVE_IN, startWaveIn);
-		data.UpdateChannel(CHANNEL_DISPLAY_START_WAVE_IN, String.Format("{0:0.0}", startWaveIn));
-		if (startWaveIn < 0 && !waveStarted) {
-			waveStarted = true;
-			StartNewWave ();
-		}
+        startWaveIn -= Time.deltaTime;
+        data.UpdateChannel(CHANNEL_START_WAVE_IN, startWaveIn);
+        data.UpdateChannel(CHANNEL_DISPLAY_START_WAVE_IN, Math.Ceiling(startWaveIn).ToString());
+        if (startWaveIn < 0 && !waveStarted)
+        {
+            waveStarted = true;
+            StartNewWave();
+        }
     }
 
     private void StartNewWave()
@@ -114,7 +115,7 @@ public class EnemySpawnManager : MonoBehaviour
         dropPodsRemaining = dropPodCount;
         foreach (var position in spawnLocations)
         {
-			int dropPodType = Random.Range (0, DropPods.Length);
+            int dropPodType = Random.Range(0, DropPods.Length);
             var dropPod = DropPods[dropPodType].GetPooledInstance<DropPodController>();
             dropPod.Initialize(position, currentWave.EnemiesPerDropPod, OnDropPodDepleted);
         }
@@ -160,11 +161,14 @@ public class EnemySpawnManager : MonoBehaviour
             {
                 waveCleared.Play();
             }
-			if (wave < Waves.Count) {
-				setUpWaveDelay ();
-			} else {
-            	StartNewWave();
-			}
+            if (wave < Waves.Count)
+            {
+                SetUpWaveDelay();
+            }
+            else
+            {
+                StartNewWave();
+            }
         }
     }
 }
