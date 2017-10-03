@@ -15,6 +15,7 @@ public class EnemyController : PooledObject
     public float positionCheckDelay = 0.5f;
     private float checkTimer = 0f;
 
+    public float chanceToChase = 0.2f;
     public bool waitForProximity = true;
     private bool playerFound = false;
     public float playerDetectionRadius = 5f;
@@ -51,6 +52,11 @@ public class EnemyController : PooledObject
         //Player detection settings
         playerFound = !waitForProximity;
         checkTimer = positionCheckDelay;
+
+        if (Random.Range(0, 10) <= (int)10*chanceToChase)
+        {
+            playerFound = true;
+        }
 
         if (randomiseStartPos)
         {
