@@ -48,6 +48,12 @@ public class EnemyDodger : MonoBehaviour {
 
 	void Update () {
 		TimeSinceLastHit -= Time.deltaTime;
+
+		if (TimeSinceLastHit < 0 && parentCollider.enabled == false) {
+			DroneAppear ();
+		}
+
+
 	}
 
 
@@ -65,15 +71,10 @@ public class EnemyDodger : MonoBehaviour {
 
 
 	private IEnumerator PlayTeleportEffect(){
-		TeleportEffect.Play ();
-		parentCollider.enabled = false;
-		barrierCollider.enabled = false;
-	
-		foreach (Renderer rend in AllDroneRenderer) {
-			rend.enabled = false;
-		}
 
-		dodgerNavMeshAgent.speed = 0f;
+
+		DroneDisapear ();
+
 		RandomDirection = Random.Range (1, 5);
 		if (RandomDirection == 1 || RandomDirection == 5 ) {
 			TeleportToPosition = transform.position + Vector3.forward * TeleportDistance;
@@ -94,18 +95,40 @@ public class EnemyDodger : MonoBehaviour {
 			
 		yield return new WaitForSeconds (InvisibleTime);
 
+		DroneAppear ();
+
+
+	}
+
+
+	public void DroneDisapear () {
+		TeleportEffect.Play ();
+		parentCollider.enabled = false;
+		barrierCollider.enabled = false;
+
+		foreach (Renderer rend in AllDroneRenderer) {
+			rend.enabled = false;
+		}
+
+		dodgerNavMeshAgent.speed = 0f;
+	}
+
+	public void DroneAppear() {
+		TeleportSounds.Stop ();
 		foreach (Renderer rend in AllDroneRenderer) {
 			rend.enabled = true;
 		}
-		TeleportSounds.Stop ();
-		yield return new WaitForSeconds (MaterializationTIme);
+		StartCoroutine (Materialization ());
 		dodgerNavMeshAgent.speed = 2f;
-
-
 		parentCollider.enabled = true;
 		barrierCollider.enabled = true;
-
 		TeleportEffect.Stop ();
+	}
+
+
+
+	private IEnumerator Materialization() {
+		yield return new WaitForSeconds (MaterializationTIme);
 	}
 
 
