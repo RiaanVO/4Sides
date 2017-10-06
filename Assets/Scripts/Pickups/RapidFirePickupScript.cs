@@ -9,6 +9,8 @@ public class RapidFirePickupScript : MonoBehaviour
     public float RapidFireRate = 0.001f;
     public int RapidFireRateDuration = 10;
 
+    public Bullet NewBullet;
+
     public AudioClip RapidFireSpawnSFX;
     public AudioClip RapidFireCollectedSFX;
 
@@ -16,14 +18,14 @@ public class RapidFirePickupScript : MonoBehaviour
     private AudioSource audioSource;
     public GameObject model;
     public GameObject pickupLight;
-    private bool isCollected = true;
+    private bool isCollected = false;
 
     private PickupAnimation pickupAnimation;
 
     public void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        SetVisibility(false);
+        SetVisibility(true);
     }
 
     public void SpawnRapidFirePickup(Vector3 newPosition)
@@ -58,7 +60,7 @@ public class RapidFirePickupScript : MonoBehaviour
                 }
 
                 SetVisibility(false);
-                player.IncreaseFireRate(RapidFireRateDuration, RapidFireRate);
+                player.ChangeFireRate(RapidFireRateDuration, RapidFireRate, NewBullet);
             }
         }
     }
