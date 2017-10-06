@@ -3,11 +3,12 @@ using System.Collections;
 
 public class PlayerShooting : MonoBehaviour
 {
-    public Bullet Bullet;
+    public Bullet originBullet;
     public float FireRate = 0.001f;
     public Light MuzzleFlash;
     public Transform shootingPoint;
 
+    private Bullet CurrentBullet;
     private float lastFiredTimestamp;
     private AudioSource fireSound;
 
@@ -21,6 +22,7 @@ public class PlayerShooting : MonoBehaviour
         fireSound = GetComponent<AudioSource>();
         lastFiredTimestamp = Time.time;
         currentFireRate = FireRate;
+        CurrentBullet = originBullet;
     }
 
     void Update()
@@ -55,23 +57,28 @@ public class PlayerShooting : MonoBehaviour
 
     void Shoot()
     {
-        var bullet = Bullet.GetPooledInstance<Bullet>();
+        var bullet = CurrentBullet.GetPooledInstance<Bullet>();
         bullet.Initialize(shootingPoint.position, transform.rotation);
         lastFiredTimestamp = Time.time;
     }
 
 
-    public void IncreaseFireRate(float duration, float targetFireRate)
+    public void ChangeFireRate(float duration, float targetFireRate, Bullet newBullet)
     {
-		StartCoroutine (increaseFireRate (duration, targetFireRate));
+		StartCoroutine (changeFireRate (duration, targetFireRate, newBullet));
         //fireRateTimeRemaining = duration;
         //currentFireRate = targetFireRate;
     }
     
 
-	private IEnumerator increaseFireRate(float duration, float targetFireRate){
+	private IEnumerator changeFireRate(float duration, float targetFireRate, Bullet newBullet)
+    {
 		currentFireRate = targetFireRate;
-		yield return new WaitForSeconds(duration);
-		currentFireRate = FireRate; 
-	}
+        if (newBullet != null)
+            CurrentBullet = newBullet;
+        yield return new WaitForSeconds(duration);
+		currentFireRate = FireRate;
+        CurrentBullet = originBullet;
+
+    }
 }

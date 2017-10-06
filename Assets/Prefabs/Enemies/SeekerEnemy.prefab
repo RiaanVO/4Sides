@@ -1154,7 +1154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageToDeal: 15
+  explosionRadius: 5
   SelfDestructOnContact: 1
+  isExplosive: 0
   TagsToCollideWith:
   - Player
 --- !u!114 &114333607814586132
@@ -1196,7 +1198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a39714431367e4788e803040987b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DelayToReturnNormalSpeed: 2
+  DelayToRegainSpeed: 2
 --- !u!114 &114743949432006036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1210,6 +1212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkDistance: 5
   positionCheckDelay: 0.5
+  chanceToChase: 0.2
   waitForProximity: 1
   playerDetectionRadius: 12
   notifyRange: 9

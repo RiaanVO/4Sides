@@ -146,7 +146,7 @@ Transform:
   - {fileID: 4786839481528840}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4416763058814776
 Transform:
   m_ObjectHideFlags: 1
@@ -540,7 +540,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987247104325d5b4a97e50385236e79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 114594915448594332, guid: 16f1f8dc9c3a5aa4a867e6171b543c34, type: 2}
+  originBullet: {fileID: 114594915448594332, guid: 16f1f8dc9c3a5aa4a867e6171b543c34,
+    type: 2}
   FireRate: 0.07
   MuzzleFlash: {fileID: 108457497817763430}
   shootingPoint: {fileID: 4786839481528840}
