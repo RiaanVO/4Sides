@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4511594798189704}
   - component: {fileID: 135096199085255594}
   - component: {fileID: 114376097131934886}
-  - component: {fileID: 114247504797926358}
+  - component: {fileID: 114081375877475416}
   - component: {fileID: 82963923498300648}
   m_Layer: 0
   m_Name: ExplosiveFire
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4809646247537002}
   m_Layer: 0
-  m_Name: RapidFireBulletModel
+  m_Name: ExplosiveFireBulletModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,7 +372,7 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114247504797926358
+--- !u!114 &114081375877475416
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -380,16 +380,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1624653970736110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61bfb5e5164f3e14f9529f7e6fd75355, type: 3}
+  m_Script: {fileID: 11500000, guid: 75d2f91ab63baac43ba674a09521dbb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RapidFireRate: 0.2
-  RapidFireRateDuration: 20
+  ExplosiveFireRate: 0.2
+  ExplosiveFireRateDuration: 10
   NewBullet: {fileID: 114671131080773908, guid: 98eac7cbde42a0b47af282c943c57213,
     type: 2}
-  RapidFireSpawnSFX: {fileID: 8300000, guid: cd650184825209347a0f5563f5d89af5, type: 3}
-  RapidFireCollectedSFX: {fileID: 8300000, guid: 44a0909c6f3af5945b607c807f54f88a,
-    type: 3}
+  ExplosiveFireSpawnSFX: {fileID: 0}
+  ExplosiveFireCollectedSFX: {fileID: 0}
   model: {fileID: 1853113488217904}
   pickupLight: {fileID: 1436106088084982}
 --- !u!114 &114376097131934886
