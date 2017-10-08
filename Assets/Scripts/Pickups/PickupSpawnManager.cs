@@ -36,7 +36,6 @@ public class PickupSpawnManager : MonoBehaviour
                     while (healthIndex == CurrentFireIndex)
                     {
                         healthIndex = Random.Range(0, healthSpawnPoints.Count);
-                        Debug.Log(healthIndex);
                     }
                     healthPickup.SpawnHealthPickup(healthSpawnPoints.ElementAt(healthIndex));
                     CurrentHealthIndex = healthIndex;
