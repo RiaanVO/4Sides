@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 114776151432944330}
   - component: {fileID: 114384878381037846}
   - component: {fileID: 114744362801933838}
-  - component: {fileID: 81032625091256652}
   - component: {fileID: 82447861958334920}
   m_Layer: 0
   m_Name: Player
@@ -267,13 +266,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.05
   m_Mesh: {fileID: 4300000, guid: d8cf9ba52095a4f4bb35e68774cfa634, type: 3}
---- !u!81 &81032625091256652
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1179842615921402}
-  m_Enabled: 1
 --- !u!82 &82447861958334920
 AudioSource:
   m_ObjectHideFlags: 1
@@ -569,7 +561,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InvincibleWhenDamaged: 1
   InitialHealth: 100
-  DestroyOnDeath: 0
+  DestroyOnDeath: 1
   showDamageFlashEffects: 1
   damageFlashDuration: 1
   flashesPerDuration: 10
