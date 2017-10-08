@@ -8012,6 +8012,7 @@ GameObject:
   m_Component:
   - component: {fileID: 218274699}
   - component: {fileID: 218274698}
+  - component: {fileID: 218274700}
   m_Layer: 0
   m_Name: Pickup Manager
   m_TagString: Untagged
@@ -8025,7 +8026,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 218274697}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80866380885e24db9b2a5bc0cd345a5a, type: 3}
   m_Name: 
@@ -8044,6 +8045,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &218274700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 218274697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40e11725bb7b4d49baaf62b10696aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &218989688
 GameObject:
   m_ObjectHideFlags: 0
@@ -23392,7 +23404,7 @@ MonoBehaviour:
     EnemiesPerDropPod: 5
   - DropPodCount: 6
     EnemiesPerDropPod: 10
-  healthPickupSpawner: {fileID: 218274698}
+  pickupSpawner: {fileID: 218274700}
   waveStartDelayTime: 3
 --- !u!82 &720385625
 AudioSource:

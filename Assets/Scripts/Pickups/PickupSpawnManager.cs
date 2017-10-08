@@ -19,7 +19,6 @@ public class PickupSpawnManager : MonoBehaviour
     {
         healthSpawnPoints = GameObject.FindGameObjectsWithTag("HealthSpawnPoint")
             .Select(o => o.transform.position).ToList();
-
         healthPickup = GetComponentInChildren<HealthPickup>();
         RapidFirePickup = GetComponentInChildren<RapidFirePickupScript>();
         ExplosiveFirePickup = GetComponentInChildren<ExplosiveFirePickupScript>();
@@ -27,16 +26,17 @@ public class PickupSpawnManager : MonoBehaviour
 
     public void SpawnPickup()
     {
-        if (healthSpawnPoints.Count > 1)
+        if (healthSpawnPoints.Count >= 2)
         {
             if (healthPickup != null)
             {
                 if (healthPickup.IsCollected())
                 {
-                    int healthIndex = Random.Range(0, (healthSpawnPoints.Count - 1));
+                    int healthIndex = Random.Range(0, healthSpawnPoints.Count);
                     while (healthIndex == CurrentFireIndex)
                     {
-                        healthIndex = Random.Range(0, (healthSpawnPoints.Count - 1));
+                        healthIndex = Random.Range(0, healthSpawnPoints.Count);
+                        Debug.Log(healthIndex);
                     }
                     healthPickup.SpawnHealthPickup(healthSpawnPoints.ElementAt(healthIndex));
                     CurrentHealthIndex = healthIndex;
@@ -68,10 +68,10 @@ public class PickupSpawnManager : MonoBehaviour
             {
                 if (RapidFirePickup.IsCollected())
                 {
-                    int index = Random.Range(0, healthSpawnPoints.Count);
+                    int index = Random.Range(0, healthSpawnPoints.Count - 1);
                     while (index == CurrentHealthIndex)
                     {
-                        index = Random.Range(0, healthSpawnPoints.Count);
+                        index = Random.Range(0, healthSpawnPoints.Count - 1);
                     }
                     RapidFirePickup.SpawnRapidFirePickup(healthSpawnPoints.ElementAt(index));
                     CurrentFireIndex = index;
