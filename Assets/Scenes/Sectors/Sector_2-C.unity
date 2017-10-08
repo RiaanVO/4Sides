@@ -10097,10 +10097,10 @@ MonoBehaviour:
   Waves:
   - DropPodCount: 4
     EnemiesPerDropPod: 1
-  - DropPodCount: 4
-    EnemiesPerDropPod: 1
-  - DropPodCount: 4
+  - DropPodCount: 5
     EnemiesPerDropPod: 2
+  - DropPodCount: 6
+    EnemiesPerDropPod: 3
   pickupSpawner: {fileID: 218274700}
   waveStartDelayTime: 3
 --- !u!82 &720385625
