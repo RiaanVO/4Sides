@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosiveFirePickupScript : MonoBehaviour {
+public class ExplosiveFirePickupScript : MonoBehaviour
+{
 
     private const string PLAYER_TAG = "Player";
     public float ExplosiveFireRate = 0.2f;
@@ -17,14 +18,14 @@ public class ExplosiveFirePickupScript : MonoBehaviour {
     private AudioSource audioSource;
     public GameObject model;
     public GameObject pickupLight;
-    private bool isCollected = false;
+    private bool isCollected = true;
 
     private PickupAnimation pickupAnimation;
 
     public void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        SetVisibility(true);
+        SetVisibility(false);
     }
 
     public void SpawnExplosiveFirePickup(Vector3 newPosition)

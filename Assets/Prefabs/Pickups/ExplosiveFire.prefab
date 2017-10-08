@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExplosiveFireRate: 0.2
-  ExplosiveFireRateDuration: 10
+  ExplosiveFireRateDuration: 20
   NewBullet: {fileID: 114671131080773908, guid: 98eac7cbde42a0b47af282c943c57213,
     type: 2}
   ExplosiveFireSpawnSFX: {fileID: 0}

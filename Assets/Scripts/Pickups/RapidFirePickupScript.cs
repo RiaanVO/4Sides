@@ -18,14 +18,14 @@ public class RapidFirePickupScript : MonoBehaviour
     private AudioSource audioSource;
     public GameObject model;
     public GameObject pickupLight;
-    private bool isCollected = false;
+    private bool isCollected = true;
 
     private PickupAnimation pickupAnimation;
 
     public void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        SetVisibility(true);
+        SetVisibility(false);
     }
 
     public void SpawnRapidFirePickup(Vector3 newPosition)

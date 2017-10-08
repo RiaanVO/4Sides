@@ -64,7 +64,7 @@ public class PickupSpawnManager : MonoBehaviour
                     CurrentFireIndex = index;
                 }
             }
-            else if (RapidFirePickup != null)
+            else if (RapidFirePickup != null && ExplosiveFirePickup == null)
             {
                 if (RapidFirePickup.IsCollected())
                 {
@@ -77,7 +77,7 @@ public class PickupSpawnManager : MonoBehaviour
                     CurrentFireIndex = index;
                 }
             }
-            else if (ExplosiveFirePickup != null)
+            else if (ExplosiveFirePickup != null && RapidFirePickup == null)
             {
                 if (ExplosiveFirePickup.IsCollected())
                 {
