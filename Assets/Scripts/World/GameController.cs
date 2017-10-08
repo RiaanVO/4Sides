@@ -17,15 +17,16 @@ public class GameController : MonoBehaviour
     public EventSource Player;
     public EventSource SpawnManager;
     public SectorClearedController SectorCleared;
+    public SectorClearedController SectorFailed;
 
     [Header("EnemyLeft Settings")]
     public AudioClip scoreAddSFX;
-    private AudioSource audioSource;
+    // private AudioSource audioSource;
 
     private DataProvider data;
 
     private bool _paused;
-    private bool wavesCleared;
+    private bool isNavigating;
 
     void Start()
     {
@@ -38,17 +39,17 @@ public class GameController : MonoBehaviour
 
         if (Player != null)
         {
-            Player.Subscribe(BaseHealth.EVENT_DIED, GoToDeathScreen);
+            Player.Subscribe(BaseHealth.EVENT_DIED, OnPlayerKilled);
         }
         if (SpawnManager != null)
         {
             SpawnManager.Subscribe(EnemySpawnManager.EVENT_ALL_WAVES_CLEARED, OnAllWavesCleared);
         }
 
-        audioSource = GetComponent<AudioSource>();
+        // audioSource = GetComponent<AudioSource>();
 
         _paused = false;
-        wavesCleared = false;
+        isNavigating = false;
     }
 
     void Update()
@@ -96,19 +97,29 @@ public class GameController : MonoBehaviour
         //}
     }
 
-    private void GoToDeathScreen(EventSource source, string eventName)
+    private void OnPlayerKilled(EventSource source, string eventName)
     {
-        GoToScene("DeathScene");
+        if (isNavigating) return;
+        isNavigating = true;
+
+        if (SectorFailed == null)
+        {
+            GoToMapScreen(false);
+        }
+        else
+        {
+            Instantiate(SectorFailed);
+        }
     }
 
     private void OnAllWavesCleared(EventSource source, string eventName)
     {
-        if (wavesCleared) return;
-        wavesCleared = true;
+        if (isNavigating) return;
+        isNavigating = true;
 
         if (SectorCleared == null)
         {
-            GoToMapScreen();
+            GoToMapScreen(true);
         }
         else
         {
@@ -116,9 +127,9 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void GoToMapScreen()
+    public void GoToMapScreen(bool successfulCompletion)
     {
-        if (!string.IsNullOrEmpty(Sector))
+        if (successfulCompletion && !string.IsNullOrEmpty(Sector))
         {
             GameSession.NotifySectorCompleted(Sector);
         }

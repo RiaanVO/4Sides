@@ -130,7 +130,7 @@ public class EnemySpawnManager : MonoBehaviour
 
         //Spawn the health pickup for this wave
         //healthPickupSpawner.SpawnHealthPickup();
-        pickupSpawner.SpawnPickup ();
+        pickupSpawner.SpawnPickup();
     }
 
     private void OnDropPodDepleted()
