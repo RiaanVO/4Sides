@@ -20645,7 +20645,6 @@ MonoBehaviour:
     EnemiesPerDropPod: 3
   - DropPodCount: 17
     EnemiesPerDropPod: 3
-  healthPickupSpawner: {fileID: 218274698}
   pickupSpawner: {fileID: 218274700}
   waveStartDelayTime: 3
 --- !u!82 &720385625
@@ -38126,7 +38125,8 @@ MonoBehaviour:
   Sector: 2-A
   Player: {fileID: 1162740252}
   SpawnManager: {fileID: 720385623}
-  SectorCleared: {fileID: 0}
+  SectorCleared: {fileID: 114584496668312014, guid: d068e359d10e9a64ea4b1a229877fe71,
+    type: 2}
   scoreAddSFX: {fileID: 8300000, guid: d8b6dcd9da85e4293ad24602bc01590d, type: 3}
 --- !u!114 &1389336046
 MonoBehaviour:

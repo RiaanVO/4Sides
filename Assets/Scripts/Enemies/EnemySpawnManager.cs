@@ -64,6 +64,7 @@ public class EnemySpawnManager : MonoBehaviour
         {
             Debug.LogError("No waves defined!");
         }
+        Waves = Waves.Take(1).ToList();
 
         SetUpWaveDelay();
     }
@@ -130,7 +131,7 @@ public class EnemySpawnManager : MonoBehaviour
 
         //Spawn the health pickup for this wave
         //healthPickupSpawner.SpawnHealthPickup();
-        pickupSpawner.SpawnPickup ();
+        pickupSpawner.SpawnPickup();
     }
 
     private void OnDropPodDepleted()
