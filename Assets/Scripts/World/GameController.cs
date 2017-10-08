@@ -108,7 +108,7 @@ public class GameController : MonoBehaviour
 
         if (SectorCleared == null)
         {
-            GoToMapScreen();
+            GoToMapScreen(true);
         }
         else
         {
@@ -116,9 +116,9 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void GoToMapScreen()
+    public void GoToMapScreen(bool successfulCompletion)
     {
-        if (!string.IsNullOrEmpty(Sector))
+        if (successfulCompletion && !string.IsNullOrEmpty(Sector))
         {
             GameSession.NotifySectorCompleted(Sector);
         }
