@@ -92,7 +92,7 @@ public class LevelNode : MonoBehaviour
     {
         for (int i = 0; i < OutgoingConnectors.Count; i++)
         {
-            StartCoroutine(StaggerConnectorUnlock(OutgoingConnectors[i], i * 0.5f));
+            StartCoroutine(StaggerConnectorUnlock(OutgoingConnectors[i], i * 0.3f));
         }
     }
 
