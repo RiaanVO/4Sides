@@ -19,7 +19,6 @@ public class LevelNode : MonoBehaviour
     public string Name = "1-A";
     public List<NodeConnector> OutgoingConnectors;
     public int DifficultyRating = 1;
-    public AudioClip UnlockSound;
 
     private Animator animator;
     private AudioSource source;
@@ -92,7 +91,7 @@ public class LevelNode : MonoBehaviour
     {
         for (int i = 0; i < OutgoingConnectors.Count; i++)
         {
-            StartCoroutine(StaggerConnectorUnlock(OutgoingConnectors[i], i * 0.3f));
+            StartCoroutine(StaggerConnectorUnlock(OutgoingConnectors[i], i * 0.4f));
         }
     }
 
@@ -135,11 +134,11 @@ public class LevelNode : MonoBehaviour
         animator.SetBool("IsSelected", isSelected);
     }
 
-    public void PlayUnlockSound()
+    public void PlaySound(AudioClip clip)
     {
         if (source != null)
         {
-            source.clip = UnlockSound;
+            source.clip = clip;
             source.Play();
         }
     }
