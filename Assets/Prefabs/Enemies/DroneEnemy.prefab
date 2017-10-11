@@ -716,7 +716,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageToDeal: 15
+  explosionRadius: 5
   SelfDestructOnContact: 1
+  isExplosive: 0
   TagsToCollideWith:
   - Player
 --- !u!114 &114456413384361800
@@ -786,10 +788,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkDistance: 5
   positionCheckDelay: 0.5
+  chanceToChase: 0.2
   waitForProximity: 1
   playerDetectionRadius: 12
   notifyRange: 9
-  playerDetectedSFX: {fileID: 8300000, guid: 4ab1bea0626854e288b0750d60606e5e, type: 3}
+  playerDetectedSFX: {fileID: 8300000, guid: 8a1231bd061309b4baeeee6eb5be13f7, type: 3}
   randomiseStartPos: 1
   randomisePosScale: 2
 --- !u!136 &136633064977780166

@@ -1216,7 +1216,7 @@ MonoBehaviour:
   waitForProximity: 1
   playerDetectionRadius: 12
   notifyRange: 9
-  playerDetectedSFX: {fileID: 8300000, guid: 4ab1bea0626854e288b0750d60606e5e, type: 3}
+  playerDetectedSFX: {fileID: 8300000, guid: 8a1231bd061309b4baeeee6eb5be13f7, type: 3}
   randomiseStartPos: 1
   randomisePosScale: 2
 --- !u!114 &114803694750143852

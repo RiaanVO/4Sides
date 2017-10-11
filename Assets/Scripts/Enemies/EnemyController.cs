@@ -25,7 +25,7 @@ public class EnemyController : PooledObject
 
     public AudioClip playerDetectedSFX;
     private AudioSource detectedSoundPlayer;
-	private Animator anim;
+    private Animator anim;
 
     public bool randomiseStartPos = true;
     public float randomisePosScale = 2;
@@ -40,8 +40,8 @@ public class EnemyController : PooledObject
         nav = GetComponent<NavMeshAgent>();
         health = GetComponent<EnemyHealth>();
         player = Object.FindObjectOfType<PlayerMovement>();
-		anim = GetComponent<Animator> ();
-		anim.SetBool ("Idling", true);
+        anim = GetComponent<Animator>();
+        anim.SetBool("Idling", true);
 
         nav.enabled = false;
         transform.position = position;
@@ -56,10 +56,10 @@ public class EnemyController : PooledObject
         playerFound = !waitForProximity;
         checkTimer = positionCheckDelay;
 
-        if (Random.Range(0, 10) <= (int)10*chanceToChase)
+        if (Random.Range(0, 10) <= (int)10 * chanceToChase)
         {
             playerFound = true;
-			anim.SetBool ("Idling", false);
+            anim.SetBool("Idling", false);
         }
 
         if (randomiseStartPos)
@@ -86,7 +86,7 @@ public class EnemyController : PooledObject
                 if (checkTimer > positionCheckDelay || checkDistance > Vector3.Distance(transform.position, player.transform.position))
                 {
                     checkTimer = 0f;
-					anim.SetBool ("Idling", false);
+                    anim.SetBool("Idling", false);
                     nav.SetDestination(player.transform.position);
                 }
             }
@@ -110,6 +110,7 @@ public class EnemyController : PooledObject
     {
         if (playerFound == false)
         {
+            detectedSoundPlayer.pitch = Random.Range(0.9f, 1.1f);
             detectedSoundPlayer.Play();
             playerFound = true;
             notifyEnemiesInRange();
