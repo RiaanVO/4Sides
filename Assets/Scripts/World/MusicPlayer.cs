@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace MusicService
 {
-
     public class MusicPlayer : MonoBehaviour
     {
         private static MusicPlayer instance = null;
