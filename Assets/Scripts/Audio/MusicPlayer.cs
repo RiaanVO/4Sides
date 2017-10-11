@@ -34,6 +34,7 @@ public class MusicPlayer : MonoBehaviour
             if (queuedClip != null)
             {
                 source.clip = queuedClip;
+                source.loop = true;
                 source.Play();
             }
         }
@@ -53,6 +54,7 @@ public class MusicPlayer : MonoBehaviour
         if (verified)
         {
             source.clip = clip;
+            source.loop = true;
             source.Play();
         }
         else
