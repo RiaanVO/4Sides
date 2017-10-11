@@ -30,7 +30,7 @@ public class MusicPlayer : MonoBehaviour
             instance = this;
             verified = true;
 
-            source = gameObject.AddComponent<AudioSource>();
+            source = gameObject.GetComponent<AudioSource>();
             if (queuedClip != null)
             {
                 source.clip = queuedClip;
