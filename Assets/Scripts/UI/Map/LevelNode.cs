@@ -21,6 +21,8 @@ public class LevelNode : MonoBehaviour
     public int DifficultyRating = 1;
 
     private Animator animator;
+    private AudioSource source;
+
     private MapController map;
     private LevelState state = LevelState.Locked;
     private List<string> remainingDependencies;
@@ -49,6 +51,8 @@ public class LevelNode : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.SetInteger("State", (int)state);
         isSelected = false;
+
+        source = GetComponent<AudioSource>();
 
         string[] dependencies;
         if (GameSession.SECTOR_DEPENDENCIES.TryGetValue(Name, out dependencies))
@@ -85,10 +89,16 @@ public class LevelNode : MonoBehaviour
 
     private void OnCompletionFinished()
     {
-        foreach (var connector in OutgoingConnectors)
+        for (int i = 0; i < OutgoingConnectors.Count; i++)
         {
-            connector.Unlock(true, Name);
+            StartCoroutine(StaggerConnectorUnlock(OutgoingConnectors[i], i * 0.4f));
         }
+    }
+
+    private IEnumerator StaggerConnectorUnlock(NodeConnector connector, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        connector.Unlock(true, Name);
     }
 
     public void Unlock(string sourceLevel)
@@ -122,5 +132,14 @@ public class LevelNode : MonoBehaviour
     {
         isSelected = false;
         animator.SetBool("IsSelected", isSelected);
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        if (source != null)
+        {
+            source.clip = clip;
+            source.Play();
+        }
     }
 }
