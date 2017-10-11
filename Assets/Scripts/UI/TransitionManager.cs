@@ -14,6 +14,8 @@ public class TransitionManager : MonoBehaviour
     }
 
     private Animator animator;
+    private AudioSource source;
+
     private string destinationScene;
     private AsyncOperation loadScene;
 
@@ -34,6 +36,7 @@ public class TransitionManager : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
     }
 
     public void Navigate(string destinationScene)
@@ -60,5 +63,10 @@ public class TransitionManager : MonoBehaviour
             loadScene = null;
             animator.SetTrigger("FinishTransition");
         }
+    }
+
+    public void PlayTransitionSound()
+    {
+        source.Play();
     }
 }
