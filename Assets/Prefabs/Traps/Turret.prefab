@@ -279,9 +279,9 @@ MonoBehaviour:
     type: 2}
   ScoreToAdd: 200
   explosion: {fileID: 1224586835255650, guid: 1639ceec317d5a041b2cd7a8df687f38, type: 2}
-  deathSound: {fileID: 0}
-  damageSound: {fileID: 0}
-  deathDelayTime: 0
+  deathSound: {fileID: 8300000, guid: b9526c37e66872347ba21c0bd4c625fb, type: 3}
+  damageSound: {fileID: 8300000, guid: 5ff33921f755ace449391595a652d400, type: 3}
+  deathDelayTime: 0.1
 --- !u!114 &114747791265948412
 MonoBehaviour:
   m_ObjectHideFlags: 1

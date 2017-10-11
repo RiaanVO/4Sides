@@ -4,54 +4,78 @@ using UnityEngine;
 
 public class EnemyHealth : BaseHealth
 {
-	[Header("EnemyLeft Settings")]
+    [Header("EnemyLeft Settings")]
     public int ScoreToAdd = 100;
 
-	[Header("Death Settings")]
-	public GameObject explosion;
-	public AudioClip deathSound;
-	public AudioClip damageSound;
-	public float deathDelayTime = 0f;
+    [Header("Death Settings")]
+    public GameObject explosion;
+    public AudioClip deathSound;
+    public AudioClip damageSound;
+    public float deathDelayTime = 0f;
 
-    private AudioSource audioSource;
+    private AudioSource damagedSoundSource;
+    private AudioSource deathSoundSource;
 
-	public override void Initialise ()
-	{
+    public override void Initialise()
+    {
+        if (damagedSoundSource == null && damageSound != null)
+        {
+            damagedSoundSource = AddAudioSource(damageSound, 1.0f);
+        }
+        if (deathSoundSource == null && deathSound != null)
+        {
+            deathSoundSource = AddAudioSource(deathSound, 1.0f);
+        }
+
         //explosion = GetComponentInChildren<ParticleSystem>();
-        audioSource = GetComponent<AudioSource> ();
-		base.Initialise ();
+        base.Initialise();
     }
 
-	public override void KillSelf ()
-	{
-		playDeathSound ();
-		//explosion.Play();
-		Instantiate(explosion, transform.position, transform.rotation);
-        StartCoroutine (deathDelay());
-	}
+    public override void KillSelf()
+    {
+        playDeathSound();
+        //explosion.Play();
+        Instantiate(explosion, transform.position, transform.rotation);
+        StartCoroutine(deathDelay());
+    }
 
     public override void Die()
     {
-		playDeathSound ();
-		//explosion.Play();
-		Instantiate(explosion, transform.position, transform.rotation);
-		StartCoroutine (deathDelay());
+        playDeathSound();
+        //explosion.Play();
+        Instantiate(explosion, transform.position, transform.rotation);
+        StartCoroutine(deathDelay());
     }
 
-	public override void DamageSound(){
-		if (audioSource != null && deathSound != null) {
-			audioSource.PlayOneShot (damageSound);
-		}
-	}
+    public override void DamageSound()
+    {
+        if (damagedSoundSource != null)
+        {
+            damagedSoundSource.Play();
+        }
+    }
 
-	private IEnumerator deathDelay(){
-		yield return new WaitForSeconds(deathDelayTime);
-		KillGameobject ();
-	}
+    private IEnumerator deathDelay()
+    {
+        yield return new WaitForSeconds(deathDelayTime);
+        KillGameobject();
+    }
 
-	private void playDeathSound(){
-		if (audioSource != null && deathSound != null) {
-			audioSource.PlayOneShot (deathSound);
-		}
-	}
+    private void playDeathSound()
+    {
+        if (deathSoundSource != null)
+        {
+            deathSoundSource.Play();
+        }
+    }
+
+    private AudioSource AddAudioSource(AudioClip clip, float volume)
+    {
+        var source = gameObject.AddComponent<AudioSource>();
+        source.clip = clip;
+        source.volume = volume;
+        source.playOnAwake = false;
+        source.spatialBlend = 0.75f;
+        return source;
+    }
 }
