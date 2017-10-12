@@ -225,6 +225,8 @@ GameObject:
   - component: {fileID: 114803694750143852}
   - component: {fileID: 114867252027805952}
   - component: {fileID: 114535406803455654}
+  - component: {fileID: 82651033487764168}
+  - component: {fileID: 114935273143807002}
   m_Layer: 0
   m_Name: SeekerEnemy
   m_TagString: Enemy
@@ -994,6 +996,87 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 36
   m_CollisionDetection: 0
+--- !u!82 &82651033487764168
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1339550043203248}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243733243603428982, guid: aa3883eed240e3a4aa8375f2f1710c44,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.9
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95720157728225730
 Animator:
   serializedVersion: 3
@@ -1174,6 +1257,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da21d12d6c6541469ac7058488420de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114935273143807002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1339550043203248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337f188126c20f741a47dcf0137e2f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeToWait: 0.1
+  Source: {fileID: 82651033487764168}
+  Clips:
+  - {fileID: 8300000, guid: 26e75601528245542b28833ca8a9120b, type: 3}
+  - {fileID: 8300000, guid: d3a8ef1248198d944873f6495ed88670, type: 3}
+  - {fileID: 8300000, guid: 24e6766ecb48cbe42802ba574a4605de, type: 3}
+  - {fileID: 8300000, guid: 51222f7266eae7740a937264fccd82fa, type: 3}
+  - {fileID: 8300000, guid: d9e0f7845cf03c74f8f072ab6f390035, type: 3}
+  - {fileID: 8300000, guid: 3e7064939cad76846ae533b235c3cb2a, type: 3}
+  - {fileID: 8300000, guid: d2fcffadb38079e4f85e2b064bf5f6e6, type: 3}
+  - {fileID: 8300000, guid: 8ca169c520de7544e9f9a2cd6913bde4, type: 3}
+  - {fileID: 8300000, guid: c2d7a4e718882154a80add032cc7a899, type: 3}
+  - {fileID: 8300000, guid: a267ed52df32e2247902ffa6b9548075, type: 3}
+  - {fileID: 8300000, guid: 48a591f04c9766045bc5d6ec404a3885, type: 3}
+  - {fileID: 8300000, guid: 1d73d55cbc6767d428e617987c49bdec, type: 3}
+  - {fileID: 8300000, guid: aa0b0bc35bdcf604a953379d9c4f694c, type: 3}
+  - {fileID: 8300000, guid: d3dc27de7ea3d7e4e8d08104abee8c4f, type: 3}
+  - {fileID: 8300000, guid: d5af7f8f2c4b9564a92613491e4bb3f5, type: 3}
+  - {fileID: 8300000, guid: 7412d3a5855e11d4dbde06cf8a735654, type: 3}
+  - {fileID: 8300000, guid: 8e04afdbc4da5994998ca7ba6349c2f4, type: 3}
 --- !u!136 &136455421622566402
 CapsuleCollider:
   m_ObjectHideFlags: 1
