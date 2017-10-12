@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     public Transform target;            // The position that that camera will be following.
     public float smoothing = 5f;        // The speed with which the camera will be following.
 
-    Vector3 offset;                     // The initial offset from the target.
+	public Vector3 offset;                     // The initial offset from the target.
 
     void Start()
     {
@@ -15,7 +15,8 @@ public class CameraFollow : MonoBehaviour
             return;
 
         // Calculate the initial offset.
-        offset = transform.position - target.position;
+		transform.position = target.position + offset;
+        //offset = transform.position - target.position;
     }
 
     void FixedUpdate()

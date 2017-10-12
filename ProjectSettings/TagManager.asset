@@ -13,6 +13,7 @@ TagManager:
   - HealthSpawnPoint
   - LavaTrap
   - Turret
+  - MiniMapCamera
   layers:
   - Default
   - TransparentFX
