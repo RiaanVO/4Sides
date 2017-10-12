@@ -385,7 +385,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RapidFireRate: 0.001
   RapidFireRateDuration: 10
-  NewBullet: {fileID: 0}
+  NewBullet: {fileID: 114671131080773908, guid: 1f88a8331e6fb984c85167fba747349c,
+    type: 2}
   RapidFireSpawnSFX: {fileID: 8300000, guid: cd650184825209347a0f5563f5d89af5, type: 3}
   RapidFireCollectedSFX: {fileID: 8300000, guid: 44a0909c6f3af5945b607c807f54f88a,
     type: 3}
