@@ -7568,6 +7568,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1624653970736110, guid: 01be03ec36dd68e4194ff0b4a06ccfe0,
         type: 2}
+    - target: {fileID: 114781277319442356, guid: c0eb1d4654be54b1da37c72f08148cf7,
+        type: 2}
+      propertyPath: useRapidFirePickup
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0eb1d4654be54b1da37c72f08148cf7, type: 2}
   m_IsPrefabParent: 0

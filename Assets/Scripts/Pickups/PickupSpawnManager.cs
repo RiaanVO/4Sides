@@ -59,7 +59,7 @@ public class PickupSpawnManager : MonoBehaviour
     public void SpawnPickup()
     {
 		trySpawnHealth ();
-		if (numberToSpawn < pickupSpawnPoints.Count ()) {
+		if (numberToSpawn <= pickupSpawnPoints.Count ()) {
 			if (useRapidFirePickup)
 				trySpawnRapid ();
 //			if (useLaserPickup)
