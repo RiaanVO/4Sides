@@ -150,7 +150,7 @@ public class EnemyController : PooledObject
         source.clip = clip;
         source.volume = volume;
         source.playOnAwake = false;
-        source.spatialBlend = 0.75f;
+        source.spatialBlend = 0.9f;
         return source;
     }
 }

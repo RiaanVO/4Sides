@@ -1103,7 +1103,7 @@ MonoBehaviour:
     type: 2}
   ScoreToAdd: 100
   explosion: {fileID: 1224586835255650, guid: 1639ceec317d5a041b2cd7a8df687f38, type: 2}
-  deathSounds:
+  damageSounds:
   - {fileID: 8300000, guid: c84f3fc5dae64d945b8b1c194702d08d, type: 3}
   - {fileID: 8300000, guid: 87d574b11e9d6ad47b457d05fc985935, type: 3}
   - {fileID: 8300000, guid: 30b96bd5dbe3e72489d90184983c0be1, type: 3}
@@ -1112,7 +1112,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c5155ffa10f6c604d852895da2864c29, type: 3}
   - {fileID: 8300000, guid: 8c65bdc818e978749a1b590b0fbb4c7e, type: 3}
   - {fileID: 8300000, guid: 1ca492a2ba7c4fd4486dd1c8ad888054, type: 3}
-  damageSound: {fileID: 8300000, guid: 0dc11f4e87d165f48a7540a9ab88963f, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: e333a830a4d518d4d9470aab1121a2b3, type: 3}
+  - {fileID: 8300000, guid: b661d1823b7e9c24fba5d514550a3b6d, type: 3}
+  - {fileID: 8300000, guid: 98037a30cc60ac7498b4269671a2c47c, type: 3}
+  - {fileID: 8300000, guid: 7172a0eb86ddc7c4a87563f3f36f8dd3, type: 3}
   deathDelayTime: 0
   DestroySoundEffect: {fileID: 82010100963523754, guid: 50b676c9f81be894cbb2bc3ed69088ad,
     type: 2}
