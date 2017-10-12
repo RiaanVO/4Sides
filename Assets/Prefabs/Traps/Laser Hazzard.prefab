@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 114383665132046514}
   - component: {fileID: 120467394707209646}
   - component: {fileID: 114198006861081004}
-  - component: {fileID: 82711454140798290}
+  - component: {fileID: 82055301825560046}
   m_Layer: 0
   m_Name: Laser Hazzard
   m_TagString: Untagged
@@ -596,7 +596,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.64, z: 1}
   m_Center: {x: 0, y: 0.27, z: 0}
---- !u!82 &82711454140798290
+--- !u!82 &82055301825560046
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -780,11 +780,11 @@ MonoBehaviour:
   laserStartPoint: {fileID: 4540428693966560}
   laserEndPoint: {fileID: 4493951561026890}
   laserLineWidth: 0.1
-  volume: 0
+  volume: 1
   laserIdle: {fileID: 8300000, guid: 230352a9a38ef47d4865177c6c149f2c, type: 3}
   laserTurnOn: {fileID: 8300000, guid: 4f1c1d4a87e0a4f09b7207cdf38588ec, type: 3}
   laserOn: {fileID: 8300000, guid: 2f8fed8c12cbc4770881f036d32d18cc, type: 3}
-  laserTurnOff: {fileID: 8300000, guid: 30b052df1d6024a318b0ef2ebc46b6f1, type: 3}
+  laserTurnOff: {fileID: 8300000, guid: 268e77b0359e4a041a5538629fa1fe37, type: 3}
 --- !u!114 &114861333211545570
 MonoBehaviour:
   m_ObjectHideFlags: 1

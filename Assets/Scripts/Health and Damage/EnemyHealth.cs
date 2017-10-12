@@ -9,22 +9,18 @@ public class EnemyHealth : BaseHealth
 
     [Header("Death Settings")]
     public GameObject explosion;
+    public List<AudioClip> damageSounds;
     public List<AudioClip> deathSounds;
-    public AudioClip damageSound;
     public float deathDelayTime = 0f;
+    public AudioSource DestroySoundEffect;
 
     private AudioSource damagedSoundSource;
-    private AudioSource deathSoundSource;
 
     public override void Initialise()
     {
-        if (damagedSoundSource == null && damageSound != null)
+        if (damagedSoundSource == null && damageSounds != null && damageSounds.Count > 0)
         {
-            damagedSoundSource = AddAudioSource(damageSound, 1.0f);
-        }
-        if (deathSoundSource == null && deathSounds != null && deathSounds.Count > 0)
-        {
-            deathSoundSource = AddAudioSource(deathSounds[0], 1.0f);
+            damagedSoundSource = AddAudioSource(damageSounds[0], 0.5f);
         }
 
         //explosion = GetComponentInChildren<ParticleSystem>();
@@ -51,7 +47,8 @@ public class EnemyHealth : BaseHealth
     {
         if (damagedSoundSource != null)
         {
-            damagedSoundSource.pitch = Random.Range(0.9f, 1.1f);
+            damagedSoundSource.clip = damageSounds[Random.Range(0, damageSounds.Count)];
+            damagedSoundSource.Stop();
             damagedSoundSource.Play();
         }
     }
@@ -64,10 +61,11 @@ public class EnemyHealth : BaseHealth
 
     private void playDeathSound()
     {
-        if (deathSoundSource != null)
+        if (DestroySoundEffect != null && deathSounds != null && deathSounds.Count > 0)
         {
-            deathSoundSource.clip = deathSounds[Random.Range(0, deathSounds.Count)];
-            deathSoundSource.Play();
+            var effect = Instantiate(DestroySoundEffect);
+            effect.clip = deathSounds[Random.Range(0, deathSounds.Count)];
+            effect.Play();
         }
     }
 
@@ -77,7 +75,7 @@ public class EnemyHealth : BaseHealth
         source.clip = clip;
         source.volume = volume;
         source.playOnAwake = false;
-        source.spatialBlend = 0.75f;
+        source.spatialBlend = 0.9f;
         return source;
     }
 }

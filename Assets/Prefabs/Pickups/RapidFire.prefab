@@ -250,7 +250,8 @@ AudioSource:
   m_GameObject: {fileID: 1629624955506414}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243733243603428982, guid: aa3883eed240e3a4aa8375f2f1710c44,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -291,7 +292,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 0.9
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -387,7 +388,7 @@ MonoBehaviour:
   RapidFireRateDuration: 10
   NewBullet: {fileID: 114671131080773908, guid: 1f88a8331e6fb984c85167fba747349c,
     type: 2}
-  RapidFireSpawnSFX: {fileID: 8300000, guid: cd650184825209347a0f5563f5d89af5, type: 3}
+  RapidFireSpawnSFX: {fileID: 8300000, guid: f2c2446a43f5a2744b2bd0fa9e45a4a1, type: 3}
   RapidFireCollectedSFX: {fileID: 8300000, guid: 44a0909c6f3af5945b607c807f54f88a,
     type: 3}
   model: {fileID: 1310564674523390}
