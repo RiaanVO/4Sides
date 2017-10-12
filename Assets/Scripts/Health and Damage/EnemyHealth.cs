@@ -20,7 +20,7 @@ public class EnemyHealth : BaseHealth
     {
         if (damagedSoundSource == null && damageSound != null)
         {
-            damagedSoundSource = AddAudioSource(damageSound, 1.0f);
+            damagedSoundSource = AddAudioSource(damageSound, 0.5f);
         }
         if (deathSoundSource == null && deathSounds != null && deathSounds.Count > 0)
         {
@@ -51,7 +51,8 @@ public class EnemyHealth : BaseHealth
     {
         if (damagedSoundSource != null)
         {
-            damagedSoundSource.pitch = Random.Range(0.9f, 1.1f);
+            damagedSoundSource.pitch = Random.Range(0.8f, 1.2f);
+            damagedSoundSource.Stop();
             damagedSoundSource.Play();
         }
     }
@@ -67,7 +68,7 @@ public class EnemyHealth : BaseHealth
         if (deathSoundSource != null)
         {
             deathSoundSource.clip = deathSounds[Random.Range(0, deathSounds.Count)];
-            deathSoundSource.Play();
+            // deathSoundSource.Play();
         }
     }
 

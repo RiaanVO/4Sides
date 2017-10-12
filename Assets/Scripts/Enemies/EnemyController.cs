@@ -110,7 +110,7 @@ public class EnemyController : PooledObject
     {
         if (playerFound == false)
         {
-            detectedSoundPlayer.pitch = Random.Range(0.9f, 1.1f);
+            detectedSoundPlayer.pitch = Random.Range(0.8f, 1.2f);
             detectedSoundPlayer.Play();
             playerFound = true;
             notifyEnemiesInRange();
