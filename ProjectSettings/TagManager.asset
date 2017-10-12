@@ -14,6 +14,7 @@ TagManager:
   - LavaTrap
   - Turret
   - MiniMapCamera
+  - PickupSpawnPoint
   layers:
   - Default
   - TransparentFX

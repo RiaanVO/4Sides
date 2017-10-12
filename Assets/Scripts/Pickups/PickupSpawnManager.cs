@@ -5,111 +5,115 @@ using UnityEngine;
 
 public class PickupSpawnManager : MonoBehaviour
 {
+    private List<Vector3> pickupSpawnPoints;
 
-    private List<Vector3> healthSpawnPoints;
+	public GameObject healthPickupPrefab;
     private HealthPickup healthPickup;
-    private RapidFirePickupScript RapidFirePickup;
-    private ExplosiveFirePickupScript ExplosiveFirePickup;
-    private int RandomPickupToSpawn;
-    private int CurrentHealthIndex;
-    private int CurrentFireIndex;
+
+	public GameObject rapidFirePickupPrefab;
+    private RapidFirePickupScript rapidFirePickup;
+
+	//public GameObject laserFirePickupPrefab;
+	//private LaserFirePickup laserFirePickup;
+
+	public GameObject explosiveFirePickupPrefab;
+    private ExplosiveFirePickupScript explosiveFirePickup;
+
+	public bool useRapidFirePickup = false;
+	public bool useLaserPickup = false;
+	public bool useExplosivePickup = false;
+
+	private int healthIndex = -1;
+	private int rapidIndex = -1;
+	private int laserIndex = -1;
+	private int explosiveIndex = -1;
+	private int numSpawnPoints;
+
+	private int numberToSpawn = 1;
 
     // Use this for initialization
     void Start()
     {
-        healthSpawnPoints = GameObject.FindGameObjectsWithTag("HealthSpawnPoint")
-            .Select(o => o.transform.position).ToList();
-        healthPickup = GetComponentInChildren<HealthPickup>();
-        RapidFirePickup = GetComponentInChildren<RapidFirePickupScript>();
-        ExplosiveFirePickup = GetComponentInChildren<ExplosiveFirePickupScript>();
+        pickupSpawnPoints = GameObject.FindGameObjectsWithTag("PickupSpawnPoint").Select(o => o.transform.position).ToList();
+		numSpawnPoints = pickupSpawnPoints.Count ();
+
+		healthPickup = ((GameObject)Instantiate (healthPickupPrefab)).GetComponent<HealthPickup> ();
+
+		if (useRapidFirePickup) {
+			rapidFirePickup = ((GameObject)Instantiate (rapidFirePickupPrefab)).GetComponent<RapidFirePickupScript>();
+			numberToSpawn++;
+		}
+
+		//TODO Make laser pickup
+//		if (useLaserPickup) {
+//			rapidFirePickup = (GameObject)Instantiate (laserFirePickupPrefab).GetComponent<LaserFirePickup>();
+//			numberToSpawn++;
+//		}
+
+		if (useExplosivePickup) {
+			explosiveFirePickup = ((GameObject)Instantiate (explosiveFirePickupPrefab)).GetComponent<ExplosiveFirePickupScript>();
+			numberToSpawn++;
+		}
     }
 
     public void SpawnPickup()
     {
-        if (healthSpawnPoints.Count >= 2)
-        {
-            if (healthPickup != null)
-            {
-                if (healthPickup.IsCollected())
-                {
-                    int healthIndex = Random.Range(0, healthSpawnPoints.Count);
-                    while (healthIndex == CurrentFireIndex)
-                    {
-                        healthIndex = Random.Range(0, healthSpawnPoints.Count);
-                    }
-                    healthPickup.SpawnHealthPickup(healthSpawnPoints.ElementAt(healthIndex));
-                    CurrentHealthIndex = healthIndex;
-                }
-            }
-            if (RapidFirePickup != null && ExplosiveFirePickup != null)
-            {
-                if (RapidFirePickup.IsCollected() || ExplosiveFirePickup.IsCollected())
-                {
-                    int index = Random.Range(0, healthSpawnPoints.Count);
-                    while (index == CurrentHealthIndex)
-                    {
-                        index = Random.Range(0, healthSpawnPoints.Count);
-                    }
-
-                    RandomPickupToSpawn = Random.Range(1, 100);
-                    if (RandomPickupToSpawn <= 50)
-                    {
-                        ExplosiveFirePickup.SpawnExplosiveFirePickup(healthSpawnPoints.ElementAt(index));
-                    }
-                    else if (RandomPickupToSpawn >= 51)
-                    {
-                        RapidFirePickup.SpawnRapidFirePickup(healthSpawnPoints.ElementAt(index));
-                    }
-                    CurrentFireIndex = index;
-                }
-            }
-            else if (RapidFirePickup != null && ExplosiveFirePickup == null)
-            {
-                if (RapidFirePickup.IsCollected())
-                {
-                    int index = Random.Range(0, healthSpawnPoints.Count - 1);
-                    while (index == CurrentHealthIndex)
-                    {
-                        index = Random.Range(0, healthSpawnPoints.Count - 1);
-                    }
-                    RapidFirePickup.SpawnRapidFirePickup(healthSpawnPoints.ElementAt(index));
-                    CurrentFireIndex = index;
-                }
-            }
-            else if (ExplosiveFirePickup != null && RapidFirePickup == null)
-            {
-                if (ExplosiveFirePickup.IsCollected())
-                {
-                    int index = Random.Range(0, healthSpawnPoints.Count);
-                    while (index == CurrentHealthIndex)
-                    {
-                        index = Random.Range(0, healthSpawnPoints.Count);
-                    }
-                    ExplosiveFirePickup.SpawnExplosiveFirePickup(healthSpawnPoints.ElementAt(index));
-                    CurrentFireIndex = index;
-                }
-            }
-        }
-        else
-        {
-            if (healthPickup != null)
-            {
-                if (healthPickup.IsCollected())
-                    healthPickup.SpawnHealthPickup(healthSpawnPoints.ElementAt(0));
-            }
-            else if (RapidFirePickup != null)
-            {
-                if (RapidFirePickup.IsCollected())
-                    RapidFirePickup.SpawnRapidFirePickup(healthSpawnPoints.ElementAt(0));
-            }
-            else if (ExplosiveFirePickup != null)
-            {
-                if (ExplosiveFirePickup.IsCollected())
-                    ExplosiveFirePickup.SpawnExplosiveFirePickup(healthSpawnPoints.ElementAt(0));
-            }
-        }
+		trySpawnHealth ();
+		if (numberToSpawn < pickupSpawnPoints.Count ()) {
+			if (useRapidFirePickup)
+				trySpawnRapid ();
+//			if (useLaserPickup)
+//				trySpawnLaser ();
+			if (useExplosivePickup)
+				trySpawnExplosive ();
+		}
     }
 
+	private void trySpawnHealth(){
+		if (healthPickup.IsCollected ()) {
+			int positionIndex = getUniqueSpawnPointIndex ();
+			healthPickup.SpawnHealthPickup (pickupSpawnPoints.ElementAt (positionIndex));
+			healthIndex = positionIndex;
+		}
+	}
+
+	private void trySpawnRapid(){
+		if (rapidFirePickup.IsCollected ()) {
+			int positionIndex = getUniqueSpawnPointIndex ();
+			rapidFirePickup.SpawnRapidFirePickup (pickupSpawnPoints.ElementAt (positionIndex));
+			rapidIndex = positionIndex;
+		}
+	}
+
+	/*
+	private void trySpawnLaser(){
+		if (healthPickup.IsCollected ()) {
+			int positionIndex = getUniqueSpawnPointIndex ();
+			healthPickup.SpawnHealthPickup (pickupSpawnPoints.ElementAt (positionIndex));
+			healthIndex = positionIndex;
+		}
+	}
+	*/
+
+	private void trySpawnExplosive(){
+		if (explosiveFirePickup.IsCollected ()) {
+			int positionIndex = getUniqueSpawnPointIndex ();
+			explosiveFirePickup.SpawnExplosiveFirePickup (pickupSpawnPoints.ElementAt (positionIndex));
+			explosiveIndex = positionIndex;
+		}
+	}
+
+	private int getUniqueSpawnPointIndex(){
+		int potentialIndex;
+		do {
+			potentialIndex = Random.Range (0, numSpawnPoints);
+		} while (indexUsed (potentialIndex));
+		return potentialIndex;
+	}
+
+	private bool indexUsed(int potential){
+		return potential == healthIndex || potential == rapidIndex || potential == laserIndex || potential == explosiveIndex;
+	}
 }
 
 
