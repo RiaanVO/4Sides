@@ -1112,7 +1112,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c5155ffa10f6c604d852895da2864c29, type: 3}
   - {fileID: 8300000, guid: 8c65bdc818e978749a1b590b0fbb4c7e, type: 3}
   - {fileID: 8300000, guid: 1ca492a2ba7c4fd4486dd1c8ad888054, type: 3}
-  - {fileID: 8300000, guid: c626a7a8b21336743bede69404307e6b, type: 3}
   damageSound: {fileID: 8300000, guid: 0dc11f4e87d165f48a7540a9ab88963f, type: 3}
   deathDelayTime: 0
   DestroySoundEffect: {fileID: 82010100963523754, guid: 50b676c9f81be894cbb2bc3ed69088ad,
