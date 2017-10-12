@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 4953040001176782}
   - component: {fileID: 114217200971970214}
   - component: {fileID: 114747791265948412}
+  - component: {fileID: 82481197065831722}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Turret
@@ -254,6 +255,87 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1109160969530082}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!82 &82481197065831722
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1466486711007648}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243733243603428982, guid: aa3883eed240e3a4aa8375f2f1710c44,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 96d805c8e95759b4eaf9a1bf525ac5fa, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.75
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114217200971970214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -279,10 +361,13 @@ MonoBehaviour:
     type: 2}
   ScoreToAdd: 200
   explosion: {fileID: 1224586835255650, guid: 1639ceec317d5a041b2cd7a8df687f38, type: 2}
+  damageSounds:
+  - {fileID: 8300000, guid: 5ff33921f755ace449391595a652d400, type: 3}
   deathSounds:
   - {fileID: 8300000, guid: b9526c37e66872347ba21c0bd4c625fb, type: 3}
-  damageSound: {fileID: 8300000, guid: 5ff33921f755ace449391595a652d400, type: 3}
   deathDelayTime: 0.1
+  DestroySoundEffect: {fileID: 82010100963523754, guid: 50b676c9f81be894cbb2bc3ed69088ad,
+    type: 2}
 --- !u!114 &114747791265948412
 MonoBehaviour:
   m_ObjectHideFlags: 1

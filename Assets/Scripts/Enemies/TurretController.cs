@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretController : MonoBehaviour {
-
-    private PlayerMovement _player;
-    private double _timer;
-    private bool _gunReady;
+public class TurretController : MonoBehaviour
+{
 
     public float detectionRadius;
     public float timeBetweenShot;
@@ -15,15 +12,23 @@ public class TurretController : MonoBehaviour {
     public Material attackingMaterial;
     public Renderer gunRender;
 
+    private AudioSource source;
+    private PlayerMovement _player;
+    private double _timer;
+    private bool _gunReady;
+
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         _player = FindObjectOfType<PlayerMovement>();
         ResetTimer();
         _gunReady = false;
+        source = GetComponent<AudioSource>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (_player != null)
         {
             if (PlayerInRange())
@@ -42,12 +47,17 @@ public class TurretController : MonoBehaviour {
                 CoolGun();
             }
         }
-	}
+    }
 
     private void Shoot()
     {
         var bullet = Bullet.GetPooledInstance<Bullet>();
         bullet.Initialize(transform.position, transform.rotation);
+        if (source != null)
+        {
+            source.pitch = Random.Range(0.9f, 1.1f);
+            source.Play();
+        }
     }
 
     private bool PlayerInRange()
