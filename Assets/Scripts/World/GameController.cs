@@ -80,7 +80,7 @@ public class GameController : MonoBehaviour
     public void ExitGame()
     {
         StartCoroutine(ClosePauseMenu());
-        GoToScene("TitleScene");
+        GoToMapScreen(false);
         Time.timeScale = 1;
     }
 
