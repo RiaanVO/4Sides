@@ -12790,14 +12790,14 @@ MonoBehaviour:
   DropPods:
   - {fileID: 114983989542929384, guid: ba528b05505343d4e973a17541f8f428, type: 2}
   Waves:
+  - DropPodCount: 3
+    EnemiesPerDropPod: 5
+  - DropPodCount: 4
+    EnemiesPerDropPod: 5
   - DropPodCount: 5
-    EnemiesPerDropPod: 2
-  - DropPodCount: 8
-    EnemiesPerDropPod: 2
-  - DropPodCount: 12
-    EnemiesPerDropPod: 2
-  - DropPodCount: 20
-    EnemiesPerDropPod: 2
+    EnemiesPerDropPod: 5
+  - DropPodCount: 6
+    EnemiesPerDropPod: 5
   pickupSpawner: {fileID: 1625031168}
   waveStartDelayTime: 3
 --- !u!82 &720385625

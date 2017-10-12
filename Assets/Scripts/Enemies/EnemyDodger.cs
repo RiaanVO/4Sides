@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class EnemyDodger : MonoBehaviour {
 
 	private AudioSource TeleportSounds;
+	public AudioClip TeleportAway;
+	public AudioClip TeleportSpawn;
 	public float TeleportDistance = 5f;
 	public float TeleportCooldown = 3f;
 	public float InvisibleTime = 0.8f;
@@ -61,7 +63,8 @@ public class EnemyDodger : MonoBehaviour {
 	{
 
 		if (other.gameObject.CompareTag ("Bullet") && (TimeSinceLastHit <= 0) && isSpawning == false) {
-			TeleportSounds.Play ();
+			//TeleportSounds.Play ();
+			TeleportSounds.PlayOneShot(TeleportAway);
 			StartCoroutine (PlayTeleportEffect ());
 			TimeSinceLastHit = TeleportCooldown;
 		}
@@ -114,7 +117,7 @@ public class EnemyDodger : MonoBehaviour {
 	}
 
 	public void DroneAppear() {
-		TeleportSounds.Stop ();
+		TeleportSounds.PlayOneShot(TeleportSpawn);
 		foreach (Renderer rend in AllDroneRenderer) {
 			rend.enabled = true;
 		}
