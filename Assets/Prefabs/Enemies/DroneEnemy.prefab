@@ -678,6 +678,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c626a7a8b21336743bede69404307e6b, type: 3}
   damageSound: {fileID: 8300000, guid: 0dc11f4e87d165f48a7540a9ab88963f, type: 3}
   deathDelayTime: 0
+  DestroySoundEffect: {fileID: 82010100963523754, guid: 50b676c9f81be894cbb2bc3ed69088ad,
+    type: 2}
 --- !u!114 &114713493981612680
 MonoBehaviour:
   m_ObjectHideFlags: 1

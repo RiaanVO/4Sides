@@ -12,19 +12,15 @@ public class EnemyHealth : BaseHealth
     public List<AudioClip> deathSounds;
     public AudioClip damageSound;
     public float deathDelayTime = 0f;
+    public AudioSource DestroySoundEffect;
 
     private AudioSource damagedSoundSource;
-    private AudioSource deathSoundSource;
 
     public override void Initialise()
     {
         if (damagedSoundSource == null && damageSound != null)
         {
             damagedSoundSource = AddAudioSource(damageSound, 0.5f);
-        }
-        if (deathSoundSource == null && deathSounds != null && deathSounds.Count > 0)
-        {
-            deathSoundSource = AddAudioSource(deathSounds[0], 1.0f);
         }
 
         //explosion = GetComponentInChildren<ParticleSystem>();
@@ -65,10 +61,11 @@ public class EnemyHealth : BaseHealth
 
     private void playDeathSound()
     {
-        if (deathSoundSource != null)
+        if (DestroySoundEffect != null && deathSounds != null && deathSounds.Count > 0)
         {
-            deathSoundSource.clip = deathSounds[Random.Range(0, deathSounds.Count)];
-            // deathSoundSource.Play();
+            var effect = Instantiate(DestroySoundEffect);
+            effect.clip = deathSounds[Random.Range(0, deathSounds.Count)];
+            effect.Play();
         }
     }
 
