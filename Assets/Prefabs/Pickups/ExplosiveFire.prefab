@@ -250,7 +250,8 @@ AudioSource:
   m_GameObject: {fileID: 1624653970736110}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243733243603428982, guid: aa3883eed240e3a4aa8375f2f1710c44,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -291,7 +292,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 0.9
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -387,8 +388,10 @@ MonoBehaviour:
   ExplosiveFireRateDuration: 20
   NewBullet: {fileID: 114671131080773908, guid: 98eac7cbde42a0b47af282c943c57213,
     type: 2}
-  ExplosiveFireSpawnSFX: {fileID: 0}
-  ExplosiveFireCollectedSFX: {fileID: 0}
+  ExplosiveFireSpawnSFX: {fileID: 8300000, guid: f2c2446a43f5a2744b2bd0fa9e45a4a1,
+    type: 3}
+  ExplosiveFireCollectedSFX: {fileID: 8300000, guid: 44a0909c6f3af5945b607c807f54f88a,
+    type: 3}
   model: {fileID: 1853113488217904}
   pickupLight: {fileID: 1436106088084982}
 --- !u!114 &114376097131934886

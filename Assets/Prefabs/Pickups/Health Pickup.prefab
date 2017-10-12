@@ -151,10 +151,11 @@ AudioSource:
   m_GameObject: {fileID: 1281307703780808}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243733243603428982, guid: aa3883eed240e3a4aa8375f2f1710c44,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -192,7 +193,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 0.9
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -285,8 +286,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthAmount: 50
-  healthSpawnSFX: {fileID: 8300000, guid: febdd9ea156c14a79b8a3d639d0410db, type: 3}
-  healthCollectedSFX: {fileID: 8300000, guid: e786fbbb5a7584c32915a79fd9e650a4, type: 3}
+  healthSpawnSFX: {fileID: 8300000, guid: f2c2446a43f5a2744b2bd0fa9e45a4a1, type: 3}
+  healthCollectedSFX: {fileID: 8300000, guid: f572c704a6f3e85458dd79955fa7d7cd, type: 3}
   model: {fileID: 1466303552143570}
   pickupLight: {fileID: 1400042149054596}
 --- !u!114 &114951213911638062
