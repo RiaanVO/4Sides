@@ -333,8 +333,8 @@ MonoBehaviour:
   laserFireDuration: 20
   laserFireDamage: 5
   laserFireTickRate: 0.1
-  laserSpawnSFX: {fileID: 0}
-  laserCollectedSFX: {fileID: 0}
+  laserSpawnSFX: {fileID: 8300000, guid: f2c2446a43f5a2744b2bd0fa9e45a4a1, type: 3}
+  laserCollectedSFX: {fileID: 8300000, guid: 44a0909c6f3af5945b607c807f54f88a, type: 3}
   model: {fileID: 1997672970643348}
   pickupLight: {fileID: 1094206934241264}
 --- !u!135 &135088077950620216
