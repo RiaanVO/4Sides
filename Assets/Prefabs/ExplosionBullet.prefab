@@ -146,6 +146,7 @@ MonoBehaviour:
   TagsToCollideWith:
   - Enemy
   - Turret
+  explosion: {fileID: 1859702710664590, guid: 6bb1026cc9cbf6d4398b05400c0da785, type: 2}
 --- !u!114 &114671131080773908
 MonoBehaviour:
   m_ObjectHideFlags: 1
