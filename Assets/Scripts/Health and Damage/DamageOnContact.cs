@@ -11,6 +11,8 @@ public class DamageOnContact : MonoBehaviour
     public bool isExplosive = false;
     public List<string> TagsToCollideWith;
 
+    public GameObject explosion;
+
     private BaseHealth myHealth;
     private PooledObject poolable;
 
@@ -29,6 +31,7 @@ public class DamageOnContact : MonoBehaviour
         if (isExplosive)
         {
             ExplosionDamage(gameObject.transform.position);
+            Instantiate(explosion, transform.position, transform.rotation);
         }
         else
         {
