@@ -30,6 +30,11 @@ public class EnemyController : PooledObject
     public bool randomiseStartPos = true;
     public float randomisePosScale = 2;
 
+    public bool chaseAfterDelay = false;
+    public float chaseDelayAmount = 30f;
+    public float chaseDelayRandomAmount = 30f;
+    private float chaseDelayTimer = 0f;
+
     void Awake()
     {
         detectedSoundPlayer = AddAudioSource(playerDetectedSFX, 1.0f);
@@ -65,10 +70,13 @@ public class EnemyController : PooledObject
         if (randomiseStartPos)
         {
             Vector2 positionOffset = Random.insideUnitCircle;
-            positionOffset *= randomisePosScale;
+            positionOffset *= randomisePosScale * Random.value;
             Vector3 newPosition = new Vector3(transform.position.x + positionOffset.x, transform.position.y, transform.position.z + positionOffset.y);
             nav.SetDestination(newPosition);
+        }
 
+        if(chaseAfterDelay){
+          chaseDelayTimer = chaseDelayAmount + (chaseDelayRandomAmount * Random.value);
         }
     }
 
@@ -103,6 +111,12 @@ public class EnemyController : PooledObject
             {
                 notifyPlayerFound();
             }
+        }
+        if(chaseAfterDelay){
+          chaseDelayTimer -= Time.deltaTime;
+          if(chaseDelayTimer < 0){
+            playerFound = true;
+          }
         }
     }
 

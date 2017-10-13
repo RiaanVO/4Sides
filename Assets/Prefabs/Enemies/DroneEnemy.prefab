@@ -731,6 +731,9 @@ MonoBehaviour:
   playerDetectedSFX: {fileID: 8300000, guid: 8a1231bd061309b4baeeee6eb5be13f7, type: 3}
   randomiseStartPos: 1
   randomisePosScale: 2
+  chaseAfterDelay: 1
+  chaseDelayAmount: 30
+  chaseDelayRandomAmount: 60
 --- !u!136 &136633064977780166
 CapsuleCollider:
   m_ObjectHideFlags: 1

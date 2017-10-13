@@ -223,7 +223,6 @@ GameObject:
   - component: {fileID: 114333607814586132}
   - component: {fileID: 114743949432006036}
   - component: {fileID: 114803694750143852}
-  - component: {fileID: 114867252027805952}
   - component: {fileID: 114535406803455654}
   - component: {fileID: 82651033487764168}
   - component: {fileID: 114935273143807002}
@@ -1235,6 +1234,9 @@ MonoBehaviour:
   playerDetectedSFX: {fileID: 8300000, guid: 8a1231bd061309b4baeeee6eb5be13f7, type: 3}
   randomiseStartPos: 1
   randomisePosScale: 2
+  chaseAfterDelay: 1
+  chaseDelayAmount: 30
+  chaseDelayRandomAmount: 60
 --- !u!114 &114803694750143852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1244,17 +1246,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f8d00284829e634299e36d401273373, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114867252027805952
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1339550043203248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da21d12d6c6541469ac7058488420de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114935273143807002
