@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 199634818123032278}
   - component: {fileID: 198844787168736560}
   - component: {fileID: 114954353526192084}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DroneEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 4395166521204702}
   - component: {fileID: 33339281545111082}
   - component: {fileID: 23690676001371640}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_DroneWingRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 4946939976098754}
   - component: {fileID: 33446760910077332}
   - component: {fileID: 23768381308668112}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_DroneWingLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 4619197358220218}
   - component: {fileID: 33896859625777834}
   - component: {fileID: 23452177919487954}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_DroneBladeRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4800669135158160}
   - component: {fileID: 108936365298140748}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 4348701360541624}
   - component: {fileID: 33479666594015112}
   - component: {fileID: 23031782114032342}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_DroneBladeLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 136871864509410598}
   - component: {fileID: 114759211269413082}
   - component: {fileID: 82504960980074954}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DodgerCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 4792637545789870}
   - component: {fileID: 33676550621842312}
   - component: {fileID: 23536746533228930}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_Drone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33400549869930254}
   - component: {fileID: 135960316067484242}
   - component: {fileID: 23869135840443488}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Turret
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114217200971970214}
   - component: {fileID: 114747791265948412}
   - component: {fileID: 82481197065831722}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Turret
   m_TagString: Turret
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 33021973479563532}
   - component: {fileID: 136446744072389610}
   - component: {fileID: 23690939680438310}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gun
   m_TagString: Turret
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 33295330037987460}
   - component: {fileID: 136139870441905302}
   - component: {fileID: 23200245294348654}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Turret
   m_Icon: {fileID: 0}

@@ -7,7 +7,7 @@ public class LaserPickup : MonoBehaviour {
 	private const string PLAYER_TAG = "Player";
 
 	public float laserFireDuration = 10f;
-	public float laserFireDamage = 1f;
+	public int laserFireDamage = 5;
 	public float laserFireTickRate = 0.1f;
 
 	public AudioClip laserSpawnSFX;
@@ -60,7 +60,7 @@ public class LaserPickup : MonoBehaviour {
 							}
 
 							SetVisibility(false);
-							//player.ChangeFireRate(RapidFireRateDuration, RapidFireRate, NewBullet);
+							player.ChangeToLaserShooting(laserFireDuration, laserFireDamage, laserFireTickRate);
 					}
 			}
 	}
