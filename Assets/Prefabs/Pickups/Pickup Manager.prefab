@@ -55,6 +55,8 @@ MonoBehaviour:
     type: 2}
   rapidFirePickupPrefab: {fileID: 1629624955506414, guid: 1b1ea9ab5d8be844da0e89d2189c0c22,
     type: 2}
+  laserFirePickupPrefab: {fileID: 1489742286727304, guid: 8fd7663b14f8b4714b0ad148cfe2dbf2,
+    type: 2}
   explosiveFirePickupPrefab: {fileID: 1624653970736110, guid: 01be03ec36dd68e4194ff0b4a06ccfe0,
     type: 2}
   useRapidFirePickup: 0

@@ -149,9 +149,9 @@ public class BaseHealth : MonoBehaviour
         {
             if (!_isInvincible)
             {
-				if (InvincibleWhenDamaged) {
-					_isInvincible = true;
-				}
+				          if (InvincibleWhenDamaged) {
+					               _isInvincible = true;
+				          }
                 currentHealth -= amount;
 
                 ShowDamageEffects(amount);
@@ -169,6 +169,32 @@ public class BaseHealth : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void TakeDamageOverideInvincible(int amount){
+      if (!IsDead)
+      {
+
+                if (InvincibleWhenDamaged) {
+                       _isInvincible = true;
+                }
+              currentHealth -= amount;
+
+              ShowDamageEffects(amount);
+              DamageSound();
+
+
+              if (data != null)
+              {
+                  data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);
+              }
+
+              if (IsDead)
+              {
+                  Die();
+              }
+
+      }
     }
 
     public void Heal(int amount)

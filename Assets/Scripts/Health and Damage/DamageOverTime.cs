@@ -51,7 +51,7 @@ public class DamageOverTime : MonoBehaviour
                 {
                     if (baseHealth != null)
                     {
-                        baseHealth.TakeDamage(damageToDeal);
+                        baseHealth.TakeDamageOverideInvincible(damageToDeal);
                         if (tagsToPlaySoundOn != null &&
                             tagsToPlaySoundOn.Contains(baseHealth.gameObject.tag))
                         {

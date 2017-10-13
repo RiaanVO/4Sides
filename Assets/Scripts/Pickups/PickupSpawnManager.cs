@@ -5,19 +5,19 @@ using UnityEngine;
 
 public class PickupSpawnManager : MonoBehaviour
 {
-    private List<Vector3> pickupSpawnPoints;
+  private List<Vector3> pickupSpawnPoints;
 
 	public GameObject healthPickupPrefab;
-    private HealthPickup healthPickup;
+  private HealthPickup healthPickup;
 
 	public GameObject rapidFirePickupPrefab;
-    private RapidFirePickupScript rapidFirePickup;
+  private RapidFirePickupScript rapidFirePickup;
 
-	//public GameObject laserFirePickupPrefab;
-	//private LaserFirePickup laserFirePickup;
+	public GameObject laserFirePickupPrefab;
+	private LaserPickup laserPickup;
 
 	public GameObject explosiveFirePickupPrefab;
-    private ExplosiveFirePickupScript explosiveFirePickup;
+  private ExplosiveFirePickupScript explosiveFirePickup;
 
 	public bool useRapidFirePickup = false;
 	public bool useLaserPickup = false;
@@ -44,11 +44,10 @@ public class PickupSpawnManager : MonoBehaviour
 			numberToSpawn++;
 		}
 
-		//TODO Make laser pickup
-//		if (useLaserPickup) {
-//			rapidFirePickup = (GameObject)Instantiate (laserFirePickupPrefab).GetComponent<LaserFirePickup>();
-//			numberToSpawn++;
-//		}
+		if (useLaserPickup) {
+			laserPickup = ((GameObject)Instantiate (laserFirePickupPrefab)).GetComponent<LaserPickup>();
+			numberToSpawn++;
+		}
 
 		if (useExplosivePickup) {
 			explosiveFirePickup = ((GameObject)Instantiate (explosiveFirePickupPrefab)).GetComponent<ExplosiveFirePickupScript>();
@@ -62,8 +61,8 @@ public class PickupSpawnManager : MonoBehaviour
 		if (numberToSpawn <= pickupSpawnPoints.Count ()) {
 			if (useRapidFirePickup)
 				trySpawnRapid ();
-//			if (useLaserPickup)
-//				trySpawnLaser ();
+			if (useLaserPickup)
+				trySpawnLaser ();
 			if (useExplosivePickup)
 				trySpawnExplosive ();
 		}
@@ -85,15 +84,14 @@ public class PickupSpawnManager : MonoBehaviour
 		}
 	}
 
-	/*
+
 	private void trySpawnLaser(){
-		if (healthPickup.IsCollected ()) {
+		if (laserPickup.IsCollected ()) {
 			int positionIndex = getUniqueSpawnPointIndex ();
-			healthPickup.SpawnHealthPickup (pickupSpawnPoints.ElementAt (positionIndex));
-			healthIndex = positionIndex;
+			laserPickup.SpawnLaserPickup (pickupSpawnPoints.ElementAt (positionIndex));
+			laserIndex = positionIndex;
 		}
 	}
-	*/
 
 	private void trySpawnExplosive(){
 		if (explosiveFirePickup.IsCollected ()) {

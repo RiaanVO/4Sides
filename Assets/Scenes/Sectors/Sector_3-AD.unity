@@ -7573,6 +7573,12 @@ Prefab:
       propertyPath: useRapidFirePickup
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114781277319442356, guid: c0eb1d4654be54b1da37c72f08148cf7,
+        type: 2}
+      propertyPath: laserFirePickupPrefab
+      value: 
+      objectReference: {fileID: 1489742286727304, guid: 8fd7663b14f8b4714b0ad148cfe2dbf2,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0eb1d4654be54b1da37c72f08148cf7, type: 2}
   m_IsPrefabParent: 0
