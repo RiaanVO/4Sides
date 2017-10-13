@@ -9,14 +9,16 @@ public class Bullet : PooledObject
     public float MaximumLifeTime = 10f;
     public float Speed = 4.0f;
 
-    private PlayerMovement player;
+    private GameObject player;
+    private BaseHealth playerHealth;
     private Rigidbody body;
     private MeshRenderer mesh;
     private float createdAtTimestamp;
 
     void Start()
     {
-        player = Object.FindObjectOfType<PlayerMovement>();
+        player = GameObject.Find("Player");
+        playerHealth = player.GetComponent<BaseHealth>();
         body = GetComponent<Rigidbody>();
         mesh = GetComponentInChildren<MeshRenderer>();
     }
@@ -28,7 +30,7 @@ public class Bullet : PooledObject
         createdAtTimestamp = Time.time;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         body.transform.position += transform.forward * Time.deltaTime * Speed;
 
@@ -36,7 +38,7 @@ public class Bullet : PooledObject
         {
             ReturnToPool();
         }
-        if (destroyOverDistance)
+        if (destroyOverDistance && !playerHealth.IsDead)
         {
             if (MaximumRange < Vector3.Distance(transform.position, player.transform.position))
             {
