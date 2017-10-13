@@ -23,7 +23,6 @@ public class PickupSpawnManager : MonoBehaviour
     public bool useLaserPickup = false;
     public bool useExplosivePickup = false;
 
-    private List<int> possibleIndex = new List<int>();
     private int healthIndex = -1;
     private int rapidIndex = -1;
     private int laserIndex = -1;
@@ -32,15 +31,10 @@ public class PickupSpawnManager : MonoBehaviour
 
     private int numberToSpawn = 1;
 
-    // Use this for initialization
     void Start()
     {
         pickupSpawnPoints = GameObject.FindGameObjectsWithTag("PickupSpawnPoint").Select(o => o.transform.position).ToList();
-        for (int index = 0; index < pickupSpawnPoints.Count; index++)
-        {
-            possibleIndex.Add(index);
-        }
-        //numSpawnPoints = pickupSpawnPoints.Count();
+        numSpawnPoints = pickupSpawnPoints.Count();
 
         healthPickup = ((GameObject)Instantiate(healthPickupPrefab)).GetComponent<HealthPickup>();
 
@@ -63,21 +57,9 @@ public class PickupSpawnManager : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (healthPickup.IsCollected() && healthIndex != -1)
-            possibleIndex.Add(healthIndex);
-        if (useRapidFirePickup && rapidFirePickup.IsCollected() && rapidIndex != -1)
-            possibleIndex.Add(rapidIndex);
-        if (useLaserPickup && laserPickup.IsCollected() && laserIndex != -1)
-            possibleIndex.Add(laserIndex);
-        if (useExplosivePickup && explosiveFirePickup.IsCollected() && explosiveIndex != -1)
-            possibleIndex.Add(explosiveIndex);
-
-    }
-
     public void SpawnPickup()
     {
+        resetIndexes();
         trySpawnHealth();
         if (numberToSpawn <= pickupSpawnPoints.Count())
         {
@@ -90,13 +72,24 @@ public class PickupSpawnManager : MonoBehaviour
         }
     }
 
+    private void resetIndexes(){
+      if(healthPickup.IsCollected()){
+        healthIndex = -1;
+      }
+      if (useRapidFirePickup && rapidFirePickup.IsCollected())
+          rapidIndex = -1;
+      if (useLaserPickup && laserPickup.IsCollected())
+          laserIndex = -1;
+      if (useExplosivePickup && explosiveFirePickup.IsCollected())
+          explosiveIndex = -1;
+    }
+
     private void trySpawnHealth()
     {
         if (healthPickup.IsCollected())
         {
             int positionIndex = getUniqueSpawnPointIndex();
             healthPickup.SpawnHealthPickup(pickupSpawnPoints.ElementAt(positionIndex));
-            possibleIndex.Remove(positionIndex);
             healthIndex = positionIndex;
         }
     }
@@ -107,7 +100,6 @@ public class PickupSpawnManager : MonoBehaviour
         {
             int positionIndex = getUniqueSpawnPointIndex();
             rapidFirePickup.SpawnRapidFirePickup(pickupSpawnPoints.ElementAt(positionIndex));
-            possibleIndex.Remove(positionIndex);
             rapidIndex = positionIndex;
         }
     }
@@ -119,7 +111,6 @@ public class PickupSpawnManager : MonoBehaviour
         {
             int positionIndex = getUniqueSpawnPointIndex();
             laserPickup.SpawnLaserPickup(pickupSpawnPoints.ElementAt(positionIndex));
-            possibleIndex.Remove(positionIndex);
             laserIndex = positionIndex;
         }
     }
@@ -130,24 +121,22 @@ public class PickupSpawnManager : MonoBehaviour
         {
             int positionIndex = getUniqueSpawnPointIndex();
             explosiveFirePickup.SpawnExplosiveFirePickup(pickupSpawnPoints.ElementAt(positionIndex));
-            possibleIndex.Remove(positionIndex);
             explosiveIndex = positionIndex;
         }
     }
 
     private int getUniqueSpawnPointIndex()
     {
-        return possibleIndex.ElementAt(Random.Range(0, possibleIndex.Count));
-        //      int numTimesAttempted = 0;
-        //int potentialIndex;
-        //do {
-        //	potentialIndex = Random.Range (0, numSpawnPoints);
-        //    numTimesAttempted ++;
-        //    if(numTimesAttempted > 100){
-        //      break;
-        //    }
-        //} while (indexUsed (potentialIndex));
-        //return potentialIndex;
+        int numTimesAttempted = 0;
+        int potentialIndex;
+        do {
+        	potentialIndex = Random.Range (0, numSpawnPoints);
+           numTimesAttempted ++;
+           if(numTimesAttempted > 100){
+             break;
+           }
+        } while (indexUsed (potentialIndex));
+        return potentialIndex;
     }
 
     private bool indexUsed(int potential)
