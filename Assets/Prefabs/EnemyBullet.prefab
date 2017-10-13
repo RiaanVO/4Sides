@@ -139,6 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67bd9f7289abd64699785231dd3999a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyOverDistance: 0
+  MaximumRange: 15
   MaximumLifeTime: 10
   Speed: 10
 --- !u!114 &114587329750810442
