@@ -1023,7 +1023,7 @@ GameObject:
   - component: {fileID: 100842907}
   - component: {fileID: 100842906}
   - component: {fileID: 100842905}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -1306,7 +1306,7 @@ GameObject:
   - component: {fileID: 148727368}
   - component: {fileID: 148727367}
   - component: {fileID: 148727366}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -1838,7 +1838,7 @@ GameObject:
   - component: {fileID: 205669571}
   - component: {fileID: 205669570}
   - component: {fileID: 205669569}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -3291,7 +3291,7 @@ GameObject:
   - component: {fileID: 369079315}
   - component: {fileID: 369079314}
   - component: {fileID: 369079313}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -3457,7 +3457,7 @@ GameObject:
   - component: {fileID: 389363444}
   - component: {fileID: 389363443}
   - component: {fileID: 389363442}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle Traposoid (1)
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -3809,7 +3809,7 @@ GameObject:
   - component: {fileID: 405392341}
   - component: {fileID: 405392340}
   - component: {fileID: 405392339}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall (2)
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -4255,7 +4255,7 @@ GameObject:
   - component: {fileID: 470671521}
   - component: {fileID: 470671520}
   - component: {fileID: 470671519}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -4561,7 +4561,7 @@ GameObject:
   - component: {fileID: 504049997}
   - component: {fileID: 504049996}
   - component: {fileID: 504049995}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -5195,7 +5195,7 @@ GameObject:
   - component: {fileID: 547511071}
   - component: {fileID: 547511070}
   - component: {fileID: 547511069}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle Traposoid
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -5921,7 +5921,7 @@ GameObject:
   - component: {fileID: 643360529}
   - component: {fileID: 643360528}
   - component: {fileID: 643360527}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -7523,7 +7523,7 @@ GameObject:
   - component: {fileID: 761196631}
   - component: {fileID: 761196630}
   - component: {fileID: 761196629}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -8053,7 +8053,7 @@ GameObject:
   - component: {fileID: 803047676}
   - component: {fileID: 803047675}
   - component: {fileID: 803047674}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -9785,7 +9785,7 @@ GameObject:
   - component: {fileID: 952012490}
   - component: {fileID: 952012489}
   - component: {fileID: 952012488}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -9867,7 +9867,7 @@ GameObject:
   - component: {fileID: 953807059}
   - component: {fileID: 953807058}
   - component: {fileID: 953807057}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ramp Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -10226,7 +10226,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1013285425}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10867,7 +10867,7 @@ GameObject:
   - component: {fileID: 1053595869}
   - component: {fileID: 1053595868}
   - component: {fileID: 1053595867}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ramp Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -11095,7 +11095,7 @@ GameObject:
   - component: {fileID: 1075937697}
   - component: {fileID: 1075937696}
   - component: {fileID: 1075937695}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -11342,7 +11342,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1095955154}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12547,7 +12547,7 @@ GameObject:
   - component: {fileID: 1227848784}
   - component: {fileID: 1227848783}
   - component: {fileID: 1227848782}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle Traposoid
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -14091,7 +14091,7 @@ GameObject:
   - component: {fileID: 1335596939}
   - component: {fileID: 1335596938}
   - component: {fileID: 1335596937}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -16119,7 +16119,7 @@ GameObject:
   - component: {fileID: 1516559223}
   - component: {fileID: 1516559222}
   - component: {fileID: 1516559221}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle Traposoid (2)
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -16282,7 +16282,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1535218717}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16407,7 +16407,7 @@ GameObject:
   - component: {fileID: 1549905067}
   - component: {fileID: 1549905066}
   - component: {fileID: 1549905065}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle Traposoid
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -17161,7 +17161,7 @@ GameObject:
   - component: {fileID: 1596662331}
   - component: {fileID: 1596662330}
   - component: {fileID: 1596662329}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -17764,6 +17764,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1085129061482504, guid: 75d83c6616f974333b616a0078859591, type: 2}
       propertyPath: m_StaticEditorFlags
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832570800247410, guid: 75d83c6616f974333b616a0078859591, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1085129061482504, guid: 75d83c6616f974333b616a0078859591, type: 2}
+      propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -19096,7 +19104,7 @@ GameObject:
   - component: {fileID: 1771276478}
   - component: {fileID: 1771276477}
   - component: {fileID: 1771276476}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle Trapesoid
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -19967,7 +19975,7 @@ GameObject:
   - component: {fileID: 1893034692}
   - component: {fileID: 1893034691}
   - component: {fileID: 1893034690}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall (1)
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -20662,7 +20670,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1954437427}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21798,7 +21806,7 @@ GameObject:
   - component: {fileID: 2055939779}
   - component: {fileID: 2055939778}
   - component: {fileID: 2055939777}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -21880,7 +21888,7 @@ GameObject:
   - component: {fileID: 2057927301}
   - component: {fileID: 2057927300}
   - component: {fileID: 2057927299}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle Trapesoid
   m_TagString: Solid
   m_Icon: {fileID: 0}
@@ -22102,7 +22110,7 @@ GameObject:
   - component: {fileID: 2091455066}
   - component: {fileID: 2091455065}
   - component: {fileID: 2091455064}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Obstacle Wall
   m_TagString: Solid
   m_Icon: {fileID: 0}
