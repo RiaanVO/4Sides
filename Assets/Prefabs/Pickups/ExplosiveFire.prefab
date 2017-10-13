@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d2f91ab63baac43ba674a09521dbb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExplosiveFireRate: 0.2
+  ExplosiveFireRate: 0.12
   ExplosiveFireRateDuration: 20
   NewBullet: {fileID: 114671131080773908, guid: 98eac7cbde42a0b47af282c943c57213,
     type: 2}
