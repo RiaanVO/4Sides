@@ -104,9 +104,14 @@ public class PickupSpawnManager : MonoBehaviour
 	}
 
 	private int getUniqueSpawnPointIndex(){
+    int numTimesAttempted = 0;
 		int potentialIndex;
 		do {
 			potentialIndex = Random.Range (0, numSpawnPoints);
+      numTimesAttempted ++;
+      if(numTimesAttempted > 100){
+        break;
+      }
 		} while (indexUsed (potentialIndex));
 		return potentialIndex;
 	}
@@ -115,5 +120,3 @@ public class PickupSpawnManager : MonoBehaviour
 		return potential == healthIndex || potential == rapidIndex || potential == laserIndex || potential == explosiveIndex;
 	}
 }
-
-
