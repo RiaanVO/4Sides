@@ -31,7 +31,10 @@ public class DamageOnContact : MonoBehaviour
         if (isExplosive)
         {
             ExplosionDamage(gameObject.transform.position);
-            Instantiate(explosion, transform.position, transform.rotation);
+            if (explosion != null)
+            {
+                Instantiate(explosion, transform.position, transform.rotation);
+            }
         }
         else
         {
