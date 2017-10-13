@@ -2095,3 +2095,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ce79aab11e27ce4e8380ae7f0045491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxClipsToRemember: 10
