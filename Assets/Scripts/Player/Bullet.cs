@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Bullet : PooledObject
 {
+    public bool destroyOverDistance = true;
+    public float MaximumRange = 15f;
     public float MaximumLifeTime = 10f;
     public float Speed = 4.0f;
 
+    private PlayerMovement player;
     private Rigidbody body;
     private MeshRenderer mesh;
     private float createdAtTimestamp;
 
     void Start()
     {
+        player = Object.FindObjectOfType<PlayerMovement>();
         body = GetComponent<Rigidbody>();
         mesh = GetComponentInChildren<MeshRenderer>();
     }
@@ -32,7 +36,14 @@ public class Bullet : PooledObject
         {
             ReturnToPool();
         }
-
+        if (destroyOverDistance)
+        {
+            if (MaximumRange < Vector3.Distance(transform.position, player.transform.position))
+            {
+                ReturnToPool();
+            }
+        }
+        
         mesh.material.SetTextureOffset("_MainTex",
             new Vector2(Time.time % 1, (Time.time * 4) % 1));
     }
