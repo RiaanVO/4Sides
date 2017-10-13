@@ -142,10 +142,11 @@ MonoBehaviour:
   DamageToDeal: 8
   explosionRadius: 1
   SelfDestructOnContact: 1
-  isExplosive: 1
+  isExplosive: 0
   TagsToCollideWith:
   - Enemy
   - Turret
+  explosion: {fileID: 0}
 --- !u!114 &114671131080773908
 MonoBehaviour:
   m_ObjectHideFlags: 1

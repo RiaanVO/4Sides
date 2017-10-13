@@ -676,10 +676,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8c65bdc818e978749a1b590b0fbb4c7e, type: 3}
   - {fileID: 8300000, guid: 1ca492a2ba7c4fd4486dd1c8ad888054, type: 3}
   deathSounds:
-  - {fileID: 8300000, guid: e333a830a4d518d4d9470aab1121a2b3, type: 3}
-  - {fileID: 8300000, guid: b661d1823b7e9c24fba5d514550a3b6d, type: 3}
-  - {fileID: 8300000, guid: 98037a30cc60ac7498b4269671a2c47c, type: 3}
-  - {fileID: 8300000, guid: 7172a0eb86ddc7c4a87563f3f36f8dd3, type: 3}
+  - {fileID: 8300000, guid: 1d743a926e7908c4299110dc075f197e, type: 3}
   deathDelayTime: 0
   DestroySoundEffect: {fileID: 82010100963523754, guid: 50b676c9f81be894cbb2bc3ed69088ad,
     type: 2}
