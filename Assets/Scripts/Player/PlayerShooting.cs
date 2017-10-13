@@ -14,12 +14,15 @@ public class PlayerShooting : MonoBehaviour
 
     private float currentFireRate;
 
+
+    public AudioClip laserSFX;
+    public float volume = 1f;
+    private AudioSource laserAudioSource;
     private bool isShootingLaser = false;
     private int laserDamage = 5;
     private float laserTickRate = 0.1f;
-
     private LineRenderer laserLine;
-    public float laserLineWidth = 0.1f;
+    private float laserLineWidth = 0.1f;
     private float laserTimer = 0f;
     private int wallLayerMask = 1 << 9;
     private int enemyLayerMask = 1 << 10;
@@ -37,6 +40,13 @@ public class PlayerShooting : MonoBehaviour
         laserLine.startWidth = laserLineWidth;
         laserLine.endWidth = laserLineWidth;
         laserLine.enabled = false;
+
+        laserAudioSource = gameObject.AddComponent<AudioSource>();
+        laserAudioSource.clip = laserSFX;
+        laserAudioSource.volume = volume;
+        laserAudioSource.playOnAwake = false;
+        laserAudioSource.loop = true;
+        laserAudioSource.spatialBlend = 0.75f;
     }
 
     void Update()
@@ -61,6 +71,7 @@ public class PlayerShooting : MonoBehaviour
         } else if (MuzzleFlash != null) {
             MuzzleFlash.enabled = false;
             laserLine.enabled = false;
+            laserAudioSource.Stop();
         }
     }
 
@@ -73,6 +84,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void shootLaser(){
       laserLine.enabled = true;
+      laserAudioSource.Play();
 
       //Draw the laser
       RaycastHit hit;
