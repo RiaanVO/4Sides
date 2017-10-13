@@ -30077,6 +30077,8 @@ MonoBehaviour:
   Playlist:
   - {fileID: 8300000, guid: c8327a74a73e07b45a4cc7c666d512c2, type: 3}
   - {fileID: 8300000, guid: 6c66eccba3e49704996de48c1c28f0cf, type: 3}
+  - {fileID: 8300000, guid: b7b51cc1a8eea3d41b06ca8e4cabd2c7, type: 3}
+  - {fileID: 8300000, guid: cb637e24022be96408316ef9cdb752d8, type: 3}
   ForceRestart: 0
 --- !u!1 &1390834387
 GameObject:
