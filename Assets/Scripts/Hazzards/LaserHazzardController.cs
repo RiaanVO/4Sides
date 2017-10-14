@@ -18,6 +18,7 @@ public class LaserHazzardController : MonoBehaviour
     Animator laserAnimator;
     LineRenderer laserLine;
 
+    private int layerMask = 1<<9;
     BoxCollider laserDamageBox;
     DamageOverTime damgOverTime;
 
@@ -49,7 +50,7 @@ public class LaserHazzardController : MonoBehaviour
 
         //Determine how long the laser should be
         RaycastHit hit;
-        if (Physics.Raycast(laserStartPoint.position, transform.right, out hit))
+        if (Physics.Raycast(laserStartPoint.position, transform.right, out hit, 100f, layerMask))
         {
             laserEndPoint.position = laserStartPoint.position + transform.right * hit.distance;
             setLaserPositions();
