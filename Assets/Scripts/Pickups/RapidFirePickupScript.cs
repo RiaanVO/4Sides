@@ -53,6 +53,8 @@ public class RapidFirePickupScript : MonoBehaviour
             PlayerShooting player = other.gameObject.GetComponentInParent<PlayerShooting>();
             if (player != null)
             {
+              if(player.isUsingPickup()) return;
+
                 isCollected = true;
                 if (audioSource != null && RapidFireCollectedSFX != null)
                 {

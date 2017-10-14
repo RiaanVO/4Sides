@@ -27,6 +27,8 @@ public class PlayerShooting : MonoBehaviour
     private int wallLayerMask = 1 << 9;
     private int enemyLayerMask = 1 << 10;
 
+    private bool usingPickup = false;
+
     public bool IsShooting { get; private set; }
 
     void Start()
@@ -118,12 +120,14 @@ public class PlayerShooting : MonoBehaviour
     }
 
     private IEnumerator changeToLaserShooting(float duration, int damage, float tickRate){
+          usingPickup = true;
           isShootingLaser = true;
           laserDamage = damage;
           laserTickRate = tickRate;
           yield return new WaitForSeconds(duration);
   		    isShootingLaser = false;
           laserLine.enabled = false;
+          usingPickup = false;
     }
 
     public void ChangeFireRate(float duration, float targetFireRate, Bullet newBullet)
@@ -133,12 +137,19 @@ public class PlayerShooting : MonoBehaviour
 
 	private IEnumerator changeFireRate(float duration, float targetFireRate, Bullet newBullet)
     {
+      usingPickup = true;
+
 		currentFireRate = targetFireRate;
         if (newBullet != null)
             CurrentBullet = newBullet;
         yield return new WaitForSeconds(duration);
 		    currentFireRate = FireRate;
         CurrentBullet = originBullet;
+        usingPickup = false;
 
+    }
+
+    public bool isUsingPickup(){
+      return usingPickup;
     }
 }
