@@ -540,7 +540,7 @@ MonoBehaviour:
   FireRate: 0.07
   MuzzleFlash: {fileID: 108457497817763430}
   shootingPoint: {fileID: 4786839481528840}
-  laserSFX: {fileID: 8300000, guid: eabace70bdf644c55810195fc37d0666, type: 3}
+  laserSFX: {fileID: 8300000, guid: 2f8fed8c12cbc4770881f036d32d18cc, type: 3}
   volume: 1
 --- !u!114 &114744362801933838
 MonoBehaviour:
