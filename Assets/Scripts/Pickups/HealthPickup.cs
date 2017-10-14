@@ -2,66 +2,77 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthPickup : MonoBehaviour {
+public class HealthPickup : MonoBehaviour
+{
 
-	private const string PLAYER_TAG = "Player";
-	public int healthAmount = 50;
+    private const string PLAYER_TAG = "Player";
+    public int healthAmount = 50;
 
-	public AudioClip healthSpawnSFX;
-	public AudioClip healthCollectedSFX;
+    public AudioClip healthSpawnSFX;
+    public AudioClip healthCollectedSFX;
 
-	private AudioSource audioSource;
-	public GameObject model;
-	public GameObject pickupLight;
-	private bool isCollected = true;
+    private AudioSource source;
+    public GameObject model;
+    public GameObject pickupLight;
+    private bool isCollected = true;
 
-	private PickupAnimation pickupAnimation;
+    private PickupAnimation pickupAnimation;
 
-	public void Start(){
-		audioSource = GetComponent<AudioSource> ();
-		SetVisability (false);
-	}
+    public void Start()
+    {
+        source = GetComponent<AudioSource>();
+        SetVisability(false);
+    }
 
+    public void SpawnHealthPickup(Vector3 newPosition)
+    {
+        if (pickupAnimation == null)
+        {
+            pickupAnimation = GetComponent<PickupAnimation>();
+        }
 
+        pickupAnimation.SetBouncePositions(newPosition);
+        transform.position = new Vector3(newPosition.x, newPosition.y, newPosition.z);
 
-	public void SpawnHealthPickup(Vector3 newPosition){
-		if (pickupAnimation == null) {
-			pickupAnimation = GetComponent<PickupAnimation> ();
-		}
+        if (source != null && healthSpawnSFX != null)
+        {
+            source.clip = healthSpawnSFX;
+            source.Play();
+        }
+        SetVisability(true);
+        isCollected = false;
+    }
 
-		pickupAnimation.SetBouncePositions (newPosition);
-		transform.position = new Vector3(newPosition.x, newPosition.y, newPosition.z);
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag(PLAYER_TAG) && !isCollected)
+        {
+            BaseHealth playerHealth = other.gameObject.GetComponentInParent<BaseHealth>();
 
-		if (audioSource != null && healthSpawnSFX != null) {
-			audioSource.PlayOneShot (healthSpawnSFX);
-		}
-		SetVisability(true);
-		isCollected = false;
-	}
+            if (playerHealth != null)
+            {
+                playerHealth.Heal(healthAmount);
+                isCollected = true;
 
-	public void OnTriggerEnter(Collider other){
-		if (other.gameObject.CompareTag (PLAYER_TAG) && !isCollected) {
-			BaseHealth playerHealth = other.gameObject.GetComponentInParent<BaseHealth> ();
+                if (source != null && healthCollectedSFX != null)
+                {
+                    source.clip = healthCollectedSFX;
+                    source.Play();
+                }
 
-			if (playerHealth != null) {
-				playerHealth.Heal (healthAmount);
-				isCollected = true;
+                SetVisability(false);
+            }
+        }
+    }
 
-				if (audioSource != null && healthCollectedSFX != null) {
-					audioSource.PlayOneShot (healthCollectedSFX);
-				}
+    private void SetVisability(bool active)
+    {
+        model.SetActive(active);
+        pickupLight.SetActive(active);
+    }
 
-				SetVisability (false);
-			}
-		}
-	}
-
-	private void SetVisability(bool active){
-		model.SetActive (active);
-		pickupLight.SetActive (active);
-	}
-
-	public bool IsCollected(){
-		return isCollected;
-	}
+    public bool IsCollected()
+    {
+        return isCollected;
+    }
 }

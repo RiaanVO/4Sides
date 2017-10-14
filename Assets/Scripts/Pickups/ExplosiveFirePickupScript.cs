@@ -15,7 +15,7 @@ public class ExplosiveFirePickupScript : MonoBehaviour
     public AudioClip ExplosiveFireCollectedSFX;
 
     private Renderer bulletMaterial;
-    private AudioSource audioSource;
+    private AudioSource source;
     public GameObject model;
     public GameObject pickupLight;
     private bool isCollected = true;
@@ -24,7 +24,7 @@ public class ExplosiveFirePickupScript : MonoBehaviour
 
     public void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        source = GetComponent<AudioSource>();
         SetVisibility(false);
     }
 
@@ -38,9 +38,10 @@ public class ExplosiveFirePickupScript : MonoBehaviour
         pickupAnimation.SetBouncePositions(newPosition);
         transform.position = new Vector3(newPosition.x, newPosition.y, newPosition.z);
 
-        if (audioSource != null && ExplosiveFireSpawnSFX != null)
+        if (source != null && ExplosiveFireSpawnSFX != null)
         {
-            audioSource.PlayOneShot(ExplosiveFireSpawnSFX);
+            source.clip = ExplosiveFireSpawnSFX;
+            source.Play();
         }
         SetVisibility(true);
         isCollected = false;
@@ -53,12 +54,13 @@ public class ExplosiveFirePickupScript : MonoBehaviour
             PlayerShooting player = other.gameObject.GetComponentInParent<PlayerShooting>();
             if (player != null)
             {
-              if(player.isUsingPickup()) return;
+                if (player.isUsingPickup()) return;
 
                 isCollected = true;
-                if (audioSource != null && ExplosiveFireCollectedSFX != null)
+                if (source != null && ExplosiveFireCollectedSFX != null)
                 {
-                    audioSource.PlayOneShot(ExplosiveFireCollectedSFX);
+                    source.clip = ExplosiveFireCollectedSFX;
+                    source.Play();
                 }
 
                 SetVisibility(false);
