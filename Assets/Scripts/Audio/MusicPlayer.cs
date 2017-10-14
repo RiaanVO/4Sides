@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using UnityEngine.Audio;
 using Random = UnityEngine.Random;
 
 public class MusicPlayer : MonoBehaviour
@@ -15,8 +15,13 @@ public class MusicPlayer : MonoBehaviour
     }
 
     public int MaxClipsToRemember = 10;
+    public float CrossfadeTime = 1.0f;
+    public AudioSource Source1;
+    public AudioSource Source2;
+    public AudioMixerSnapshot Source1Snapshot;
+    public AudioMixerSnapshot Source2Snapshot;
 
-    private AudioSource source;
+    private bool usingSource1 = false;
     private bool verified = false;
     private AudioClip queuedClip = null;
     private List<String> memory = new List<String>();
@@ -33,18 +38,21 @@ public class MusicPlayer : MonoBehaviour
             instance = this;
             verified = true;
 
-            source = gameObject.GetComponent<AudioSource>();
+            if (Source1 == null || Source2 == null)
+            {
+                Debug.LogError("Audio sources not configured!");
+            }
+            if (Source1Snapshot == null || Source2Snapshot == null)
+            {
+                Debug.LogError("Audio source snapshots not configured!");
+            }
+
             if (queuedClip != null)
             {
                 PlayClip(queuedClip);
             }
         }
         DontDestroyOnLoad(this.gameObject);
-    }
-
-    public void PlaySfx(AudioClip audio)
-    {
-        source.PlayOneShot(audio);
     }
 
     public void PlayAny(List<AudioClip> playlist, bool forceRestart)
@@ -92,7 +100,8 @@ public class MusicPlayer : MonoBehaviour
             }
         }
 
-        if (!forceRestart && clip == source.clip) return;
+        var currentSource = usingSource1 ? Source1 : Source2;
+        if (!forceRestart && clip == currentSource.clip) return;
 
         if (verified)
         {
@@ -106,9 +115,18 @@ public class MusicPlayer : MonoBehaviour
 
     private void PlayClip(AudioClip clip)
     {
+        var source = Source1;
+        var targetSnapshot = Source1Snapshot;
+        if (usingSource1)
+        {
+            source = Source2;
+            targetSnapshot = Source2Snapshot;
+        }
+
         source.clip = clip;
         source.loop = true;
         source.Play();
+        targetSnapshot.TransitionTo(CrossfadeTime);
 
         if (MaxClipsToRemember > 0)
         {
@@ -118,5 +136,7 @@ public class MusicPlayer : MonoBehaviour
                 memory.RemoveAt(0);
             }
         }
+
+        usingSource1 = !usingSource1;
     }
 }

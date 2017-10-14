@@ -15,7 +15,7 @@ public class RapidFirePickupScript : MonoBehaviour
     public AudioClip RapidFireCollectedSFX;
 
     private Renderer bulletMaterial;
-    private AudioSource audioSource;
+    private AudioSource source;
     public GameObject model;
     public GameObject pickupLight;
     private bool isCollected = true;
@@ -24,7 +24,7 @@ public class RapidFirePickupScript : MonoBehaviour
 
     public void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        source = GetComponent<AudioSource>();
         SetVisibility(false);
     }
 
@@ -38,9 +38,10 @@ public class RapidFirePickupScript : MonoBehaviour
         pickupAnimation.SetBouncePositions(newPosition);
         transform.position = new Vector3(newPosition.x, newPosition.y, newPosition.z);
 
-        if (audioSource != null && RapidFireSpawnSFX != null)
+        if (source != null && RapidFireSpawnSFX != null)
         {
-            audioSource.PlayOneShot(RapidFireSpawnSFX);
+            source.clip = RapidFireSpawnSFX;
+            source.Play();
         }
         SetVisibility(true);
         isCollected = false;
@@ -53,12 +54,13 @@ public class RapidFirePickupScript : MonoBehaviour
             PlayerShooting player = other.gameObject.GetComponentInParent<PlayerShooting>();
             if (player != null)
             {
-              if(player.isUsingPickup()) return;
+                if (player.isUsingPickup()) return;
 
                 isCollected = true;
-                if (audioSource != null && RapidFireCollectedSFX != null)
+                if (source != null && RapidFireCollectedSFX != null)
                 {
-                    audioSource.PlayOneShot(RapidFireCollectedSFX);
+                    source.clip = RapidFireCollectedSFX;
+                    source.Play();
                 }
 
                 SetVisibility(false);

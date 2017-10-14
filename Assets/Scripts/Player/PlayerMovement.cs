@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float MovementSpeed = 1.75f;
     public float MovementSpeedWhileShooting = 1f;
     public Light MoveLight;
+    public AudioListener Listener;
 
     private PlayerShooting weapons;
     private Rigidbody body;
@@ -16,6 +17,11 @@ public class PlayerMovement : MonoBehaviour
     {
         weapons = GetComponent<PlayerShooting>();
         body = GetComponent<Rigidbody>();
+
+        if (Listener != null)
+        {
+            Instantiate(Listener);
+        }
     }
 
     void FixedUpdate()

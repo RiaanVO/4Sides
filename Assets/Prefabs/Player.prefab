@@ -512,6 +512,7 @@ MonoBehaviour:
   MovementSpeed: 1.75
   MovementSpeedWhileShooting: 0.9
   MoveLight: {fileID: 108879831623242412}
+  Listener: {fileID: 81036154697012260, guid: 06c015906259f4449b84d85d9aba0fe0, type: 2}
 --- !u!114 &114206929549562128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -539,7 +540,7 @@ MonoBehaviour:
   FireRate: 0.07
   MuzzleFlash: {fileID: 108457497817763430}
   shootingPoint: {fileID: 4786839481528840}
-  laserSFX: {fileID: 8300000, guid: eabace70bdf644c55810195fc37d0666, type: 3}
+  laserSFX: {fileID: 8300000, guid: 2f8fed8c12cbc4770881f036d32d18cc, type: 3}
   volume: 1
 --- !u!114 &114744362801933838
 MonoBehaviour:

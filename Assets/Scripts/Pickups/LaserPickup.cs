@@ -2,78 +2,81 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserPickup : MonoBehaviour {
+public class LaserPickup : MonoBehaviour
+{
 
-	private const string PLAYER_TAG = "Player";
+    private const string PLAYER_TAG = "Player";
 
-	public float laserFireDuration = 10f;
-	public int laserFireDamage = 5;
-	public float laserFireTickRate = 0.1f;
+    public float laserFireDuration = 10f;
+    public int laserFireDamage = 5;
+    public float laserFireTickRate = 0.1f;
 
-	public AudioClip laserSpawnSFX;
-	public AudioClip laserCollectedSFX;
+    public AudioClip laserSpawnSFX;
+    public AudioClip laserCollectedSFX;
 
-	private Renderer bulletMaterial;
-	private AudioSource audioSource;
-	public GameObject model;
-	public GameObject pickupLight;
-	private bool isCollected = true;
+    private Renderer bulletMaterial;
+    private AudioSource source;
+    public GameObject model;
+    public GameObject pickupLight;
+    private bool isCollected = true;
 
-	private PickupAnimation pickupAnimation;
+    private PickupAnimation pickupAnimation;
 
-	public void Start()
-	{
-			audioSource = GetComponent<AudioSource>();
-			SetVisibility(false);
-	}
+    public void Start()
+    {
+        source = GetComponent<AudioSource>();
+        SetVisibility(false);
+    }
 
-	public void SpawnLaserPickup(Vector3 newPosition)
-	{
-			if (pickupAnimation == null)
-			{
-					pickupAnimation = GetComponent<PickupAnimation>();
-			}
+    public void SpawnLaserPickup(Vector3 newPosition)
+    {
+        if (pickupAnimation == null)
+        {
+            pickupAnimation = GetComponent<PickupAnimation>();
+        }
 
-			pickupAnimation.SetBouncePositions(newPosition);
-			transform.position = new Vector3(newPosition.x, newPosition.y, newPosition.z);
+        pickupAnimation.SetBouncePositions(newPosition);
+        transform.position = new Vector3(newPosition.x, newPosition.y, newPosition.z);
 
-			if (audioSource != null && laserSpawnSFX != null)
-			{
-					audioSource.PlayOneShot(laserSpawnSFX);
-			}
+        if (source != null && laserSpawnSFX != null)
+        {
+            source.clip = laserSpawnSFX;
+            source.Play();
+        }
 
-			SetVisibility(true);
-			isCollected = false;
-	}
+        SetVisibility(true);
+        isCollected = false;
+    }
 
-	public void OnTriggerEnter(Collider other)
-	{
-			if (other.gameObject.CompareTag(PLAYER_TAG) && !isCollected)
-			{
-					PlayerShooting player = other.gameObject.GetComponentInParent<PlayerShooting>();
-					if (player != null)
-					{
-							if(player.isUsingPickup()) return;
-							isCollected = true;
-							if (audioSource != null && laserCollectedSFX != null)
-							{
-									audioSource.PlayOneShot(laserCollectedSFX);
-							}
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag(PLAYER_TAG) && !isCollected)
+        {
+            PlayerShooting player = other.gameObject.GetComponentInParent<PlayerShooting>();
+            if (player != null)
+            {
+                if (player.isUsingPickup()) return;
+                isCollected = true;
+                if (source != null && laserCollectedSFX != null)
+                {
+                    source.clip = laserCollectedSFX;
+                    source.Play();
+                }
 
-							SetVisibility(false);
-							player.ChangeToLaserShooting(laserFireDuration, laserFireDamage, laserFireTickRate);
-					}
-			}
-	}
+                SetVisibility(false);
+                player.ChangeToLaserShooting(laserFireDuration, laserFireDamage, laserFireTickRate);
+            }
+        }
+    }
 
-	private void SetVisibility(bool active)
-	{
-			model.SetActive(active);
-			pickupLight.SetActive(active);
-	}
+    private void SetVisibility(bool active)
+    {
+        model.SetActive(active);
+        pickupLight.SetActive(active);
+    }
 
-	public bool IsCollected()
-	{
-			return isCollected;
-	}
+    public bool IsCollected()
+    {
+        return isCollected;
+    }
 }
