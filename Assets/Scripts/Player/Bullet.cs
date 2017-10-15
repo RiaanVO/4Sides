@@ -6,7 +6,7 @@ public class Bullet : PooledObject
 {
     public bool destroyOverDistance = true;
     public float MaximumRange = 15f;
-    public float MaximumLifeTime = 10f;
+    public float MaximumLifeTime = 8f;
     public float Speed = 4.0f;
 
     private GameObject player;

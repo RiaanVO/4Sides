@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InvincibleWhenDamaged: 0
-  InitialHealth: 400
+  InitialHealth: 500
   DestroyOnDeath: 1
   showDamageFlashEffects: 1
   damageFlashDuration: 0.2
@@ -379,8 +379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf62a5454dfe8c4182690781cace6bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 10
-  timeBetweenShot: 0.7
+  detectionRadius: 16
+  timeBetweenShot: 1
   Bullet: {fileID: 114559741629206202, guid: d7d0e71b39ccc5b49ab57e8e7815472b, type: 2}
   normalMaterials: {fileID: 2100000, guid: 4906e4750f6eedb41924ba049793bf2b, type: 2}
   attackingMaterial: {fileID: 2100000, guid: 52ecda9aa34ab4aec9203a88f835a3b2, type: 2}

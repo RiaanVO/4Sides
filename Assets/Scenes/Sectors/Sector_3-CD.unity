@@ -2509,12 +2509,17 @@ Prefab:
     - target: {fileID: 114747791265948412, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
         type: 2}
       propertyPath: detectionRadius
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 114747791265948412, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
         type: 2}
       propertyPath: timeBetweenShot
-      value: 1
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114217200971970214, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
+        type: 2}
+      propertyPath: InitialHealth
+      value: 1200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21ac67d72c2b0d34ebeefc4d98462b86, type: 2}
@@ -7267,12 +7272,17 @@ Prefab:
     - target: {fileID: 114747791265948412, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
         type: 2}
       propertyPath: detectionRadius
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 114747791265948412, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
         type: 2}
       propertyPath: timeBetweenShot
-      value: 1
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114217200971970214, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
+        type: 2}
+      propertyPath: InitialHealth
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21ac67d72c2b0d34ebeefc4d98462b86, type: 2}
@@ -13381,11 +13391,11 @@ MonoBehaviour:
   - DropPodCount: 4
     EnemiesPerDropPod: 4
   - DropPodCount: 8
-    EnemiesPerDropPod: 3
-  - DropPodCount: 10
     EnemiesPerDropPod: 4
-  - DropPodCount: 15
+  - DropPodCount: 12
     EnemiesPerDropPod: 5
+  - DropPodCount: 16
+    EnemiesPerDropPod: 6
   pickupSpawner: {fileID: 1754508407}
   waveStartDelayTime: 4
 --- !u!82 &720385625
@@ -13514,12 +13524,17 @@ Prefab:
     - target: {fileID: 114747791265948412, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
         type: 2}
       propertyPath: detectionRadius
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 114747791265948412, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
         type: 2}
       propertyPath: timeBetweenShot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114217200971970214, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
+        type: 2}
+      propertyPath: InitialHealth
+      value: 1200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21ac67d72c2b0d34ebeefc4d98462b86, type: 2}
@@ -13726,12 +13741,17 @@ Prefab:
     - target: {fileID: 114747791265948412, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
         type: 2}
       propertyPath: detectionRadius
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 114747791265948412, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
         type: 2}
       propertyPath: timeBetweenShot
-      value: 1
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114217200971970214, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
+        type: 2}
+      propertyPath: InitialHealth
+      value: 1500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21ac67d72c2b0d34ebeefc4d98462b86, type: 2}
@@ -27103,12 +27123,17 @@ Prefab:
     - target: {fileID: 114747791265948412, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
         type: 2}
       propertyPath: detectionRadius
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 114747791265948412, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
         type: 2}
       propertyPath: timeBetweenShot
-      value: 1
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114217200971970214, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
+        type: 2}
+      propertyPath: InitialHealth
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21ac67d72c2b0d34ebeefc4d98462b86, type: 2}
@@ -28880,12 +28905,17 @@ Prefab:
     - target: {fileID: 114747791265948412, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
         type: 2}
       propertyPath: detectionRadius
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 114747791265948412, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
         type: 2}
       propertyPath: timeBetweenShot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114217200971970214, guid: 21ac67d72c2b0d34ebeefc4d98462b86,
+        type: 2}
+      propertyPath: InitialHealth
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21ac67d72c2b0d34ebeefc4d98462b86, type: 2}
