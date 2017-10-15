@@ -84,4 +84,10 @@ public static class GameSession
     {
         return "Sector_" + name;
     }
+
+    public static void ClearProgress()
+    {
+        completedSectors.Clear();
+        LastCompletedSector = null;
+    }
 }

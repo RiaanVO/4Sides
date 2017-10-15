@@ -15,6 +15,7 @@ public class EnemyController : PooledObject
     public float positionCheckDelay = 0.5f;
     private float checkTimer = 0f;
 
+    public float chanceToChase = 0.2f;
     public bool waitForProximity = true;
     private bool playerFound = false;
     public float playerDetectionRadius = 5f;
@@ -24,9 +25,15 @@ public class EnemyController : PooledObject
 
     public AudioClip playerDetectedSFX;
     private AudioSource detectedSoundPlayer;
+    private Animator anim;
 
     public bool randomiseStartPos = true;
     public float randomisePosScale = 2;
+
+    public bool chaseAfterDelay = false;
+    public float chaseDelayAmount = 30f;
+    public float chaseDelayRandomAmount = 30f;
+    private float chaseDelayTimer = 0f;
 
     void Awake()
     {
@@ -38,6 +45,8 @@ public class EnemyController : PooledObject
         nav = GetComponent<NavMeshAgent>();
         health = GetComponent<EnemyHealth>();
         player = Object.FindObjectOfType<PlayerMovement>();
+        anim = GetComponent<Animator>();
+        anim.SetBool("Idling", true);
 
         nav.enabled = false;
         transform.position = position;
@@ -52,12 +61,22 @@ public class EnemyController : PooledObject
         playerFound = !waitForProximity;
         checkTimer = positionCheckDelay;
 
+        if (Random.Range(0, 10) <= (int)10 * chanceToChase)
+        {
+            playerFound = true;
+            anim.SetBool("Idling", false);
+        }
+
         if (randomiseStartPos)
         {
             Vector2 positionOffset = Random.insideUnitCircle;
-            positionOffset *= randomisePosScale;
+            positionOffset *= randomisePosScale * Random.value;
             Vector3 newPosition = new Vector3(transform.position.x + positionOffset.x, transform.position.y, transform.position.z + positionOffset.y);
             nav.SetDestination(newPosition);
+        }
+
+        if(chaseAfterDelay){
+          chaseDelayTimer = chaseDelayAmount + (chaseDelayRandomAmount * Random.value);
         }
     }
 
@@ -75,6 +94,7 @@ public class EnemyController : PooledObject
                 if (checkTimer > positionCheckDelay || checkDistance > Vector3.Distance(transform.position, player.transform.position))
                 {
                     checkTimer = 0f;
+                    anim.SetBool("Idling", false);
                     nav.SetDestination(player.transform.position);
                 }
             }
@@ -92,12 +112,19 @@ public class EnemyController : PooledObject
                 notifyPlayerFound();
             }
         }
+        if(chaseAfterDelay){
+          chaseDelayTimer -= Time.deltaTime;
+          if(chaseDelayTimer < 0){
+            playerFound = true;
+          }
+        }
     }
 
     public void notifyPlayerFound()
     {
         if (playerFound == false)
         {
+            detectedSoundPlayer.pitch = Random.Range(0.8f, 1.2f);
             detectedSoundPlayer.Play();
             playerFound = true;
             notifyEnemiesInRange();
@@ -137,7 +164,7 @@ public class EnemyController : PooledObject
         source.clip = clip;
         source.volume = volume;
         source.playOnAwake = false;
-        source.spatialBlend = 0.75f;
+        source.spatialBlend = 0.9f;
         return source;
     }
 }

@@ -67,8 +67,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1154309320316646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.477789, y: -0.42, z: 30.042192}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4105009399016698}
   m_Father: {fileID: 0}
@@ -139,6 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67bd9f7289abd64699785231dd3999a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyOverDistance: 0
+  MaximumRange: 15
   MaximumLifeTime: 10
   Speed: 10
 --- !u!114 &114587329750810442
@@ -153,10 +155,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageToDeal: 15
+  explosionRadius: 5
   SelfDestructOnContact: 1
+  isExplosive: 0
   TagsToCollideWith:
   - Enemy
   - Player
+  explosion: {fileID: 0}
 --- !u!135 &135189486594072030
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -167,5 +172,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.3
+  m_Center: {x: 0.15, y: 0, z: 0}

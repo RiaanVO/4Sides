@@ -60,6 +60,17 @@ public class MapController : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.L))
+        {
+            foreach (var node in allNodes)
+            {
+                node.Complete(true);
+            }
+        }
+    }
+
     public void OnNodeSelected(LevelNode selected)
     {
         selectedLevel = selected;

@@ -55,7 +55,6 @@ GameObject:
   - component: {fileID: 114664993565325448}
   - component: {fileID: 114582477327547702}
   - component: {fileID: 82109481262552848}
-  - component: {fileID: 114622162531834902}
   m_Layer: 0
   m_Name: RapidFire
   m_TagString: Pickup
@@ -251,10 +250,11 @@ AudioSource:
   m_GameObject: {fileID: 1629624955506414}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243733243603428982, guid: aa3883eed240e3a4aa8375f2f1710c44,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -292,7 +292,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 0.9
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -332,7 +332,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 0, g: 0.60294104, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.92755187, b: 0.014705896, a: 1}
   m_Intensity: 1.58
   m_Range: 5
   m_SpotAngle: 30
@@ -384,26 +384,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bfb5e5164f3e14f9529f7e6fd75355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1869211116967458, guid: 16f1f8dc9c3a5aa4a867e6171b543c34,
-    type: 2}
   RapidFireRate: 0.001
   RapidFireRateDuration: 10
-  RapidFireSpawnSFX: {fileID: 8300000, guid: cd650184825209347a0f5563f5d89af5, type: 3}
+  NewBullet: {fileID: 114671131080773908, guid: 1f88a8331e6fb984c85167fba747349c,
+    type: 2}
+  RapidFireSpawnSFX: {fileID: 8300000, guid: f2c2446a43f5a2744b2bd0fa9e45a4a1, type: 3}
   RapidFireCollectedSFX: {fileID: 8300000, guid: 44a0909c6f3af5945b607c807f54f88a,
     type: 3}
+  UnableToPickupSFX: {fileID: 8300000, guid: e184e18e15abd744ab1ddbf1285c3ac8, type: 3}
   model: {fileID: 1310564674523390}
   pickupLight: {fileID: 1844149150168692}
---- !u!114 &114622162531834902
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1629624955506414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da21d12d6c6541469ac7058488420de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114664993565325448
 MonoBehaviour:
   m_ObjectHideFlags: 1

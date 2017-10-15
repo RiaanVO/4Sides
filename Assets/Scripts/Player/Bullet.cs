@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : PooledObject
 {
-    public float MaximumLifeTime = 10f;
+    public float MaximumLifeTime = 2f;
     public float Speed = 4.0f;
 
     private Rigidbody body;
@@ -24,7 +24,7 @@ public class Bullet : PooledObject
         createdAtTimestamp = Time.time;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         body.transform.position += transform.forward * Time.deltaTime * Speed;
 

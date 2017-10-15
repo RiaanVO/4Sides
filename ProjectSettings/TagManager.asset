@@ -13,6 +13,8 @@ TagManager:
   - HealthSpawnPoint
   - LavaTrap
   - Turret
+  - MiniMapCamera
+  - PickupSpawnPoint
   layers:
   - Default
   - TransparentFX
@@ -23,8 +25,8 @@ TagManager:
   - 
   - 
   - Floor
-  - 
-  - 
+  - LevelGeometry
+  - Enemies
   - 
   - 
   - 

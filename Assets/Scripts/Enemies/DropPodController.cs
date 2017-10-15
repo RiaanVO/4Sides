@@ -41,9 +41,9 @@ public class DropPodController : PooledObject
 
     void Awake()
     {
-        spawnedSound = AddAudioSource(SpawnedSound, 0.75f);
+		spawnedSound = AddAudioSource (SpawnedSound, 1f);//0.75f);
         landedSound = AddAudioSource(LandedSound, 1.0f);
-        openingSound = AddAudioSource(OpeningSound, 0.75f);
+		openingSound = AddAudioSource (OpeningSound, 1f);//0.75f);
 
         player = GameObject.FindObjectOfType<PlayerMovement>();
         shaker = Camera.main.GetComponent<CameraShake>();

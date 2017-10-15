@@ -26,11 +26,10 @@ GameObject:
   - component: {fileID: 114405871325869992}
   - component: {fileID: 114456413384361800}
   - component: {fileID: 114713493981612680}
-  - component: {fileID: 82893757901941022}
   - component: {fileID: 199634818123032278}
   - component: {fileID: 198844787168736560}
   - component: {fileID: 114954353526192084}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DroneEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -47,7 +46,7 @@ GameObject:
   - component: {fileID: 4395166521204702}
   - component: {fileID: 33339281545111082}
   - component: {fileID: 23690676001371640}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_DroneWingRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +63,7 @@ GameObject:
   - component: {fileID: 4946939976098754}
   - component: {fileID: 33446760910077332}
   - component: {fileID: 23768381308668112}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_DroneWingLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +80,7 @@ GameObject:
   - component: {fileID: 4619197358220218}
   - component: {fileID: 33896859625777834}
   - component: {fileID: 23452177919487954}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_DroneBladeRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4800669135158160}
   - component: {fileID: 108936365298140748}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +113,7 @@ GameObject:
   - component: {fileID: 4348701360541624}
   - component: {fileID: 33479666594015112}
   - component: {fileID: 23031782114032342}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_DroneBladeLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +131,7 @@ GameObject:
   - component: {fileID: 136871864509410598}
   - component: {fileID: 114759211269413082}
   - component: {fileID: 82504960980074954}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DodgerCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +148,7 @@ GameObject:
   - component: {fileID: 4792637545789870}
   - component: {fileID: 33676550621842312}
   - component: {fileID: 23536746533228930}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_Drone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +162,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1012135304617032}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.29, y: 0, z: 6.14}
+  m_LocalPosition: {x: -1.1, y: 0, z: 2.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4528917131364334}
@@ -485,8 +484,9 @@ AudioSource:
   m_GameObject: {fileID: 1903083442051942}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 52550cf150110854196c679d746c54ba, type: 3}
+  OutputAudioMixerGroup: {fileID: 243733243603428982, guid: aa3883eed240e3a4aa8375f2f1710c44,
+    type: 2}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -526,87 +526,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!82 &82893757901941022
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1012135304617032}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 0.2
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
+      value: 0.75
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -716,7 +636,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageToDeal: 15
+  explosionRadius: 5
   SelfDestructOnContact: 1
+  isExplosive: 0
   TagsToCollideWith:
   - Player
 --- !u!114 &114456413384361800
@@ -744,9 +666,20 @@ MonoBehaviour:
     type: 2}
   ScoreToAdd: 100
   explosion: {fileID: 1224586835255650, guid: 1639ceec317d5a041b2cd7a8df687f38, type: 2}
-  deathSound: {fileID: 8300000, guid: c8e1e76464fa44ae4a217e16d74a59c1, type: 3}
-  damageSound: {fileID: 8300000, guid: c8e1e76464fa44ae4a217e16d74a59c1, type: 3}
+  damageSounds:
+  - {fileID: 8300000, guid: c84f3fc5dae64d945b8b1c194702d08d, type: 3}
+  - {fileID: 8300000, guid: 87d574b11e9d6ad47b457d05fc985935, type: 3}
+  - {fileID: 8300000, guid: 30b96bd5dbe3e72489d90184983c0be1, type: 3}
+  - {fileID: 8300000, guid: 29cadff076e247e48b245aa123bad251, type: 3}
+  - {fileID: 8300000, guid: 5fa85d5ac7a736049aacf008b8a2f74d, type: 3}
+  - {fileID: 8300000, guid: c5155ffa10f6c604d852895da2864c29, type: 3}
+  - {fileID: 8300000, guid: 8c65bdc818e978749a1b590b0fbb4c7e, type: 3}
+  - {fileID: 8300000, guid: 1ca492a2ba7c4fd4486dd1c8ad888054, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: 1d743a926e7908c4299110dc075f197e, type: 3}
   deathDelayTime: 0
+  DestroySoundEffect: {fileID: 82010100963523754, guid: 50b676c9f81be894cbb2bc3ed69088ad,
+    type: 2}
 --- !u!114 &114713493981612680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -769,6 +702,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3aafa53edc3604f9e00d32894c6607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TeleportAway: {fileID: 8300000, guid: 7f43036a594559045bd455e896666200, type: 3}
+  TeleportSpawn: {fileID: 8300000, guid: 179d5fe959791fc4da90fb3b090034e6, type: 3}
   TeleportDistance: 5
   TeleportCooldown: 3
   InvisibleTime: 0.8
@@ -786,12 +721,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkDistance: 5
   positionCheckDelay: 0.5
+  chanceToChase: 0.2
   waitForProximity: 1
   playerDetectionRadius: 12
   notifyRange: 9
-  playerDetectedSFX: {fileID: 8300000, guid: 4ab1bea0626854e288b0750d60606e5e, type: 3}
+  playerDetectedSFX: {fileID: 8300000, guid: 8a1231bd061309b4baeeee6eb5be13f7, type: 3}
   randomiseStartPos: 1
   randomisePosScale: 2
+  chaseAfterDelay: 1
+  chaseDelayAmount: 30
+  chaseDelayRandomAmount: 60
 --- !u!136 &136633064977780166
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -898,7 +837,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1602162622
+  randomSeed: -1992833171
   InitialModule:
     serializedVersion: 3
     enabled: 1

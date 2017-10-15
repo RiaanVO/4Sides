@@ -3,36 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using MusicService;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour {
+public class PauseMenu : MonoBehaviour
+{
+    private GameController controller;
 
-    private MusicPlayer _musicPlayer;
-    private GameController _gameController; 
-
-    public AudioClip buttonClickSfx;
-
-	// Use this for initialization
-	void Start () {
-        _musicPlayer = MusicPlayer.Instance;
-        _gameController = FindObjectOfType<GameController>();
+    void Start()
+    {
+        controller = FindObjectOfType<GameController>();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void ResumeGame()
     {
-        _gameController.ResumeGame();
-        _musicPlayer.PlaySfx(buttonClickSfx);
+        controller.ResumeGame();
     }
 
     public void ExitGame()
     {
-        _gameController.ExitGame();
-        _musicPlayer.PlaySfx(buttonClickSfx);
+        controller.ExitGame();
     }
 }

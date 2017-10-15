@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67bd9f7289abd64699785231dd3999a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaximumLifeTime: 10
+  MaximumLifeTime: 1
   Speed: 15
 --- !u!114 &114800980840408504
 MonoBehaviour:
@@ -153,10 +153,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageToDeal: 8
+  explosionRadius: 5
   SelfDestructOnContact: 1
+  isExplosive: 0
   TagsToCollideWith:
   - Enemy
   - Turret
+  explosion: {fileID: 0}
 --- !u!135 &135000216857208400
 SphereCollider:
   m_ObjectHideFlags: 1

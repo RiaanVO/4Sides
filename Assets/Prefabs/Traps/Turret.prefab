@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33400549869930254}
   - component: {fileID: 135960316067484242}
   - component: {fileID: 23869135840443488}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Turret
   m_Icon: {fileID: 0}
@@ -39,7 +39,8 @@ GameObject:
   - component: {fileID: 4953040001176782}
   - component: {fileID: 114217200971970214}
   - component: {fileID: 114747791265948412}
-  m_Layer: 0
+  - component: {fileID: 82481197065831722}
+  m_Layer: 10
   m_Name: Turret
   m_TagString: Turret
   m_Icon: {fileID: 0}
@@ -57,7 +58,7 @@ GameObject:
   - component: {fileID: 33021973479563532}
   - component: {fileID: 136446744072389610}
   - component: {fileID: 23690939680438310}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gun
   m_TagString: Turret
   m_Icon: {fileID: 0}
@@ -75,7 +76,7 @@ GameObject:
   - component: {fileID: 33295330037987460}
   - component: {fileID: 136139870441905302}
   - component: {fileID: 23200245294348654}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Turret
   m_Icon: {fileID: 0}
@@ -150,7 +151,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4906e4750f6eedb41924ba049793bf2b, type: 2}
+  - {fileID: 2100000, guid: 37901fbeab22a43469abe30375c7c8bf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -182,7 +183,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4906e4750f6eedb41924ba049793bf2b, type: 2}
+  - {fileID: 2100000, guid: 37901fbeab22a43469abe30375c7c8bf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -214,7 +215,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4906e4750f6eedb41924ba049793bf2b, type: 2}
+  - {fileID: 2100000, guid: 22dab80a760eb554e90328ddcc4dbc45, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -254,6 +255,87 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1109160969530082}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!82 &82481197065831722
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1466486711007648}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243733243603428982, guid: aa3883eed240e3a4aa8375f2f1710c44,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 96d805c8e95759b4eaf9a1bf525ac5fa, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.75
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114217200971970214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -266,7 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InvincibleWhenDamaged: 0
-  InitialHealth: 400
+  InitialHealth: 500
   DestroyOnDeath: 1
   showDamageFlashEffects: 1
   damageFlashDuration: 0.2
@@ -279,9 +361,13 @@ MonoBehaviour:
     type: 2}
   ScoreToAdd: 200
   explosion: {fileID: 1224586835255650, guid: 1639ceec317d5a041b2cd7a8df687f38, type: 2}
-  deathSound: {fileID: 0}
-  damageSound: {fileID: 0}
-  deathDelayTime: 0
+  damageSounds:
+  - {fileID: 8300000, guid: 5ff33921f755ace449391595a652d400, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: b9526c37e66872347ba21c0bd4c625fb, type: 3}
+  deathDelayTime: 0.1
+  DestroySoundEffect: {fileID: 82010100963523754, guid: 50b676c9f81be894cbb2bc3ed69088ad,
+    type: 2}
 --- !u!114 &114747791265948412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -293,8 +379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf62a5454dfe8c4182690781cace6bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 10
-  timeBetweenShot: 0.7
+  detectionRadius: 16
+  timeBetweenShot: 1
   Bullet: {fileID: 114559741629206202, guid: d7d0e71b39ccc5b49ab57e8e7815472b, type: 2}
   normalMaterials: {fileID: 2100000, guid: 4906e4750f6eedb41924ba049793bf2b, type: 2}
   attackingMaterial: {fileID: 2100000, guid: 52ecda9aa34ab4aec9203a88f835a3b2, type: 2}

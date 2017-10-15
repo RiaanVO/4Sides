@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4126757591214194}
   - component: {fileID: 137536707957369044}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_Warrior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4199015925500614}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: swarmWarriorRtRearLeg3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4522253519872272}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorLtRearLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4416961096245758}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorLtFrontLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4804479380111146}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4815425228590424}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorRtRearLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4007759219458330}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorTail5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4648194982735084}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorLtFrontLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4918781162873762}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: swarmWarriorLtFrontLeg4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4113279338645534}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorRtFrontLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4464525235959336}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: swarmWarriorRtFrontLeg4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4196263747502794}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: swarmWarriorLtRearLeg3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4136003220693906}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorTail2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,10 +223,10 @@ GameObject:
   - component: {fileID: 114333607814586132}
   - component: {fileID: 114743949432006036}
   - component: {fileID: 114803694750143852}
-  - component: {fileID: 82969467586545366}
-  - component: {fileID: 114867252027805952}
   - component: {fileID: 114535406803455654}
-  m_Layer: 0
+  - component: {fileID: 82651033487764168}
+  - component: {fileID: 114935273143807002}
+  m_Layer: 10
   m_Name: SeekerEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4224362037425674}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorLtFrontLeg3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4816779411145652}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: swarmWarriorRtFrontLeg5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4363363349694684}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorWeapon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4020113854386962}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorTail1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4360249293011686}
   - component: {fileID: 108802096918084506}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +317,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4595743881256098}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: swarmWarriorRtRearLeg4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4551090227780196}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: swarmWarriorRtRearLeg5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4294125950268440}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,7 +362,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4629562379323896}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorTail3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4050559397750086}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorRtFrontLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4861788615517106}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorWeapon1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +407,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4771811788004716}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: swarmWarriorLtRearLeg5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4600731268965960}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: swarmWarriorRtFrontLeg3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4905401426830984}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorRtRearLeg2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4393746449949722}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: swarmWarriorLtRearLeg4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4305021271468010}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: swarmWarriorLtFrontLeg5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,7 +482,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4713028616127794}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorTail4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +497,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4858460518066800}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorLtRearLeg1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4176199960514540}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PA_WarriorRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -995,7 +995,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 36
   m_CollisionDetection: 0
---- !u!82 &82969467586545366
+--- !u!82 &82651033487764168
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1003,19 +1003,20 @@ AudioSource:
   m_GameObject: {fileID: 1339550043203248}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243733243603428982, guid: aa3883eed240e3a4aa8375f2f1710c44,
+    type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1044,7 +1045,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0.5
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1062,7 +1063,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1154,7 +1155,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageToDeal: 15
+  explosionRadius: 5
   SelfDestructOnContact: 1
+  isExplosive: 0
   TagsToCollideWith:
   - Player
 --- !u!114 &114333607814586132
@@ -1182,9 +1185,23 @@ MonoBehaviour:
     type: 2}
   ScoreToAdd: 100
   explosion: {fileID: 1224586835255650, guid: 1639ceec317d5a041b2cd7a8df687f38, type: 2}
-  deathSound: {fileID: 8300000, guid: c8e1e76464fa44ae4a217e16d74a59c1, type: 3}
-  damageSound: {fileID: 8300000, guid: c8e1e76464fa44ae4a217e16d74a59c1, type: 3}
+  damageSounds:
+  - {fileID: 8300000, guid: c84f3fc5dae64d945b8b1c194702d08d, type: 3}
+  - {fileID: 8300000, guid: 87d574b11e9d6ad47b457d05fc985935, type: 3}
+  - {fileID: 8300000, guid: 30b96bd5dbe3e72489d90184983c0be1, type: 3}
+  - {fileID: 8300000, guid: 29cadff076e247e48b245aa123bad251, type: 3}
+  - {fileID: 8300000, guid: 5fa85d5ac7a736049aacf008b8a2f74d, type: 3}
+  - {fileID: 8300000, guid: c5155ffa10f6c604d852895da2864c29, type: 3}
+  - {fileID: 8300000, guid: 8c65bdc818e978749a1b590b0fbb4c7e, type: 3}
+  - {fileID: 8300000, guid: 1ca492a2ba7c4fd4486dd1c8ad888054, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: e333a830a4d518d4d9470aab1121a2b3, type: 3}
+  - {fileID: 8300000, guid: b661d1823b7e9c24fba5d514550a3b6d, type: 3}
+  - {fileID: 8300000, guid: 98037a30cc60ac7498b4269671a2c47c, type: 3}
+  - {fileID: 8300000, guid: 7172a0eb86ddc7c4a87563f3f36f8dd3, type: 3}
   deathDelayTime: 0
+  DestroySoundEffect: {fileID: 82010100963523754, guid: 50b676c9f81be894cbb2bc3ed69088ad,
+    type: 2}
 --- !u!114 &114535406803455654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1196,7 +1213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a39714431367e4788e803040987b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DelayToReturnNormalSpeed: 2
+  DelayToRegainSpeed: 2
 --- !u!114 &114743949432006036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1210,12 +1227,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkDistance: 5
   positionCheckDelay: 0.5
+  chanceToChase: 0.2
   waitForProximity: 1
   playerDetectionRadius: 12
   notifyRange: 9
-  playerDetectedSFX: {fileID: 8300000, guid: 4ab1bea0626854e288b0750d60606e5e, type: 3}
+  playerDetectedSFX: {fileID: 8300000, guid: 8a1231bd061309b4baeeee6eb5be13f7, type: 3}
   randomiseStartPos: 1
   randomisePosScale: 2
+  chaseAfterDelay: 1
+  chaseDelayAmount: 30
+  chaseDelayRandomAmount: 60
 --- !u!114 &114803694750143852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1227,7 +1248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8d00284829e634299e36d401273373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114867252027805952
+--- !u!114 &114935273143807002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1235,9 +1256,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1339550043203248}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da21d12d6c6541469ac7058488420de, type: 3}
+  m_Script: {fileID: 11500000, guid: 337f188126c20f741a47dcf0137e2f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeToWait: 0.1
+  Source: {fileID: 82651033487764168}
+  Clips:
+  - {fileID: 8300000, guid: 26e75601528245542b28833ca8a9120b, type: 3}
+  - {fileID: 8300000, guid: d3a8ef1248198d944873f6495ed88670, type: 3}
+  - {fileID: 8300000, guid: 24e6766ecb48cbe42802ba574a4605de, type: 3}
+  - {fileID: 8300000, guid: 51222f7266eae7740a937264fccd82fa, type: 3}
+  - {fileID: 8300000, guid: d9e0f7845cf03c74f8f072ab6f390035, type: 3}
+  - {fileID: 8300000, guid: 3e7064939cad76846ae533b235c3cb2a, type: 3}
+  - {fileID: 8300000, guid: d2fcffadb38079e4f85e2b064bf5f6e6, type: 3}
+  - {fileID: 8300000, guid: 8ca169c520de7544e9f9a2cd6913bde4, type: 3}
+  - {fileID: 8300000, guid: c2d7a4e718882154a80add032cc7a899, type: 3}
+  - {fileID: 8300000, guid: a267ed52df32e2247902ffa6b9548075, type: 3}
+  - {fileID: 8300000, guid: 48a591f04c9766045bc5d6ec404a3885, type: 3}
+  - {fileID: 8300000, guid: 1d73d55cbc6767d428e617987c49bdec, type: 3}
+  - {fileID: 8300000, guid: aa0b0bc35bdcf604a953379d9c4f694c, type: 3}
+  - {fileID: 8300000, guid: d3dc27de7ea3d7e4e8d08104abee8c4f, type: 3}
+  - {fileID: 8300000, guid: d5af7f8f2c4b9564a92613491e4bb3f5, type: 3}
+  - {fileID: 8300000, guid: 7412d3a5855e11d4dbde06cf8a735654, type: 3}
+  - {fileID: 8300000, guid: 8e04afdbc4da5994998ca7ba6349c2f4, type: 3}
 --- !u!136 &136455421622566402
 CapsuleCollider:
   m_ObjectHideFlags: 1
