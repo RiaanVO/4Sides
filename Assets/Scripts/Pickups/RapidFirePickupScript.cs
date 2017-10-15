@@ -13,7 +13,7 @@ public class RapidFirePickupScript : MonoBehaviour
 
     public AudioClip RapidFireSpawnSFX;
     public AudioClip RapidFireCollectedSFX;
-
+	public AudioClip UnableToPickupSFX;
     private Renderer bulletMaterial;
     private AudioSource source;
     public GameObject model;
@@ -54,8 +54,15 @@ public class RapidFirePickupScript : MonoBehaviour
             PlayerShooting player = other.gameObject.GetComponentInParent<PlayerShooting>();
             if (player != null)
             {
-                if (player.isUsingPickup()) return;
-
+				if (player.isUsingPickup ()) {
+					if (source != null && UnableToPickupSFX != null)
+					{
+						source.clip = UnableToPickupSFX;
+						source.Play();
+					}
+	
+					return;
+				}
                 isCollected = true;
                 if (source != null && RapidFireCollectedSFX != null)
                 {

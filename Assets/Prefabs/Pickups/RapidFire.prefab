@@ -391,6 +391,7 @@ MonoBehaviour:
   RapidFireSpawnSFX: {fileID: 8300000, guid: f2c2446a43f5a2744b2bd0fa9e45a4a1, type: 3}
   RapidFireCollectedSFX: {fileID: 8300000, guid: 44a0909c6f3af5945b607c807f54f88a,
     type: 3}
+  UnableToPickupSFX: {fileID: 8300000, guid: e184e18e15abd744ab1ddbf1285c3ac8, type: 3}
   model: {fileID: 1310564674523390}
   pickupLight: {fileID: 1844149150168692}
 --- !u!114 &114664993565325448
