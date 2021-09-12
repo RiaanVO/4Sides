@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
             Instantiate(Listener);
         }
 
-        previousMousePos = new Vector2(0,0);
+        previousMousePos = new Vector2(0, 0);
     }
 
     void FixedUpdate()
@@ -45,26 +45,29 @@ public class PlayerMovement : MonoBehaviour
             float rJoyY = Input.GetAxis("Right Joy Y");
 
             // calculate rotation based on direction to mouse cursor
-
-            
-            if(rJoyX != 0 || rJoyY != 0){
+            if (rJoyX != 0 || rJoyY != 0)
+            {
                 rotation = -Mathf.Atan2(rJoyX, rJoyY) * Mathf.Rad2Deg + 45;
                 body.MoveRotation(Quaternion.Euler(0.0f, rotation + 90, 0.0f));
-                Debug.Log(usingJoy + ": " + rJoyX + " | " + rJoyY);
+                // Debug.Log(usingJoy + ": " + rJoyX + " | " + rJoyY);
                 usingJoy = true;
                 rJoyX = 0f;
                 rJoyY = 0f;
-            } else {
+            }
+            else
+            {
                 Vector2 currentMouse = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-                if(Vector2.Distance(currentMouse, previousMousePos) > 2){
+                if (Vector2.Distance(currentMouse, previousMousePos) > 2)
+                {
                     usingJoy = false;
-                    Debug.Log(usingJoy + ": " + Vector2.Distance(currentMouse, previousMousePos));
+                    // Debug.Log(usingJoy + ": " + Vector2.Distance(currentMouse, previousMousePos));
 
                 }
                 previousMousePos = currentMouse;
             }
 
-            if(!usingJoy){
+            if (!usingJoy)
+            {
                 Vector3 dirToMouse = mousePos - transform.position;
                 rotation = -Mathf.Atan2(dirToMouse.z, dirToMouse.x) * Mathf.Rad2Deg;
                 body.MoveRotation(Quaternion.Euler(0.0f, rotation + 90, 0.0f));

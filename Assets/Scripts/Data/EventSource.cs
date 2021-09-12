@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class EventSource : MonoBehaviour
 {
-    public delegate void Subscription(EventSource source, string eventName);
+    private class Subscription
+    {
+        public SubscriptionHandler action;
+        public bool unsubscribeAfterInvocation;
+    }
+    public delegate void SubscriptionHandler(EventSource source, string eventName);
 
     private Dictionary<string, List<Subscription>> subscriptions =
         new Dictionary<string, List<Subscription>>();
@@ -15,32 +18,39 @@ public class EventSource : MonoBehaviour
         var handlers = new List<Subscription>();
         if (subscriptions.TryGetValue(eventName, out handlers))
         {
-            handlers.ForEach(h => h.Invoke(this, eventName));
+            for (int i = 0; i < handlers.Count; i++)
+            {
+                var handler = handlers[i];
+                handler.action.Invoke(this, eventName);
+                if (handler.unsubscribeAfterInvocation)
+                {
+                    handlers.RemoveAt(i);
+                    i--;
+                }
+            }
         }
     }
 
-    public void Subscribe(string eventName, Subscription handler)
+    public void Subscribe(string eventName, SubscriptionHandler handler,
+        bool unsubscribeAfterInvocation = false)
     {
+        var sub = new Subscription
+        {
+            action = handler,
+            unsubscribeAfterInvocation = unsubscribeAfterInvocation
+        };
+
         var handlers = new List<Subscription>();
         if (subscriptions.TryGetValue(eventName, out handlers))
         {
-            handlers.Add(handler);
+            handlers.Add(sub);
         }
         else
         {
             subscriptions[eventName] = new List<Subscription>
             {
-                handler
+                sub
             };
-        }
-    }
-
-    public void Unsubscribe(string eventName, Subscription handler)
-    {
-        var handlers = new List<Subscription>();
-        if (subscriptions.TryGetValue(eventName, out handlers))
-        {
-            handlers.Remove(handler);
         }
     }
 }

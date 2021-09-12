@@ -147,13 +147,11 @@ public class EnemySpawnManager : MonoBehaviour
         enemiesActive++;
 
         var eventSource = enemy.GetComponent<EventSource>();
-        eventSource.Subscribe("BaseHealth.Died", OnEnemyKilled);
+        eventSource.Subscribe(BaseHealth.EVENT_DIED, OnEnemyKilled, true);
     }
 
     private void OnEnemyKilled(EventSource source, string eventName)
     {
-        source.Unsubscribe(eventName, OnEnemyKilled);
-
         enemiesActive--;
         if (allEnemiesSpawned && enemiesActive <= 0)
         {

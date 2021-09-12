@@ -13,7 +13,7 @@ public class BaseHealth : MonoBehaviour
     private PooledObject poolable;
     private float currentHealth;
     private float __invincibleTimer;
-	public bool InvincibleWhenDamaged = false;
+    public bool InvincibleWhenDamaged = false;
 
     [Header("Base Health Settings")]
     public float InitialHealth = 100;
@@ -149,9 +149,10 @@ public class BaseHealth : MonoBehaviour
         {
             if (!_isInvincible)
             {
-				          if (InvincibleWhenDamaged) {
-					               _isInvincible = true;
-				          }
+                if (InvincibleWhenDamaged)
+                {
+                    _isInvincible = true;
+                }
                 currentHealth -= amount;
 
                 ShowDamageEffects(amount);
@@ -171,30 +172,32 @@ public class BaseHealth : MonoBehaviour
         }
     }
 
-    public void TakeDamageOverideInvincible(int amount){
-      if (!IsDead)
-      {
+    public void TakeDamageOverideInvincible(int amount)
+    {
+        if (!IsDead)
+        {
 
-                if (InvincibleWhenDamaged) {
-                       _isInvincible = true;
-                }
-              currentHealth -= amount;
+            if (InvincibleWhenDamaged)
+            {
+                _isInvincible = true;
+            }
+            currentHealth -= amount;
 
-              ShowDamageEffects(amount);
-              DamageSound();
+            ShowDamageEffects(amount);
+            DamageSound();
 
 
-              if (data != null)
-              {
-                  data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);
-              }
+            if (data != null)
+            {
+                data.UpdateChannel(CHANNEL_CURRENT_HEALTH, currentHealth);
+            }
 
-              if (IsDead)
-              {
-                  Die();
-              }
+            if (IsDead)
+            {
+                Die();
+            }
 
-      }
+        }
     }
 
     public void Heal(int amount)

@@ -11,7 +11,6 @@ public class EnemyHealth : BaseHealth
     public GameObject explosion;
     public List<AudioClip> damageSounds;
     public List<AudioClip> deathSounds;
-    public float deathDelayTime = 0f;
     public AudioSource DestroySoundEffect;
 
     private AudioSource damagedSoundSource;
@@ -32,7 +31,7 @@ public class EnemyHealth : BaseHealth
         playDeathSound();
         //explosion.Play();
         Instantiate(explosion, transform.position, transform.rotation);
-        StartCoroutine(deathDelay());
+        KillGameobject();
     }
 
     public override void Die()
@@ -40,7 +39,7 @@ public class EnemyHealth : BaseHealth
         playDeathSound();
         //explosion.Play();
         Instantiate(explosion, transform.position, transform.rotation);
-        StartCoroutine(deathDelay());
+        KillGameobject();
     }
 
     public override void DamageSound()
@@ -51,12 +50,6 @@ public class EnemyHealth : BaseHealth
             damagedSoundSource.Stop();
             damagedSoundSource.Play();
         }
-    }
-
-    private IEnumerator deathDelay()
-    {
-        yield return new WaitForSeconds(deathDelayTime);
-        KillGameobject();
     }
 
     private void playDeathSound()
