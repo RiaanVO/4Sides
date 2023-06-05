@@ -4,6 +4,8 @@ A level-based top-down shooter built for a university group assignment. Eradicat
 
 ![Gameplay](gameplay.gif)
 
+[Play on itch.io](https://vivekhnz.itch.io/sector-strike)
+
 [Trailer](https://youtu.be/2yMGn2oOeTQ)
 
 [UTS Games Studio](https://www.gamesstudio.org/games/sector-strike)
